@@ -2,7 +2,7 @@ package eni.fr.javaee.projet.bo;
 
 public class Utilisateur {
 
-	
+	//Test 2
 	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
