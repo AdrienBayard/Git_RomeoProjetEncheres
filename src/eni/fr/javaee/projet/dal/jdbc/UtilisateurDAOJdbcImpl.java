@@ -19,8 +19,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String UPDATE_UTILISATEUR = "UPDATE UTLISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur =?";
 	
 	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS Where no_utilisateur = ?";
-
-	private static final String AFFICHER_MOT_DE_PASSE = "SELECT mot_de_passe FROM UTILISATEURS where pseudo = ? ";
 	
 	@Override
 	public Utilisateur afficherProfil(String pseudo) throws DALException {
@@ -168,7 +166,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 			// Paramétrer l'objet de commande
 
-			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_MOT_DE_PASSE);
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_PROFIL);
 			pStmt.setString(1, pseudo);
 
 			// Execute l'ordre SQL
