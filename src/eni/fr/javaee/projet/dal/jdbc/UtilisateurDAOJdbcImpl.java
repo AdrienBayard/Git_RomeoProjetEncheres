@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
@@ -202,6 +203,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
 
 		return utilisateur;
+	}
+
+	@Override
+	public List<Utilisateur> getListeUtilisateur() throws DALException {
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		
+		
+		
+		
+		return null;
 	}
 
 }
