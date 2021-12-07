@@ -8,11 +8,33 @@
   
   <servlet>
   	<servlet-name>accueil</servlet-name>
-  	<jsp-file>/WEB-INF/accueil.jsp</jsp-file>
+  	<jsp-file>/WEB-INF/jsp/accueil.jsp</jsp-file>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>accueil</servlet-name>
   	<url-pattern>/accueil</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>inscription</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/inscription.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>inscription</servlet-name>
+  	<url-pattern>/inscription</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>connexion</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/connexion.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>connexion</servlet-name>
+  	<url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
