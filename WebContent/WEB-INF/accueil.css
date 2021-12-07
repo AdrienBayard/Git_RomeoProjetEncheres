@@ -1,0 +1,78 @@
+* {
+    font-family : "Je sais pas";
+    src: url(ideal-sans-serif.woff) format("woff"),
+     url(basic-sans-serif.ttf) format("truetype");
+}
+
+body {
+    background-color: rgb(255, 174, 68);
+}
+.header {
+    margin: auto;
+    width: 100%;
+    height: 90px;
+    background-color: rgb(20, 20, 20);
+    padding: 2% 2% 0 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    color: rgb(255, 255, 255);
+}
+
+.titre {
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.boutons {
+    text-align: right;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.boutons a:hover {
+    color: rgb(42, 182, 135);
+}
+
+.boutons a:visited{
+    color: rgb(255, 255, 255);
+}
+
+
+.boutons a:visited:hover{
+    color: rgb(148, 148, 148);
+}
+
+a {
+    color: black;
+}
+
+.container {
+    background-color: rgb(138, 138, 138);
+    min-height: 800px;
+    width: 60%;
+    margin: auto;
+}
+
+footer {
+    background-color: rgb(20, 20, 20);
+    height: 100px;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+}
+
+.rechercher {
+    padding-left: 35%
+}
+
+.liste {
+    padding-top: 2%;
+}
+
+.row {
+    padding-left: 20%;
+}
+
