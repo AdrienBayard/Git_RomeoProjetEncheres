@@ -14,4 +14,8 @@ public interface UtilisateurDAO {
 
 	String afficherMotDePasse(String pseudo) throws DALException;
 	
+	void updateUtilisateur(Utilisateur utilisateurModifie) throws DALException;
+	
+	void deleteUtilisateur(int idUtilisateur)throws DALException;
+	
 }

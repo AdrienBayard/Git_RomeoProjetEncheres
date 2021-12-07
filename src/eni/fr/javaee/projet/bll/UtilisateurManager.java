@@ -42,4 +42,52 @@ public class UtilisateurManager {
 		String motDePasse = dao.afficherMotDePasse(pseudo);
 		return motDePasse;
 	}
+
+	public void deleteUtilisateur(int idUtilisateur) throws BLLException {
+
+		BLLException ex = new BLLException();
+
+		validationId(idUtilisateur, ex);
+
+		if (ex.hasErreur()) {
+			throw ex;
+		}
+
+		try {
+			dao.deleteUtilisateur(idUtilisateur);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+
+	}
+
+	public void updateUtilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville) throws BLLException {
+
+		BLLException ex = new BLLException();
+
+		Utilisateur nouvelUtilisateur = null;
+		nouvelUtilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville);
+
+		if (ex.hasErreur()) {
+			throw ex;
+		}
+
+		try {
+			dao.updateUtilisateur(nouvelUtilisateur);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+
+	}
+
+	private void validationId(int idUtilisateur, BLLException ex) throws BLLException {
+		if (idUtilisateur < 1) {
+			ex.ajouterErreur(new ParameterException("L'id doit Etre un entier positif >= 1"));
+		}
+	}
 }
