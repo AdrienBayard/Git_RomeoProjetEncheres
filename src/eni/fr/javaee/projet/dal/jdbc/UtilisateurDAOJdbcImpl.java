@@ -9,20 +9,19 @@ import java.util.List;
 
 import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
-import fr.eni.javaee.projet.dal.ProjetDAO;
+import fr.eni.javaee.projet.dal.UtilisateurDAO;
 
-public class ProjetDAOJdbcImpl implements ProjetDAO {
+public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	
-	private static final String AFFICHER_TOUS_LES_UTILISATEURS = ""; //TODO : Importer la méthode SQL
+	private static final String AFFICHER_PROFIL = "select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from UTILISATEURS where pseudo ='?'"; //TODO : Importer la méthode SQL
 	
 	private static final String INSERT_NEW_UTILISATEUR = ""; //TODO : Importer la méthode SQL
 	
 	private static final String UPDATE_UTILISATEUR = ""; 	//TODO : Importer la méthode SQL
 	
-	private static final String AFFICHER_PROFIL = ""; //TODO : Importer la méthode SQL
 	
 	@Override
-	public List<Utilisateur> afficherTousLesUtilisateurs() throws DALException {
+	public List<Utilisateur> afficherProfil() throws DALException {
 
 		List<Utilisateur> listeDesUtilisateurs = new ArrayList<Utilisateur>();
 		
@@ -39,7 +38,7 @@ public class ProjetDAOJdbcImpl implements ProjetDAO {
 		
 		// Execute l'ordre SQL
 		ResultSet rs = null;
-		rs = ordre.executeQuery(AFFICHER_TOUS_LES_UTILISATEURS);
+		rs = ordre.executeQuery(AFFICHER_PROFIL);
 		
 		while(rs.next()) {
 			

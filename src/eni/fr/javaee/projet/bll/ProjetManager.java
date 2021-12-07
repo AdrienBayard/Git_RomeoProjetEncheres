@@ -1,6 +1,6 @@
 package eni.fr.javaee.projet.bll;
 
-import fr.eni.javaee.projet.dal.ProjetDAO;
+import fr.eni.javaee.projet.dal.UtilisateurDAO;
 import fr.eni.javaee.projet.dal.ProjetDAOFactory;
 
 public class ProjetManager {
@@ -9,7 +9,7 @@ public class ProjetManager {
 	
 private static ProjetManager instance;
 	
-	private static ProjetDAO dao;
+	private static UtilisateurDAO dao;
 	
 	private ProjetManager() {
 		dao = ProjetDAOFactory.getProjetDAO();
