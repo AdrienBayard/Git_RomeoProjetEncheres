@@ -3,21 +3,21 @@ package eni.fr.javaee.projet.bll;
 import fr.eni.javaee.projet.dal.UtilisateurDAO;
 import fr.eni.javaee.projet.dal.ProjetDAOFactory;
 
-public class ProjetManager {
+public class UtilisateurManager {
 	
 	//Création du singleton
 	
-private static ProjetManager instance;
+private static UtilisateurManager instance;
 	
 	private static UtilisateurDAO dao;
 	
-	private ProjetManager() {
+	private UtilisateurManager() {
 		dao = ProjetDAOFactory.getProjetDAO();
 	};
 
-	public static ProjetManager getInstance() {
+	public static UtilisateurManager getInstance() {
 		if(instance == null) {
-			instance = new ProjetManager();
+			instance = new UtilisateurManager();
 		}
 		return instance;
 	}
