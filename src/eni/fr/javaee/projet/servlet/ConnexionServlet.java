@@ -9,17 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  * Servlet implementation class ui
  */
-@WebServlet("/inscription")
-public class Inscription extends HttpServlet {
+@WebServlet("/connexion")
+public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Inscription() {
+    public ConnexionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,10 +29,15 @@ public class Inscription extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
+
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
 		dispatcher.forward(request, response);
+		String identifiant = request.getParameter("identifiant");
+		String motDePasse = request.getParameter("motDePasse");
+//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID   
+		if(identifiant.equals("")&& motDePasse.equals("")) {
+		}
+		
 	}
 
 }

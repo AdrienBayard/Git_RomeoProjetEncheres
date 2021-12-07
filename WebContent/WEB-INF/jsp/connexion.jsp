@@ -15,7 +15,7 @@
 	<input type = "text" id ="identifiant" name ="identifiant">
 <br>
 	<label for = "motDePasse">Mot de passe :</label>
-	<input type = "text" id ="identifiant" name ="identifiant">
+	<input type = "text" id ="motDePasse" name ="motDePasse">
 <br>
 	<button type="submit" id="connexion" name="connexion">Connexion</button> 
  	<input type="checkbox" id="rememberme" name="rememberme">

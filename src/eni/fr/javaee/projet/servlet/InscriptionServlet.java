@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ui
  */
-@WebServlet("/connexion")
-public class Connexion extends HttpServlet {
+@WebServlet("/inscription")
+public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Connexion() {
+    public InscriptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,9 @@ public class Connexion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
 		dispatcher.forward(request, response);
 	}
 
