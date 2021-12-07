@@ -14,7 +14,7 @@
 
 	%>
 
-
+<c:if mdpValide=false></c:if>
 
 	<form action="/Connexion/connexion" method="get">
 		<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"
