@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ui
  */
 @WebServlet("/ui")
-public class ui extends HttpServlet {
+public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ui() {
+    public Connexion() {
         super();
         // TODO Auto-generated constructor stub
     }
