@@ -25,14 +25,7 @@ public class Utilisateur {
 
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, Boolean administrateur) {
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
+		this( pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
 		this.motDePasse = motDePasse;
 		this.administrateur = administrateur;
 	}
@@ -43,7 +36,18 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 	
-	
+	// Constructeur utilisateur pour afficher les données d'un profil
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+			String codePostal, String ville) {
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.ville = ville;
+	}
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -54,6 +58,10 @@ public class Utilisateur {
 	
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
+	}
+	
+	public String getPseudo() {
+		return pseudo;
 	}
 
 	public String getNom() {

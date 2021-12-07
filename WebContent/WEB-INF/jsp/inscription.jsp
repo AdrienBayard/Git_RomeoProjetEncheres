@@ -36,8 +36,7 @@
 		<button type="submit" form="inscription">Créer</button>
 		<a href="/RomeoProjetEncheres/accueil"><button>Annuler</button></a>
 			<!-- TODO : Lien vers l'accueil sans utilisateur -->
-			Annuler
-		</button>
+			
 	</div>
 </body>
 </html>
