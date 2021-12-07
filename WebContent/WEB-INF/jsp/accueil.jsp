@@ -46,7 +46,7 @@
 				<option value="Informatique">Informatique</option>
 				<option value="Ameublement">Ameublement</option>
 				<option value="Vetements">Vetements</option>
-				<option value="Sport&Loisirs">Sport&Loisirs</option>
+				<option value="Sport&Loisirs">SportEtLoisirs</option>
 			</select>
 		</form>
 		<br> <br>

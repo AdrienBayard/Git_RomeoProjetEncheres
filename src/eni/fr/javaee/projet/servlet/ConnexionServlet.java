@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import eni.fr.javaee.projet.bll.UtilisateurManager;
+import fr.eni.javaee.projet.dal.DALException;
 
 
 /**
@@ -30,14 +32,33 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
-		dispatcher.forward(request, response);
-		String identifiant = request.getParameter("identifiant");
+		
+		String pseudo = request.getParameter("pseudo");
 		String motDePasse = request.getParameter("motDePasse");
-//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID   
-		if(identifiant.equals("")&& motDePasse.equals("")) {
+		String laJsp = null;
+		Boolean mdpValide = false;
+		String leMdp = null;
+		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
+		
+		try {
+			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
+		if(motDePasse.equals(leMdp)) {
+			mdpValide = true;
+			laJsp = "/WEB-INF/connected.jsp";
+		}
+		else {
+			mdpValide = false;
+			laJsp = "/WEB-INF/connexion.jsp";
+			
+		}
+		
+		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
+		aiguilleur.forward(request, response);
 	}
 
 }
