@@ -37,4 +37,26 @@
   </servlet-mapping>
   
   
+      <servlet>
+  	<servlet-name>monprofil</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/monprofil.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>monprofil</servlet-name>
+  	<url-pattern>/monprofil</url-pattern>
+  </servlet-mapping>
+  
+  
+        <servlet>
+  	<servlet-name>lienprofil</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/lienprofil.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>lienprofil</servlet-name>
+  	<url-pattern>/lienprofil</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

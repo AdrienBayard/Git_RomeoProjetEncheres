@@ -36,6 +36,15 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 	
+	// Constructeur utilisateur pour vérification pseudo/mail pour inscription
+		public Utilisateur(String pseudo, String nom, String email) {
+			this.pseudo = pseudo;
+			this.nom = nom; 
+			this.email = email;
+		}
+	
+	
+	
 	// Constructeur utilisateur pour afficher les données d'un profil
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville) {
