@@ -34,7 +34,7 @@
 	</form>
 	<div class="button">
 		<button type="submit" form="inscription">Créer</button>
-		<button onclick="location.href='/RomeoProjetEncheres/inscription'">
+		<a href="/RomeoProjetEncheres/accueil"><button>Annuler</button></a>
 			<!-- TODO : Lien vers l'accueil sans utilisateur -->
 			Annuler
 		</button>
