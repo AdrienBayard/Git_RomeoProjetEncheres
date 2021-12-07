@@ -1,12 +1,12 @@
 package fr.eni.javaee.projet.dal;
 
-import eni.fr.javaee.projet.dal.jdbc.ProjetDAOJdbcImpl;
+import eni.fr.javaee.projet.dal.jdbc.UtilisateurDAOJdbcImpl;
 
 public class ProjetDAOFactory {
 	
-public static ProjetDAO getProjetDAO() {
+public static UtilisateurDAO getProjetDAO() {
 		
-		return new ProjetDAOJdbcImpl();
+		return new UtilisateurDAOJdbcImpl();
 	}
 
 }
