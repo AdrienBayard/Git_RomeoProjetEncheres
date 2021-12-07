@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Inscription</title>
 </head>
-<link href="inscription.css" rel="stylesheet">
+<link href="CSS\inscription.css" rel="stylesheet">
 <body>
 	<div class=header>
 
