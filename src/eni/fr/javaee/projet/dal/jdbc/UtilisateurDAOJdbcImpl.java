@@ -14,6 +14,7 @@ import fr.eni.javaee.projet.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
+		//Requête utilisée lors de l'inscription
 	private static final String VERIF_UTILISATEUR = "SELECT pseudo, nom, email FROM UTILISATEURS"; 
 	
 	private static final String AFFICHER_PROFIL = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal,ville from UTILISATEURS where pseudo ='?'";

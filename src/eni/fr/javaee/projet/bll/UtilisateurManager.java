@@ -1,6 +1,10 @@
 package eni.fr.javaee.projet.bll;
 
 import fr.eni.javaee.projet.dal.UtilisateurDAO;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.ProjetDAOFactory;
@@ -125,6 +129,21 @@ public class UtilisateurManager {
 			throw ex;
 		}
 
+	}
+	
+	public List<Utilisateur> getListeUtilisateurs() throws BLLException {
+		
+		List<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>(); 
+		
+		try {
+			listeUtilisateurs = dao.getListeUtilisateur();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeUtilisateurs;
+		
 	}
 
 	private void validationId(int idUtilisateur, BLLException ex) throws BLLException {
