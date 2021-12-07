@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The contents of this file will be loaded for each web application -->
+
+<Context>
+
+	<Resource
+	
+		name="jdbc/suiviRepasPool"
+		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		type="javax.sql.DataSource"
+		
+		url="jdbc:sqlserver://127.0.0.1:1433;databasename=Projet_Romeo404"
+		username="sa"
+		password="Pa$$w0rd"
+		
+		initialSize="5"
+		maxTotal="25"
+		minIdle="5"
+		maxIdle="8"
+		maxWaitMillis="5000"
+		
+		
+		
+		
+		
+	
+	 />	
+
+
+</Context>
