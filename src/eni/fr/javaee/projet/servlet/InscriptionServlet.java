@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ui
  */
-@WebServlet("/inscription")
+@WebServlet("/inscriptionServlet")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
