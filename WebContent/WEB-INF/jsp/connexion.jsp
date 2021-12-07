@@ -11,10 +11,22 @@
 
 	<%
 		Boolean mdpValide = (Boolean) request.getAttribute("mdpValide");
-
+	%>
+	
+	
+	<%
+		if (mdpValide == false) {
+	%>
+	<script>
+		function myFunction() {
+			alert("Identifiants incorrects");
+		}
+	</script>
+	<%
+		}
 	%>
 
-<c:if mdpValide=false></c:if>
+
 
 	<form action="/Connexion/connexion" method="get">
 		<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"

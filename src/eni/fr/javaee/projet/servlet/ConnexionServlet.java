@@ -38,7 +38,7 @@ public class ConnexionServlet extends HttpServlet {
 		String pseudo = request.getParameter("pseudo");
 		String motDePasse = request.getParameter("motDePasse");
 		String laJsp = null;
-		Boolean mdpValide = false;
+		Boolean mdpValide = true;
 		String leMdp = null;
 		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
 		
