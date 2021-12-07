@@ -60,7 +60,7 @@ public class ConnexionServlet extends HttpServlet {
 			laJsp = "/WEB-INF/connexion.jsp";
 			
 		}
-		
+		request.setAttribute("mdpValide", mdpValide);
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
 		aiguilleur.forward(request, response);
 	}
