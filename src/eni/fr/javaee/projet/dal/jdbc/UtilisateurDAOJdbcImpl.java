@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import eni.fr.javaee.projet.bo.Utilisateur;
@@ -209,13 +210,36 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	@Override
 	public List<Utilisateur> getListeUtilisateur() throws DALException {
+		
+		List<Utilisateur> listeUtilisateursExistants = new ArrayList<Utilisateur>(); 
+		
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		
+		//Insérer la requête VERIF UTILISATEUR => Sert à vérifier, lors de l'inscription que le pseudo et mail ne sotn pas pris. 
+		Statement ordre = null; 
+		try {
+			ordre = cnx.createStatement();
+			ResultSet utilisateur = null;
+			utilisateur = ordre.executeQuery(VERIF_UTILISATEUR);
+			
+			while(utilisateur.next()) {
+			String pseudo = utilisateur.getString("pseudo"); 
+			String nom = utilisateur.getString("nom"); 
+			String email = utilisateur.getString("email"); 
+			
+			Utilisateur user = new Utilisateur(pseudo, nom, email); 
+			listeUtilisateursExistants.add(user); 
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		
-		return null;
+		return listeUtilisateursExistants;
 	}
 
 }
