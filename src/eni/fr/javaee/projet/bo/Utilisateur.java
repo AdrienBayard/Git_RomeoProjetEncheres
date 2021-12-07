@@ -2,7 +2,7 @@ package eni.fr.javaee.projet.bo;
 
 public class Utilisateur {
 
-	//Test 2
+	// Test 2
 	private int noUtilisateur;
 	private String pseudo;
 	private String nom;
@@ -16,8 +16,15 @@ public class Utilisateur {
 	private int credit;
 	private Boolean administrateur;
 
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue, String codePostal, String ville, String motDePasse, int credit, Boolean administrateur) {
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, int credit, Boolean administrateur) {
+		this(pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse, administrateur);
 		this.noUtilisateur = noUtilisateur;
+		this.credit = credit;
+	}
+
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse, Boolean administrateur) {
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -27,11 +34,14 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.credit = credit;
 		this.administrateur = administrateur;
-
 	}
 
+	public Utilisateur(int noUtilisateur, String pseudo, String motDePasse) {
+		this.noUtilisateur = noUtilisateur;
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+	}
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -39,11 +49,7 @@ public class Utilisateur {
 	public void setNoUtilisateur(int noUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
 	}
-
-	public String getPseudo() {
-		return pseudo;
-	}
-
+	
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
@@ -135,7 +141,5 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
 				+ ", administrateur=" + administrateur + "]";
 	}
-	
-	
-	
+
 }
