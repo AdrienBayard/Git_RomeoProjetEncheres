@@ -13,7 +13,9 @@ import fr.eni.javaee.projet.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
-	private static final String AFFICHER_PROFIL = "select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from UTILISATEURS where pseudo ='?'";
+	private static final String VERIF_UTILISATEUR = "SELECT pseudo, nom, email FROM UTILISATEURS"; 
+	
+	private static final String AFFICHER_PROFIL = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal,ville from UTILISATEURS where pseudo ='?'";
 	
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
