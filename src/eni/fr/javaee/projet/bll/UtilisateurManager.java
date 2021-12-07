@@ -12,7 +12,7 @@ private static UtilisateurManager instance;
 	private static UtilisateurDAO dao;
 	
 	private UtilisateurManager() {
-		dao = ProjetDAOFactory.getProjetDAO();
+		dao = ProjetDAOFactory.getUtilisateurDAO();
 	};
 
 	public static UtilisateurManager getInstance() {

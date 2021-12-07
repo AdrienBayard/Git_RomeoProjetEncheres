@@ -4,7 +4,7 @@ import eni.fr.javaee.projet.dal.jdbc.UtilisateurDAOJdbcImpl;
 
 public class ProjetDAOFactory {
 	
-public static UtilisateurDAO getProjetDAO() {
+public static UtilisateurDAO getUtilisateurDAO() {
 		
 		return new UtilisateurDAOJdbcImpl();
 	}
