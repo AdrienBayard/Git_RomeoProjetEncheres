@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -40,12 +42,14 @@ public class ConnexionServlet extends HttpServlet {
 		String leMdp = null;
 		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
 		
+	
 		try {
 			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
-		} catch (DALException e) {
+		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		if(motDePasse.equals(leMdp)) {
 			mdpValide = true;
