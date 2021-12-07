@@ -18,16 +18,16 @@ public class Utilisateur {
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, Boolean administrateur) {
-		this(pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse, administrateur);
+		this(pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse);
 		this.noUtilisateur = noUtilisateur;
 		this.credit = credit;
+		this.administrateur = administrateur;
 	}
 
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, Boolean administrateur) {
+			String rue, String codePostal, String ville, String motDePasse) {
 		this( pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
 		this.motDePasse = motDePasse;
-		this.administrateur = administrateur;
 	}
 
 	// Constructeur utilisateur pour vérification pseudo/mdp pour connection
