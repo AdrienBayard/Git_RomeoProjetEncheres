@@ -37,11 +37,13 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public Utilisateur(int noUtilisateur, String pseudo, String motDePasse) {
-		this.noUtilisateur = noUtilisateur;
+	// Constructeur utilisateur pour vérification pseudo/mdp pour connection
+	public Utilisateur(String pseudo, String motDePasse) {
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 	}
+	
+	
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
