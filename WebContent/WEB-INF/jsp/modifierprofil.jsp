@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mon profil</title>
+<title>Insert title here</title>
 </head>
-<link href="CSS\profil.css" rel="stylesheet">
 <body>
 <div class=header>
 
@@ -30,6 +29,5 @@
 		<a href="/RomeoProjetEncheres/modifierprofil"><button type="submit" form="modifierProfil">Modifier</button></a>	
 		</div>
 	</form>
-	
 </body>
 </html>
