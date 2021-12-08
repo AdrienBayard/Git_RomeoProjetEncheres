@@ -79,7 +79,7 @@
         <!--TODO: logo à la place-->:
         <div class="boutons">
             <a href="">ENCHÈRES</a> | <a href="">VENDRE UN ARTICLE </a> | <a href="">MON PROFIL </a> | <a
-                href="">DÉCONNEXION </a>
+                href="accueil">DÉCONNEXION </a>
         </div>
     </div>
 
