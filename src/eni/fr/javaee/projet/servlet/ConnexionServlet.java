@@ -42,7 +42,6 @@ public class ConnexionServlet extends HttpServlet {
 		String laJsp = null;
 		Boolean mdpValide = true;
 		String leMdp = null;
-		System.out.println("test : " +pseudo +" " + motDePasse);
 		
 		//		faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo 
 		try {
