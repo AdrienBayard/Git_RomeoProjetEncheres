@@ -58,5 +58,15 @@
   	<url-pattern>/lienprofil</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>connected</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/connected.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>connected</servlet-name>
+  	<url-pattern>/connected</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
