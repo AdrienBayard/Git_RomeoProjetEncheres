@@ -17,7 +17,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		//Requête utilisée lors de l'inscription
 	private static final String VERIF_UTILISATEUR = "SELECT pseudo, nom, email FROM UTILISATEURS"; 
 	
-	private static final String AFFICHER_PROFIL = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal,ville from UTILISATEURS where pseudo ='?'";
+	private static final String AFFICHER_PROFIL = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe from UTILISATEURS where pseudo =?";
 	
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
@@ -203,8 +203,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		String rue = rs.getString("rue");
 		String code_postal = rs.getString("code_postal");
 		String ville = rs.getString("ville");
+		String motDePasse = rs.getString("mot_de_passe");
 
-		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville);
+		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, motDePasse);
 
 		return utilisateur;
 	}
