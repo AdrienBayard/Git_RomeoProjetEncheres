@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,42 +11,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
 
-    <link rel="stylesheet" href="CSS\style.css">
+    <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-    
-/* TODO: CHECKBOX & RADIOS A REPARER--> */
- 
+        //  traduction : quand la radio d'ID achats est cliquée, lancer la fonction enableCheckBoxAchats et disableCheckBoxAchats si la radio ventes est cliquée.
         $(function () {
-            enable_cbA();
-            $("#achats").click(enable_cbA);
+            enableCheckBoxAchats();
+            $("#achats").click(enableCheckBoxAchats);
         });
 
-        function enable_cbA() {
-            if (this.checked) {
-                $("input.achats").removeAttr("disabled");
-            } else if(document.getElementById('ventes').checked) {
-                $("input.achats").attr("disabled", true);
-            }
+        $(function () {
+            disableCheckBoxAchats();
+            $("#ventes").click(disableCheckBoxAchats);
+        });
+
+        // traduction : si la radio d'ID achats est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
+        function enableCheckBoxAchats() {
+            $("input.achats").removeAttr("disabled");
+        }
+
+        function disableCheckBoxAchats() {
+            $("input.achats").prop("disabled", true);
+            $("input.achats").prop("checked", false);
         }
     </script>
 
+
+
     <script>
+        // traduction : quand la radio d'ID ventes est cliquée, lancer la fonction enableCheckBoxVentes et
+        // disableCheckBoxVentes si la radio ventes est cliquée.
         $(function () {
-            enable_cbV();
-            $("#ventes").click(enable_cbV);
+            enableCheckBoxVentes();
+            $("#ventes").click(enableCheckBoxVentes);
         });
 
-        function enable_cbV() {
-            if (this.checked) {
-                $("input.ventes").removeAttr("disabled");
-            } else if(document.getElementById('achats').checked) {
-                $("input.ventes").attr("disabled", true);
-            }
+        $(function () {
+            disableCheckBoxVentes();
+            $("#achats").click(disableCheckBoxVentes);
+        });
+
+        // traduction : si la radio ventes est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
+        function enableCheckBoxVentes() {
+            $("input.ventes").removeAttr("disabled");
+        }
+
+        // traduction : si la radio achats est cliquée; réactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre incliquables
+        function disableCheckBoxVentes() {
+            $("input.ventes").prop("disabled", true);
+            $("input.ventes").prop("checked", false);
         }
 
     </script>
