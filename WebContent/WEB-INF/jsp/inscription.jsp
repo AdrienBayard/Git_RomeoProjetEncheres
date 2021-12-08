@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,14 @@
 
 	</div>
 	<h1 style="text-align: center;">Mon profil</h1>
+	
+	<c:if test="${messageErreur != null && messageErreur == 1}">
+	<p>cMsg : le mdp et la confirmation doivent être identiques</p>
+</c:if>
+
+<c:if test="${messageErreur != null && messageErreur == 2}">
+	<p>Msg : Pseudo ou mail déjà utilisés</p>
+</c:if>
 
 	<form id="inscription" action="/RomeoProjetEncheres/connexionServlet" method="post">
 		<!-- TODO : Lien vers l'accueil avec utilisateur -->
@@ -23,9 +33,12 @@
 			<br> <label>Prénom: </label><input type="text" name="prenom"
 				required> <label>Email: </label><input type="text"
 				name="email" required><br> <br> <label>Teléphone:
-			</label> <input type="text" name="telephone" required> <label>Rue:
-			</label><input type="text" name="rue" required><br> <br> <label>Code
-				postal: </label><input type="text" name="codePostal" required> <label>Ville:
+			</label> <input type="text" name="telephone" required> 
+			<label>Rue:
+			</label>
+			<input type="text" name="rue" required><br> <br> 
+			<label>Code
+				postal:</label> <input type="text" name="codePostal" required> <label>Ville:
 			</label><input type="text" name="ville" required><br> <br>
 			<label>Mot de passe: </label><input type="password" name="motDePasse"
 				required> <label>Confirmation: </label> <input
@@ -35,9 +48,12 @@
 	<div class="button">
 		<button type="submit" form="inscription">Créer</button>
 		<a href="/RomeoProjetEncheres/accueil"><button>Annuler</button></a>
-			<!-- TODO : Lien vers l'accueil sans utilisateur -->
-			
+			<!-- TODO : Lien vers l'accueil sans utilisateur -->	
 	</div>
 	</form>
+
+
+
+
 </body>
 </html>

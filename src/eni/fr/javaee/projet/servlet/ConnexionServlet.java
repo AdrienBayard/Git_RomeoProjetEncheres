@@ -82,31 +82,35 @@ public class ConnexionServlet extends HttpServlet {
 		String motDePasse = request.getParameter("motDePasse");
 		String confirmation = request.getParameter("confirmation");
 
-		// Blocage en cas de mdp - confirmation sont différents.
-		if (motDePasse != confirmation) {
-			msgErreur = 1; // Msg : le mdp et la confirmation doivent être identiques. 
-		}
-
 		// Récupération des pseudos et mail déjà existants.
 		List<Utilisateur> listUtilExistants;
 		try {
 			listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
 			for (Utilisateur user : listUtilExistants) {
-				if ((user.getPseudo() != pseudo) && (user.getEmail() != email)) {
+				user.toString(); 
+				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email)) && (motDePasse.equals(confirmation))) {
 					inscription = true;
-				} else {
+				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))
+						|| (!motDePasse.equals(confirmation))) {
 					inscription = false;
+					if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))) {
+						request.setAttribute("messageErreur", 2); // Msg : Pseudo ou adresse mail déjà utilisés.
+					} else if (!motDePasse.equals(confirmation)) {
+						request.setAttribute("messageErreur", 1); // Msg : le mdp et la confirmation doivent être
+																	// identiques.
+					}
 				}
 			}
 
 			if (inscription == true) {
-				UtilisateurManager.getInstance().insertUtilisateur(pseudo, nom, prenom, email,telephone, rue, codePostal, ville, motDePasse);
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/WEB-INF/jsp/connected.jsp");
+				UtilisateurManager.getInstance().insertUtilisateur(pseudo, nom, prenom, email, telephone, rue,
+						codePostal, ville, motDePasse);
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 				aiguilleur.forward(request, response);
+
 			} else if (inscription == false) {
-				msgErreur = 2; // Msg : Pseudo ou adresse mail déjà utilisés.
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
-				aiguilleur.forward(request, response);
+					RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/inscription");
+					aiguilleur.forward(request, response);
 			}
 
 		} catch (BLLException e) {
