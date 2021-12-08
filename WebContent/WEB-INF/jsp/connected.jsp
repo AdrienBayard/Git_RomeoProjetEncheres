@@ -154,7 +154,7 @@
         <br>
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-sm-12" style="width: 18rem;">
-                <img src="miniature.jpg" class="miniature" alt="miniature">
+                <img src=""JPG\miniature.jpg"" class="miniature" alt="miniature">
                 <div class="card-body">
 
                     <p class="card-text">Un bouquin de dingue
@@ -169,7 +169,7 @@
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-sm-12" style="width: 18rem;">
-                <img src="miniature.jpg" class="miniature" alt="miniature">
+                <img src="JPG\miniature.jpg" class="miniature" alt="miniature">
                 <div class="card-body">
                     <p class="card-text">Un deuxième bouquin de dingue
                         <!--nomArticle--><br>
