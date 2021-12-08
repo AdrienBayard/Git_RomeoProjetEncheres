@@ -46,7 +46,6 @@ public class ConnexionServlet extends HttpServlet {
 		//		faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo 
 		try {
 			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
-			System.out.println("mdp :" + leMdp);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,6 +68,7 @@ public class ConnexionServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		// Récupération des informations du client depuis le formulaire.  
 		String pseudo = req.getParameter("pseudo"); 
 		String nom = req.getParameter("nom");
@@ -85,7 +85,7 @@ public class ConnexionServlet extends HttpServlet {
 			List<Utilisateur> listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
 			
 			for(Utilisateur user : listUtilExistants) {
-				System.out.println(user);
+				System.out.println(user.toString());
 			}
 		} catch (BLLException e) {
 			e.printStackTrace();

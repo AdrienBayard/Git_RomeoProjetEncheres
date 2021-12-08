@@ -15,7 +15,7 @@
 	</div>
 	<h1 style="text-align: center;">Mon profil</h1>
 
-	<form id="inscription" action=" " method="post">
+	<form id="inscription" action="/RomeoProjetEncheres/connexionServlet" method="post">
 		<!-- TODO : Lien vers l'accueil avec utilisateur -->
 		<fieldset>
 			<label>Pseudo: </label><input type="text" name="pseudo" required>
@@ -31,12 +31,13 @@
 				required> <label>Confirmation: </label> <input
 				type="password" name="confirmation" required><br> <br>
 		</fieldset>
-	</form>
+	
 	<div class="button">
 		<button type="submit" form="inscription">Créer</button>
 		<a href="/RomeoProjetEncheres/accueil"><button>Annuler</button></a>
 			<!-- TODO : Lien vers l'accueil sans utilisateur -->
 			
 	</div>
+	</form>
 </body>
 </html>
