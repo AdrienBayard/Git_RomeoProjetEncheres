@@ -17,13 +17,13 @@
 	<form id="monprofil" action=" " method="get">
 		<fieldset>
 			<label>Pseudo: </label><label>get pseudo</label><br>
-			<label>Nom: </label><input type="text" value="get nom"/></input><br>
-			<label>Prénom: </label><input type="text" value="get prenom"/></input><br>
-			<label>Email: </label><input type="text" value="get email"/></input><br>
-			<label>Teléphone: </label><input type="text" value="get telephone"/></input><br>
-			<label>Rue: </label><input type="text" value="get rue"/></input><br>
-			<label>Code postal: </label><input type="text" value="get code_postal"/></input><br>
-			<label>Ville: </label><input type="text" value="get ville"/></input><br>
+			<label>Nom: </label>
+			<label>Prénom: </label>
+			<label>Email: </label>
+			<label>Teléphone: </label>
+			<label>Rue: </label>
+			<label>Code postal: </label>
+			<label>Ville: </label>
 		</fieldset>
 		
 		<div class="button">		
