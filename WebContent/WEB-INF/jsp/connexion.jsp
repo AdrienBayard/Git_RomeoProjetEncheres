@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Connexion</title>
+<link rel="stylesheet" href="CSS\connexion.css">
 </head>
+
 <body>
 	<!--- TODO Logo --->
 
