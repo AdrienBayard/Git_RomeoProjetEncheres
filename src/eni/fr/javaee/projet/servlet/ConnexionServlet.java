@@ -46,7 +46,6 @@ public class ConnexionServlet extends HttpServlet {
 		//		faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo 
 		try {
 			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
-			System.out.println("mdp :" + leMdp);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
