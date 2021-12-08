@@ -93,12 +93,22 @@ public class ConnexionServlet extends HttpServlet {
 				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))
 						|| (!motDePasse.equals(confirmation))) {
 					inscription = false;
-					if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))) {
-						request.setAttribute("messageErreur", 2); // Msg : Pseudo ou adresse mail déjà utilisés.
-					} else if (!motDePasse.equals(confirmation)) {
+					
+					if ((user.getPseudo().equals(pseudo)) && (user.getEmail().equals(email))) {
+						request.setAttribute("messageErreur", 4); // Msg : Pseudo ou adresse mail déjà utilisés.
+					} 
+					
+					else if (user.getPseudo().equals(pseudo)) {
+						request.setAttribute("messageErreur", 2); // Msg : Pseudo déjà utilisé
+					}
+					else if (user.getEmail().equals(email)) {
+						request.setAttribute("messageErreur", 3); // Msg : Mail déjà utilisé
+					}
+					else if (!motDePasse.equals(confirmation)) {
 						request.setAttribute("messageErreur", 1); // Msg : le mdp et la confirmation doivent être
 																	// identiques.
 					}
+					break;
 				}
 			}
 

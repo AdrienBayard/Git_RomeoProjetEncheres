@@ -18,11 +18,18 @@
 	<h1 style="text-align: center;">Mon profil</h1>
 	
 	<c:if test="${messageErreur != null && messageErreur == 1}">
-	<p>cMsg : le mdp et la confirmation doivent être identiques</p>
+	<p>Msg : le mdp et la confirmation doivent être identiques</p>
 </c:if>
 
 <c:if test="${messageErreur != null && messageErreur == 2}">
-	<p>Msg : Pseudo ou mail déjà utilisés</p>
+	<p>Msg : Pseudo déjà utilisé</p>
+</c:if>
+
+<c:if test="${messageErreur != null && messageErreur == 3}">
+	<p>Msg : Mail déjà utilisé</p>
+</c:if>
+<c:if test="${messageErreur != null && messageErreur == 4}">
+	<p>Msg : Le Pseudo et le mail sont déjà utilisés </p>
 </c:if>
 
 	<form id="inscription" action="/RomeoProjetEncheres/connexionServlet" method="post">
