@@ -42,7 +42,7 @@
 			for="rememberme">Se souvenir de moi</label> <br> <a
 			href="/motDePasseOublie">Mot de passe oublié</a> <br>
 	</form>
-	<form action="/inscription">
+	<form action="/RomeoProjetEncheres/inscription">
 		<button type="submit" id="inscription" name="inscription">Créer
 			un compte</button>
 	</form>
