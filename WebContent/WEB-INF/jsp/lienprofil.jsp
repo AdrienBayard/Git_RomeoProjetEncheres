@@ -17,7 +17,6 @@
 	<form id="lienprofil" action=" " method="get">
 		<fieldset>
 			<label>Pseudo: </label><label>get pseudo</label><br>
-			<label>Email: </label><label>get email</label><br>
 			<label>Code postal: </label><label>get code_postal</label><br>
 			<label>Ville: </label><label>get ville</label><br>
 		</fieldset>
