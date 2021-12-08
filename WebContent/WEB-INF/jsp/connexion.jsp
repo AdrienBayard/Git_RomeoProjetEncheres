@@ -30,7 +30,7 @@
 
 
 
-	<form action="/Connexion/connexion" method="get">
+	<form action="/RomeoProjetEncheres/connexion" method="get">
 		<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"
 			name="pseudo"> <br> <label for="motDePasse">Mot
 			de passe :</label> <input type="password" id="motDePasse" name="motDePasse">

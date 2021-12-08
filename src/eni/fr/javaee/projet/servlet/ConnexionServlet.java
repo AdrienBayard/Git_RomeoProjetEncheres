@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
+import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 
 
@@ -40,9 +42,8 @@ public class ConnexionServlet extends HttpServlet {
 		String laJsp = null;
 		Boolean mdpValide = true;
 		String leMdp = null;
-		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
 		
-	
+		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
 		try {
 			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
 		} catch (BLLException e) {
@@ -64,5 +65,36 @@ public class ConnexionServlet extends HttpServlet {
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
 		aiguilleur.forward(request, response);
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// Récupération des informations du client depuis le formulaire.  
+		String pseudo = req.getParameter("pseudo"); 
+		String nom = req.getParameter("nom");
+		String prenom = req.getParameter("prenom");
+		String telephone = req.getParameter("telephone");
+		String rue = req.getParameter("rue");
+		String codePostal = req.getParameter("codePostal");
+		String ville = req.getParameter("ville");
+		String motDePasse = req.getParameter("motDePasse");
+		String confirmation = req.getParameter("confirmation");
+		
+		// Récupération des pseudos et mail déjà existants. 
+		try {
+			List<Utilisateur> listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
+			
+			for(Utilisateur user : listUtilExistants) {
+				System.out.println(user);
+			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		} 
+		
+		if(!motDePasse.equals(confirmation))
+		
+		super.doPost(req, resp);
+	}
+	
+	
 
 }
