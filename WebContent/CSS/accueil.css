@@ -60,7 +60,7 @@ footer {
     height: 100px;
     width: 100%;
     margin: auto;
-    position: absolute;
+    
     bottom: 0;
 }
 
@@ -76,3 +76,16 @@ footer {
     padding-left: 20%;
 }
 
+@media screen and (max-width : 768px){  /* responsive pour mobile */
+    .EXEMPLE_PC {
+  display: none;
+    }
+  
+  }
+
+  @media screen and (min-width: 768px){ /* responsive pour pc */
+    .EXEMPLE_MOBILE{
+      display: none;
+  }
+ 
+  }
