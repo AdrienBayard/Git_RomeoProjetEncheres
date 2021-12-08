@@ -1,34 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Connexion</title>
 <link rel="stylesheet" href="CSS\connexion.css">
+<style>
+.mdpIncorrect{
+background-color : grey;
+
+}
+</style>
 </head>
 
 <body>
 	<!--- TODO Logo --->
 
-	<%
-		Boolean mdpValide = (Boolean) request.getAttribute("mdpValide");
-	%>
+	<c:if test="${mdpValide != null && mdpValide == false}">
+		<p class="mdpIncorrect">Identifiant(s) incorrect(s)</p>
+	</c:if>
 
 
-	<%
-		if (mdpValide != null) {
-			if (mdpValide == false) {
-	%>
-	<script>
-		function myFunction() {
-			alert("Identifiants incorrects");
-		}
-	</script>
-	<%
-		}
-		}
-	%>
 
 
 
