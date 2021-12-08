@@ -12,10 +12,11 @@
 	<%
 		Boolean mdpValide = (Boolean) request.getAttribute("mdpValide");
 	%>
-	
-	
+
+
 	<%
-		if (mdpValide == false) {
+		if (mdpValide != null) {
+			if (mdpValide == false) {
 	%>
 	<script>
 		function myFunction() {
@@ -23,6 +24,7 @@
 		}
 	</script>
 	<%
+		}
 		}
 	%>
 
