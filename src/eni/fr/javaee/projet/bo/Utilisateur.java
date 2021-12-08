@@ -54,6 +54,7 @@ public class Utilisateur {
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
+		this.codePostal = codePostal;
 		this.ville = ville;
 	}
 

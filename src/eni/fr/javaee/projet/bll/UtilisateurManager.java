@@ -57,9 +57,8 @@ public class UtilisateurManager {
 		validationVille(ville, ex);
 		validationMotDePasse(motDePasse, ex);
 		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
-
 		try {
-			utilisateur = dao.insertUtilisateur(utilisateur);
+			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
