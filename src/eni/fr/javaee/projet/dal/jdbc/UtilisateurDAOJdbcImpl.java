@@ -47,6 +47,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 			if (rs.next()) {
 				utilisateur = mapAfficherProfil(rs);
+				System.out.println("test : " + utilisateur.getNoUtilisateur());
 			}
 
 			cnx.close();
@@ -195,6 +196,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	public Utilisateur mapAfficherProfil(ResultSet rs) throws SQLException {
 		Utilisateur utilisateur = null;
+		int id = rs.getInt("no_utilisateur");
 		String pseudo = rs.getString("pseudo");
 		String nom = rs.getString("nom");
 		String prenom = rs.getString("prenom");
@@ -205,7 +207,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		String ville = rs.getString("ville");
 		String motDePasse = rs.getString("mot_de_passe");
 
-		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, motDePasse);
+		utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, motDePasse);
 
 		return utilisateur;
 	}

@@ -29,6 +29,14 @@ public class Utilisateur {
 		this( pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
 		this.motDePasse = motDePasse;
 	}
+	
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse) {
+		this(pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
+		this.noUtilisateur = noUtilisateur;
+		this.motDePasse = motDePasse;
+	}
+
 
 	// Constructeur utilisateur pour vérification pseudo/mdp pour connection
 	public Utilisateur(String pseudo, String motDePasse) {
