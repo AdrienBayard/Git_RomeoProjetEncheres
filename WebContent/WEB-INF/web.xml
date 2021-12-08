@@ -67,6 +67,16 @@
   	<servlet-name>connected</servlet-name>
   	<url-pattern>/connected</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>modifierprofil</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/modifierprofil.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>modifierprofil</servlet-name>
+  	<url-pattern>/modifierprofil</url-pattern>
+  </servlet-mapping>
 
   
   
