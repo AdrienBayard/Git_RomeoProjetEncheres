@@ -25,12 +25,11 @@
 			<label>Code postal: </label><input type="text" value="get code_postal"/></input><br>
 			<label>Ville: </label><input type="text" value="get ville"/></input><br>
 		</fieldset>
-	</form>
-	<div class="button">
 		
-		<a href="/RomeoProjetEncheres/monprofil"><button type="submit" form="modifierProfil">Modifier</button></a>
-			
-			
-	</div>
+		<div class="button">		
+		<a href="/RomeoProjetEncheres/monprofil"><button type="submit" form="modifierProfil">Modifier</button></a>	
+		</div>
+	</form>
+	
 </body>
 </html>

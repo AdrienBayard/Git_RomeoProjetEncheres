@@ -67,6 +67,7 @@
   	<servlet-name>connected</servlet-name>
   	<url-pattern>/connected</url-pattern>
   </servlet-mapping>
+
   
   
 </web-app>
