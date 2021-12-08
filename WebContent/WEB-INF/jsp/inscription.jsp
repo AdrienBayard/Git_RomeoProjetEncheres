@@ -17,21 +17,23 @@
 	</div>
 	<h1 style="text-align: center;">Mon profil</h1>
 	
+	<div style = "text-align: center;">
+	
 	<c:if test="${messageErreur != null && messageErreur == 1}">
-	<p>Msg : le mdp et la confirmation doivent être identiques</p>
+	<p>le mot de passe et la confirmation doivent être identiques</p>
 </c:if>
 
 <c:if test="${messageErreur != null && messageErreur == 2}">
-	<p>Msg : Pseudo déjà utilisé</p>
+	<p>Pseudo déjà utilisé</p>
 </c:if>
 
 <c:if test="${messageErreur != null && messageErreur == 3}">
-	<p>Msg : Mail déjà utilisé</p>
+	<p>Mail déjà utilisé</p>
 </c:if>
 <c:if test="${messageErreur != null && messageErreur == 4}">
-	<p>Msg : Le Pseudo et le mail sont déjà utilisés </p>
+	<p>Le Pseudo et le mail sont déjà utilisés </p>
 </c:if>
-
+</div>
 	<form id="inscription" action="/RomeoProjetEncheres/connexionServlet" method="post">
 		<!-- TODO : Lien vers l'accueil avec utilisateur -->
 		<fieldset>
