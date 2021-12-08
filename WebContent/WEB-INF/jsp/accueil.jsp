@@ -27,7 +27,7 @@
 		<!--TODO: logo à la place-->
 		:
 		<div class="boutons">
-			<a href="/RomeoProjetEncheres/inscription">s'inscrire</a> | <a href="/RomeoProjetEncheres/connexion">se connecter</a>
+			<a href="/RomeoProjetEncheres/inscription">Inscription</a> | <a href="/RomeoProjetEncheres/connexion">se connecter</a>
 		</div>
 	</div>
 	<div class="container">

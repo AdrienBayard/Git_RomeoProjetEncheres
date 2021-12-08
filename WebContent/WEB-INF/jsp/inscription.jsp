@@ -54,12 +54,12 @@
 				type="password" name="confirmation" required><br> <br>
 		</fieldset>
 	
+	</form>
 	<div class="button">
 		<button type="submit" form="inscription">Créer</button>
 		<a href="/RomeoProjetEncheres/accueil"><button>Annuler</button></a>
 			<!-- TODO : Lien vers l'accueil sans utilisateur -->	
 	</div>
-	</form>
 
 
 
