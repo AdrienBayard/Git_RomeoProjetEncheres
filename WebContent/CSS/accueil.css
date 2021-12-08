@@ -1,8 +1,13 @@
-* {
-    font-family : "Je sais pas";
-    src: url(ideal-sans-serif.woff) format("woff"),
-     url(basic-sans-serif.ttf) format("truetype");
+
+     @font-face {
+   font-family : "Essai";
+    src: url(ideal-sans-serif.woff);
 }
+
+* {
+   font-family: Essai;
+}
+
 
 body {
     background-color: rgb(255, 174, 68);
