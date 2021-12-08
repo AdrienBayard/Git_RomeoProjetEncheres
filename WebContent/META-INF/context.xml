@@ -5,7 +5,7 @@
 
 	<Resource
 	
-		name="jdbc/suiviRepasPool"
+		name="jdbc/Projet_Romeo404"
 		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 		type="javax.sql.DataSource"
 		

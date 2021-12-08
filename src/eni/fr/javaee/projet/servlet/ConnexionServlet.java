@@ -42,10 +42,12 @@ public class ConnexionServlet extends HttpServlet {
 		String laJsp = null;
 		Boolean mdpValide = true;
 		String leMdp = null;
+		System.out.println("test : " +pseudo +" " + motDePasse);
 		
-		//		faire appel à la méthode sql pour récupérer le motDePasse d'un ID 
+		//		faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo 
 		try {
 			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
+			System.out.println("mdp :" + leMdp);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,11 +56,11 @@ public class ConnexionServlet extends HttpServlet {
 		
 		if(motDePasse.equals(leMdp)) {
 			mdpValide = true;
-			laJsp = "/WEB-INF/connected.jsp";
+			laJsp = "/WEB-INF/jsp/connected.jsp";
 		}
 		else {
 			mdpValide = false;
-			laJsp = "/WEB-INF/connexion.jsp";
+			laJsp = "/WEB-INF/jsp/connexion.jsp";
 			
 		}
 		request.setAttribute("mdpValide", mdpValide);
