@@ -26,8 +26,9 @@
 		</fieldset>
 		
 		<div class="button">		
-		<a><button type="submit" form="modifierProfil">Modifier</button></a>	
+		<a href="/RomeoProjetEncheres/modifierprofil"><button>Modifier</button></a>
 		</div>
+		
 	</form>
 </body>
 </html>
