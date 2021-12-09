@@ -52,13 +52,12 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			request.setAttribute("codePostal", codePostal);
 			request.setAttribute("ville", ville);
 			
-			if (afficherProfil == null) {
+			if (afficherProfil == null || afficherProfil.equals("false")) {
 				
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/monprofil");			
 				aiguilleur.forward(request, response);
 			}
-			else {
-				request.setAttribute("motDePasse", motDePasse);
+			else if (afficherProfil.equals("true")){
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierprofil");			
 				aiguilleur.forward(request, response);
 			}

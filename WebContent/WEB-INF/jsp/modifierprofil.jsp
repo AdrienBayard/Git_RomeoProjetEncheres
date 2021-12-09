@@ -55,9 +55,9 @@
 			<label>Ville: </label><input type="text" name="ville" value="${requestScope.ville}" required>
 			
 			<br> <br>
-			<label>Mot de passe actuel: </label> <input type="password" name="motDePasse" value="${requestScope.motDePasse}" required> 
-			<label>Mot de passe: </label> <input type="password" name="motDePasse" value="${requestScope.motDePasse}" required> 
-			<label>Confirmation: </label> <input type="password" name="confirmation" value="${requestScope.motDePasse}" required>
+			<label>Mot de passe actuel: </label> <input type="password" name="motDePasse" value="" required> 
+			<label>Nouveau mot de passe: </label> <input type="password" name="nouveauMotDePasse" value="" required> 
+			<label>Confirmation: </label> <input type="password" name="confirmation" value="" required>
 			
 			<br> <br>
 		</fieldset>
