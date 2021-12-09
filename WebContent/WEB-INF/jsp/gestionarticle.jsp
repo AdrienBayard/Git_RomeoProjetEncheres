@@ -10,9 +10,9 @@
 
 <form action="" method="post">
 	<label>Article : </label> <input type="text" name="nomArticle" required>
-	<label>Description : </label><textarea rows="5" cols="30" id="Description" name="description" >
+	<label>Description : </label><textarea rows="5" cols="30" id="Description" name="description" ></textarea>
 	<label>Catégorie : </label> <select name="categorie">
-		<option value="" selected="true"> </option>
+		<option value="" selected> </option>
 		<option value="Informatique"> Informatique</option>
 		<option value="Ameublement"> Ameublement</option>
 		<option value="Vetement"> Vetement</option>
