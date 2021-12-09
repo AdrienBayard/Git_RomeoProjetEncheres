@@ -77,6 +77,16 @@
   	<servlet-name>modifierprofil</servlet-name>
   	<url-pattern>/modifierprofil</url-pattern>
   </servlet-mapping>
+  
+<servlet>
+  	<servlet-name>gestionArticle</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/gestionarticle.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>gestionarticle</servlet-name>
+  	<url-pattern>/gestionarticle</url-pattern>
+  </servlet-mapping>
 
   
   
