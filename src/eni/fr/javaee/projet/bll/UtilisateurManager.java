@@ -198,7 +198,7 @@ public class UtilisateurManager {
 	private void validationMotDePasse(String motDePasse, BLLException ex) throws BLLException {
 		if (motDePasse == null || motDePasse.isEmpty() || motDePasse.length() > 30) {
 			ex.ajouterErreur(new ParameterException(
-					"La ville est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+					"Le mot de passe est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
 		}
 	}
 
