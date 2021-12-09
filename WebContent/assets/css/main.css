@@ -39,6 +39,7 @@ label { color: #777; }
 .page-title { margin-top:20px; font-weight:300; }
 .text-muted { color:#888; }
 .breadcrumb { background:none; padding:0; margin:30px 0 0px 0; }
+.mdpIncorrect { background:none; font-style: italic; font-family: Helvetica; color:#FF0000; font-size: 18px; }
 ul.list-spaces li{ margin-bottom:10px; }
 
 /* Helpers */

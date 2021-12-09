@@ -28,12 +28,7 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
-<style>
-.mdpIncorrect{
-background-color : grey;
 
-}
-</style>
 </head>
 
 <body>
@@ -56,16 +51,11 @@ background-color : grey;
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-					<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Acheter/ Vendre<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="/RomeoProjetEncheres/accueil">Acheter</a></li>
-							<li><a href="/RomeoProjetEncheres/VENTE">Vendre</a></li>
-						</ul></li>
-					<li><a href="LIEN DECONNEXION">Déconnexion</a></li>
+					
+
+			
 					<li class="active"><a class="btn"
-						href="/RomeoProjetEncheres/connexion">SE CONNECTER</a></li>
+						href="/RomeoProjetEncheres/inscription">CREER UN COMPTE</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -100,7 +90,7 @@ background-color : grey;
 							<p class="text-center text-muted">
 								Bonjour, connectez vous afin de profiter de toutes nos
 								opportunités. 
-								<br>Il est nécessaire de vous <a href="/inscription">enregistrer</a>
+								<br>Il est nécessaire de vous <a href="/RomeoProjetEncheres/inscription">enregistrer</a>
 								afin de pouvoir enchérir ou poster vos offres.
 
 							</p>
@@ -109,12 +99,13 @@ background-color : grey;
 					 		<form action="/RomeoProjetEncheres/connexionServlet" method="get">  
 				
 								<div class="top-margin">
+									<c:if test="${mdpValide != null && mdpValide == false}">
+									<p class="mdpIncorrect">L'identifiants et / ou le mot de passe sont incorrects!</p>
+									</c:if>
 									<label for="pseudo">Identifiant <span
 										class="text-danger">*</span></label> <input type="text"
 										class="form-control" id="pseudo" name="pseudo">
-									<c:if test="${mdpValide != null && mdpValide == false}">
-									<p class="mdpIncorrect">Identifiant(s) incorrect(s)</p>
-									</c:if>
+
 								</div>	
 								
 
@@ -204,8 +195,7 @@ background-color : grey;
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="/RomeoProjetEncheres/accueil">Accueil</a> | <a href="/RomeoProjetEncheres/monprofil">Mon profil</a> | <a
-									href="/RomeoProjetEncheres/accueil">Acheter</a> | <a href="PAGE DECONNEXION">Déconnexion</a>
+								<a href="/RomeoProjetEncheres/accueil">Accueil</a>
 								| <b><a href="/RomeoProjetEncheres/inscription">S'inscrire</a></b>
 							</p>
 						</div>

@@ -47,14 +47,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-					<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Acheter/ Vendre<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="/RomeoProjetEncheres/accueil">Acheter</a></li>
-							<li><a href="/RomeoProjetEncheres/VENTE">Vendre</a></li>
-						</ul></li>
-					<li><a href="LIEN DECONNEXION">Déconnexion</a></li>
+
 					<li class="active"><a class="btn"
 						href="/RomeoProjetEncheres/connexion">SE CONNECTER</a></li>
 				</ul>
@@ -255,11 +248,9 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="/RomeoProjetEncheres/accueil">Accueil</a> | <a
-									href="/RomeoProjetEncheres/monprofil">Mon profil</a> | <a
-									href="/RomeoProjetEncheres/accueil">Acheter</a> | <a
-									href="PAGE DECONNEXION">Déconnexion</a> | <b><a
-									href="/RomeoProjetEncheres/inscription">S'inscrire</a></b>
+								<a href="/RomeoProjetEncheres/accueil">Accueil</a> | 
+								<b><a
+									href="/RomeoProjetEncheres/connexion">Se connecter</a></b>
 							</p>
 						</div>
 					</div>
