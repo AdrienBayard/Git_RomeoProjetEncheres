@@ -7,17 +7,17 @@ public class ArticleVendu {
 	
 	private int noArticle;
 	private String nomArticle;
-	private String desciption;
+	private String description;
 	private LocalDateTime dateDebutEncheres;
 	private LocalDateTime dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
 
-	public ArticleVendu(int noArticle, String nomArticle, String desciption, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
-		this.desciption = desciption;
+		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
@@ -42,12 +42,12 @@ public class ArticleVendu {
 		this.nomArticle = nomArticle;
 	}
 
-	public String getDesciption() {
-		return desciption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
+	public void setDesciption(String description) {
+		this.description = description;
 	}
 
 	public LocalDateTime getDateDebutEncheres() {
@@ -92,7 +92,7 @@ public class ArticleVendu {
 
 	@Override
 	public String toString() {
-		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", desciption=" + desciption
+		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
 	}
