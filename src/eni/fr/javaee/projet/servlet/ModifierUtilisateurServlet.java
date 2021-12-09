@@ -18,19 +18,22 @@ import eni.fr.javaee.projet.bo.Utilisateur;
 /**
  * Servlet implementation class ModifierUtilisateurServlet
  */
+
 @WebServlet(name = "ModifierUtilisateur", urlPatterns = { "/modifier" })
 public class ModifierUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
+	private Boolean checkMotDePasseActuel = false;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
-		String afficherProfil =  request.getParameter("button");
+		String afficherProfil = request.getParameter("button");
 		try {
 			Utilisateur utilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo);
 			String nom = utilisateur.getNom();
@@ -40,9 +43,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			String rue = utilisateur.getRue();
 			String codePostal = utilisateur.getCodePostal();
 			String ville = utilisateur.getVille();
-			String motDePasse = utilisateur.getMotDePasse();
-		
-			
+
 			request.setAttribute("pseudo", pseudo);
 			request.setAttribute("nom", nom);
 			request.setAttribute("prenom", prenom);
@@ -51,17 +52,20 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			request.setAttribute("rue", rue);
 			request.setAttribute("codePostal", codePostal);
 			request.setAttribute("ville", ville);
-			
+
+			if (checkMotDePasseActuel == true) {
+				request.setAttribute("messageErreur", 5); // Msg : Le mot de passe actuel n'est pas le bon
+
+			}
 			if (afficherProfil == null || afficherProfil.equals("false")) {
-				
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/monprofil");			
+
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/monprofil");
+				aiguilleur.forward(request, response);
+			} else {
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierprofil");
 				aiguilleur.forward(request, response);
 			}
-			else if (afficherProfil.equals("true")){
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierprofil");			
-				aiguilleur.forward(request, response);
-			}
-			
+
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,13 +73,20 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Boolean modification = true;
+		Boolean motDePasseErrone = false;
+		Boolean pseudoErrone = false;
+		Boolean emailErrone = false;
+		checkMotDePasseActuel = false;
+		HttpSession session = request.getSession();
 
 		// Récupération des informations du client depuis le formulaire.
-		String pseudo = request.getParameter("pseudo");
+		String nouveauPseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String email = request.getParameter("email");
@@ -83,50 +94,61 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
-		String motDePasse = request.getParameter("motDePasse");
+		String motDePasseActuel = request.getParameter("motDePasseActuel");
+		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse");
 		String confirmation = request.getParameter("confirmation");
 
 		// Récupération des pseudos et mail déjà existants.
 		List<Utilisateur> listUtilExistants;
 		try {
-			listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
-			for (Utilisateur user : listUtilExistants) {
-				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email)) && (motDePasse.equals(confirmation))) {
-					modification = true;
-				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))
-						|| (!motDePasse.equals(confirmation))) {
-					modification = false;
-					
-					if ((user.getPseudo().equals(pseudo)) && (user.getEmail().equals(email))) {
-						request.setAttribute("messageErreur", 4); // Msg : Pseudo ou adresse mail déjà utilisés.
-					} 
-					
-					else if (user.getPseudo().equals(pseudo)) {
-						request.setAttribute("messageErreur", 2); // Msg : Pseudo déjà utilisé
+			String pseudoSession = (String) session.getAttribute("pseudo");
+			String ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudoSession).getMotDePasse();
+			// Ajouter le code
+			if (!motDePasseActuel.equals(ancienMotdePasse)) {
+				modification = false;
+				motDePasseErrone = true;
+			} else if (!nouveauMotDePasse.equals(confirmation)) {
+				modification = false;
+				request.setAttribute("messageErreur", 1); // Msg : le mdp et la confirmation doivent être identiques.
+			} else {
+				listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
+				for (Utilisateur utilisateur : listUtilExistants) {
+					if (utilisateur.getNoUtilisateur() != UtilisateurManager.getInstance().afficherProfil(pseudoSession)
+							.getNoUtilisateur()) {
+						if (utilisateur.getPseudo().equals(nouveauPseudo)) {
+							modification = false;
+							pseudoErrone = true;
+							request.setAttribute("messageErreur", 2); // Msg : Pseudo déjà utilisé
+							
+						}
+						if (utilisateur.getEmail().equals(email)) {
+							modification = false;
+							emailErrone = true;
+							request.setAttribute("messageErreur", 3); // Msg : Mail déjà utilisé
+							
+						}
+						if ((pseudoErrone == true) && (emailErrone == true) ) {
+							request.setAttribute("messageErreur", 4); // Msg : Pseudo ou adresse mail déjà utilisés.
+						}
 					}
-					else if (user.getEmail().equals(email)) {
-						request.setAttribute("messageErreur", 3); // Msg : Mail déjà utilisé
-					}
-					else if (!motDePasse.equals(confirmation)) {
-						request.setAttribute("messageErreur", 1); // Msg : le mdp et la confirmation doivent être
-																	// identiques.
-					}
-					break;
 				}
 			}
 
+			System.out.println(modification);
 			if (modification == true) {
-				HttpSession session = request.getSession();
 				String ancienPseudo = (String) session.getAttribute("pseudo");
-				
+
 				int noUtilisateur = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getNoUtilisateur();
-				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
+				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, nouveauPseudo, nom, prenom, email,
+						telephone, rue, codePostal, ville, nouveauMotDePasse);
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 				aiguilleur.forward(request, response);
 
-			} else if (modification == false) {
-					RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/inscription");
-					aiguilleur.forward(request, response);
+			} else if (modification == false && motDePasseErrone == true) {
+				checkMotDePasseActuel = true;
+				doGet(request, response);
+			} else {
+				doGet(request, response);
 			}
 
 		} catch (BLLException e) {

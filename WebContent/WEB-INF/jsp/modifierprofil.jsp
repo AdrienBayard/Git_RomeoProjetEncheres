@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 
 	<h1 style="text-align: center;">Mon profil</h1>
 
-<%-- 	<div style="text-align: center;">
+	<div style="text-align: center;">
 
 		<c:if test="${messageErreur != null && messageErreur == 1}">
 			<p>le mot de passe et la confirmation doivent être identiques</p>
@@ -31,7 +33,10 @@
 		<c:if test="${messageErreur != null && messageErreur == 4}">
 			<p>Le Pseudo et le mail sont déjà utilisés</p>
 		</c:if>
-	</div> --%>
+		<c:if test="${messageErreur != null && messageErreur == 5}">
+			<p>Le mot de passe actuel n'est pas le bon</p>
+		</c:if>
+	</div> 
 	
 	<form id="modificationprofil" action="" method="post">
 		<!-- TODO : Lien vers l'accueil avec utilisateur -->
@@ -55,7 +60,7 @@
 			<label>Ville: </label><input type="text" name="ville" value="${requestScope.ville}" required>
 			
 			<br> <br>
-			<label>Mot de passe actuel: </label> <input type="password" name="motDePasse" value="" required> 
+			<label>Mot de passe actuel: </label> <input type="password" name="motDePasseActuel" value="" required> 
 			<label>Nouveau mot de passe: </label> <input type="password" name="nouveauMotDePasse" value="" required> 
 			<label>Confirmation: </label> <input type="password" name="confirmation" value="" required>
 			
