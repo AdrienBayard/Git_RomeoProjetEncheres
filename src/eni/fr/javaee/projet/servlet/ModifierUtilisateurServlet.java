@@ -30,7 +30,43 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
-		System.out.println(pseudo);
+		String afficherProfil =  request.getParameter("button");
+		try {
+			Utilisateur utilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo);
+			String nom = utilisateur.getNom();
+			String prenom = utilisateur.getPrenom();
+			String email = utilisateur.getEmail();
+			String telephone = utilisateur.getTelephone();
+			String rue = utilisateur.getRue();
+			String codePostal = utilisateur.getCodePostal();
+			String ville = utilisateur.getVille();
+			String motDePasse = utilisateur.getMotDePasse();
+		
+			
+			request.setAttribute("pseudo", pseudo);
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("email", email);
+			request.setAttribute("telephone", telephone);
+			request.setAttribute("rue", rue);
+			request.setAttribute("codePostal", codePostal);
+			request.setAttribute("ville", ville);
+			
+			if (afficherProfil == null) {
+				
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/monprofil");			
+				aiguilleur.forward(request, response);
+			}
+			else {
+				request.setAttribute("motDePasse", motDePasse);
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierprofil");			
+				aiguilleur.forward(request, response);
+			}
+			
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -83,6 +119,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			if (modification == true) {
 				HttpSession session = request.getSession();
 				String ancienPseudo = (String) session.getAttribute("pseudo");
+				
 				int noUtilisateur = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getNoUtilisateur();
 				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");

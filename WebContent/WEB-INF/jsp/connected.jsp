@@ -78,7 +78,7 @@
         ENI-ENCHERES
         <!--TODO: logo à la place-->:
         <div class="boutons">
-            <a href="">ENCHÈRES</a> | <a href="/RomeoProjetEncheres/gestionarticle">VENDRE UN ARTICLE </a> | <a href="/RomeoProjetEncheres/monprofil">MON PROFIL </a> | <a
+            <a href="">ENCHÈRES</a> | <a href="/RomeoProjetEncheres/gestionarticle">VENDRE UN ARTICLE </a> | <a href="/RomeoProjetEncheres/modifier">MON PROFIL </a> | <a
                 href="accueil">DÉCONNEXION </a>
         </div>
     </div>
