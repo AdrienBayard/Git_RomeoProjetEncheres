@@ -93,7 +93,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setTimestamp(4, dateFinTS);
 			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
 			pStmt.setInt(6, nouvelArticleVendu.getPrixVente());
-			pStmt.setString(7, nouvelArticleVendu.getEtatVente());
+			pStmt.setString(7, nouvelArticleVendu.getCategorie());
 
 			// Execute l'ordre SQL
 			ResultSet rs = null;

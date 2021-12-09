@@ -53,42 +53,10 @@ public class ArticleManager {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//	 _____________________________________________________________________
 	
 
-	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente) throws DALException {
+	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String categorie) throws DALException {
 		
 		ArticleVendu article = null;
 		
@@ -98,37 +66,71 @@ public class ArticleManager {
 		validationDescription(description);
 		validationDebutEncheres(dateDebutEncheres);
 		validationDateFinEncheres(dateFinEncheres);
-		
+		validationMiseAPrix(miseAPrix);
+		validationPrixVente(prixVente);
+		validationCategorie(categorie);
 		
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+
+	private void validationCategorie(String categorie) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+	}
+
+	private void validationEtatVente(String etatVente) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	private void validationPrixVente(int prixVente) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	private void validationMiseAPrix(int miseAPrix) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	private void validationDateFinEncheres(LocalDateTime dateFinEncheres) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+	}
+
+	private void validationDebutEncheres(LocalDateTime dateDebutEncheres) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	private void validationDescription(String description) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	private void validationNomArticle(String nomArticle) {
+		if () {
+			ex.ajouterErreur( new ParameterException(" "));
+		}
+		
+	}
+
+	
+//	 -------------------------------------------------------
+	
 	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
 		return null;
 	}
