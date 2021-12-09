@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,11 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.Utilisateur;
-import fr.eni.javaee.projet.dal.DALException;
 
 /**
  * Servlet implementation class ui
@@ -58,6 +59,8 @@ public class ConnexionServlet extends HttpServlet {
 			laJsp = "/WEB-INF/jsp/connexion.jsp";
 
 		}
+		HttpSession session = request.getSession();
+		session.setAttribute("pseudo", pseudo);
 		request.setAttribute("mdpValide", mdpValide);
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
 		aiguilleur.forward(request, response);
@@ -112,6 +115,8 @@ public class ConnexionServlet extends HttpServlet {
 			if (inscription == true) {
 				UtilisateurManager.getInstance().insertUtilisateur(pseudo, nom, prenom, email, telephone, rue,
 						codePostal, ville, motDePasse);
+				HttpSession session = request.getSession();
+				session.setAttribute("pseudo", pseudo);
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 				aiguilleur.forward(request, response);
 
