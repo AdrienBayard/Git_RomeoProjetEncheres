@@ -1,19 +1,20 @@
 package eni.fr.javaee.projet.bo;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 public class ArticleVendu {
 	
 	private int noArticle;
 	private String nomArticle;
 	private String desciption;
-	private LocalDate dateDebutEncheres;
-	private LocalDate dateFinEncheres;
+	private LocalDateTime dateDebutEncheres;
+	private LocalDateTime dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
 
-	public ArticleVendu(int noArticle, String nomArticle, String desciption, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
+	public ArticleVendu(int noArticle, String nomArticle, String desciption, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.desciption = desciption;
@@ -49,19 +50,19 @@ public class ArticleVendu {
 		this.desciption = desciption;
 	}
 
-	public LocalDate getDateDebutEncheres() {
+	public LocalDateTime getDateDebutEncheres() {
 		return dateDebutEncheres;
 	}
 
-	public void setDateDebutEncheres(LocalDate dateDebutEncheres) {
+	public void setDateDebutEncheres(LocalDateTime dateDebutEncheres) {
 		this.dateDebutEncheres = dateDebutEncheres;
 	}
 
-	public LocalDate getDateFinEncheres() {
+	public LocalDateTime getDateFinEncheres() {
 		return dateFinEncheres;
 	}
 
-	public void setDateFinEncheres(LocalDate dateFinEncheres) {
+	public void setDateFinEncheres(LocalDateTime dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 
