@@ -51,86 +51,81 @@ public class ArticleManager {
 	public List<ArticleVendu> afficherMesEncheres() throws DALException {
 		return null;
 	}
-	
-	
+
 //	 _____________________________________________________________________
-	
 
-	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String categorie) throws DALException {
-		
+	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
+			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int categorie)
+			throws DALException, BLLException {
+
 		ArticleVendu article = null;
-		
+
 		BLLException ex = new BLLException();
-		
-		validationNomArticle(nomArticle);
-		validationDescription(description);
-		validationDebutEncheres(dateDebutEncheres);
-		validationDateFinEncheres(dateFinEncheres);
-		validationMiseAPrix(miseAPrix);
-		validationPrixVente(prixVente);
-		validationCategorie(categorie);
-		
-		return null;
+
+		validationNomArticle(nomArticle, ex);
+		validationDescription(description, ex);
+		validationDebutEncheres(dateDebutEncheres, ex);
+		validationDateFinEncheres(dateFinEncheres, ex);
+		validationMiseAPrix(miseAPrix, ex);
+//		validationPrixVente(prixVente, ex);
+
+		article = new ArticleVendu(0, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
+				categorie);
+		try {
+			dao.insertVente(article);
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+
+		return article;
 	}
 
+//	private void validationPrixVente(int prixVente, BLLException ex) throws BLLException{
+//		if () {
+//			ex.ajouterErreur( new ParameterException("Vous devez indiquer un prix d'achat sous forme de nombre entier"));
+//		}
+//		 
+//	}
 
-	private void validationCategorie(String categorie) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
+	private void validationMiseAPrix(int miseAPrix, BLLException ex) throws BLLException {
+		if (miseAPrix == 0) {
+			ex.ajouterErreur(
+					new ParameterException("Vous devez indiquer un prix de départ sous forme de nombre entier"));
+		}
+
+	}
+
+	private void validationDateFinEncheres(LocalDateTime dateFinEncheres, BLLException ex) throws BLLException {
+		if (LocalDateTime.now().isAfter(dateFinEncheres)) {
+			ex.ajouterErreur(new ParameterException(
+					"Vous devez indiquer une date de fin d'enchère posterieure à la date du jour et à celle de la date de début d'enchère"));
 		}
 	}
 
-	private void validationEtatVente(String etatVente) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
+	private void validationDebutEncheres(LocalDateTime dateDebutEncheres, BLLException ex) throws BLLException {
+		if (LocalDateTime.now().isBefore(dateDebutEncheres)) {
+			ex.ajouterErreur(new ParameterException(
+					"Vous devez indiquer une date de début d'enchère posterieure à la date du jour"));
 		}
-		
+
 	}
 
-	private void validationPrixVente(int prixVente) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
+	private void validationDescription(String description, BLLException ex) throws BLLException {
+		if (description.isEmpty() || description.length() > 300) {
+			ex.ajouterErreur(new ParameterException("Vous devez indiquer une description comprise entre 1 et 300"));
 		}
-		
+
 	}
 
-	private void validationMiseAPrix(int miseAPrix) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
+	private void validationNomArticle(String nomArticle, BLLException ex) throws BLLException {
+		if (nomArticle.isEmpty() || nomArticle.length() > 30) {
+			ex.ajouterErreur(new ParameterException("Vous devez indiquer une description comprise entre 1 et 30"));
 		}
-		
+
 	}
 
-	private void validationDateFinEncheres(LocalDateTime dateFinEncheres) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
-		}
-	}
-
-	private void validationDebutEncheres(LocalDateTime dateDebutEncheres) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
-		}
-		
-	}
-
-	private void validationDescription(String description) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
-		}
-		
-	}
-
-	private void validationNomArticle(String nomArticle) {
-		if () {
-			ex.ajouterErreur( new ParameterException(" "));
-		}
-		
-	}
-
-	
 //	 -------------------------------------------------------
-	
+
 	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
 		return null;
 	}

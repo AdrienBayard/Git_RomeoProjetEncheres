@@ -41,7 +41,7 @@ public class UtilisateurManager {
 		}
 		return utilisateur;
 
-	}  
+	}   
 
 	public Utilisateur insertUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse) throws BLLException {
@@ -57,7 +57,7 @@ public class UtilisateurManager {
 		validationVille(ville, ex);
 		validationMotDePasse(motDePasse, ex);
 		utilisateur = new Utilisateur(0, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
-		try {
+		try { 
 			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block

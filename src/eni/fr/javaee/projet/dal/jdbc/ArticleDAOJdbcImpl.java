@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.List;   
 
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import fr.eni.javaee.projet.dal.DALException;
@@ -93,9 +93,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setTimestamp(4, dateFinTS);
 			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
 			pStmt.setInt(6, nouvelArticleVendu.getPrixVente());
-			pStmt.setString(7, nouvelArticleVendu.getCategorie());
+			pStmt.setInt(7, nouvelArticleVendu.getCategorie());
 
-			// Execute l'ordre SQL
+			// Execute l'ordre SQL   je lui dis
 			ResultSet rs = null;
 
 			pStmt.executeUpdate();
@@ -156,7 +156,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		LocalDateTime dateFinEncheres = rs.getTimestamp(5).toLocalDateTime();
 		int miseAPrix = rs.getInt("miseAPrix");
 		int prixVente = rs.getInt("prixVente");
-		String etatVente = rs.getString("etatVente");
+		int categorie = rs.getInt("categorie");
 
 		return articleVendu;
 	}
