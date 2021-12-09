@@ -42,10 +42,14 @@ public class ConnexionServlet extends HttpServlet {
 		String motDePasse = request.getParameter("motDePasse");
 		String laJsp = null;
 		Boolean mdpValide = true;
+		Utilisateur leProfil;
 		String leMdp = null;
 		// faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo
 		try {
-			leMdp = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+			leProfil = UtilisateurManager.getInstance().afficherProfil(pseudo);
+			if (leProfil != null) {
+				leMdp = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+			}
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,23 +92,22 @@ public class ConnexionServlet extends HttpServlet {
 		try {
 			listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
 			for (Utilisateur user : listUtilExistants) {
-				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email)) && (motDePasse.equals(confirmation))) {
+				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email))
+						&& (motDePasse.equals(confirmation))) {
 					inscription = true;
 				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))
 						|| (!motDePasse.equals(confirmation))) {
 					inscription = false;
-					
+
 					if ((user.getPseudo().equals(pseudo)) && (user.getEmail().equals(email))) {
 						request.setAttribute("messageErreur", 4); // Msg : Pseudo ou adresse mail déjà utilisés.
-					} 
-					
+					}
+
 					else if (user.getPseudo().equals(pseudo)) {
 						request.setAttribute("messageErreur", 2); // Msg : Pseudo déjà utilisé
-					}
-					else if (user.getEmail().equals(email)) {
+					} else if (user.getEmail().equals(email)) {
 						request.setAttribute("messageErreur", 3); // Msg : Mail déjà utilisé
-					}
-					else if (!motDePasse.equals(confirmation)) {
+					} else if (!motDePasse.equals(confirmation)) {
 						request.setAttribute("messageErreur", 1); // Msg : le mdp et la confirmation doivent être
 																	// identiques.
 					}
@@ -121,8 +124,8 @@ public class ConnexionServlet extends HttpServlet {
 				aiguilleur.forward(request, response);
 
 			} else if (inscription == false) {
-					RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/inscription");
-					aiguilleur.forward(request, response);
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/inscription");
+				aiguilleur.forward(request, response);
 			}
 
 		} catch (BLLException e) {
