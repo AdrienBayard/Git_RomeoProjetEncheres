@@ -103,7 +103,6 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		try {
 			String pseudoSession = (String) session.getAttribute("pseudo");
 			String ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudoSession).getMotDePasse();
-			// Ajouter le code
 			if (!motDePasseActuel.equals(ancienMotdePasse)) {
 				modification = false;
 				motDePasseErrone = true;
@@ -134,7 +133,6 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 				}
 			}
 
-			System.out.println(modification);
 			if (modification == true) {
 				String ancienPseudo = (String) session.getAttribute("pseudo");
 

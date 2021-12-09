@@ -106,7 +106,7 @@
 								action="/RomeoProjetEncheres/connexionServlet" method="post">
 								<div class="top-margin">
 									<label>Pseudonyme</label>
-									<input type="text" class="form-control" pattern="^[A-Za-z0-9]*$" title="Vous ne pouvez utiliser que des lettres et des chiffres" required>
+									<input type="text" class="form-control" pattern="^[A-Za-z0-9]*$" title="Vous ne pouvez utiliser que des lettres et des chiffres" name ="pseudo" required>
 								</div>
 								<div class="top-margin">
 									<label>Nom de famille</label>

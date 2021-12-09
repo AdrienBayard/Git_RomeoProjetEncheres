@@ -61,8 +61,8 @@
 			
 			<br> <br>
 			<label>Mot de passe actuel: </label> <input type="password" name="motDePasseActuel" value="" required> 
-			<label>Nouveau mot de passe: </label> <input type="password" name="nouveauMotDePasse" value="" required> 
-			<label>Confirmation: </label> <input type="password" name="confirmation" value="" required>
+			<label>Nouveau mot de passe: </label> <input type="password" name="nouveauMotDePasse" value=""> 
+			<label>Confirmation: </label> <input type="password" name="confirmation" value="">
 			
 			<br> <br>
 		</fieldset>
