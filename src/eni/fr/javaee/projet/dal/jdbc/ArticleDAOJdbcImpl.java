@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.ArticleDAO;
@@ -51,10 +53,23 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
 
-	public ArticleVendu afficherVente() throws DALException {
+	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
 		return null;
 
 	}
+	
+	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
+		return null;
+
+	}
+	
+	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
+		return null;
+
+	}
+	
+	
+	
 
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException {
 
@@ -73,7 +88,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 			PreparedStatement pStmt = cnx.prepareStatement(INSERT_VENTE, Statement.RETURN_GENERATED_KEYS);
 			pStmt.setString(1, nouvelArticleVendu.getNomArticle());
-			pStmt.setString(2, nouvelArticleVendu.getDesciption());
+			pStmt.setString(2, nouvelArticleVendu.getDescription());
 			pStmt.setTimestamp(3, dateDebutTS);
 			pStmt.setTimestamp(4, dateFinTS);
 			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
@@ -99,14 +114,37 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		return articleVendu;
 	}
-
-	public ArticleVendu updateVente() throws DALException {
+	
+	@Override
+	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ArticleVendu deleteVente(ArticleVendu idArticle) throws DALException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArticleVendu deleteVente() throws DALException {
+	@Override
+	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<ArticleVendu> afficherMesEncheres() throws DALException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
@@ -122,5 +160,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		return articleVendu;
 	}
+
 
 }
