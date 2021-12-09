@@ -78,12 +78,15 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String quelBouton = request.getParameter("buttonModifierProfil");
+		HttpSession session = request.getSession();
+		String motDePasseActuel = request.getParameter("motDePasseActuel");
+		if (quelBouton.equals("modifier")) {
 		Boolean modification = true;
 		Boolean motDePasseErrone = false;
 		Boolean pseudoErrone = false;
 		Boolean emailErrone = false;
 		checkMotDePasseActuel = false;
-		HttpSession session = request.getSession();
 
 		// Récupération des informations du client depuis le formulaire.
 		String nouveauPseudo = request.getParameter("pseudo");
@@ -94,13 +97,9 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
-		String motDePasseActuel = request.getParameter("motDePasseActuel");
 		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse");
 		String confirmation = request.getParameter("confirmation");
-		String quelBouton = request.getParameter("buttonModifierProfil");
-		System.out.println(quelBouton);
 		
-		if (quelBouton.equals("modifier")) {
 			
 		
 
@@ -164,6 +163,23 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+		else if (quelBouton.equals("supprimer")) {
+			
+			String pseudo = (String) session.getAttribute("pseudo");
+			int idUtilisateur;
+			try {
+				idUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+				String ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+				if (!motDePasseActuel.equals(ancienMotdePasse)) {
+					checkMotDePasseActuel = true;
+					doGet(request, response);
+				}
+				UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
