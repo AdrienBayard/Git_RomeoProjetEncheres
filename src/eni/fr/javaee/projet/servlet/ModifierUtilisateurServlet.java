@@ -97,6 +97,12 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		String motDePasseActuel = request.getParameter("motDePasseActuel");
 		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse");
 		String confirmation = request.getParameter("confirmation");
+		String quelBouton = request.getParameter("buttonModifierProfil");
+		System.out.println(quelBouton);
+		
+		if (quelBouton.equals("modifier")) {
+			
+		
 
 		// Récupération des pseudos et mail déjà existants.
 		List<Utilisateur> listUtilExistants;
@@ -135,6 +141,10 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 
 			if (modification == true) {
 				String ancienPseudo = (String) session.getAttribute("pseudo");
+				if (nouveauMotDePasse.isEmpty()) {
+					nouveauMotDePasse = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getMotDePasse();
+				}
+				session.setAttribute("pseudo", nouveauPseudo);
 
 				int noUtilisateur = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getNoUtilisateur();
 				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, nouveauPseudo, nom, prenom, email,
@@ -153,6 +163,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 	}
 
 }

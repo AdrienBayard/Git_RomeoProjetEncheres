@@ -67,8 +67,8 @@
 			<br> <br>
 		</fieldset>
 		<div class="button">
-		<button type="submit" form="modificationprofil" name="enregistrer"> Enregistrer </button>
-		<button type="submit" form="modificationprofil" name="supprimer"> Supprimer</button>
+		<button type="submit" form="modificationprofil" name="buttonModifierProfil" value = "modifier"> Enregistrer </button>
+		<button type="submit" form="modificationprofil" name="buttonModifierProfil" value = "supprimer"> Supprimer</button>
 		<!-- TODO : Lien vers l'accueil sans utilisateur -->
 </div>
 	</form>
