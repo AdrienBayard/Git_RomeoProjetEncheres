@@ -33,8 +33,7 @@
 		</c:if>
 	</div> --%>
 	
-	<form id="modificationprofil" action=""
-		method="post">
+	<form id="modificationprofil" action="" method="post">
 		<!-- TODO : Lien vers l'accueil avec utilisateur -->
 		<fieldset>
 			<label>Pseudo: </label><input type="text" name="pseudo" pattern="^[A-Za-z0-9]*$" value="Pseudo" title="Vous ne pouvez utiliser que des lettres et des chiffres" required>
@@ -56,11 +55,19 @@
 			<label>Ville: </label><input type="text" name="ville" value="Ville" required>
 			
 			<br> <br>
-			
+			<label>Mot de passe actuel: </label> <input type="password" name="motDePasse" value="Mot de passe actuel" required> 
 			<label>Mot de passe: </label> <input type="password" name="motDePasse" value="Mot de passe" required> 
 			<label>Confirmation: </label> <input type="password" name="confirmation" value="Confirmation" required>
 			
 			<br> <br>
 		</fieldset>
+		<div class="button">
+		<button type="submit" form="modificationprofil" name="enregistrer"> Enregistrer </button>
+		<button type="submit" form="modificationprofil" name="supprimer"> Supprimer</button>
+		<!-- TODO : Lien vers l'accueil sans utilisateur -->
+</div>
+	</form>
+		
+
 </body>
 </html>
