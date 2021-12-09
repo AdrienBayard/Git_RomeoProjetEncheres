@@ -6,44 +6,111 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.tomcat.jni.Time;
-
 import eni.fr.javaee.projet.bo.ArticleVendu;
-import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 
-	private static final String AFFICHER_VENTE = "";
+	private static final String AFFICHER_VENTES_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP  and a.no_utilisateur = ? \r\n"
+			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	
+	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+			+ "WHERE a.date_debut_encheres>= CURRENT_TIMESTAMP  \r\n" + "and a.no_utilisateur = ? \r\n"
+			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	
+	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+			+ "WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n"
+			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	
+	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
+			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	
+	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
+			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	
+	private static final String AFFICHER_MES_ENCHERES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres,  e.no_utilisateur  as acheteur\r\n"
+			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article = a.no_article\r\n"
+			+ "WHERE  a.date_fin_encheres <= CURRENT_TIMESTAMP group by a.nom_article, a.date_fin_encheres, e.montant_enchere, e.no_utilisateur;\r\n"
+			+ " \r\n" + " \r\n"
+			+ "Attention filtrer avec java que le e.no_utilisaiteur soit le même que l'utilisateur\r\n" + "";
+	
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial,no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
+	
 	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
+	
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
-	
-	public ArticleVendu insertVente() throws DALException {
+
+	public ArticleVendu afficherVente() throws DALException {
 		return null;
+
 	}
-	
-	
+
+	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException {
+
+		ArticleVendu articleVendu = null;
+
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+
+		// Obtient une objet de commande (Statement) = ordre SQL
+		try {
+
+			// Paramétrer l'objet de commande
+
+			Timestamp dateDebutTS = Timestamp.valueOf(nouvelArticleVendu.getDateDebutEncheres());
+			Timestamp dateFinTS = Timestamp.valueOf(nouvelArticleVendu.getDateFinEncheres());
+
+			PreparedStatement pStmt = cnx.prepareStatement(INSERT_VENTE, Statement.RETURN_GENERATED_KEYS);
+			pStmt.setString(1, nouvelArticleVendu.getNomArticle());
+			pStmt.setString(2, nouvelArticleVendu.getDesciption());
+			pStmt.setTimestamp(3, dateDebutTS);
+			pStmt.setTimestamp(4, dateFinTS);
+			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
+			pStmt.setInt(6, nouvelArticleVendu.getPrixVente());
+			pStmt.setString(7, nouvelArticleVendu.getEtatVente());
+
+			// Execute l'ordre SQL
+			ResultSet rs = null;
+
+			pStmt.executeUpdate();
+			rs = pStmt.getGeneratedKeys();
+
+			if (rs.next()) {
+				int idArticleInsere = rs.getInt(1);
+				nouvelArticleVendu.setNoArticle(idArticleInsere);
+			}
+
+			cnx.close();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+
+		return articleVendu;
+	}
+
 	public ArticleVendu updateVente() throws DALException {
 		return null;
 	}
-	
+
 	public ArticleVendu deleteVente() throws DALException {
 		return null;
 	}
-	
-	
-	
+
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
-		
+
 		int noArticle = rs.getInt("noArticle");
 		String nomArticle = rs.getString("nomArticle");
 		String description = rs.getString("description");
@@ -52,10 +119,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int miseAPrix = rs.getInt("miseAPrix");
 		int prixVente = rs.getInt("prixVente");
 		String etatVente = rs.getString("etatVente");
-		 
+
 		return articleVendu;
 	}
-	
-	
-	
+
 }
