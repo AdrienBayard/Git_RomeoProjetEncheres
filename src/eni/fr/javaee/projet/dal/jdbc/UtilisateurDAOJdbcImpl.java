@@ -47,7 +47,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 			if (rs.next()) {
 				utilisateur = mapAfficherProfil(rs);
-				System.out.println("test : " + utilisateur.getNoUtilisateur());
 			}
 
 			cnx.close();
