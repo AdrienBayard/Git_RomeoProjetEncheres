@@ -37,9 +37,7 @@ background-color : grey;
 </head>
 
 <body>
-	<c:if test="${mdpValide != null && mdpValide == false}">
-		<p class="mdpIncorrect">Identifiant(s) incorrect(s)</p>
-	</c:if>
+
 
 <div class="container-back">
 	<!-- Fixed navbar -->
@@ -114,7 +112,12 @@ background-color : grey;
 									<label for="pseudo">Identifiant <span
 										class="text-danger">*</span></label> <input type="text"
 										class="form-control" id="pseudo" name="pseudo">
-								</div>
+									<c:if test="${mdpValide != null && mdpValide == false}">
+									<p class="mdpIncorrect">Identifiant(s) incorrect(s)</p>
+									</c:if>
+								</div>	
+								
+
 								<div class="top-margin">
 									<label for="motDePasse">Mot de passe <span class="text-danger">*</span></label>
 									<input type="password" class="form-control" id="motDePasse" name="motDePasse">
