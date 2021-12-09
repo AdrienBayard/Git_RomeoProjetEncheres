@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;   
+import java.util.List;
 
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import fr.eni.javaee.projet.dal.DALException;
@@ -20,56 +20,39 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
 			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP  and a.no_utilisateur = ? \r\n"
 			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-	
+
 	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
 			+ "WHERE a.date_debut_encheres>= CURRENT_TIMESTAMP  \r\n" + "and a.no_utilisateur = ? \r\n"
 			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-	
+
 	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
 			+ "WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n"
 			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-	
+
 	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
 			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
 			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-	
+
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
 			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
 			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-	
+
 	private static final String AFFICHER_MES_ENCHERES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres,  e.no_utilisateur  as acheteur\r\n"
 			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article = a.no_article\r\n"
 			+ "WHERE  a.date_fin_encheres <= CURRENT_TIMESTAMP group by a.nom_article, a.date_fin_encheres, e.montant_enchere, e.no_utilisateur;\r\n"
 			+ " \r\n" + " \r\n"
 			+ "Attention filtrer avec java que le e.no_utilisaiteur soit le même que l'utilisateur\r\n" + "";
-	
+
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial,no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
-	
+
 	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
-	
+
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
 
-	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
-		return null;
-
-	}
-	
-	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
-		return null;
-
-	}
-	
-	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
-		return null;
-
-	}
-	
-	
-	
 
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException {
 
@@ -95,7 +78,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setInt(6, nouvelArticleVendu.getPrixVente());
 			pStmt.setInt(7, nouvelArticleVendu.getCategorie());
 
-			// Execute l'ordre SQL   je lui dis
+			// Execute l'ordre SQL
 			ResultSet rs = null;
 
 			pStmt.executeUpdate();
@@ -114,31 +97,95 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		return articleVendu;
 	}
-	
+
 	@Override
 	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+
+		// Obtient une objet de commande (Statement) = ordre SQL
+		try {
+
+			// Paramétrer l'objet de commande
+
+			Timestamp dateDebutTS = Timestamp.valueOf(nouvelArticleVendu.getDateDebutEncheres());
+			Timestamp dateFinTS = Timestamp.valueOf(nouvelArticleVendu.getDateFinEncheres());
+
+			PreparedStatement pStmt = cnx.prepareStatement(UPDATE_VENTE);
+			pStmt.setString(1, nouvelArticleVendu.getNomArticle());
+			pStmt.setString(2, nouvelArticleVendu.getDescription());
+			pStmt.setTimestamp(3, dateDebutTS);
+			pStmt.setTimestamp(4, dateFinTS);
+			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
+			pStmt.setInt(6, nouvelArticleVendu.getCategorie());
+			pStmt.setInt(7, nouvelArticleVendu.getNoArticle());
+
+			pStmt.executeUpdate();
+
+			// Execute l'ordre SQL
+
+			cnx.close();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return nouvelArticleVendu;
+	}
+
+	@Override
+	public void deleteVente(int idArticle) throws DALException {
+		Connection cnx = ConnectionProvider.getConnection();
+
+		// Obtient une objet de commande (Statement) = ordre SQL
+		try {
+
+			// Paramétrer l'objet de commande
+
+			PreparedStatement pStmt = cnx.prepareStatement(DELETE_VENTE);
+
+			pStmt.setInt(1, idArticle);
+
+			// Execute l'ordre SQL
+			pStmt.executeUpdate();
+
+			cnx.close();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
 	}
 	
-	@Override
-	public ArticleVendu deleteVente(ArticleVendu idArticle) throws DALException {
-		// TODO Auto-generated method stub
+	
+	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
 		return null;
+		
 	}
+	
+	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
+		return null;
+		
+	}
+	
+	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
+		return null;
+		
+	}
+	
+	
+	
 
 	@Override
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+  
 	@Override
 	public List<ArticleVendu> afficherMesEncheres() throws DALException {
 		// TODO Auto-generated method stub
@@ -158,8 +205,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int prixVente = rs.getInt("prixVente");
 		int categorie = rs.getInt("categorie");
 
-		return articleVendu;
+		articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, categorie);
+		
+		return articleVendu;  
 	}
-
 
 }

@@ -124,14 +124,66 @@ public class ArticleManager {
 
 	}
 
+	
+	
 //	 -------------------------------------------------------
 
-	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
-		return null;
+	public ArticleVendu updateVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
+			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int categorie)
+			throws BLLException {
+
+		ArticleVendu article = null;
+		BLLException ex = new BLLException();
+
+		validationNomArticle(nomArticle, ex);
+		validationDescription(description, ex);
+		validationDebutEncheres(dateDebutEncheres, ex);
+		validationDateFinEncheres(dateFinEncheres, ex);
+		validationMiseAPrix(miseAPrix, ex);
+//		validationPrixVente(prixVente, ex);
+
+		article = new ArticleVendu(0, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
+				categorie);
+
+		if (ex.hasErreur()) {
+			throw ex;
+		}
+
+		try {
+			dao.insertVente(article);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+		}
+
+		return article;
 	}
 
-	public ArticleVendu deleteVente(ArticleVendu idArticle) throws DALException {
-		return null;
+	public void deleteVente(int idArticle) throws BLLException {
+
+		BLLException ex = new BLLException();
+
+		validationId(idArticle, ex);
+
+		if (ex.hasErreur()) {
+			throw ex;
+		}
+
+		try {
+			dao.deleteVente(idArticle);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
 	}
 
+	private void validationId(int idArticle, BLLException ex) throws BLLException {
+		if (idArticle < 1) {
+			ex.ajouterErreur(new ParameterException("L'id doit Etre un entier positif >= 1"));
+		}
+	}
+	
 }
+
+
