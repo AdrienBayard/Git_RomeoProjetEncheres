@@ -42,11 +42,9 @@ public class ConnexionServlet extends HttpServlet {
 		String laJsp = null;
 		Boolean mdpValide = true;
 		String leMdp = null;
-		int idUtilisateurActuel= 0;
-
 		// faire appel à la méthode sql pour récupérer le motDePasse d'un pseudo
 		try {
-			leMdp = UtilisateurManager.getInstance().afficherMotDePasse(pseudo);
+			leMdp = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,7 +67,6 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Boolean inscription = true;
-		int msgErreur = 0;
 
 		// Récupération des informations du client depuis le formulaire.
 		String pseudo = request.getParameter("pseudo");
@@ -88,7 +85,6 @@ public class ConnexionServlet extends HttpServlet {
 		try {
 			listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
 			for (Utilisateur user : listUtilExistants) {
-				user.toString(); 
 				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email)) && (motDePasse.equals(confirmation))) {
 					inscription = true;
 				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))

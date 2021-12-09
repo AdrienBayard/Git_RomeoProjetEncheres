@@ -18,44 +18,14 @@ public class Utilisateur {
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, Boolean administrateur) {
-		this(pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse);
-		this.noUtilisateur = noUtilisateur;
+		this(noUtilisateur, pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse);
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
 
-	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse) {
-		this( pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
-		this.motDePasse = motDePasse;
-	}
-	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse) {
-		this(pseudo,  nom,  prenom,  email,  telephone,  rue, codePostal, ville);
 		this.noUtilisateur = noUtilisateur;
-		this.motDePasse = motDePasse;
-	}
-
-
-	// Constructeur utilisateur pour vérification pseudo/mdp pour connection
-	public Utilisateur(String pseudo, String motDePasse) {
-		this.pseudo = pseudo;
-		this.motDePasse = motDePasse;
-	}
-	
-	// Constructeur utilisateur pour vérification pseudo/mail pour inscription
-		public Utilisateur(String pseudo, String nom, String email) {
-			this.pseudo = pseudo;
-			this.nom = nom; 
-			this.email = email;
-		}
-	
-	
-	
-	// Constructeur utilisateur pour afficher les données d'un profil
-	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville) {
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -64,7 +34,10 @@ public class Utilisateur {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+		this.motDePasse = motDePasse;
 	}
+	
+
 
 	public int getNoUtilisateur() {
 		return noUtilisateur;

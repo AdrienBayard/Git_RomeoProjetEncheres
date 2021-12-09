@@ -56,7 +56,7 @@ public class UtilisateurManager {
 		validationCodePostal(codePostal, ex);
 		validationVille(ville, ex);
 		validationMotDePasse(motDePasse, ex);
-		utilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
+		utilisateur = new Utilisateur(0, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 		try {
 			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
@@ -67,18 +67,6 @@ public class UtilisateurManager {
 
 	}
 
-	public String afficherMotDePasse(String pseudo) throws BLLException {
-		BLLException ex = new BLLException();
-		validationPseudo(pseudo, ex);
-		String motDePasse = null;
-		try {
-			motDePasse = dao.afficherMotDePasse(pseudo);
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return motDePasse;
-	}
 
 	public void deleteUtilisateur(int idUtilisateur) throws BLLException {
 
@@ -100,7 +88,7 @@ public class UtilisateurManager {
 
 	}
 
-	public void updateUtilisateur(String pseudo, String nom, String prenom, String email, String telephone, String rue,
+	public void updateUtilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse) throws BLLException {
 
 		BLLException ex = new BLLException();
@@ -114,7 +102,7 @@ public class UtilisateurManager {
 		validationVille(ville, ex);
 		validationMotDePasse(motDePasse, ex);
 		Utilisateur nouvelUtilisateur = null;
-		nouvelUtilisateur = new Utilisateur(pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
+		nouvelUtilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse);
 
 		if (ex.hasErreur()) {
 			throw ex;

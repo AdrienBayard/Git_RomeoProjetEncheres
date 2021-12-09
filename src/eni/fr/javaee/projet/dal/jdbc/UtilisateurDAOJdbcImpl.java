@@ -14,10 +14,10 @@ import fr.eni.javaee.projet.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
-		//Requête utilisée lors de l'inscription
-	private static final String VERIF_UTILISATEUR = "SELECT pseudo, nom, email FROM UTILISATEURS"; 
-	
-	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal,ville, mot_de_passe from UTILISATEURS where pseudo =?";
+		//Requête utilisée lors de l'inscription	
+	private static final String AFFICHER_TOUS_LES_PROFILS = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe from UTILISATEURS";
+
+	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe from UTILISATEURS where pseudo = ?";
 	
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
@@ -157,43 +157,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 
 	}
-	
-	@Override
-	public String afficherMotDePasse(String pseudo) throws DALException {
-
-		Utilisateur utilisateur = null;
-		String motDePasse = null;
-
-		// Obtenir une connexion
-		Connection cnx = ConnectionProvider.getConnection();
-
-		// Obtient une objet de commande (Statement) = ordre SQL
-		try {
-
-			// Paramétrer l'objet de commande
-
-			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_PROFIL);
-			pStmt.setString(1, pseudo);
-
-			// Execute l'ordre SQL
-			ResultSet rs = null;
-			rs = pStmt.executeQuery();
-
-			if (rs.next()) {
-				utilisateur = mapAfficherProfil(rs);
-				motDePasse = utilisateur.getMotDePasse();
-			}
-
-			cnx.close();
-
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
-
-		return motDePasse;
-	}
-	
-
 	public Utilisateur mapAfficherProfil(ResultSet rs) throws SQLException {
 		Utilisateur utilisateur = null;
 		int id = rs.getInt("no_utilisateur");
@@ -221,18 +184,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		Connection cnx = ConnectionProvider.getConnection();
 		
 		//Insérer la requête VERIF UTILISATEUR => Sert à vérifier, lors de l'inscription que le pseudo et mail ne sotn pas pris. 
-		Statement ordre = null; 
 		try {
-			ordre = cnx.createStatement();
-			ResultSet utilisateur = null;
-			utilisateur = ordre.executeQuery(VERIF_UTILISATEUR);
+			Statement pStmt = cnx.createStatement();
+
+			ResultSet rs = null;
+			rs = pStmt.executeQuery(AFFICHER_TOUS_LES_PROFILS);
 			
-			while(utilisateur.next()) {
-			String pseudo = utilisateur.getString("pseudo"); 
-			String nom = utilisateur.getString("nom"); 
-			String email = utilisateur.getString("email"); 
-			
-			Utilisateur user = new Utilisateur(pseudo, nom, email); 
+			while(rs.next()) {
+				
+			Utilisateur user = mapAfficherProfil(rs);
 			listeUtilisateursExistants.add(user); 
 			}
 			
