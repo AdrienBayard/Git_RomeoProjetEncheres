@@ -79,7 +79,7 @@
   </servlet-mapping>
   
 <servlet>
-  	<servlet-name>gestionArticle</servlet-name>
+  	<servlet-name>gestionarticle</servlet-name>
   	<jsp-file>/WEB-INF/jsp/gestionarticle.jsp</jsp-file>
   </servlet>
   
