@@ -58,7 +58,7 @@
 						
 						
 						<li class="active"><a class="btn"
-							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>
+							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
