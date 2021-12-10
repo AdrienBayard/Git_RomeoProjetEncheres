@@ -55,8 +55,7 @@
 					<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/connected">Accueil</a></li>
 					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
-					<li class="active"><a class="btn"
-							href="/RomeoProjetEncheres/modifierprofil">MODIFIER PROFIL</a></li>					
+						
 						
 						<li class="active"><a class="btn"
 							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>
@@ -105,7 +104,7 @@
 	
 	<div class="row">
 		<div class="button text-center">		
-		<a href="/RomeoProjetEncheres/modifierprofil"><button class="btn btn-action">Modifier</button></a>	
+		<a href="/RomeoProjetEncheres/modifierprofil"><button class="btn btn-action"type="submit" name = "button" value = "true">Modifier</button></a>	
 	</div>	
 	</div>	
       </div>
