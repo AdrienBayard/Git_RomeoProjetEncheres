@@ -18,13 +18,12 @@ public class Utilisateur {
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit, Boolean administrateur) {
-		this(noUtilisateur, pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse);
-		this.credit = credit;
+		this(noUtilisateur, pseudo,  nom,  prenom,  email,  telephone, rue,  codePostal,  ville,  motDePasse, credit);
 		this.administrateur = administrateur;
 	}
 
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse) {
+			String rue, String codePostal, String ville, String motDePasse, int credit) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -35,6 +34,7 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
+		this.credit = credit;
 	}
 	
 

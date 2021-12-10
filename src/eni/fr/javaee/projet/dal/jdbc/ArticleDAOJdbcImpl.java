@@ -16,36 +16,36 @@ import fr.eni.javaee.projet.dal.ArticleDAO;
 
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 
-	private static final String AFFICHER_VENTES_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP  and a.no_utilisateur = ? \r\n"
-			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	private static final String AFFICHER_VENTES_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
+			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP  and a.no_utilisateur = ? \r\n "
+			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
 
-	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-			+ "WHERE a.date_debut_encheres>= CURRENT_TIMESTAMP  \r\n" + "and a.no_utilisateur = ? \r\n"
-			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
+			+ " WHERE a.date_debut_encheres>= CURRENT_TIMESTAMP  \r\n" + "and a.no_utilisateur = ? \r\n "
+			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
 
-	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-			+ "WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n"
-			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
+			+ " WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n "
+			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
 
-	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
-			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
+			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n "
+			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
 
-	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
-			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
+			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n "
+			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
 
-	private static final String AFFICHER_MES_ENCHERES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres,  e.no_utilisateur  as acheteur\r\n"
-			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article = a.no_article\r\n"
-			+ "WHERE  a.date_fin_encheres <= CURRENT_TIMESTAMP group by a.nom_article, a.date_fin_encheres, e.montant_enchere, e.no_utilisateur;\r\n"
+	private static final String AFFICHER_MES_ENCHERES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres,  e.no_utilisateur  as acheteur\r\n "
+			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article = a.no_article\r\n "
+			+ " WHERE  a.date_fin_encheres <= CURRENT_TIMESTAMP group by a.nom_article, a.date_fin_encheres, e.montant_enchere, e.no_utilisateur;\r\n "
 			+ " \r\n" + " \r\n"
-			+ "Attention filtrer avec java que le e.no_utilisaiteur soit le même que l'utilisateur\r\n" + "";
+			+ " Attention filtrer avec java que le e.no_utilisaiteur soit le même que l'utilisateur\r\n" + "";
 
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial,no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
