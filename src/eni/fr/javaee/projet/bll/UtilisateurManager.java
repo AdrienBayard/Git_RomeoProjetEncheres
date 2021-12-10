@@ -185,23 +185,23 @@ public class UtilisateurManager {
 	}
 
 	private void validationTelephone(String telephone, BLLException ex) throws BLLException {
-		if (telephone == null || telephone.isEmpty() || telephone.length() > 15) {
+		if (telephone == null || telephone.isEmpty() || telephone.length() > 10) {
 			ex.ajouterErreur(new ParameterException(
-					"Le numero de telephone est obligatoire et doit avoir une longueur comprise entre 1 et 15"));
+					"Le numero de telephone est obligatoire et doit avoir une longueur comprise entre 1 et 10"));
 		}
 	}
 
 	private void validationRue(String rue, BLLException ex) throws BLLException {
-		if (rue == null || rue.isEmpty() || rue.length() > 15) {
+		if (rue == null || rue.isEmpty() || rue.length() > 30) {
 			ex.ajouterErreur(
 					new ParameterException("La rue est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
 		}
 	}
 
 	private void validationCodePostal(String codePostal, BLLException ex) throws BLLException {
-		if (codePostal == null || codePostal.isEmpty() || codePostal.length() > 10) {
+		if (codePostal == null || codePostal.isEmpty() || codePostal.length() > 5) {
 			ex.ajouterErreur(new ParameterException(
-					"Le code postal est obligatoire et doit avoir une longueur comprise entre 1 et 10"));
+					"Le code postal est obligatoire et doit avoir une longueur comprise entre 1 et 5"));
 		}
 	}
 

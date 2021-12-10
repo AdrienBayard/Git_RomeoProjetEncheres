@@ -265,7 +265,7 @@
 					</div>
 				</div>
 			</div>
-
+c 
 		</c:forEach>
 
 
