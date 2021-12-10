@@ -106,7 +106,7 @@
 					<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/XXXXXX">Enchères</a></li>
 					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
-					<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>					
+					<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>					
 						
 						<li class="active"><a class="btn"
 							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>
