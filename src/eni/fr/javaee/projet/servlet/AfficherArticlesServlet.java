@@ -24,16 +24,16 @@ import fr.eni.javaee.projet.dal.DALException;
 @WebServlet(name = "AfficherArticles", urlPatterns = { "/accueil" })
 public class AfficherArticlesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		try {
-		 listeArticles  = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+			listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,9 +47,11 @@ public class AfficherArticlesServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
