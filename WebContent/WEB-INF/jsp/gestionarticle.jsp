@@ -61,7 +61,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Acheter/ Vendre<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/RomeoProjetEncheres/accueil">Acheter</a></li>
+								<li><a href="/RomeoProjetEncheres/connected">Acheter</a></li>
 								<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre</a></li>
 							</ul></li>
 						<li><a href="LIEN DECONNEXION">Déconnexion</a></li>
