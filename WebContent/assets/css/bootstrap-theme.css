@@ -91,8 +91,18 @@
 	.jumbotron h2, .jumbotron h3, .jumbotron h4, 
 	.jumbotron h5, .jumbotron h6 { line-height: 1.3em; }
 
+.cardperso { color: inherit; padding-top:30px; padding-bottom:30px; margin-bottom:0;  border-width:1px; border-style:solid ; border-color:black;}
+	
+
 
 /*******************************/
 /*           Images            */
 /*******************************/
+.card-img-bottom {
+  color: #fff;
+  height: 20rem;
+  background: url(/IMG/miniature.jpg) center no-repeat;
+  background-size: cover;
+}
+
 .img-rounded { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
