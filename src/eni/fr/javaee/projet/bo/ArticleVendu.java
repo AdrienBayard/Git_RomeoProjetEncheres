@@ -15,7 +15,7 @@ public class ArticleVendu {
 	private String etatVente;
 	private int categorie;
 	private int no_utilisateur;
-	private Utilisateur pseudo;
+	private String pseudo;
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente, int categorie) {
 		
@@ -47,7 +47,7 @@ public class ArticleVendu {
 		
 	}
 
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, Utilisateur pseudo) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, String pseudo) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -135,12 +135,12 @@ public class ArticleVendu {
 	}
 	
 	
-	public Utilisateur getPseudo() {
+	public String getPseudo() {
 		return pseudo;
 	}
 
 
-	public void setPseudo(Utilisateur pseudo) {
+	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
 

@@ -238,7 +238,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
-		Utilisateur pseudo = null;
+		String pseudo = null;
 
 		int no_Article = rs.getInt("no_article");
 		String nomArticle = rs.getString("nom_article");
@@ -250,7 +250,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int categorie = rs.getInt("no_categorie");
 		int no_utilisateur = rs.getInt("no_utilisateur");
 		try {
-			pseudo = UtilisateurManager.getInstance().afficherProfilAvecId(no_utilisateur);
+			pseudo = UtilisateurManager.getInstance().afficherProfilAvecId(no_utilisateur).getPseudo();
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
