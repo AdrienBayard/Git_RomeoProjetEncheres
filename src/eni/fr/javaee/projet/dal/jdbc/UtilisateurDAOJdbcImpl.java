@@ -123,11 +123,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			pStmt.setString(9, utilisateurModifie.getMotDePasse());
 			pStmt.setInt(10, utilisateurModifie.getNoUtilisateur());
 			
+			// Execute l'ordre SQL
 			pStmt.executeUpdate();
 
 		
 
-			// Execute l'ordre SQL
 
 			cnx.close();
 
