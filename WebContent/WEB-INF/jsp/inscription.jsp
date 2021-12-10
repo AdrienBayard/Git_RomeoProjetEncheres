@@ -31,6 +31,8 @@
 </head>
 
 <body>
+<div class="container-back">
+
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top headroom">
 		<div class="container">
@@ -279,5 +281,6 @@
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
+	</div>
 </body>
 </html>
