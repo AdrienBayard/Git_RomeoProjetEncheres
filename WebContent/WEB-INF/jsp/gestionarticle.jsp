@@ -134,8 +134,18 @@
 					de l'enchêre : </label> <input type="datetime-local" name="finenchere"
 					placeholder="" required>
 					
+	
+					
 					<br>
 					<br>
+					
+					
+			<div class="row">
+				<div class="button text-center">		
+				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" form = "" name = "" value ="true">Mettre en vente mon article</button></a>	
+				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
+			</div>	
+			</div>
 				
 				<fieldset class="p-5">
 					<legend> Retrait </legend>
