@@ -242,14 +242,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
 
-		int no_Article = rs.getInt("no_Article");
-		String nomArticle = rs.getString("nomArticle");
+		int no_Article = rs.getInt("no_article");
+		String nomArticle = rs.getString("nom_article");
 		String description = rs.getString("description");
 		LocalDateTime dateDebutEncheres = rs.getTimestamp(4).toLocalDateTime();
 		LocalDateTime dateFinEncheres = rs.getTimestamp(5).toLocalDateTime();
-		int miseAPrix = rs.getInt("miseAPrix");
-		int prixVente = rs.getInt("prixVente");
-		int categorie = rs.getInt("categorie");
+		int miseAPrix = rs.getInt("prix_initial");
+		int prixVente = rs.getInt("prix_vente");
+		int categorie = rs.getInt("no_categorie");
 		int no_utilisateur = rs.getInt("no_utilisateur");
 
 		articleVendu = new ArticleVendu(no_Article, nomArticle, description, dateDebutEncheres, dateFinEncheres,
