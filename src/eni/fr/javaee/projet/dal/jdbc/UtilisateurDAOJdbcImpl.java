@@ -73,7 +73,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			
 			// Paramétrer l'objet de commande
 			
-			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_PROFIL);
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_PROFIL_AVEC_ID);
 			pStmt.setInt(1, id);
 			
 			// Execute l'ordre SQL

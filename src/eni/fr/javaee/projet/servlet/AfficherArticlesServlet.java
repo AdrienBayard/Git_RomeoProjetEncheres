@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
+import eni.fr.javaee.projet.bll.BLLException;
+import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -42,6 +44,12 @@ public class AfficherArticlesServlet extends HttpServlet {
 //		}
 //		System.out.println("test 2 : " +listeArticles.toString());
 //		request.setAttribute("listeArticles", listeArticles);
+		try {
+			System.out.println(UtilisateurManager.getInstance().afficherProfilAvecId(40));
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/pageAccueil");

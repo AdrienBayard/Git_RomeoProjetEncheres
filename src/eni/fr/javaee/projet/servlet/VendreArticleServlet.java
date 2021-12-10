@@ -39,6 +39,8 @@ public class VendreArticleServlet extends HttpServlet {
 			request.setAttribute("rue", rue);
 			request.setAttribute("codePostal", codePostal);
 			request.setAttribute("ville", ville);
+			
+			
 			RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
 			aiguileur.forward(request, response);
 		} catch (BLLException e) {
