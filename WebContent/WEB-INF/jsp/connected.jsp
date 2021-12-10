@@ -105,7 +105,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/XXXXXX">Enchères</a></li>
-					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
+					<li><a href="/RomeoProjetEncheres/vendre">Vendre un article</a></li>					
 					<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>					
 						
 						<li class="active"><a class="btn"

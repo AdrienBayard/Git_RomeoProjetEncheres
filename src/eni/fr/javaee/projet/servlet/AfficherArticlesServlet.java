@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
@@ -41,6 +42,8 @@ public class AfficherArticlesServlet extends HttpServlet {
 //		}
 //		System.out.println("test 2 : " +listeArticles.toString());
 //		request.setAttribute("listeArticles", listeArticles);
+		HttpSession session = request.getSession();
+		session.invalidate();
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/pageAccueil");
 		aiguilleur.forward(request, response);
 	}
