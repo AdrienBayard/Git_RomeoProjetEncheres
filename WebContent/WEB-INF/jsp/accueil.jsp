@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="eni.fr.javaee.projet.bll.UtilisateurManager" %>
+<%@ page import="eni.fr.javaee.projet.bo.ArticleVendu" %>   
+<%@ page import="java.util.List" %>   
+<%@ page import="java.util.ArrayList" %>  
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -233,7 +238,106 @@
 			</div>
 		</div>
 
+------------------------------- FOR EACH GENERATION DES ARTICLES ---------------------------
 
+<%
+List<ArticleVendu> listeArticles = (List<ArticleVendu>)request.getAttribute("listeArticles");  
+
+for(ArticleVendu article : listeArticles){ %>
+	<div class="cardperso col-sm-5">
+	<div class="col-sm-5">
+		<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+			title="">
+	</div>
+	<div class="col-sm-7">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"> <%= article.getNomArticle()%> </h5>
+				<p class="card-text"><%= article.getDescription()%></p>
+				<p class="card-text">
+					<%= article.getPrixVente()%><br>
+					<!-- prixVente -->
+					<%= article.getDateFinEncheres()%><br>
+					<!-- dateFinEncheres-->
+					<%= UtilisateurManager.getInstance().afficherProfilAvecId(article.getNo_utilisateur()).getNom()%>
+					<!-- Utilisateur.pseudo-->
+				</p>
+				<a href="#" class="btn btn-primary">Enchérir</a>
+			</div>
+		</div>
+	</div>
+</div>
+<% } %>
+
+
+
+
+<%-- <c:forEach var="article" items="${requestScope.listeArticles}" begin="0">
+    <div class="cardperso col-sm-5">
+								<div class="col-sm-5">
+									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+										title="">
+								</div>
+								<div class="col-sm-7">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title"><a href=""<c:out value="${article.nom()}" />></a></h5>
+											<p class="card-text"><c:out value="${article.description()}" /></p>
+											<p class="card-text">
+												<c:out value="${article.prix}"/><br>
+												<!-- prixVente -->
+												<c:out value="${article.dateFinEncheres}"/><br>
+												<!-- dateFinEncheres-->
+									
+									
+ %>
+										<%  %>
+												<a href=""><c:out value="${UtilisateurManager.getInstance().afficherProfilAvecId(article.No_utilisateur()).getNom()}"/></a>
+												<!-- Utilisateur.pseudo-->
+											</p>
+											<a href="#" class="btn btn-primary">Enchérir</a>
+										</div>
+									</div>
+								</div>
+							</div>
+    
+</c:forEach>> --%>
+
+
+
+
+------------------------------- CARDS ---------------------------
+
+<!-- 
+
+<div class="cardperso col-sm-5">
+								<div class="col-sm-5">
+									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+										title="">
+								</div>
+								<div class="col-sm-7">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Un bouquin de dingue 3</h5>
+											<p class="card-text">Description de votre lot.</p>
+											<p class="card-text">
+												Prix : 63€<br>
+												prixVente
+												Fin de l'enchère : 23/12/2021<br>
+												dateFinEncheres
+												Vendeur : tititoto44
+												Utilisateur.pseudo
+											</p>
+											<a href="#" class="btn btn-primary">Enchérir</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+ -->
+
+
+--------------------------------------------------------------------------------------------
 
 
 
