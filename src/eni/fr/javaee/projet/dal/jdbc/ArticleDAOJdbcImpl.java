@@ -233,8 +233,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	} 
 	
-	ELECT a.no_article, a.nom_article,a.date_fin_encheres, no_utilisateur, a.prix_vente \r\n " + 
-	"from ARTICLES_VENDUS a\r\n " + 
 	@Override
 	public List<ArticleVendu> afficherMesEncheres() throws DALException {
 		// TODO Auto-generated method stub
