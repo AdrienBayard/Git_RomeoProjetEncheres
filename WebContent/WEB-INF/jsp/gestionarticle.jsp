@@ -141,19 +141,19 @@
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Rue </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" placeholder="user.rue"></div>
+						class="form-control" id="article" value="user.ville" readonly="readonly"></div>
 					</div> 
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Code Postal </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" placeholder="user.codePostal"></div>
+						class="form-control" id="article" value="user.ville" readonly="readonly"></div>
 					</div>   
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Ville </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" placeholder="user.ville"></div>
+						class="form-control" id="article" value="user.ville" readonly="readonly"></div>
 					</div>  
 				</fieldset>
 		
