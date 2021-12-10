@@ -15,11 +15,11 @@ import fr.eni.javaee.projet.dal.UtilisateurDAO;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 		//Requête utilisée lors de l'inscription	
-	private static final String AFFICHER_TOUS_LES_PROFILS = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe from UTILISATEURS";
+	private static final String AFFICHER_TOUS_LES_PROFILS = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit from UTILISATEURS";
 
 	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit from UTILISATEURS where pseudo = ?";
 	
-	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 	private static final String UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur =?";
 	
