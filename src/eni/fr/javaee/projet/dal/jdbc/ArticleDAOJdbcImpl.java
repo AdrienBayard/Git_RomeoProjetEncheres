@@ -62,6 +62,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Obtient une objet de commande (Statement) = ordre SQL
+		ResultSet rs = null;
 		try {
 
 			// Paramétrer l'objet de commande
@@ -79,7 +80,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setInt(7, nouvelArticleVendu.getCategorie());
 
 			// Execute l'ordre SQL
-			ResultSet rs = null;
 
 			pStmt.executeUpdate();
 			rs = pStmt.getGeneratedKeys();
@@ -89,10 +89,21 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				nouvelArticleVendu.setNoArticle(idArticleInsere);
 			}
 
-			cnx.close();
+		
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
+		}
+		finally {
+			if(rs!= null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return articleVendu;
@@ -124,10 +135,20 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 			// Execute l'ordre SQL
 
-			cnx.close();
+	
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
+		}
+		finally {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 		return nouvelArticleVendu;
 	}
@@ -148,10 +169,20 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			// Execute l'ordre SQL
 			pStmt.executeUpdate();
 
-			cnx.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
+		}
+		finally {
+
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 	}
 
@@ -175,12 +206,12 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
 
+		ResultSet rs = null;
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
 			Statement pStmt = cnx.createStatement();
 
-			ResultSet rs = null;
 			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
 
 			while (rs.next()) {
@@ -192,6 +223,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			if(rs!= null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return listeAchatsAAfficher;
@@ -208,12 +250,12 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
 
+		ResultSet rs = null;
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
 			Statement pStmt = cnx.createStatement();
 
-			ResultSet rs = null;
 			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
 
 			while (rs.next()) {
@@ -225,6 +267,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			if(rs!= null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return listeAchatsAAfficher;
