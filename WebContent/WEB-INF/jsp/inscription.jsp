@@ -154,7 +154,7 @@
 								</div>
 
 								<hr>
-
+</form>
 								<div class="row">
 					 			<!--  	<div class="col-lg-8">
 										<label class="checkbox"> <input type="checkbox">
@@ -171,7 +171,7 @@
 										</div>
 									<div class="col-lg-6 text-center">
 									<a href="/RomeoProjetEncheres/accueil">
-									<button class="btn btn-action">TODO_Annuler</button></a>
+									<button class="btn btn-action">Annuler</button></a>
 									</div>
 									
 
@@ -181,7 +181,7 @@
 									
 									
 								</div>
-							</form>
+							
 						</div>
 					</div>
 
