@@ -41,6 +41,21 @@ public class UtilisateurManager {
 		}
 		return utilisateur;
 
+		
+	}   
+	public Utilisateur afficherProfilAvecId(int id) throws BLLException {
+		
+		BLLException ex = new BLLException();
+		validationId(id, ex);
+		Utilisateur utilisateur = null;
+		try {
+			utilisateur = dao.afficherProfilAvecId(id);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return utilisateur;
+		
 	}   
 
 	public Utilisateur insertUtilisateur(String pseudo, String nom, String prenom, String email, String telephone,

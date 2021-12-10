@@ -19,6 +19,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit from UTILISATEURS where pseudo = ?";
 	
+	private static final String AFFICHER_PROFIL_AVEC_ID = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit from UTILISATEURS where no_utilisateur = ?";
+	
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
 	private static final String UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur =?";
@@ -55,6 +57,39 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			sqle.printStackTrace();
 		}
 
+		return utilisateur;
+	}
+	
+	@Override
+	public Utilisateur afficherProfilAvecId(int id) throws DALException {
+		
+		Utilisateur utilisateur = null;
+		
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		
+		// Obtient une objet de commande (Statement) = ordre SQL
+		try {
+			
+			// Paramétrer l'objet de commande
+			
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_PROFIL);
+			pStmt.setInt(1, id);
+			
+			// Execute l'ordre SQL
+			ResultSet rs = null;
+			rs = pStmt.executeQuery();
+			
+			if (rs.next()) {
+				utilisateur = mapAfficherProfil(rs);
+			}
+			
+			cnx.close();
+			
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		
 		return utilisateur;
 	}
 

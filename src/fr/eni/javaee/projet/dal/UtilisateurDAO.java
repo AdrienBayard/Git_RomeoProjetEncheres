@@ -18,6 +18,8 @@ public interface UtilisateurDAO {
 	
 	void deleteUtilisateur(int idUtilisateur)throws DALException;
 	
-	List<Utilisateur> getListeUtilisateur() throws DALException; 
+	List<Utilisateur> getListeUtilisateur() throws DALException;
+
+	Utilisateur afficherProfilAvecId(int id) throws DALException; 
 	
 }
