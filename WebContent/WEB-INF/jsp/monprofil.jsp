@@ -104,7 +104,7 @@
 	
 	<div class="row">
 		<div class="button text-center">		
-		<a href="/RomeoProjetEncheres/modifierprofil"><button class="btn btn-action"type="submit" name = "button" value = "true">Modifier</button></a>	
+		<a href="/RomeoProjetEncheres/modifier"><button class="btn btn-action"type="submit" name = "button" value = "true">Modifier</button></a>	
 	</div>	
 	</div>	
       </div>
