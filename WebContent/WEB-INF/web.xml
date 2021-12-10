@@ -6,18 +6,6 @@
     <welcome-file>accueil</welcome-file>
   </welcome-file-list>
   
-
-	 <servlet>
-		<servlet-name>AfficherArticlesServlet</servlet-name>
-		<servlet-class>eni.fr.javaee.projet.servlet.AfficherArticlesServlet</servlet-class>
-	</servlet>
-
-
-	<servlet-mapping>
-		<servlet-name>AfficherArticlesServlet</servlet-name>
-		<url-pattern>/accueil</url-pattern>
-
-	</servlet-mapping>
 	
   <servlet>
   	<servlet-name>pageAccueil</servlet-name>
