@@ -1,23 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
-<!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="CSS\accueil.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<title>Accueil</title>
+
+<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+
+<link rel="stylesheet" media="screen"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+<!-- Custom styles for our template -->
+<link rel="stylesheet" href="assets/css/bootstrap-theme.css"
+	media="screen">
+<link rel="stylesheet" href="assets/css/main.css">
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+   <script>
         //  traduction : quand la radio d'ID achats est cliquée, lancer la fonction enableCheckBoxAchats et disableCheckBoxAchats si la radio ventes est cliquée.
         $(function () {
             enableCheckBoxAchats();
@@ -39,8 +49,6 @@
             $("input.achats").prop("checked", false);
         }
     </script>
-
-
 
     <script>
         // traduction : quand la radio d'ID ventes est cliquée, lancer la fonction enableCheckBoxVentes et
@@ -68,127 +76,311 @@
 
     </script>
 
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+<style>
+</style>
 </head>
-
 
 <body>
 
-    <!-- HEADER -->
-    <div class=header>
-        ENI-ENCHERES
-        <!--TODO: logo à la place-->:
-        <div class="boutons">
-            <a href="">ENCHÈRES</a> | <a href="/RomeoProjetEncheres/gestionarticle">VENDRE UN ARTICLE </a> | <a href="/RomeoProjetEncheres/modifier">MON PROFIL </a> | <a
-                href="accueil">DÉCONNEXION </a>
-        </div>
-    </div>
+
+	<div class="container-back">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img
+						src="assets/images/logo.png" alt="Progressus HTML5 template"></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+					<li><a href="/RomeoProjetEncheres/XXXXXX">Enchères</a></li>
+					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
+					<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>					
+						
+						<li class="active"><a class="btn"
+							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+		<!-- /.navbar -->
+
+		<header id="head" class="secondary"></header>
+
+		<!-- container -->
+		<div class="container">
+
+			<ol class="breadcrumb">
+				<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
+			</ol>
+		</div>
+		<!-- /container -->
+
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="h-body text-center">
+						<h2>Liste des enchères</h2>
+					</div>
+
+					<form class="rechercher">
+						<div class="row">
+							<div class="col-md-3 col-sm-6 highlight">
+								<select name="cars" id="cars" class="form-control">
+									<option value="Toutes">Toutes catégories</option>
+									<option value="Informatique">Informatique</option>
+									<option value="Ameublement">Ameublement</option>
+									<option value="Vetements">Vetements</option>
+									<option value="Sport&Loisirs">Sport et loisirs</option>
+								</select>
+
+							</div>
+							<div class="col-md-6 col-sm-6 highlight">
+								<div class="h-body text-center">
+									<input class="form-control" type="search" id="rechercher"
+										name="rechercher" placeholder="Chercher par nom d'article"
+										aria-label="Rechercher dans le site">
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-6 highlight">
+								<div class="h-body text-center">
+									<button class="btn btn-action" type="submit">Rechercher</button>
+								</div>
+							</div>
+						</div>
 
 
-    <div class="container">
-
-        <!-- TITRE -->
-        <div class="titre">
-            <h2>Liste des enchères :</h2>
-        </div>
-
-        <!-- FILTRE -->
-        <form class="rechercher">
-            <br>
-            filtres : <br>
-            <input type="rechercher" id="rechercher" name="rechercher" placeholder="Chercher par nom d'article"
-                aria-label="Rechercher dans le site">
-            <button>Search</button>
-
-            <br>
-
-            <select name="cars" id="cars">
-                <option value="Toutes">Toutes</option>
-                <option value="Informatique">Informatique</option>
-                <option value="Ameublement">Ameublement</option>
-                <option value="Vetements">Vetements</option>
-                <option value="Sport&Loisirs">Sport&Loisirs</option>
-            </select>
-            <br>
-            <br>
-
+					<br> <br> 
+				<!-- DEBUT MULTICHOIX -->	
+				
+		<div class="row">
+						
             <div class="checkboxs">
                 <!-- CASES FILTRE MES ACHATS -->
-
+			<div class="col-md-2 col-sm-6"></div>
+			<div class="col-md-3 col-sm-6">
+			
                 <input type="radio" id="achats" name="achatsOuVentes" value="achats" />
                 <label for="achats"> Achats</label><br>
                 <!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
                 <input type="checkbox" id="encheresOuvertes" name="encheresOuvertes" class=achats disabled
                     value="encheresOuvertes">
-                <label for="encheresOuvertes"> enchèrs ouvertes</label><br>
+                <label for="encheresOuvertes"> Toutes les enchères ouvertes</label><br>
                 <input type="checkbox" id="mesEncheres" name="mesEncheres" class=achats disabled value="mesEncheres">
-                <label for="mesEncheres"> mes enchères</label><br>
+                <label for="mesEncheres"> Mes enchères</label><br>
                 <input type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" disabled class=achats
                     value="mesEncheresRemportees">
-                <label for="mesEncheresRemportees"> mes enchères emportées</label><br><br>
-
-
+                <label for="mesEncheresRemportees"> Mes enchères remportées</label><br><br>
+			</div>
+			<div class="col-md-2 col-sm-6"></div>
                 <!-- CASES FILTRE MES VENTES -->
-
+			<div class="col-md-3 col-sm-6">
                 <input type="radio" id="ventes" name="achatsOuVentes" value="ventes" />
                 <label for="ventes">Mes ventes</label><br>
                 <!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
                 <input type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" class="ventes" disabled
                     value="mesVentesEnCours">
-                <label for="mesVentesEnCours">mes ventes en cours</label><br>
+                <label for="mesVentesEnCours"> Ventes en cours</label><br>
                 <input type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" class="ventes" disabled
                     value="ventesNonDebutees">
-                <label for="ventesNonDebutees">ventes non débutées</label><br>
+                <label for="ventesNonDebutees"> Ventes non débutées</label><br>
                 <input type="checkbox" id="ventesTerminees" name="ventesTerminees" class="ventes" disabled
                     value="ventesTerminees">
-                <label for="ventesTerminees">ventes terminées</label><br><br>
+                <label for="ventesTerminees"> Ventes terminées</label><br><br>
+                
+             </div>   
+			<div class="col-md-2 col-sm-6"></div>                
+            </div>
+			</div>
+			
+			
+		<div class="row">
+			<div class="col-md-5 col-sm-6"></div>                
+			<div class="col-md-7 col-sm-6">                
+            <input class="btn btn-action" type="submit" value="Valider" >	
+            </div>
+			<div class="col-md-0 col-sm-6 highlight"></div>                
+            
             </div>
 
+            
+            
+    					</form>					
+            				
+					</div>
+					
+					
+					
+				<!-- FIN MULTICHOIX -->	
+				
 
-            <input type="submit" value="Submit">
-        </form>
+
+					<div class="row">
+
+						<div class="col-sm-1"></div>
+						<div class="col-sm-10">
+
+							<div class="cardperso col-sm-5">
+								<div class="col-sm-5">
+									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+										title="">
+								</div>
+								<div class="col-sm-7">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Un bouquin de dingue</h5>
+											<p class="card-text">Description de votre lot.</p>
+											<p class="card-text">
+												Prix : 6€<br>
+												<!-- prixVente -->
+												Fin de l'enchère : 19/12/2021<br>
+												<!-- dateFinEncheres-->
+												Vendeur : tititoto44
+												<!-- Utilisateur.pseudo-->
+											</p>
+											<a href="#" class="btn btn-primary">Enchérir</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-2"></div>
+							<div class="cardperso col-sm-5">
+								<div class="col-sm-5">
+									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+										title="">
+								</div>
+								<div class="col-sm-7">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Un bouquin de dingue 2</h5>
+											<p class="card-text">Description de votre lot.</p>
+											<p class="card-text">
+												Prix : 64€<br>
+												<!-- prixVente -->
+												Fin de l'enchère : 21/12/2021<br>
+												<!-- dateFinEncheres-->
+												Vendeur : tititoto44
+												<!-- Utilisateur.pseudo-->
+											</p>
+											<a href="#" class="btn btn-primary">Enchérir</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+					<br>
+					<br>
+					<br>
+
+					<br>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
 
 
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-sm-12" style="width: 18rem;">
-                <img src="IMG\miniature.jpg" class="miniature" alt="miniature">
-                <div class="card-body">
 
-                    <p class="card-text">Un bouquin de dingue
-                        <!--nomArticle--><br>
-                        Prix : 6€
-                        <!-- prixVente --><br>
-                        Fin de l'enchère : 19/12/2021
-                        <!-- dateFinEncheres--><br>
-                        Vendeur : tititoto44
-                        <!-- Utilisateur.pseudo-->
-                    </p>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-sm-12" style="width: 18rem;">
-                <img src="IMG\miniature.jpg" class="miniature" alt="miniature">
-                <div class="card-body">
-                    <p class="card-text">Un deuxième bouquin de dingue
-                        <!--nomArticle--><br>
-                        Prix : 6€
-                        <!-- prixVente --><br>
-                        Fin de l'enchère : 19/12/2021
-                        <!-- dateFinEncheres--><br>
-                        Vendeur : tititoto44
-                        <!-- Utilisateur.pseudo-->
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <footer>
 
-    </footer>
+		<footer id="footer" class="top-space">
 
+			<div class="footer1">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Contact</h3>
+							<div class="widget-body">
+								<p>
+									Votre numéro de téléphone<br> <a href="mailto:#">votreemail@mail.com</a><br>
+									<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Suivez-nous</h3>
+							<div class="widget-body">
+								<p class="follow-me-icons clearfix">
+									<a href=""><i class="fa fa-twitter fa-2"></i></a> <a href=""><i
+										class="fa fa-dribbble fa-2"></i></a> <a href=""><i
+										class="fa fa-github fa-2"></i></a> <a href=""><i
+										class="fa fa-facebook fa-2"></i></a>
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6 widget">
+							<h3 class="widget-title">Texte présentation du site</h3>
+							<div class="widget-body">
+								<p>Description de votre entreprise en quelques lignes.</p>
+								<p>
+									<br> <br> <br>
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<!-- /row of widgets -->
+				</div>
+			</div>
+
+			<div class="footer2">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-6 widget">
+							<div class="widget-body">
+								<p class="simplenav">
+									<a href="/RomeoProjetEncheres/accueil">Accueil</a> | <b><a
+										href="/RomeoProjetEncheres/inscription">S'inscrire</a></b> | <b><a
+										href="/RomeoProjetEncheres/connexion">Se connecter</a></b>
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6 widget">
+							<div class="widget-body">
+								<p class="text-right">AA</p>
+							</div>
+						</div>
+
+					</div>
+					<!-- /row of widgets -->
+				</div>
+			</div>
+		</footer>
+
+
+
+
+
+		<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script
+			src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="assets/js/headroom.min.js"></script>
+		<script src="assets/js/jQuery.headroom.min.js"></script>
+		<script src="assets/js/template.js"></script>
+	</div>
 </body>
-
 </html>
