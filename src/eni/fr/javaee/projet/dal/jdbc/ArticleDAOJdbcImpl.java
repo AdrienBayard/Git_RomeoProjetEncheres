@@ -31,10 +31,13 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			+ " WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n "
 			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
 
-	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
-			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n "
-			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
+	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT a.no_article, a.nom_article,a.date_fin_encheres, u.pseudo, a.prix_vente \r\n " + 
+			"\r\n " + 
+			"from ARTICLES_VENDUS a inner join UTILISATEURS u on a.no_utilisateur = u.no_utilisateur\r\n " + 
+			"\r\n " + 
+			"where a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres >= CURRENT_TIMESTAMP \r\n " + 
+			"group by a.nom_article, a.date_fin_encheres, u.pseudo, a.no_article, a.prix_vente\r\n " + 
+			"";
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
 			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
