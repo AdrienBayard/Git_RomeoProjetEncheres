@@ -43,6 +43,8 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			String rue = utilisateur.getRue();
 			String codePostal = utilisateur.getCodePostal();
 			String ville = utilisateur.getVille();
+			int credit = utilisateur.getCredit();
+			
 
 			request.setAttribute("pseudo", pseudo);
 			request.setAttribute("nom", nom);
@@ -52,6 +54,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			request.setAttribute("rue", rue);
 			request.setAttribute("codePostal", codePostal);
 			request.setAttribute("ville", ville);
+			request.setAttribute("credit", credit);
 
 			if (checkMotDePasseActuel == true) {
 				request.setAttribute("messageErreur", 5); // Msg : Le mot de passe actuel n'est pas le bon
@@ -78,12 +81,15 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String quelBouton = request.getParameter("buttonModifierProfil");
+		HttpSession session = request.getSession();
+		String motDePasseActuel = request.getParameter("motDePasseActuel");
+		if (quelBouton.equals("modifier")) {
 		Boolean modification = true;
 		Boolean motDePasseErrone = false;
 		Boolean pseudoErrone = false;
 		Boolean emailErrone = false;
 		checkMotDePasseActuel = false;
-		HttpSession session = request.getSession();
 
 		// Récupération des informations du client depuis le formulaire.
 		String nouveauPseudo = request.getParameter("pseudo");
@@ -94,13 +100,9 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
-		String motDePasseActuel = request.getParameter("motDePasseActuel");
 		String nouveauMotDePasse = request.getParameter("nouveauMotDePasse");
 		String confirmation = request.getParameter("confirmation");
-		String quelBouton = request.getParameter("buttonModifierProfil");
-		System.out.println(quelBouton);
 		
-		if (quelBouton.equals("modifier")) {
 			
 		
 
@@ -147,8 +149,9 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 				session.setAttribute("pseudo", nouveauPseudo);
 
 				int noUtilisateur = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getNoUtilisateur();
+				int credit = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getCredit();
 				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, nouveauPseudo, nom, prenom, email,
-						telephone, rue, codePostal, ville, nouveauMotDePasse);
+						telephone, rue, codePostal, ville, nouveauMotDePasse, credit);
 				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 				aiguilleur.forward(request, response);
 
@@ -164,6 +167,23 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+		else if (quelBouton.equals("supprimer")) {
+			
+			String pseudo = (String) session.getAttribute("pseudo");
+			int idUtilisateur;
+			try {
+				idUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+				String ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+				if (!motDePasseActuel.equals(ancienMotdePasse)) {
+					checkMotDePasseActuel = true;
+					doGet(request, response);
+				}
+				UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

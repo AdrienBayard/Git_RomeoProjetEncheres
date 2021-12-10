@@ -17,7 +17,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		//Requête utilisée lors de l'inscription	
 	private static final String AFFICHER_TOUS_LES_PROFILS = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe from UTILISATEURS";
 
-	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe from UTILISATEURS where pseudo = ?";
+	private static final String AFFICHER_PROFIL = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit from UTILISATEURS where pseudo = ?";
 	
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
@@ -123,11 +123,11 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			pStmt.setString(9, utilisateurModifie.getMotDePasse());
 			pStmt.setInt(10, utilisateurModifie.getNoUtilisateur());
 			
+			// Execute l'ordre SQL
 			pStmt.executeUpdate();
 
 		
 
-			// Execute l'ordre SQL
 
 			cnx.close();
 
@@ -172,8 +172,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		String code_postal = rs.getString("code_postal");
 		String ville = rs.getString("ville");
 		String motDePasse = rs.getString("mot_de_passe");
+		int credit = rs.getInt("credit");
 
-		utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, motDePasse);
+		utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, motDePasse, credit);
 
 		return utilisateur;
 	}
