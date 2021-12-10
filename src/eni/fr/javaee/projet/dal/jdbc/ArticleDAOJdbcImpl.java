@@ -31,7 +31,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			+ " WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n "
 			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
 
-	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres >= CURRENT_TIMESTAMP group by a.nom_article, a.date_fin_encheres, a.no_article, a.no_utilisateur,a.prix_vente ";
+	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where date_debut_encheres <= CURRENT_TIMESTAMP and date_fin_encheres >= CURRENT_TIMESTAMP group by nom_article, date_fin_encheres, no_article, no_utilisateur, prix_vente ";
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
 			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
