@@ -238,7 +238,7 @@
 			</div>
 		</div>
 
-------------------------------- FOR EACH GENERATION DES ARTICLES ---------------------------
+------------------------------- FOR EACH GENERATION DES ARTICLES - SCRIPLET ---------------------------
 
 <%
 List<ArticleVendu> listeArticles = (List<ArticleVendu>)request.getAttribute("listeArticles");  
@@ -268,11 +268,11 @@ for(ArticleVendu article : listeArticles){ %>
 	</div>
 </div>
 <% } %>
+----------------------------------------------------------------------------------
 
 
-
-
-<%-- <c:forEach var="article" items="${requestScope.listeArticles}" begin="0">
+---------------------------------------- CARD JSTL / EL --------------------------
+<<c:forEach var="article" items="${requestScope.listeArticles}" begin="0">
     <div class="cardperso col-sm-5">
 								<div class="col-sm-5">
 									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
@@ -288,11 +288,7 @@ for(ArticleVendu article : listeArticles){ %>
 												<!-- prixVente -->
 												<c:out value="${article.dateFinEncheres}"/><br>
 												<!-- dateFinEncheres-->
-									
-									
- %>
-										<%  %>
-												<a href=""><c:out value="${UtilisateurManager.getInstance().afficherProfilAvecId(article.No_utilisateur()).getNom()}"/></a>
+											<a href=""><c:out value="${article.pseudo}"/></a>
 												<!-- Utilisateur.pseudo-->
 											</p>
 											<a href="#" class="btn btn-primary">Enchérir</a>
@@ -301,8 +297,8 @@ for(ArticleVendu article : listeArticles){ %>
 								</div>
 							</div>
     
-</c:forEach>> --%>
-
+</c:forEach>>
+-----------------------------------------------------------------
 
 
 
