@@ -14,7 +14,9 @@ public class ArticleVendu {
 	private int prixVente;
 	private String etatVente;
 	private int categorie;
-
+	private int no_utilisateur;
+	
+	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente, int categorie) {
 		
 		this.noArticle = noArticle;
@@ -32,9 +34,7 @@ public class ArticleVendu {
 	
 
 	
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,
-	
-		int prixVente, int categorie) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -43,6 +43,7 @@ public class ArticleVendu {
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.categorie = categorie;
+		this.no_utilisateur = no_utilisateur;
 		
 	}
 
@@ -119,11 +120,30 @@ public class ArticleVendu {
 	public void setCategorie(int categorie) {
 		this.categorie = categorie;
 	}
+	public int getNo_utilisateur() {
+		return no_utilisateur;
+	}
+
+
+	public void setNo_utilisateur(int no_utilisateur) {
+		this.no_utilisateur = no_utilisateur;
+	}
+
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", categorie=" + categorie + "]";
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", categorie=" + categorie + no_utilisateur + "]";
 	}
 
 }

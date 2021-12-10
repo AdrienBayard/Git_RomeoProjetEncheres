@@ -254,9 +254,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int miseAPrix = rs.getInt("miseAPrix");
 		int prixVente = rs.getInt("prixVente");
 		int categorie = rs.getInt("categorie");
+		int no_utilisateur = rs.getInt("no_utilisateur");
 
 		articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres,
-				miseAPrix, prixVente, categorie);
+				miseAPrix, prixVente, categorie, no_utilisateur);
 
 		return articleVendu;
 	}
