@@ -3,9 +3,11 @@ package eni.fr.javaee.projet.bll;
 import fr.eni.javaee.projet.dal.ProjetDAOFactory;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -41,7 +43,18 @@ public class ArticleManager {
 	}
 
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
-		return null;
+		
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherAchatsEnCours();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
+		
 	}
 
 	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {

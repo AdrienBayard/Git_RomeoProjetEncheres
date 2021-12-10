@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 
@@ -52,7 +54,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
 
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
-
 
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException {
 
@@ -154,44 +155,92 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			sqle.printStackTrace();
 		}
 	}
-	
-	
+
 	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
 		return null;
-		
+
 	}
-	
+
 	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
 		return null;
-		
+
 	}
-	
+
 	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
 		return null;
-		
+
 	}
-	
-	
-	
+
 
 	@Override
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
+
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			ResultSet rs = null;
+			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
+
+			while (rs.next()) {
+
+				ArticleVendu article = mapAfficherVente(rs);
+				listeAchatsAAfficher.add(article);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return listeAchatsAAfficher;
+	} 
+
+
+	
+
+//	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
+//			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
+//			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
+//			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
+//
+//	
 	@Override
 	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-  
+		
+		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
+
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			ResultSet rs = null;
+			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
+
+			while (rs.next()) {
+
+				ArticleVendu article = mapAfficherVente(rs);
+				listeAchatsAAfficher.add(article);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return listeAchatsAAfficher;
+	} 
+	
+
 	@Override
 	public List<ArticleVendu> afficherMesEncheres() throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
@@ -205,9 +254,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int prixVente = rs.getInt("prixVente");
 		int categorie = rs.getInt("categorie");
 
-		articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, categorie);
-		
-		return articleVendu;  
+		articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres,
+				miseAPrix, prixVente, categorie);
+
+		return articleVendu;
 	}
 
 }
