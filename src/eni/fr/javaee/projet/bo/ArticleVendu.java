@@ -15,7 +15,7 @@ public class ArticleVendu {
 	private String etatVente;
 	private int categorie;
 	private int no_utilisateur;
-	
+	private Utilisateur pseudo;
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente, int categorie) {
 		
@@ -47,7 +47,20 @@ public class ArticleVendu {
 		
 	}
 
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, Utilisateur pseudo) {
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;  
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.categorie = categorie;
+		this.no_utilisateur = no_utilisateur;
+		this.pseudo = pseudo;
+	}
 
+	
 	public int getNoArticle() {
 		return noArticle;
 	}
@@ -120,6 +133,20 @@ public class ArticleVendu {
 	public void setCategorie(int categorie) {
 		this.categorie = categorie;
 	}
+	
+	
+	public Utilisateur getPseudo() {
+		return pseudo;
+	}
+
+
+	public void setPseudo(Utilisateur pseudo) {
+		this.pseudo = pseudo;
+	}
+
+
+
+
 	public int getNo_utilisateur() {
 		return no_utilisateur;
 	}
@@ -143,7 +170,7 @@ public class ArticleVendu {
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", categorie=" + categorie + no_utilisateur + "]";
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", categorie=" + categorie + no_utilisateur + "pseudo=" + pseudo + "]";
 	}
 
 }
