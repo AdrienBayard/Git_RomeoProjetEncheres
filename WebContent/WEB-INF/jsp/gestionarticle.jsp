@@ -78,7 +78,9 @@
 		<header id="head" class="secondary"></header>
 
 		<!-- container -->
-<div class="container-fluid">
+<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-body">
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="text-center">
@@ -160,8 +162,10 @@
 			</form>
 		</div>
 	</div>
+	<br><br><br><br><br><br><br>
 </div>
-		
+</div>
+	</div>	
 		
 		
 		
@@ -234,4 +238,4 @@
 		<script src="assets/js/template.js"></script>
 	</div>
 </body>
-</html>ml>
+</html>
