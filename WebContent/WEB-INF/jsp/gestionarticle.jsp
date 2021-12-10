@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>PageTest</title>
+<title>Vendre un article</title>
 
 <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 
@@ -56,7 +56,7 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
-						<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
+						<li><a href="/RomeoProjetEncheres/connected">Accueil</a></li>
 						<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Acheter/ Vendre<b class="caret"></b></a>
@@ -64,8 +64,8 @@
 								<li><a href="/RomeoProjetEncheres/connected">Acheter</a></li>
 								<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre</a></li>
 							</ul></li>
-						<li><a href="LIEN DECONNEXION">Déconnexion</a></li>
-					</ul>
+						<li class="active"><a class="btn"
+							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>					</ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
