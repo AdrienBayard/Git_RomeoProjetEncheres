@@ -31,25 +31,15 @@ public class AfficherArticlesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("hello");
-//		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-//		try {
-//		 listeArticles  = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
-//		} catch (DALException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		for (ArticleVendu articleVendu : listeArticles) {
-//			System.out.println("test : " + articleVendu.toString());
-//		}
-//		System.out.println("test 2 : " +listeArticles.toString());
-//		request.setAttribute("listeArticles", listeArticles);
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		try {
-			System.out.println(UtilisateurManager.getInstance().afficherProfilAvecId(40));
-		} catch (BLLException e) {
+		 listeArticles  = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		request.setAttribute("listeArticles", listeArticles);
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/pageAccueil");
