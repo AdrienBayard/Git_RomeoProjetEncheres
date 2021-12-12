@@ -49,6 +49,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
 					<li><a href="/RomeoProjetEncheres/connected">Accueil</a></li>
+					<li><a href="/RomeoProjetEncheres/XXXXXX">Favoris</a></li>
 					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
 	
 						<li class="active"><a class="btn"
@@ -265,30 +266,7 @@
 			</div>
 		</div>
 
-		<div class="footer2">
-			<div class="container">
-				<div class="row">
 
-					<div class="col-md-6 widget">
-						<div class="widget-body">
-							<p class="simplenav">
-								<a href="/RomeoProjetEncheres/accueil">Accueil</a> | 
-								<b><a
-									href="/RomeoProjetEncheres/connexion">Se connecter</a></b>
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-6 widget">
-						<div class="widget-body">
-							<p class="text-right">AA</p>
-						</div>
-					</div>
-
-				</div>
-				<!-- /row of widgets -->
-			</div>
-		</div>
 	</footer>
 
 

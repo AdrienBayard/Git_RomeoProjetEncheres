@@ -144,7 +144,7 @@
 		</div>
 	</div>
 	<!-- /container -->
-
+<br><br><br>
 
 	<footer id="footer" class="top-space">
 
@@ -188,7 +188,7 @@
 			</div>
 		</div>
 
-		<div class="footer2">
+		<!--   <div class="footer2">
 			<div class="container">
 				<div class="row">
 
@@ -210,10 +210,11 @@ AA
 					</div>
 
 				</div>
-				<!-- /row of widgets -->
 			</div>
 		</div>
+		-->
 	</footer>
+	</div>
 
 
 
@@ -227,6 +228,5 @@ AA
 	<script src="assets/js/headroom.min.js"></script>
 	<script src="assets/js/jQuery.headroom.min.js"></script>
 	<script src="assets/js/template.js"></script>
-	</div>
 </body>
 </html>

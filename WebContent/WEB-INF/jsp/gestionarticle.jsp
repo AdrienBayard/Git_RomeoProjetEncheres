@@ -56,8 +56,8 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
-						<li><a href="/RomeoProjetEncheres/connected">Accueil</a></li>
-						<li><a href="/RomeoProjetEncheres/monprofil">Mon profil</a></li>
+						<li><a href="/RomeoProjetEncheres/XXXXXX">Favoris</a></li>
+						<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">Acheter/ Vendre<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -65,7 +65,7 @@
 								<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre</a></li>
 							</ul></li>
 						<li class="active"><a class="btn"
-							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>					</ul>
+							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>					</ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
@@ -229,8 +229,7 @@
 				</div>
 			</div>
 
-			<div class="footer2">
-			</div>
+
 		</footer>
 
 

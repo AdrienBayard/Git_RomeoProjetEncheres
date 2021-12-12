@@ -56,7 +56,6 @@
 					<li><a href="/RomeoProjetEncheres/connected">Accueil</a></li>
 					<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre un article</a></li>					
 						
-						
 						<li class="active"><a class="btn"
 							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>
 					</ul>
@@ -76,8 +75,7 @@
 			</ol>
 		</div>
 		<!-- /container -->
-					<br>
-
+					<br><br><br>
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-body">
@@ -112,6 +110,8 @@
 	
 					<br>
 				</div>
+									<br><br><br><br><br><br><br><br>
+				
 		</div>
 
 
@@ -161,30 +161,6 @@
 				</div>
 			</div>
 
-			<div class="footer2">
-				<div class="container">
-					<div class="row">
-
-						<div class="col-md-6 widget">
-							<div class="widget-body">
-								<p class="simplenav">
-									<a href="/RomeoProjetEncheres/accueil">Accueil</a> | <b><a
-										href="/RomeoProjetEncheres/inscription">S'inscrire</a></b> | <b><a
-										href="/RomeoProjetEncheres/connexion">Se connecter</a></b>
-								</p>
-							</div>
-						</div>
-
-						<div class="col-md-6 widget">
-							<div class="widget-body">
-								<p class="text-right">AA</p>
-							</div>
-						</div>
-
-					</div>
-					<!-- /row of widgets -->
-				</div>
-			</div>
 		</footer>
 
 

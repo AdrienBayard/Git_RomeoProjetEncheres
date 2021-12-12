@@ -104,12 +104,12 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
-					<li><a href="/RomeoProjetEncheres/XXXXXX">Enchères</a></li>
+					<li><a href="/RomeoProjetEncheres/XXXXXX">Favoris</a></li>
 					<li><a href="/RomeoProjetEncheres/vendre">Vendre un article</a></li>					
 					<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>					
 						
 						<li class="active"><a class="btn"
-							href="/RomeoProjetEncheres/accueil">DECONNEXION (ajouter fctn)</a></li>
+							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -294,7 +294,6 @@
 					<br>
 				</div>
 			</div>
-		</div>
 
 
 
@@ -343,7 +342,7 @@
 				</div>
 			</div>
 
-			<div class="footer2">
+		<!--  	<div class="footer2">
 				<div class="container">
 					<div class="row">
 
@@ -364,10 +363,11 @@
 						</div>
 
 					</div>
-					<!-- /row of widgets -->
 				</div>
 			</div>
+			-->
 		</footer>
+		</div>
 
 
 
@@ -381,6 +381,5 @@
 		<script src="assets/js/headroom.min.js"></script>
 		<script src="assets/js/jQuery.headroom.min.js"></script>
 		<script src="assets/js/template.js"></script>
-	</div>
 </body>
 </html>
