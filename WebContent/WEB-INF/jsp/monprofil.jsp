@@ -83,20 +83,31 @@
 				
 	<form id="monprofil" action=" " method="get">
 	<div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">	
-		<fieldset>
-			<label>Pseudo: </label><label>${requestScope.pseudo}</label><br>
-			<label>Nom: </label><label>${requestScope.nom}</label><br>
-			<label>Prénom: </label><label>${requestScope.prenom}</label><br>
-			<label>Email: </label><label>${requestScope.email}</label><br>
-			<label>Teléphone: </label><label>${requestScope.telephone}</label><br>
-			<label>Rue: </label><label>${requestScope.rue}</label><br>
-			<label>Code postal: </label><label>${requestScope.codePostal}</label><br>
-			<label>Ville: </label><label>${requestScope.ville}</label><br>
-		</fieldset>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-2">	
+			<label>Pseudo: </label><br>
+			<label>Nom: </label><br>
+			<label>Prénom: </label><br>
+			<label>Email: </label><br>
+			<label>Teléphone: </label><br>
+			<label>Rue: </label><br>
+			<label>Code postal: </label><br>
+			<label>Ville: </label><br>
+			<br>
 	</div>
-	<div class="col-sm-3"></div>	
+		<div class="col-sm-2">	
+			<label>${requestScope.pseudo}</label><br>
+			<label>${requestScope.nom}</label><br>
+			<label>${requestScope.prenom}</label><br>
+			<label>${requestScope.email}</label><br>
+			<label>${requestScope.telephone}</label><br>
+			<label>${requestScope.rue}</label><br>
+			<label>${requestScope.codePostal}</label><br>
+			<label>${requestScope.ville}</label><br>
+		<br>
+			
+	</div>
+	<div class="col-sm-4"></div>	
 	</div>
 		</form>            		
 	

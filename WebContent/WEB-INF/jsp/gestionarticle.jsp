@@ -90,7 +90,7 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<img alt="" src="" />
 		</div>
 		
@@ -108,7 +108,7 @@
 				<div class="form-group">
 					<label for="">Description de l'article</label>
 					<textarea class="form-control" id="description" rows="3"
-						placeholder="description"></textarea>
+						placeholder="Description"></textarea>
 				</div>
 
 				<div class="form-group">
@@ -117,7 +117,7 @@
 						<option></option>
 						<option>Informatique</option>
 						<option>Ameublement</option>
-						<option>Vetement</option>
+						<option>Vêtements</option>
 						<option>Sport et Loisirs</option>
 					</select>
 				</div>
@@ -127,11 +127,11 @@
 						class="form-control-file" id="uploadphoto">
 				</div>
 
-				<label>Début de l'enchêre : </label> <input type="datetime-local"
+				<label>Début de l'enchère : </label> <input type="datetime-local"
 					name="debutenchere" placeholder="" required> 
 					<br>
 					<label>Fin
-					de l'enchêre : </label> <input type="datetime-local" name="finenchere"
+					de l'enchère : </label> <input type="datetime-local" name="finenchere"
 					placeholder="" required>
 					
 	
