@@ -16,15 +16,18 @@
 
 	<form id="lienprofil" action=" " method="get">
 		<fieldset>
-			<label>Pseudo: </label><label>get pseudo</label><br>
-			<label>Code postal: </label><label>get code_postal</label><br>
-			<label>Ville: </label><label>get ville</label><br>
+			<label>Pseudo: </label><input type="text"
+						class="form-control" id="pseudo" value="${requestScope.pseudo}" readonly="readonly"></div><br>
+			<label>Code postal: </label><input type="text"
+						class="form-control" id="pseudo" value="${requestScope.codePostal}" readonly="readonly"><br>
+			<label>Ville: </label><input type="text"
+						class="form-control" id="pseudo" value="${requestScope.ville}" readonly="readonly"><br>
 		</fieldset>
 	</form>
 	
 	<div>
 	
-		TODO : Les ventes en cours du vendeur. 
+		TODO : Les ventes en cours du vendeur (A faire une fois que le modèle Bootstrap aura été importée). 
 		
 	</div>
 	

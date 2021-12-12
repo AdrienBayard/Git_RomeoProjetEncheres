@@ -91,7 +91,7 @@
 	.jumbotron h2, .jumbotron h3, .jumbotron h4, 
 	.jumbotron h5, .jumbotron h6 { line-height: 1.3em; }
 
-.cardperso { color: inherit; padding-top:30px; padding-bottom:30px; margin-bottom:0;  border-width:1px; border-style:solid ; border-color:black;}
+.cardperso { color: inherit; padding-top:30px; padding-bottom:30px; margin-bottom:10px;  border-width:1px; border-style:solid ; border-color:black;}
 	
 
 
