@@ -121,126 +121,16 @@
 						<div class="col-sm-1"></div>
 						<div class="col-sm-10">
 
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
-								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 6€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 19/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-2"></div>
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
-								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue 2</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 64€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 21/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
-					<br> <br> <br>
-					<div class="row">
-
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
-								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue 3</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 63€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 23/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-2"></div>
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
-								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue 4</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 67€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 24/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-1"></div>
-					</div>
-					<br> <br> <br>
-				</div>
-			</div>
-		</div>
-
-		<c:forEach var="article" items="${requestScope.listeArticles}"
-			begin="0">
-			<div class="cardperso col-sm-5">
+		<c:forEach var="article" items="${requestScope.listeArticles}" begin="0">
+			
+			
+			<div class="cardperso col-sm-5 ">
+				
 				<div class="col-sm-5">
 					<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
 						title="">
 				</div>
+				
 				<div class="col-sm-7">
 					<div class="card">
 						<div class="card-body">
@@ -257,18 +147,35 @@
 								<c:out value="${article.dateFinEncheres}" />
 								<br>
 								<!-- dateFinEncheres-->
-								<a href=""><c:out value="${article.pseudo}" /></a>
+								<%-- <c:url value = "/RomeoProjetEncheres/InfoVendeurServlet" >
+   									<c:out value="${article.pseudo}" /></a>
+  								</c:url> --%>
+								<a href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out value="${article.pseudo}" /></a>
+							<%-- 	<a href="/RomeoProjetEncheres/InfoVendeurServlet" ><c:out value="${article.pseudo}" /></a> --%>
 								<!-- Utilisateur.pseudo-->
 							</p>
 							<a href="#" class="btn btn-primary">Enchérir</a>
 						</div>
 					</div>
 				</div>
+				<div class="w-100"></div>
 			</div>
-c 
+		
+
+			<c:if test="${listeArticles.indexOf(article) % 2 == 0}">
+				<div class="col-sm-2"></div>
+			</c:if>
+			
+			
 		</c:forEach>
 
-
+		</div>
+						<div class="col-sm-1"></div>
+					</div>
+					<br> <br> <br>
+				</div>
+			</div>
+		</div>
 
 
 		<footer id="footer" class="top-space">
