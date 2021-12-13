@@ -18,7 +18,7 @@ public interface ArticleDAO {
 	
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException;
 	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException;
-	public ArticleVendu selectById(int noArticle) throws DALException;
+	public ArticleVendu selectArticleById(int noArticle) throws DALException;
 	public void deleteVente(int idArticle) throws DALException;
 
 	

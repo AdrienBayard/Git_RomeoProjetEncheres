@@ -258,7 +258,9 @@
 									<div class="card">
 										<div class="card-body">
 											<h5 class="card-title">
-												<a href="" <c:out value="${article.nomArticle}" />></a>
+												<a
+												href="<c:url value="/achat"> <c:param name="trackingArticle" value="${article.noArticle}"/></a> </c:url>"><c:out
+														value="${article.nomArticle}" /></a>
 											</h5>
 											<p class="card-text">
 												<c:out value="${article.description}" />
