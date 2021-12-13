@@ -57,12 +57,30 @@ public class ArticleManager {
 		
 	}
 
-	public List<ArticleVendu> afficherEncheresRemportees() throws BLLException {
-		return null;
+	public List<ArticleVendu> afficherEncheresRemportees(String pseudo) throws BLLException {
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherEncheresRemportees(pseudo);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
 	}
 
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws BLLException {
-		return null;
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherMesEncheres(pseudo);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
 	}
 
 //	 _____________________________________________________________________

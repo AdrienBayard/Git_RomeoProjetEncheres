@@ -76,6 +76,13 @@ public class ConnexionServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			ArticleManager.getInstance().afficherEncheresRemportees(pseudo);
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

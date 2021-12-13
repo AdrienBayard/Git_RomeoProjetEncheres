@@ -41,21 +41,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where date_debut_encheres <= CURRENT_TIMESTAMP and date_fin_encheres >= CURRENT_TIMESTAMP";
 
-	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
-			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n "
-			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
+	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
 	
 	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur"
 			+" FROM ENCHERES e , ARTICLES_VENDUS a/r/n "
 			+" WHERE a.no_article = ?/r/n "
 			+ " ORDER BY e.montant_enchere DESC /r/n"; 
 
-//	private static final String AFFICHER_MES_ENCHERES = "select TOP 1 a.nom_article, a.date_fin_encheres, e.no_utilisateur, (e.montant_enchere) as PrixVente\r\n" + 
-//			"from ARTICLES_VENDUS a inner join ENCHERES e on e.no_article = a.no_article\r\n" + 
-//			"where a.no_article = ? and a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres >= CURRENT_TIMESTAMP\r\n" + 
-//			"group by a.nom_article, a.date_fin_encheres, e.no_utilisateur, e.montant_enchere\r\n" + 
-//			"ORDER BY e.montant_enchere DESC; " + "";
+
 
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
@@ -248,47 +241,54 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	}
 
-//	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT a.nom_article,  MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n"
-//			+ "from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n"
-//			+ "WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP \r\n"
-//			+ "group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n" + "";
-//
-//	
+
 //	@Override
-	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {
+	public List<ArticleVendu> afficherEncheresRemportees(String pseudo) throws DALException {
 
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
-//
-//		ResultSet rs = null;
-//		// Obtenir une connexion
-//		Connection cnx = ConnectionProvider.getConnection();
-//		try {
-//			Statement pStmt = cnx.createStatement();
-//
-//			rs = pStmt.executeQuery(AFFICHER_MES_ENCHERES);
-//
-//			while (rs.next()) {
-//
-//				ArticleVendu article = mapAfficherVente(rs);
-//				listeAchatsAAfficher.add(article);
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		finally {
-//			if(rs!= null) {
-//				
-//				try {
-//					cnx.close();
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//
+		int noArticle = 0;
+		int noAcheteur = 0;
+		ResultSet rs = null;
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			rs = pStmt.executeQuery(AFFICHER_ENCHERES_REMPORTEES);
+
+			while (rs.next()) {
+
+				ArticleVendu article = mapAfficherVente(rs);
+				noArticle = article.getNoArticle();
+				noAcheteur = trouverMeilleurEncherisseur(noArticle);
+
+				System.out.println(pseudo);
+				try {
+					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
+						listeAchatsAAfficher.add(article);
+}
+				} catch (BLLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(rs!= null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
 		return listeAchatsAAfficher;
 	}
 
@@ -312,9 +312,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				noArticle = article.getNoArticle();
 				noAcheteur = trouverMeilleurEncherisseur(noArticle);
 
-//				HttpSession session = request.getSession();
-//		        String pseudo = (String) session.getAttribute("pseudo");
-//				String pseudo = System.getProperty("pseudo");
 				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
