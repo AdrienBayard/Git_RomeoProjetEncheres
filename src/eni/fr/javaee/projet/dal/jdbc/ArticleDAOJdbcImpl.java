@@ -325,7 +325,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	}
 
-	private int trouverMeilleurEncherisseur(int noArticle) {
+	public int trouverMeilleurEncherisseur(int noArticle) {
 		int noAcheteur = 0;
 
 		Connection cnx = ConnectionProvider.getConnection();
@@ -391,11 +391,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return articleVendu;
 	}
 
-	@Override
-	public int trouverMeilleurEncherisseur(int noArticle) throws DALException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public ArticleVendu selectById(int noArticle) throws DALException {
