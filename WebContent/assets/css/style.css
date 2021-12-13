@@ -6,14 +6,15 @@
 }
 :root
 {
-    --clr: #222327
+    --clr: #2E8B57
 }
 
 .navigation{
     position: relative;
     width: 400px;
     height: 70px;
-    background : #2E8B57;
+    background : #FFF;
+    <!-- #2E8B57 -->
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +82,7 @@
     top: -50%;
     width: 70px;
     height: 70px;
-    background: #29fd53;
+    background: #ff00ff;
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;

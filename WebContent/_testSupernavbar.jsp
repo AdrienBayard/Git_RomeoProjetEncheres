@@ -54,8 +54,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
 				
-										<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
-
+			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
     <div class="navigation">
         <ul>
             <li class="list active">
