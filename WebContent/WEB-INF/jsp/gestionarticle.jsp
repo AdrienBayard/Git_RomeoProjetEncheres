@@ -134,8 +134,9 @@
 					de l'enchère : </label> <input type="datetime-local" name="finEnchere"
 					placeholder="" required>
 					
-	
-					
+		<br>
+				<label> Mise à prix :  </label><input type="number" name="miseAPrix"
+					placeholder="" required>	
 					<br>
 					<br>
 					
