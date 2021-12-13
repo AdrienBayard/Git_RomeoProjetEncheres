@@ -43,10 +43,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
 	
-	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur"
-			+" FROM ENCHERES e , ARTICLES_VENDUS a/r/n "
-			+" WHERE a.no_article = ?/r/n "
-			+ " ORDER BY e.montant_enchere DESC /r/n"; 
+	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur \r\n " + 
+			"			 FROM ENCHERES e , ARTICLES_VENDUS a \r\n " + 
+			"			WHERE a.no_article = ? \r\n " + 
+			"			ORDER BY e.montant_enchere DESC ";
 
 
 
@@ -310,9 +310,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
-				noAcheteur = trouverMeilleurEncherisseur(noArticle);
-
-				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
 						listeAchatsAAfficher.add(article);
@@ -363,7 +360,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 
 			try {
-				noAcheteur = rs.getInt("e.no_utilisateur");
+				noAcheteur = rs.getInt("no_utilisateur");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

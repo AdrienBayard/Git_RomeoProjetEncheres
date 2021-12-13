@@ -91,7 +91,7 @@
   
   <servlet>
   	<servlet-name>detailvente</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/detailvente.jsp</jsp-file>
+  	<jsp-file>/WEB-INF/jsp/detailVente.jsp</jsp-file>
   </servlet>
   
   <servlet-mapping>

@@ -23,6 +23,7 @@ public class acheterArticleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
+		//TODO : Methode pour récuperer article by id
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/detailvente");
 		aiguilleur.forward(request, response);
 	}
