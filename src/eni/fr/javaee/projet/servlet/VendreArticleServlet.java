@@ -77,7 +77,7 @@ public class VendreArticleServlet extends HttpServlet {
 		case "Ameublement":
 			categorie = 2;
 			break;
-		case "Vêtements":
+		case "Vetements":
 			categorie = 3;
 			break;
 		case "Sport et Loisirs":
