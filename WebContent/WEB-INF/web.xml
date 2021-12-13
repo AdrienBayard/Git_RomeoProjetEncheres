@@ -88,6 +88,16 @@
   	<servlet-name>gestionarticle</servlet-name>
   	<url-pattern>/gestionarticle</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>detailvente</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/detailvente.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>detailvente</servlet-name>
+  	<url-pattern>/detailvente</url-pattern>
+  </servlet-mapping>
 
   
   
