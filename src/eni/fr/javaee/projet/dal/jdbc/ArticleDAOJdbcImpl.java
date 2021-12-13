@@ -41,7 +41,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where date_debut_encheres <= CURRENT_TIMESTAMP and date_fin_encheres >= CURRENT_TIMESTAMP";
 
-	private static final String AFFICHER_ARTICLE_AVEC_ID = "";
+	private static final String AFFICHER_ARTICLE_AVEC_ID = "SELECT * from ARTICLES_VENDUS where no_article = ?";
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
 
