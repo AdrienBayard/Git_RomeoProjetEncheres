@@ -26,55 +26,55 @@
 <link rel="stylesheet" href="assets/css/main.css">
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script>
-        //  traduction : quand la radio d'ID achats est cliquée, lancer la fonction enableCheckBoxAchats et disableCheckBoxAchats si la radio ventes est cliquée.
-        $(function () {
-            enableCheckBoxAchats();
-            $("#achats").click(enableCheckBoxAchats);
-        });
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	//  traduction : quand la radio d'ID achats est cliquée, lancer la fonction enableCheckBoxAchats et disableCheckBoxAchats si la radio ventes est cliquée.
+	$(function() {
+		enableCheckBoxAchats();
+		$("#achats").click(enableCheckBoxAchats);
+	});
 
-        $(function () {
-            disableCheckBoxAchats();
-            $("#ventes").click(disableCheckBoxAchats);
-        });
+	$(function() {
+		disableCheckBoxAchats();
+		$("#ventes").click(disableCheckBoxAchats);
+	});
 
-        // traduction : si la radio d'ID achats est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
-        function enableCheckBoxAchats() {
-            $("input.achats").removeAttr("disabled");
-        }
+	// traduction : si la radio d'ID achats est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
+	function enableCheckBoxAchats() {
+		$("input.achats").removeAttr("disabled");
+	}
 
-        function disableCheckBoxAchats() {
-            $("input.achats").prop("disabled", true);
-            $("input.achats").prop("checked", false);
-        }
-    </script>
+	function disableCheckBoxAchats() {
+		$("input.achats").prop("disabled", true);
+		$("input.achats").prop("checked", false);
+	}
+</script>
 
-    <script>
-        // traduction : quand la radio d'ID ventes est cliquée, lancer la fonction enableCheckBoxVentes et
-        // disableCheckBoxVentes si la radio ventes est cliquée.
-        $(function () {
-            enableCheckBoxVentes();
-            $("#ventes").click(enableCheckBoxVentes);
-        });
+<script>
+	// traduction : quand la radio d'ID ventes est cliquée, lancer la fonction enableCheckBoxVentes et
+	// disableCheckBoxVentes si la radio ventes est cliquée.
+	$(function() {
+		enableCheckBoxVentes();
+		$("#ventes").click(enableCheckBoxVentes);
+	});
 
-        $(function () {
-            disableCheckBoxVentes();
-            $("#achats").click(disableCheckBoxVentes);
-        });
+	$(function() {
+		disableCheckBoxVentes();
+		$("#achats").click(disableCheckBoxVentes);
+	});
 
-        // traduction : si la radio ventes est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
-        function enableCheckBoxVentes() {
-            $("input.ventes").removeAttr("disabled");
-        }
+	// traduction : si la radio ventes est cliquée; désactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre cliquables
+	function enableCheckBoxVentes() {
+		$("input.ventes").removeAttr("disabled");
+	}
 
-        // traduction : si la radio achats est cliquée; réactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre incliquables
-        function disableCheckBoxVentes() {
-            $("input.ventes").prop("disabled", true);
-            $("input.ventes").prop("checked", false);
-        }
-
-    </script>
+	// traduction : si la radio achats est cliquée; réactiver l'attribut "disabled" des checkbox de la classe ventes :> Les rendre incliquables
+	function disableCheckBoxVentes() {
+		$("input.ventes").prop("disabled", true);
+		$("input.ventes").prop("checked", false);
+	}
+</script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -104,10 +104,11 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav pull-right">
-					<li><a href="/RomeoProjetEncheres/XXXXXX">Favoris</a></li>
-					<li><a href="/RomeoProjetEncheres/vendre">Vendre un article</a></li>					
-					<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>					
-						
+						<li><a href="/RomeoProjetEncheres/XXXXXX">Favoris</a></li>
+						<li><a href="/RomeoProjetEncheres/vendre">Vendre un
+								article</a></li>
+						<li><a href="/RomeoProjetEncheres/modifier">Mon profil</a></li>
+
 						<li class="active"><a class="btn"
 							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>
 					</ul>
@@ -162,138 +163,140 @@
 						</div>
 
 
-					<br> <br> 
-				<!-- DEBUT MULTICHOIX -->	
-				
-		<div class="row">
-						
-            <div class="checkboxs">
-                <!-- CASES FILTRE MES ACHATS -->
-			<div class="col-md-2 col-sm-6"></div>
-			<div class="col-md-3 col-sm-6">
-			
-                <input type="radio" id="achats" name="achatsOuVentes" value="achats" />
-                <label for="achats"> Achats</label><br>
-                <!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
+						<br> <br>
+						<!-- DEBUT MULTICHOIX -->
 
-                <input type="checkbox" id="encheresOuvertes" name="encheresOuvertes" class=achats disabled
-                    value="encheresOuvertes">
-                <label for="encheresOuvertes"> Toutes les enchères ouvertes</label><br>
-                <input type="checkbox" id="mesEncheres" name="mesEncheres" class=achats disabled value="mesEncheres">
-                <label for="mesEncheres"> Mes enchères</label><br>
-                <input type="checkbox" id="mesEncheresRemportees" name="mesEncheresRemportees" disabled class=achats
-                    value="mesEncheresRemportees">
-                <label for="mesEncheresRemportees"> Mes enchères remportées</label><br><br>
-			</div>
-			<div class="col-md-2 col-sm-6"></div>
-                <!-- CASES FILTRE MES VENTES -->
-			<div class="col-md-3 col-sm-6">
-                <input type="radio" id="ventes" name="achatsOuVentes" value="ventes" />
-                <label for="ventes">Mes ventes</label><br>
-                <!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
+						<div class="row">
 
-                <input type="checkbox" id="mesVentesEnCours" name="mesVentesEnCours" class="ventes" disabled
-                    value="mesVentesEnCours">
-                <label for="mesVentesEnCours"> Ventes en cours</label><br>
-                <input type="checkbox" id="ventesNonDebutees" name="ventesNonDebutees" class="ventes" disabled
-                    value="ventesNonDebutees">
-                <label for="ventesNonDebutees"> Ventes non débutées</label><br>
-                <input type="checkbox" id="ventesTerminees" name="ventesTerminees" class="ventes" disabled
-                    value="ventesTerminees">
-                <label for="ventesTerminees"> Ventes terminées</label><br><br>
-                
-             </div>   
-			<div class="col-md-2 col-sm-6"></div>                
-            </div>
-			</div>
-			
-			
-		<div class="row">
-			<div class="col-md-5 col-sm-6"></div>                
-			<div class="col-md-7 col-sm-6">                
-            <input class="btn btn-action" type="submit" value="Valider" >	
-            </div>
-			<div class="col-md-0 col-sm-6 highlight"></div>                
-            
-            </div>
+							<div class="checkboxs">
+								<!-- CASES FILTRE MES ACHATS -->
+								<div class="col-md-2 col-sm-6"></div>
+								<div class="col-md-3 col-sm-6">
 
-            
-            
-    					</form>					
-            				
-					</div>
-					
-					
-					
-				<!-- FIN MULTICHOIX -->	
-				
+									<input type="radio" id="achats" name="achatsOuVentes"
+										value="achats" /> <label for="achats"> Achats</label><br>
+									<!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
-
-					<div class="row">
-
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
-
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
+									<input type="checkbox" id="encheresOuvertes"
+										name="encheresOuvertes" class=achats disabled
+										value="encheresOuvertes"> <label
+										for="encheresOuvertes"> Toutes les enchères ouvertes</label><br>
+									<input type="checkbox" id="mesEncheres" name="mesEncheres"
+										class=achats disabled value="mesEncheres"> <label
+										for="mesEncheres"> Mes enchères</label><br> <input
+										type="checkbox" id="mesEncheresRemportees"
+										name="mesEncheresRemportees" disabled class=achats
+										value="mesEncheresRemportees"> <label
+										for="mesEncheresRemportees"> Mes enchères remportées</label><br>
+									<br>
 								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 6€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 19/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
-							</div>
+								<div class="col-md-2 col-sm-6"></div>
+								<!-- CASES FILTRE MES VENTES -->
+								<div class="col-md-3 col-sm-6">
+									<input type="radio" id="ventes" name="achatsOuVentes"
+										value="ventes" /> <label for="ventes">Mes ventes</label><br>
+									<!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
-							<div class="col-sm-2"></div>
-							<div class="cardperso col-sm-5">
-								<div class="col-sm-5">
-									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-										title="">
+									<input type="checkbox" id="mesVentesEnCours"
+										name="mesVentesEnCours" class="ventes" disabled
+										value="mesVentesEnCours"> <label
+										for="mesVentesEnCours"> Ventes en cours</label><br> <input
+										type="checkbox" id="ventesNonDebutees"
+										name="ventesNonDebutees" class="ventes" disabled
+										value="ventesNonDebutees"> <label
+										for="ventesNonDebutees"> Ventes non débutées</label><br>
+									<input type="checkbox" id="ventesTerminees"
+										name="ventesTerminees" class="ventes" disabled
+										value="ventesTerminees"> <label for="ventesTerminees">
+										Ventes terminées</label><br>
+									<br>
+
 								</div>
-								<div class="col-sm-7">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Un bouquin de dingue 2</h5>
-											<p class="card-text">Description de votre lot.</p>
-											<p class="card-text">
-												Prix : 64€<br>
-												<!-- prixVente -->
-												Fin de l'enchère : 21/12/2021<br>
-												<!-- dateFinEncheres-->
-												Vendeur : tititoto44
-												<!-- Utilisateur.pseudo-->
-											</p>
-											<a href="#" class="btn btn-primary">Enchérir</a>
-										</div>
-									</div>
-								</div>
+								<div class="col-md-2 col-sm-6"></div>
 							</div>
 						</div>
-						<div class="col-sm-1"></div>
-					</div>
-					<br>
-					<br>
-					<br>
 
-					<br>
-					<br>
-					<br>
+
+						<div class="row">
+							<div class="col-md-5 col-sm-6"></div>
+							<div class="col-md-7 col-sm-6">
+								<input class="btn btn-action" type="submit" value="Valider">
+							</div>
+							<div class="col-md-0 col-sm-6 highlight"></div>
+
+						</div>
+
+
+
+					</form>
+
 				</div>
+
+
+
+				<!-- FIN MULTICHOIX -->
+
+
+
+				<div class="row">
+
+					<div class="col-sm-1"></div>
+					<div class="col-sm-10">
+
+						<c:forEach var="article" items="${requestScope.listeArticles}"
+							begin="0">
+
+
+							<div class="cardperso col-sm-5 ">
+
+								<div class="col-sm-5">
+									<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+										title="">
+								</div>
+
+								<div class="col-sm-7">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">
+												<a href="" <c:out value="${article.nomArticle}" />></a>
+											</h5>
+											<p class="card-text">
+												<c:out value="${article.description}" />
+											</p>
+											<p class="card-text">
+												<c:out value="${article.prixVente}" />
+												<br>
+												<!-- prixVente -->
+												<c:out value="${article.dateFinEncheres}" />
+												<br>
+												<!-- dateFinEncheres-->
+												<a
+													href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
+														value="${article.pseudo}" /></a>
+												<!-- Utilisateur.pseudo-->
+											</p>
+											<a
+												href="<c:url value="/achat">  <c:param name= "trackingArticle" value = "${article.noArticle }" /> </c:url>" class="
+												btnbtn-primary" >Enchérir</a>
+										</div>
+									</div>
+								</div>
+								<div class="w-100"></div>
+							</div>
+
+
+							<c:if test="${listeArticles.indexOf(article) % 2 == 0}">
+								<div class="col-sm-2"></div>
+							</c:if>
+
+
+						</c:forEach>
+					</div>
+					<div class="col-sm-1"></div>
+				</div>
+				<br> <br> <br> <br> <br> <br>
 			</div>
+		</div>
 
 
 
@@ -342,7 +345,7 @@
 				</div>
 			</div>
 
-		<!--  	<div class="footer2">
+			<!--  	<div class="footer2">
 				<div class="container">
 					<div class="row">
 
@@ -367,19 +370,19 @@
 			</div>
 			-->
 		</footer>
-		</div>
+	</div>
 
 
 
 
 
-		<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script
-			src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-		<script src="assets/js/headroom.min.js"></script>
-		<script src="assets/js/jQuery.headroom.min.js"></script>
-		<script src="assets/js/template.js"></script>
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
 </body>
 </html>
