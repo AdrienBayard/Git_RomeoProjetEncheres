@@ -96,24 +96,24 @@
 		
 		
 		<div class="col-md-8">
-			<form role="form">
+			<form name="mettrenvente" role="form">
 		
 				<br>
 				<br>
 				<div class="form-group">
 					<label for="article">Article</label> <input type="text"
-						class="form-control" id="article" placeholder="Article">
+						class="form-control" id="article" name="article" placeholder="Article">
 				</div>
 
 				<div class="form-group">
 					<label for="">Description de l'article</label>
-					<textarea class="form-control" id="description" rows="3"
+					<textarea class="form-control" id="description" rows="3" name="description"
 						placeholder="Description"></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for=""> Catégorie</label> <select class="form-control"
-						id="exampleFormControlSelect1">
+						id="exampleFormControlSelect1" name="categorie">
 						<option></option>
 						<option>Informatique</option>
 						<option>Ameublement</option>
@@ -128,11 +128,11 @@
 				</div>
 
 				<label>Début de l'enchère : </label> <input type="datetime-local"
-					name="debutenchere" placeholder="" required> 
+					name="debutenchere" placeholder="" name="debutEnchere" required> 
 					<br>
 					<label>Fin
-					de l'enchère : </label> <input type="datetime-local" name="finenchere"
-					placeholder="" required>
+					de l'enchère : </label> <input type="datetime-local" name="finEnchere"
+					placeholder="" name="finenchere" required>
 					
 	
 					
@@ -142,7 +142,7 @@
 					
 			<div class="row">
 				<div class="button text-center">		
-				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" form = "" name = "" value ="true">Mettre en vente mon article</button></a>	
+				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" form="mettrenvente" formmethod="post" name="vendre" value="true">Mettre en vente mon article</button></a>	
 				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 			</div>	
 			</div>

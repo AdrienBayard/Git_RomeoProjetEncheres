@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.Utilisateur;
+import fr.eni.javaee.projet.dal.DALException;
 
 /**
  * Servlet implementation class ui
@@ -68,6 +70,12 @@ public class ConnexionServlet extends HttpServlet {
 		request.setAttribute("mdpValide", mdpValide);
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
 		aiguilleur.forward(request, response);
+		try {
+			ArticleManager.getInstance().afficherMesEncheres(pseudo);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

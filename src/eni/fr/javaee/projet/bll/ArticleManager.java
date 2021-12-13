@@ -61,7 +61,7 @@ public class ArticleManager {
 		return null;
 	}
 
-	public List<ArticleVendu> afficherMesEncheres() throws DALException {
+	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException {
 		return null;
 	}
 
