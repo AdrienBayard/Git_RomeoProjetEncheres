@@ -394,7 +394,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 
 	@Override
-	public ArticleVendu selectById(int noArticle) throws DALException {
+	public ArticleVendu selectselectArticleByIdById(int noArticle) throws DALException {
 		ArticleVendu article = null;
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
