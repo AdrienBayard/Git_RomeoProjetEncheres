@@ -104,7 +104,7 @@
 		<label><!-- TODO  ${requestScope.codePostal}--> <!-- TODO  ${requestScope.ville}--></label><br><br>
 		<label>Vendeur:  <!-- TODO  ${requestScope.vendeur}--></label><br><br>
 		<label>Ma proposition:  <!-- TODO  ${requestScope.vendeur}--></label>
-		<input id="" type="number" placeholder="" step="1" min="1"><br><br> 
+		<input id="" type="number" pattern="^[0-9]{100}$" placeholder="" step="1" min="1"><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
 		<div class="button text-center">		
