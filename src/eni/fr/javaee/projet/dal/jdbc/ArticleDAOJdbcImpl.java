@@ -57,7 +57,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 //			"group by a.nom_article, a.date_fin_encheres, e.no_utilisateur, e.montant_enchere\r\n" + 
 //			"ORDER BY e.montant_enchere DESC; " + "";
 
-	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial,no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
+	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
 	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
 
@@ -85,7 +85,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setTimestamp(3, dateDebutTS);
 			pStmt.setTimestamp(4, dateFinTS);
 			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
-			pStmt.setInt(6, nouvelArticleVendu.getPrixVente());
+			pStmt.setInt(6, nouvelArticleVendu.getNo_utilisateur());
 			pStmt.setInt(7, nouvelArticleVendu.getCategorie());
 
 			// Execute l'ordre SQL

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.sun.research.ws.wadl.Request;
 
@@ -62,7 +63,7 @@ public class VendreArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int categorie;
-		// DOPPOST pour update la BDD d'un nouvel article./
+		int no_utilisateur = 0;
 		String article = request.getParameter("article");
 		String description = request.getParameter("description");
 		String categorieString = request.getParameter("categorie");
@@ -79,17 +80,26 @@ public class VendreArticleServlet extends HttpServlet {
 		case "Vêtements":
 			categorie = 3;
 			break;
-		case "Sports et Loisirs":
+		case "Sport et Loisirs":
 			categorie = 4;
 			break;
 		default:
 			categorie = 5;
 			break;
 		}
+		HttpSession session = request.getSession();
+		String pseudo = (String) session.getAttribute("pseudo");
+		try {
+			no_utilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println("test : "  +categorie);
 		
 
 			try {
-				ArticleManager.getInstance().insertVente(article, description, dateDebutEnchere, dateFinEnchere, miseAPrix, 0, categorie, 0);
+				ArticleManager.getInstance().insertVente(article, description, dateDebutEnchere, dateFinEnchere, miseAPrix, 0, no_utilisateur ,categorie);
 			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -68,7 +68,7 @@ public class ArticleManager {
 //	 _____________________________________________________________________
 
 	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
-			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int categorie, int no_utilisateur)
+			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int no_utilisateur, int categorie)
 			throws BLLException {
 
 		ArticleVendu article = null;
@@ -82,8 +82,8 @@ public class ArticleManager {
 		validationMiseAPrix(miseAPrix, ex);
 //		validationPrixVente(prixVente, ex);
 
-		article = new ArticleVendu(0, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
-				categorie, 0);
+		article = new ArticleVendu(0, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, no_utilisateur,
+				categorie);
 		try {
 			dao.insertVente(article);
 		} catch (DALException e) {
