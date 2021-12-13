@@ -65,7 +65,7 @@
 								<li><a href="/RomeoProjetEncheres/gestionarticle">Vendre</a></li>
 							</ul></li>
 						<li class="active"><a class="btn"
-							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li>					</ul>
+							href="/RomeoProjetEncheres/accueil">DECONNEXION</a></li></ul>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
@@ -96,7 +96,7 @@
 		
 		
 		<div class="col-md-8">
-			<form name="mettrenvente" role="form">
+			<form name="mettrenvente" role="form" method="post">
 		
 				<br>
 				<br>
@@ -128,11 +128,11 @@
 				</div>
 
 				<label>Début de l'enchère : </label> <input type="datetime-local"
-					name="debutenchere" placeholder="" name="debutEnchere" required> 
+					 placeholder="" name="debutEnchere" required> 
 					<br>
 					<label>Fin
 					de l'enchère : </label> <input type="datetime-local" name="finEnchere"
-					placeholder="" name="finenchere" required>
+					placeholder="" required>
 					
 	
 					
@@ -141,13 +141,16 @@
 					
 					
 			<div class="row">
-				<div class="button text-center">		
-				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" form="mettrenvente" formmethod="post" name="vendre" value="true">Mettre en vente mon article</button></a>	
+				<div class="button text-center m-10">		
+				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" formmethod="post" name="vendre" value="true">Mettre en vente mon article</button></a>	
 				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 			</div>	
 			</div>
 				
-				<fieldset class="p-5">
+			
+			</form>
+			
+			<fieldset class="p-5">
 					<legend> Retrait </legend>
 					
 					<div class="row">
@@ -168,8 +171,7 @@
 						class="form-control" id="article" value="${requestScope.ville}" readonly="readonly"></div>
 					</div>  
 				</fieldset>
-		
-			</form>
+				
 		</div>
 	</div>
 	<br><br><br><br><br><br><br>
