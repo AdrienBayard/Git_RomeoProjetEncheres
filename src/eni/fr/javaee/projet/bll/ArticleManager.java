@@ -69,7 +69,7 @@ public class ArticleManager {
 
 	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
 			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int categorie, int no_utilisateur)
-			throws DALException, BLLException {
+			throws BLLException {
 
 		ArticleVendu article = null;
 

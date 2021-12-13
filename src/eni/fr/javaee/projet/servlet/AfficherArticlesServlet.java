@@ -35,7 +35,8 @@ public class AfficherArticlesServlet extends HttpServlet {
 		try {
 			listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
 			 
-		} catch (DALException e) {
+		
+		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

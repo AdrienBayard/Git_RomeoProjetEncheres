@@ -311,7 +311,11 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
 				noAcheteur = trouverMeilleurEncherisseur(noArticle);
-				
+
+//				HttpSession session = request.getSession();
+//		        String pseudo = (String) session.getAttribute("pseudo");
+//				String pseudo = System.getProperty("pseudo");
+				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
 						listeAchatsAAfficher.add(article);

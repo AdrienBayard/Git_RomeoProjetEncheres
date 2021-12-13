@@ -72,7 +72,7 @@ public class ConnexionServlet extends HttpServlet {
 		aiguilleur.forward(request, response);
 		try {
 			ArticleManager.getInstance().afficherMesEncheres(pseudo);
-		} catch (DALException e) {
+		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
