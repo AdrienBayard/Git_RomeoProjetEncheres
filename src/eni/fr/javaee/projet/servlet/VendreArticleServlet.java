@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+
 import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
@@ -10,15 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import com.sun.research.ws.wadl.Request;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
-import eni.fr.javaee.projet.bo.Utilisateur;
-import fr.eni.javaee.projet.dal.DALException;
+
 
 /**
  * Servlet implementation class VendreArticleServlet
@@ -39,7 +37,6 @@ public class VendreArticleServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
 		try {
-			System.out.println("hello");
 			String rue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
 			String codePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
 			String ville = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
@@ -84,7 +81,7 @@ public class VendreArticleServlet extends HttpServlet {
 			categorie = 4;
 			break;
 		default:
-			categorie = 5;
+			categorie = 0;
 			break;
 		}
 		HttpSession session = request.getSession();
@@ -95,7 +92,6 @@ public class VendreArticleServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println("test : "  +categorie);
 		
 
 			try {

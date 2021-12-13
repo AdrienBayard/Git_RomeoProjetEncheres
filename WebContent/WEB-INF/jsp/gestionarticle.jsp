@@ -102,18 +102,18 @@
 				<br>
 				<div class="form-group">
 					<label for="article">Article</label> <input type="text"
-						class="form-control" id="article" name="article" placeholder="Article">
+						class="form-control" id="article" name="article" placeholder="Article" required>
 				</div>
 
 				<div class="form-group">
 					<label for="">Description de l'article</label>
 					<textarea class="form-control" id="description" rows="3" name="description"
-						placeholder="Description"></textarea>
+						placeholder="Description" required></textarea>
 				</div>
 
 				<div class="form-group">
 					<label for=""> Catégorie</label> <select class="form-control"
-						id="exampleFormControlSelect1" name="categorie">
+						id="exampleFormControlSelect1" name="categorie" required>
 						<option></option>
 						<option>Informatique</option>
 						<option>Ameublement</option>
