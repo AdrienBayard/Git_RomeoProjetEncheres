@@ -30,19 +30,19 @@ public class ArticleManager {
 		return instance;
 	}
 
-	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
+	public List<ArticleVendu> afficherVentesEnCours() throws BLLException {
 		return null;
 	}
 
-	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
+	public List<ArticleVendu> afficherVentesNonDebutees() throws BLLException   {
 		return null;
 	}
 
-	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
+	public List<ArticleVendu> afficherVentesTerminees() throws BLLException {
 		return null;
 	}
 
-	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
+	public List<ArticleVendu> afficherAchatsEnCours() throws BLLException {
 		
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
 		
@@ -57,11 +57,11 @@ public class ArticleManager {
 		
 	}
 
-	public List<ArticleVendu> afficherEncheresRemportees() throws DALException {
+	public List<ArticleVendu> afficherEncheresRemportees() throws BLLException {
 		return null;
 	}
 
-	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException {
+	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws BLLException {
 		return null;
 	}
 

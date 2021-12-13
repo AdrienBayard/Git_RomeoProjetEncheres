@@ -311,10 +311,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
 				noAcheteur = trouverMeilleurEncherisseur(noArticle);
-//				HttpSession session = request.getSession();
-//		        String pseudo = (String) session.getAttribute("pseudo");
-				String pseudo = System.getProperty("pseudo");
-				System.out.println(pseudo);
+				
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
 						listeAchatsAAfficher.add(article);
@@ -350,24 +347,33 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Obtient une objet de commande (Statement) = ordre SQL
+		ResultSet rs = null;
 		try {
 
 			// Paramétrer l'objet de commande
 			PreparedStatement pStmt = cnx.prepareStatement(TROUVER_MEILLEUR_ENCHERISSEUR);
 			pStmt.setInt(1, noArticle);
 			
+			
 			// Execute l'ordre SQL
+			rs = pStmt.executeQuery();
+			
+//			pStmt.executeUpdate();
 
-			pStmt.executeUpdate();
 
-
+			try {
+				noAcheteur = rs.getInt("e.no_utilisateur");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
 		finally {
-
-				
+			
 				try {
 					cnx.close();
 				} catch (SQLException e) {
