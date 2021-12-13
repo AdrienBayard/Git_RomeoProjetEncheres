@@ -42,19 +42,19 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where date_debut_encheres <= CURRENT_TIMESTAMP and date_fin_encheres >= CURRENT_TIMESTAMP";
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
-	
+
 	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur"
-			+" FROM ENCHERES e , ARTICLES_VENDUS a/r/n "
-			+" WHERE a.no_article = ?/r/n "
-			+ " ORDER BY e.montant_enchere DESC /r/n"; 
-
-
+			+ " FROM ENCHERES e , ARTICLES_VENDUS a/r/n " + " WHERE a.no_article = ?/r/n "
+			+ " ORDER BY e.montant_enchere DESC /r/n";
 
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
 	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
 
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
+	
+	private static final String AFFICHER_ARTICLE_AVEC_ID = "";
+	
 
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException {
 
@@ -91,14 +91,11 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				nouvelArticleVendu.setNoArticle(idArticleInsere);
 			}
 
-		
-
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-		}
-		finally {
-			if(rs!= null) {
-				
+		} finally {
+			if (rs != null) {
+
 				try {
 					cnx.close();
 				} catch (SQLException e) {
@@ -137,20 +134,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 			// Execute l'ordre SQL
 
-	
-
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-		}
-		finally {
-				
-				try {
-					cnx.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
+		} finally {
+
+			try {
+				cnx.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 		return nouvelArticleVendu;
 	}
@@ -171,20 +165,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			// Execute l'ordre SQL
 			pStmt.executeUpdate();
 
-
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-		}
-		finally {
+		} finally {
 
-				
-				try {
-					cnx.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
+			try {
+				cnx.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 
@@ -225,10 +216,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally {
-			if(rs!= null) {
-				
+		} finally {
+			if (rs != null) {
+
 				try {
 					cnx.close();
 				} catch (SQLException e) {
@@ -240,7 +230,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 		return listeAchatsAAfficher;
 	}
-
 
 //	@Override
 	public List<ArticleVendu> afficherEncheresRemportees(String pseudo) throws DALException {
@@ -264,9 +253,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				System.out.println(pseudo);
 				try {
-					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
+					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
 						listeAchatsAAfficher.add(article);
-}
+					}
 				} catch (BLLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -276,10 +265,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally {
-			if(rs!= null) {
-				
+		} finally {
+			if (rs != null) {
+
 				try {
 					cnx.close();
 				} catch (SQLException e) {
@@ -294,7 +282,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	@Override
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException {
-		
+
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
 		int noArticle = 0;
 		int noAcheteur = 0;
@@ -314,9 +302,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				System.out.println(pseudo);
 				try {
-					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
+					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
 						listeAchatsAAfficher.add(article);
-}
+					}
 				} catch (BLLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -326,10 +314,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		finally {
-			if(rs!= null) {
-				
+		} finally {
+			if (rs != null) {
+
 				try {
 					cnx.close();
 				} catch (SQLException e) {
@@ -342,9 +329,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	}
 
-	private int trouverMeilleurEncherisseur(int noArticle) {
+	public int trouverMeilleurEncherisseur(int noArticle) {
 		int noAcheteur = 0;
-		
+
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Obtient une objet de commande (Statement) = ordre SQL
@@ -354,13 +341,11 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			// Paramétrer l'objet de commande
 			PreparedStatement pStmt = cnx.prepareStatement(TROUVER_MEILLEUR_ENCHERISSEUR);
 			pStmt.setInt(1, noArticle);
-			
-			
+
 			// Execute l'ordre SQL
 			rs = pStmt.executeQuery();
-			
-//			pStmt.executeUpdate();
 
+//			pStmt.executeUpdate();
 
 			try {
 				noAcheteur = rs.getInt("e.no_utilisateur");
@@ -368,20 +353,18 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-		}
-		finally {
-			
-				try {
-					cnx.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
+		} finally {
+
+			try {
+				cnx.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 		return noAcheteur;
 	}
@@ -405,13 +388,44 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		articleVendu = new ArticleVendu(no_Article, nomArticle, description, dateDebutEncheres, dateFinEncheres,
 				miseAPrix, prixVente, categorie, no_utilisateur, pseudo);
 
 		return articleVendu;
 	}
 
+	@Override
+	public ArticleVendu selectById(int noArticle) throws DALException {
+		ArticleVendu article = null;
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
 
+		// Obtient une objet de commande (Statement) = ordre SQL
+		ResultSet rs = null;
+		try {
 
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_ARTICLE_AVEC_ID);
+			pStmt.setInt(1, noArticle);
+
+			rs = pStmt.executeQuery();
+
+			if (rs.next()) {
+				article = mapAfficherVente(rs);
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			if (rs != null) {
+
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return article;
+	}
 }

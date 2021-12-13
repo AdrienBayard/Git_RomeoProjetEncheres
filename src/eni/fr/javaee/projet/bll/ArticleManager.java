@@ -5,9 +5,7 @@ import fr.eni.javaee.projet.dal.ProjetDAOFactory;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import eni.fr.javaee.projet.bo.ArticleVendu;
-import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -69,6 +67,19 @@ public class ArticleManager {
 		
 		return listeArticles;
 	}
+	
+	public int trouverMeilleurEncherisseur(int noArticle) throws BLLException {
+		int noUtilisateur = 0;
+		
+		try {
+			noUtilisateur = dao.trouverMeilleurEncherisseur(noArticle);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return noUtilisateur;
+	}
 
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws BLLException {
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
@@ -83,6 +94,21 @@ public class ArticleManager {
 		return listeArticles;
 	}
 
+	
+	public ArticleVendu selectById(int noArticle) throws  BLLException {
+		ArticleVendu article = null;
+		BLLException ex = new BLLException();
+		validationId(noArticle, ex);
+		try {
+			article = dao.selectById(noArticle);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return article;
+	}
+	
+	
 //	 _____________________________________________________________________
 
 	public ArticleVendu insertVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
