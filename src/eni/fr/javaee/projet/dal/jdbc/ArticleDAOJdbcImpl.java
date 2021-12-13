@@ -296,88 +296,88 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public List<ArticleVendu> afficherMesEncheres() throws DALException {
 		
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
-//		int noArticle = 0;
-//		int noAcheteur = 0;
-//		ResultSet rs = null;
-//		// Obtenir une connexion
-//		Connection cnx = ConnectionProvider.getConnection();
-//		try {
-//			Statement pStmt = cnx.createStatement();
-//
-//			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
-//
-//			while (rs.next()) {
-//
-//				ArticleVendu article = mapAfficherVente(rs);
-//				noArticle = article.getNoArticle();
-//				noAcheteur = trouverMeilleurEncherisseur(noArticle);
-////				HttpSession session = request.getSession();
-////		        String pseudo = (String) session.getAttribute("pseudo");
-//				String pseudo = System.getProperty("pseudo");
-//				System.out.println(pseudo);
-//				try {
-//					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
-//						listeAchatsAAfficher.add(article);
-//}
-//				} catch (BLLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		finally {
-//			if(rs!= null) {
-//				
-//				try {
-//					cnx.close();
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//
+		int noArticle = 0;
+		int noAcheteur = 0;
+		ResultSet rs = null;
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
+
+			while (rs.next()) {
+
+				ArticleVendu article = mapAfficherVente(rs);
+				noArticle = article.getNoArticle();
+				noAcheteur = trouverMeilleurEncherisseur(noArticle);
+//				HttpSession session = request.getSession();
+//		        String pseudo = (String) session.getAttribute("pseudo");
+				String pseudo = System.getProperty("pseudo");
+				System.out.println(pseudo);
+				try {
+					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())){
+						listeAchatsAAfficher.add(article);
+}
+				} catch (BLLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(rs!= null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
 		return listeAchatsAAfficher;
 	}
 
-//	private int trouverMeilleurEncherisseur(int noArticle) {
-//		int noAcheteur = 0;
-//		
-//		Connection cnx = ConnectionProvider.getConnection();
-//
-//		// Obtient une objet de commande (Statement) = ordre SQL
-//		try {
-//
-//			// Paramétrer l'objet de commande
-//			PreparedStatement pStmt = cnx.prepareStatement(TROUVER_MEILLEUR_ENCHERISSEUR);
-//			pStmt.setInt(1, noArticle);
-//			
-//			// Execute l'ordre SQL
-//
-//			pStmt.executeUpdate();
-//
-//
-//
-//		} catch (SQLException sqle) {
-//			sqle.printStackTrace();
-//		}
-//		finally {
-//
-//				
-//				try {
-//					cnx.close();
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			
-//		}
-//		return noAcheteur;
-//	}
+	private int trouverMeilleurEncherisseur(int noArticle) {
+		int noAcheteur = 0;
+		
+		Connection cnx = ConnectionProvider.getConnection();
+
+		// Obtient une objet de commande (Statement) = ordre SQL
+		try {
+
+			// Paramétrer l'objet de commande
+			PreparedStatement pStmt = cnx.prepareStatement(TROUVER_MEILLEUR_ENCHERISSEUR);
+			pStmt.setInt(1, noArticle);
+			
+			// Execute l'ordre SQL
+
+			pStmt.executeUpdate();
+
+
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		finally {
+
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+		}
+		return noAcheteur;
+	}
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
