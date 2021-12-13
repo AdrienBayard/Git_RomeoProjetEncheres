@@ -31,7 +31,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article, MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
 			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a.date_debut_encheres>= CURRENT_TIMESTAMP \r\n" + "and a.no_utilisateur = ? \r\n "
+			+ " WHERE a."
+			+ "date_debut_encheres>= CURRENT_TIMESTAMP \r\n" + "and a.no_utilisateur = ? \r\n "
 			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
 
 	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article, MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
