@@ -293,7 +293,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	@Override
-	public List<ArticleVendu> afficherMesEncheres() throws DALException {
+	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException {
 		
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
 //		int noArticle = 0;

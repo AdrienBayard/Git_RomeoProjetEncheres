@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +55,13 @@ public class VendreArticleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String article = request.getParameter("article");
+		String description = request.getParameter("description");
+		String categorie = request.getParameter("categorie");
+		String dateDebutEnchere = request.getParameter("debutEnchere");
+		String dateFinEnchere = request.getParameter("finEnchere");
 		
+		System.out.println(article + description + categorie + dateDebutEnchere + dateFinEnchere);
 		
 	}
 
