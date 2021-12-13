@@ -100,7 +100,7 @@ public class ArticleManager {
 		BLLException ex = new BLLException();
 		validationId(noArticle, ex);
 		try {
-			article = dao.selectById(noArticle);
+			article = dao.selectArticleById(noArticle);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
