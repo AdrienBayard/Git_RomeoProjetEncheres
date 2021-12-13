@@ -95,7 +95,7 @@ public class ArticleManager {
 	}
 
 	
-	public ArticleVendu selectById(int noArticle) throws  BLLException {
+	public ArticleVendu selectArticleById(int noArticle) throws  BLLException {
 		ArticleVendu article = null;
 		BLLException ex = new BLLException();
 		validationId(noArticle, ex);
