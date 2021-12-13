@@ -147,11 +147,7 @@
 								<c:out value="${article.dateFinEncheres}" />
 								<br>
 								<!-- dateFinEncheres-->
-								<%-- <c:url value = "/RomeoProjetEncheres/InfoVendeurServlet" >
-   									<c:out value="${article.pseudo}" /></a>
-  								</c:url> --%>
 								<a href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out value="${article.pseudo}" /></a>
-							<%-- 	<a href="/RomeoProjetEncheres/InfoVendeurServlet" ><c:out value="${article.pseudo}" /></a> --%>
 								<!-- Utilisateur.pseudo-->
 							</p>
 							<a href="#" class="btn btn-primary">Enchérir</a>
