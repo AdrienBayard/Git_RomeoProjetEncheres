@@ -1,7 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
+import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -39,6 +40,7 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<ArticleVendu> listeArticles = null;
 
 		String pseudo = request.getParameter("pseudo");
 		String motDePasse = request.getParameter("motDePasse");
@@ -59,6 +61,16 @@ public class ConnexionServlet extends HttpServlet {
 
 		if (motDePasse.equals(leMdp)) {
 			mdpValide = true;
+			listeArticles = new ArrayList<ArticleVendu>();
+			try {
+				listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+				 
+				request.setAttribute("listeArticles", listeArticles);
+			
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			laJsp = "/WEB-INF/jsp/connected.jsp";
 		} else {
 			mdpValide = false;
