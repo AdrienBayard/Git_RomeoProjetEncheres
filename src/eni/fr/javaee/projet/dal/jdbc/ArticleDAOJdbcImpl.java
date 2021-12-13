@@ -344,11 +344,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 // pStmt.executeUpdate();
 
-			try {
-				noAcheteur = rs.getInt("no_utilisateur");
-			} catch (SQLException e1) {
-// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(rs.next()) {
+				noAcheteur = rs.getInt(1);
 			}
 
 		} catch (SQLException sqle) {
