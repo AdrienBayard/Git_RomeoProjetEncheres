@@ -41,6 +41,7 @@ label { color: #777; }
 .breadcrumb { background:none; padding:0; margin:30px 0 0px 0; }
 .mdpIncorrect { background:none; font-style: italic; font-family: Helvetica; color:#FF0000; font-size: 18px; }
 ul.list-spaces li{ margin-bottom:10px; }
+.redText { color: #FF0000;}
 
 /* Helpers */
 .container-back { background:#bbbdb7; }

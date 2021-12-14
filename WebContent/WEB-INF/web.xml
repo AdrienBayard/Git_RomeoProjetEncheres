@@ -98,6 +98,10 @@
   	<url-pattern>/detailvente</url-pattern>
   </servlet-mapping>
 
+<error-page>
+	<error-code>500</error-code>
+	<location>/connexion2.jsp</location>
+</error-page>
   
   
 </web-app>
