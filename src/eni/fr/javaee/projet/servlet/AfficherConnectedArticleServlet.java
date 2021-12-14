@@ -79,9 +79,10 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		if (request.getParameter("ventesAchats") != null) {
 
 			// Tous les articles avec un délai encore ouvert
-			if (request.getParameter("mesEncheres") != null) {
+			if (request.getParameter("encheresOuvertes") != null) {
 				try {
 					listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+
 
 				} catch (BLLException e) {
 					e.printStackTrace();
@@ -95,6 +96,9 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 
 				try {
 					listeArticles = ArticleManager.getInstance().afficherMesEncheres(pseudo);
+					for (ArticleVendu articleVendu : listeArticles) {
+						System.out.println(articleVendu.toString());
+					}
 				
 				} catch (BLLException e) {
 					// TODO Auto-generated catch block
