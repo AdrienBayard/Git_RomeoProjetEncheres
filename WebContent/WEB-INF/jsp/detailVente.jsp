@@ -94,16 +94,16 @@
 		
 		<div class="col-md-6">
 		<br>
-		<label>Nom de l'article:  <!-- TODO  ${nomdelarticle.nomArticle}--></label><br><br>
-		<label>Description: <!-- TODO  ${nomdelarticle.description}--></label><br>
-		<label>Catégorie:  <!-- TODO  ${nomdelarticle.categorie}--></label><br><br>
-		<label>Meilleure offre:  <!-- TODO  ${requestScope.offre}--> par <!-- TODO  ${requestScope.encherisseur}--></label><br>
-		<label>Mise à prix:  <!-- TODO  ${nomdelarticle.miseAPrix}--></label><br>
-		<label>Fin de l'enchère:  <!-- TODO  ${nomdelarticle.dateFinEncheres}--></label><br><br>
-		<label>Retrait:  <!-- TODO${utilisateur.rue}--> </label><br>
-		<label><!-- TODO  ${utilisateur.codePostal}--> <!-- TODO  ${utilisateur.ville}--></label><br><br>
-		<label>Vendeur:  <!-- TODO  ${requestScope.vendeur}--></label><br><br>
-		<label>Ma proposition:  <!-- TODO  ${requestScope.vendeur}--></label>
+		<label>Nom de l'article:   ${nomArticle}</label><br><br>
+		<label>Description: ${description}</label><br>
+		<label>Catégorie: ${categorie}</label><br><br>
+		<label>Meilleure offre: <!-- TODO  ${requestScope.encherisseur}--></label><br>
+		<label>Mise à prix: ${miseAPrix}</label><br>
+		<label>Fin de l'enchère: ${finEnchere}</label><br><br>
+		<label>Retrait: ${rue} </label><br>
+		<label> ${codePostal} <!-- TODO  ${utilisateur.ville}--></label><br><br>
+		<label>Vendeur: ${requestScope.vendeur}</label><br><br>
+		<label>Ma proposition:</label>
 		<input id="" type="number" pattern="^[0-9]{100}$" placeholder="" step="1" min="1"><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
