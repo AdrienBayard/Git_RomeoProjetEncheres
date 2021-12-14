@@ -7,9 +7,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
-<meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+<meta name="author" content="">
 
-<title>Modifier son profil</title>
+<title>Vos favoris</title>
 
 <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 
@@ -23,14 +23,18 @@
 	media="screen">
 <link rel="stylesheet" href="assets/css/main.css">
 
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+	
 	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
    <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+
+
 </head>
 
 <body>
@@ -76,7 +80,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="/RomeoProjetEncheres/favoris.jsp">
+                <a href="#">
                     <span class="icon">
                         <ion-icon name="star-outline"></ion-icon>
                     </span>
@@ -119,154 +123,39 @@
 
 		<br><ol class="breadcrumb">
 			<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-			<li class="active">Modifier mon profil</li>
+			<li class="active">Vos favoris</li>
 		</ol><br>
 		
 		
-		
+		</div>
 	<!-- /container AVEC BREADCRUMB -->
 
-		<div class="row">
+		<!-- container -->
+<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-body">
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Vos achats mis de coté
+				
+				<br><br>Fonctionnalité en cours d'implémentation!
+			</h3>
 
-			<!-- Article main content -->
-			<article class="col-xs-12 maincontent">
-
-
-				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<h3 class="thin text-center">Modification de votre compte</h3>
-							<p class="text-center text-muted">
-								Si vous ne souhaitez pas modifier vos informations, veuillez suivre <a
-									href="/RomeoProjetEncheres/connected">ce lien</a>.
-							</p>
-							<hr>
-							<div style="text-align: center;">
-								<c:if test="${messageErreur != null && messageErreur == 1}">
-									<p>le mot de passe et la confirmation doivent être identiques</p>
-								</c:if>
-						
-								<c:if test="${messageErreur != null && messageErreur == 2}">
-									<p>Pseudo déjà utilisé</p>
-								</c:if>
-						
-								<c:if test="${messageErreur != null && messageErreur == 3}">
-									<p>Mail déjà utilisé</p>
-								</c:if>
-								<c:if test="${messageErreur != null && messageErreur == 4}">
-									<p>Le Pseudo et le mail sont déjà utilisés</p>
-								</c:if>
-								<c:if test="${messageErreur != null && messageErreur == 5}">
-									<p>Le mot de passe actuel n'est pas le bon</p>
-								</c:if>
-							</div>
-							
-							
-						<form id="modificationprofil" action="" method="post">
-
-								<div class="top-margin">
-									<label>Pseudonyme</label>
-									<input class="form-control" type="text" name="pseudo" pattern="^[A-Za-z0-9]*$" value="${requestScope.pseudo}" title="Vous ne pouvez utiliser que des lettres et des chiffres" required>	
-								</div>
-								<div class="top-margin">
-									<label>Nom de famille</label>
-									<input class="form-control" type="text" name="nom" value="${requestScope.nom}" required> 
-									
-								</div>
-								<div class="top-margin">
-									<label>Prénom</label>
-									<input class="form-control" type="text" name="prenom" value="${requestScope.prenom}" required> 
-
-								</div>
-								<div class="top-margin">
-									<label>Email</label>
-									<input class="form-control" type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="${requestScope.email}" title="Ajoutez une adresse mail valide" required>
-
-								</div>
-								<div class="top-margin">
-									<label>Numéro de téléphone</label>
-									<input class="form-control" type="text" name="telephone" pattern="^[0-9]{10}$"  value="${requestScope.telephone}" title="Une suite de 10 chiffres sans espaces" required> 
-									
-								</div>
-								<div class="top-margin">
-									<label>Rue</label>
-									<input class="form-control" type="text" name="rue" value="${requestScope.rue}" required>
-
-								</div>
-								
-								<div class="row top-margin">
-									<div class="col-sm-6">
-										<label>Ville</label> 
-										<input class="form-control" type="text" name="ville" value="${requestScope.ville}" required>
-
-									</div>
-									<div class="col-sm-6">
-										<label>Code Postal</label>
-										<input class="form-control" type="text" name="codePostal" pattern="^[0-9]{5}$" value="${requestScope.codePostal}" title="Merci d'entrer un code postal valide" required> 
-
-									</div>
-								</div>
-
-								<div class="row top-margin">
-									<div class="col-sm-12">
-										<label>Mot de passe actuel</label> 
-										<input class="form-control" type="password" name="motDePasseActuel" value="" required> 
-								</div>
-									</div>
-								<div class="row top-margin">
-									<div class="col-sm-6">
-										<label>Nouveau mot de passe</label> 
-										<input class="form-control" type="password" name="nouveauMotDePasse" value=""> 
-
-									</div>
-									<div class="col-sm-6">
-										<label>Confirmation</label>
-										<input class="form-control" type="password" name="confirmation" value="">
-
-									</div>
-								</div>
-								<div class="top-margin">
-									<label>Crédits</label>
-									<label class="form-control">${requestScope.credit}</label>
-									
-								</div>
-
-
-
-								<hr>
-</form>
-								<div class="row">
-					 			<!--  	<div class="col-lg-8">
-										<label class="checkbox"> <input type="checkbox">
-										Je confirme avoir lu et accepté les <a href="LienVersConditions">conditions d'utilisation</a>
-										 du site.</label>
-										 
-									</div> 
-									-->
-									
-									<div class="button col-lg-6 text-center">
-										<button class="btn btn-action" type="submit" form="modificationprofil" name="buttonModifierProfil" value = "modifier">Enregistrer</button>
-									</div>
-									<div class="col-lg-6 text-center"><a href="/RomeoProjetEncheres/accueil">
-									<button class="btn btn-action" type="submit" form="modificationprofil" name="buttonModifierProfil" value = "supprimer">Supprimer</button></a>
-									</div>
-											<!-- TODO : Lien vers l'accueil sans utilisateur -->
-							</div>
-							
-						</div>
-					</div>
-
-				</div>
-
-			</article>
-			<!-- /Article -->
-
+			<p class="text-center">
+			<br><br>---Page dans WebContent à déplacer dans jsp ensuite---
+			<br><br>Vos achats mis de coté apparaitront bientôt ci-dessous.</p>
 		</div>
 	</div>
-	<!-- /container -->
+	
 	
 
+</div>
+</div>
+	</div>	
+		
 	
+		<!-- /container -->
 
 
 	<footer id="footer" class="top-space">
@@ -321,8 +210,8 @@
 
 
 
-<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	
+		<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
 	    <script>
         const list = document.querySelectorAll('.list');
         function activeLink() {
@@ -335,14 +224,15 @@
     </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script src="assets/js/headroom.min.js"></script>
-	<script src="assets/js/jQuery.headroom.min.js"></script>
-	<script src="assets/js/template.js"></script>
+  
+
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script
+			src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="assets/js/headroom.min.js"></script>
+		<script src="assets/js/jQuery.headroom.min.js"></script>
+		<script src="assets/js/template.js"></script>
 	</div>
 </body>
 </html>
