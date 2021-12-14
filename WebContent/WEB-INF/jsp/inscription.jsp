@@ -28,11 +28,17 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
+	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+	
 </head>
 
 <body>
-<div class="container-back">
 
+			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+
+<div class="container-back">
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top headroom">
 		<div class="container">
@@ -43,31 +49,85 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img
-					src="assets/images/logo.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="/RomeoProjetEncheres/accueil">
+				<div class="logoRomeo">
+				<img src="assets/images/logo.png" >
+				</div>
+				</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav pull-right">
-					<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
+				<ul class="nav navbar-nav "> <!-- pull-right -->
+				
+    <div class="navigation">
+        <ul>
+            <li class="list active">
+                <a href="/RomeoProjetEncheres/accueil">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="text">Enchères</span>
+                </a>
+            </li>
+ 			<li class="list">
+                <a href="/RomeoProjetEncheres/connexion">
+                    <span class="icon">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                    </span>
+                    <span class="text">Ventes</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/RomeoProjetEncheres/connexion">
+                    <span class="icon">
+                        <ion-icon name="star-outline"></ion-icon>
+                    </span>
+                    <span class="text">Favoris</span>
+                </a>
+            </li>
 
-					<li class="active"><a class="btn"
-						href="/RomeoProjetEncheres/connexion">SE CONNECTER</a></li>
-				</ul>
-			</div>
+            <li class="list">
+                <a href="/RomeoProjetEncheres/connexion">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="text">Mon Profil</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/RomeoProjetEncheres/accueil">
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
+                        
+                    </span>
+                    <span class="text">Deconnexion</span>
+                </a>
+            </li>
+            
+            <div class="indicator"></div>
+        </ul>
+    </div>
+</ul>
+	</div>
 			<!--/.nav-collapse -->
 		</div>
 	</div>
 	<!-- /.navbar -->
+   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
 
 	<header id="head" class="secondary"></header>
 
 	<!-- container -->
 	<div class="container">
 
-		<ol class="breadcrumb">
+		<br><ol class="breadcrumb">
 			<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
 			<li class="active">Inscription</li>
-		</ol>
+		</ol><br>
+		
+		
+
+	<!-- /container AVEC BREADCRUMB -->
+	
+
 
 		<div class="row">
 
@@ -208,7 +268,7 @@
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
 							<p>
-								Votre numéro de téléphone<br> <a href="mailto:#">votreemail@mail.com</a><br>
+								02 00 00 00 00<br> <a href="mailto:#">losna@mail.com</a><br>
 								<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
 							</p>
 						</div>
@@ -227,14 +287,15 @@
 					</div>
 
 					<div class="col-md-6 widget">
-						<h3 class="widget-title">Texte présentation du site</h3>
+						<h3 class="widget-title">Association: "Les objets sont nos amis"</h3>
 						<div class="widget-body">
-							<p>Description de votre entreprise en quelques lignes.</p>
-							<p>
-								<br>
-								<br>
-								<br>
-							</p>
+							<p>Utiliser notre site, c'est partager nos valeurs!</p>
+							<p>&nbsp;&nbsp;- Nos idées neuves</p>
+							<p>&nbsp;&nbsp;- Une appétence grandissante pour la réutilisation et le recyclage</p>
+							<p>&nbsp;&nbsp;- Encourager la réutilisation, donner une seconde vie aux objets en facilitant les échanges</p>
+							<p>&nbsp;&nbsp;- Permettre l'échange du plus grand nombre d'objets possible</p>
+							<br>
+
 						</div>
 					</div>
 
@@ -243,7 +304,6 @@
 			</div>
 		</div>
 
-
 	</footer>
 
 
@@ -251,7 +311,20 @@
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	<script
+	
+	    <script>
+        const list = document.querySelectorAll('.list');
+        function activeLink() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) => item.addEventListener('mouseover', activeLink));
+
+
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

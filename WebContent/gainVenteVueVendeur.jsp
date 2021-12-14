@@ -50,7 +50,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/RomeoProjetEncheres/accueil">
+				<a class="navbar-brand" href="/RomeoProjetEncheres/afficherConnected">
 				<div class="logoRomeo">
 				<img src="assets/images/logo.png" >
 				</div>
@@ -62,7 +62,7 @@
     <div class="navigation">
         <ul>
             <li class="list active">
-                <a href="/RomeoProjetEncheres/retour">
+                <a href="/RomeoProjetEncheres/afficherConnected">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -78,7 +78,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="#">
+                <a href="/RomeoProjetEncheres/favoris.jsp">
                     <span class="icon">
                         <ion-icon name="star-outline"></ion-icon>
                     </span>
@@ -87,7 +87,7 @@
             </li>
 
             <li class="list">
-                <a href="RomeoProjetEncheres/modifier">
+                <a href="/RomeoProjetEncheres/modifier">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
