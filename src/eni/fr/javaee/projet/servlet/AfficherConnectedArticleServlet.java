@@ -266,9 +266,9 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 				// vendeur + la dateFinEnchere est dépassée)
 				System.out.println("youpi");
 			}
+			request.setAttribute("listeArticles", listeArticles);
 		}
 		
-		request.setAttribute("listeArticles", listeArticles);
 
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 		aiguilleur.forward(request, response);
