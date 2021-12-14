@@ -17,6 +17,7 @@ import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Enchere;
 import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
@@ -237,6 +238,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
 		int noArticle = 0;
 		int noAcheteur = 0;
+		Enchere nouvelleEnchere = null;
 		ResultSet rs = null;
 // Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
@@ -249,8 +251,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
-				noAcheteur = trouverMeilleurEncherisseur(noArticle);
-
+				nouvelleEnchere = trouverMeilleurEncherisseur(noArticle);
+				noAcheteur = nouvelleEnchere.getNoUtilisateur();
 				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
@@ -326,8 +328,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	}
 
-	public int trouverMeilleurEncherisseur(int noArticle) {
-		int noAcheteur = 0;
+	public Enchere trouverMeilleurEncherisseur(int noArticle) {
+		Enchere nouvelleEnchere = null;
 
 		Connection cnx = ConnectionProvider.getConnection();
 
@@ -345,7 +347,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 // pStmt.executeUpdate();
 
 			if(rs.next()) {
-				noAcheteur = rs.getInt(1);
+				int noAcheteur = rs.getInt("e.no_utilisateur");
+				int montantEnchere = rs.getInt("e.montant_enchere");
+				nouvelleEnchere = new Enchere (noAcheteur, montantEnchere);
 			}
 
 		} catch (SQLException sqle) {
@@ -360,7 +364,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			}
 
 		}
-		return noAcheteur;
+		return nouvelleEnchere;
 	}
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {

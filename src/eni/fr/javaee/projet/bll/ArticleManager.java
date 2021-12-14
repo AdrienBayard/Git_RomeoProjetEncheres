@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Enchere;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 import fr.eni.javaee.projet.dal.DALException;
 
@@ -68,17 +69,17 @@ public class ArticleManager {
 		return listeArticles;
 	}
 	
-	public int trouverMeilleurEncherisseur(int noArticle) throws BLLException {
-		int noUtilisateur = 0;
+	public Enchere trouverMeilleurEncherisseur(int noArticle) throws BLLException {
+		Enchere nouvelleEnchere = null;
 		
 		try {
-			noUtilisateur = dao.trouverMeilleurEncherisseur(noArticle);
+			nouvelleEnchere = dao.trouverMeilleurEncherisseur(noArticle);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return noUtilisateur;
+		return nouvelleEnchere;
 	}
 
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws BLLException {

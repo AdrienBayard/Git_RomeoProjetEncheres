@@ -3,6 +3,7 @@ package fr.eni.javaee.projet.dal;
 import java.util.List;
 
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Enchere;
 
 public interface ArticleDAO {
 	
@@ -11,7 +12,7 @@ public interface ArticleDAO {
 	public List<ArticleVendu> afficherVentesTerminees() throws DALException;
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException;
 	
-	public int trouverMeilleurEncherisseur(int noArticle)throws DALException;
+	public Enchere trouverMeilleurEncherisseur(int noArticle)throws DALException;
 	
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException;	
 	public List<ArticleVendu>afficherEncheresRemportees(String pseudo) throws DALException;
