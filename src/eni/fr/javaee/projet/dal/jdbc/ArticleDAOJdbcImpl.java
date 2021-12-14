@@ -46,7 +46,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
 
-	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur \r\n "
+	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur, e.montant_enchere \r\n "
 			+ " FROM ENCHERES e inner join ARTICLES_VENDUS a on a.no_article = e.no_article \r\n " + " WHERE a.no_article = ? \r\n "
 			+ " ORDER BY e.montant_enchere DESC ";
 
