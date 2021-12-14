@@ -347,8 +347,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 // pStmt.executeUpdate();
 
 			if(rs.next()) {
-				int noAcheteur = rs.getInt("e.no_utilisateur");
-				int montantEnchere = rs.getInt("e.montant_enchere");
+				int noAcheteur = rs.getInt(2);
+				int montantEnchere = rs.getInt(1);
 				nouvelleEnchere = new Enchere (noAcheteur, montantEnchere);
 			}
 

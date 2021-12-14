@@ -97,14 +97,14 @@
 		<label>Nom de l'article:   ${nomArticle}</label><br><br>
 		<label>Description: ${description}</label><br>
 		<label>Catégorie: ${categorie}</label><br><br>
-		<label>Meilleure offre: <!-- TODO  ${requestScope.encherisseur}--></label><br>
+		<label>Meilleure offre: ${pseudoDuMeilleurEncherisseur} ${montantEnchere} crédits</label><br>
 		<label>Mise à prix: ${miseAPrix}</label><br>
 		<label>Fin de l'enchère: ${finEnchere}</label><br><br>
-		<label>Retrait: ${rue} </label><br>
-		<label> ${codePostal} <!-- TODO  ${utilisateur.ville}--></label><br><br>
-		<label>Vendeur: ${requestScope.vendeur}</label><br><br>
+		<label>Retrait: ${codePostal} ${ville}  </label><br>
+		<label> ${rue}</label><br><br>
+		<label>Vendeur: ${vendeur}</label><br><br>
 		<label>Ma proposition:</label>
-		<input id="" type="number" pattern="^[0-9]{100}$" placeholder="" step="1" min="1"><br><br> 
+		<input id="" type="number" pattern="^[0-9]{100}$" placeholder="${montantEnchere}" step="1" min="${montantEnchere}"><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
 		<div class="button text-center">		

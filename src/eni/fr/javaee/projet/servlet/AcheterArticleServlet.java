@@ -14,6 +14,7 @@ import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Enchere;
 
 /**
  * Servlet implementation class acheterArticleServlet
@@ -21,20 +22,38 @@ import eni.fr.javaee.projet.bo.ArticleVendu;
 @WebServlet(name = "AcheterArticle", urlPatterns = { "/achat" })
 public class AcheterArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ArticleVendu article = null;
 		String pseudoDuMeilleurEncherisseur = null;
+		String ville = null;
+		String codePostal = null;
+		String rue = null;
+		int montantEnchere = 0;
 		int noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
 		try {
-			 article = ArticleManager.getInstance().selectArticleById(noArticle);
-			 int noUtilisateur = ArticleManager.getInstance().trouverMeilleurEncherisseur(noArticle);
-			 pseudoDuMeilleurEncherisseur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateur).getPseudo();
+			article = ArticleManager.getInstance().selectArticleById(noArticle);
+			Enchere meilleurEnchere = ArticleManager.getInstance().trouverMeilleurEncherisseur(noArticle);
+			if (meilleurEnchere != null) {
+				
+				int noUtilisateur = meilleurEnchere.getNoUtilisateur();
+				montantEnchere = meilleurEnchere.getMontant_enchere();
+				System.out.println("noUtilisateur :" + noUtilisateur);
+				System.out.println("montantEnchere :" + montantEnchere);
+				
+				if (noUtilisateur != 0) {
+					pseudoDuMeilleurEncherisseur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateur)
+							.getPseudo();
+					ville = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getVille();
+					codePostal = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getCodePostal();
+					rue = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getRue();
+				}
+			}
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,9 +63,9 @@ public class AcheterArticleServlet extends HttpServlet {
 		String categorie = null;
 		int miseAPrix = article.getMiseAPrix();
 		LocalDateTime finEnchere = article.getDateFinEncheres();
-		//TODO : récupérer le point de retrait
+		// TODO : récupérer le point de retrait
 		String vendeur = article.getPseudo();
-		
+
 		switch (article.getCategorie()) {
 		case 1:
 			categorie = "Informatique";
@@ -64,7 +83,7 @@ public class AcheterArticleServlet extends HttpServlet {
 		default:
 			break;
 		}
-		
+
 		request.setAttribute("nomArticle", nomArticle);
 		request.setAttribute("description", description);
 		request.setAttribute("categorie", categorie);
@@ -72,14 +91,19 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("finEnchere", finEnchere);
 		request.setAttribute("vendeur", vendeur);
 		request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
-		
+		request.setAttribute("montantEnchere", montantEnchere);
+		request.setAttribute("ville", ville);
+		request.setAttribute("codePostal", codePostal);
+		request.setAttribute("rue", rue);
+
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/detailvente");
 		aiguilleur.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// Nouvel enchere
-		
+
 	}
 
 }
