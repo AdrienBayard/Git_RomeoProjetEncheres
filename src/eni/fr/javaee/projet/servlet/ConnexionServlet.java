@@ -22,7 +22,7 @@ import fr.eni.javaee.projet.dal.DALException;
 /**
  * Servlet implementation class ui
  */
-@WebServlet("/connexionServlet")
+@WebServlet(name = "ConnexionServlet", urlPatterns = { "/connexionServlet" })
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

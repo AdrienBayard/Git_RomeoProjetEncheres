@@ -5,8 +5,7 @@
   <welcome-file-list>
     <welcome-file>accueil</welcome-file>
   </welcome-file-list>
-  
-	
+
   <servlet>
   	<servlet-name>pageAccueil</servlet-name>
   	<jsp-file>/WEB-INF/jsp/accueil.jsp</jsp-file>

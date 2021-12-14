@@ -253,7 +253,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				noArticle = article.getNoArticle();
 				nouvelleEnchere = trouverMeilleurEncherisseur(noArticle);
 				noAcheteur = nouvelleEnchere.getNoUtilisateur();
-				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
 						listeAchatsAAfficher.add(article);
