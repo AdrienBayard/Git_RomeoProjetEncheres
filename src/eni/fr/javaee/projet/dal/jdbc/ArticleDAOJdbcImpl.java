@@ -300,6 +300,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
+				
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
 						listeAchatsAAfficher.add(article);

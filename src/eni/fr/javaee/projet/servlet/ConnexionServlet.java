@@ -40,7 +40,7 @@ public class ConnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<ArticleVendu> listeArticles = null;
+		List<ArticleVendu> listeArticles = null; 
 
 		String pseudo = request.getParameter("pseudo");
 		String motDePasse = request.getParameter("motDePasse");
