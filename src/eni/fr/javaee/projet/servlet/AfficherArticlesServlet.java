@@ -42,6 +42,13 @@ public class AfficherArticlesServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		String recherche = request.getParameter("rechercher");
+
+		if (recherche != null) {
+			if (!recherche.equals("")) {
+				recherche = recherche.toUpperCase();
+			}
+		}
+
 		String cars = request.getParameter("cars");
 		List<ArticleVendu> listeArticlesFiltre = new ArrayList<ArticleVendu>();
 		if (cars != null) {
@@ -49,7 +56,7 @@ public class AfficherArticlesServlet extends HttpServlet {
 			switch (cars) {
 
 			case "Informatique":
-				if (recherche == null) {
+				if (recherche.equals("")) {
 
 					for (ArticleVendu articleVendu : listeArticles) {
 						if (articleVendu.getCategorie() == 1) {
@@ -57,9 +64,9 @@ public class AfficherArticlesServlet extends HttpServlet {
 						}
 					}
 				} else {
-					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+					for (ArticleVendu articleVendu : listeArticles) {
 
-						if (articleVendu.getNomArticle().contains(recherche) == true
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
 								&& (articleVendu.getCategorie() == 1)) {
 							listeArticlesFiltre.add(articleVendu);
 						}
@@ -69,18 +76,17 @@ public class AfficherArticlesServlet extends HttpServlet {
 				;
 				break;
 			case "Ameublement":
-				if (recherche == null) {
-					
+				if (recherche.equals("")) {
+
 					for (ArticleVendu articleVendu : listeArticles) {
 						if (articleVendu.getCategorie() == 2) {
 							listeArticlesFiltre.add(articleVendu);
-							System.out.println("stp");
 						}
 					}
 				} else {
-					for (ArticleVendu articleVendu : listeArticlesFiltre) {
 
-						if (articleVendu.getNomArticle().contains(recherche) == true
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
 								&& (articleVendu.getCategorie() == 2)) {
 							listeArticlesFiltre.add(articleVendu);
 						}
@@ -90,7 +96,7 @@ public class AfficherArticlesServlet extends HttpServlet {
 				;
 				break;
 			case "Vetements":
-				if (recherche == null) {
+				if (recherche.equals("")) {
 
 					for (ArticleVendu articleVendu : listeArticles) {
 						if (articleVendu.getCategorie() == 3) {
@@ -98,9 +104,9 @@ public class AfficherArticlesServlet extends HttpServlet {
 						}
 					}
 				} else {
-					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+					for (ArticleVendu articleVendu : listeArticles) {
 
-						if (articleVendu.getNomArticle().contains(recherche) == true
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
 								&& (articleVendu.getCategorie() == 3)) {
 							listeArticlesFiltre.add(articleVendu);
 						}
@@ -110,7 +116,7 @@ public class AfficherArticlesServlet extends HttpServlet {
 				;
 				break;
 			case "Sport&Loisirs":
-				if (recherche == null) {
+				if (recherche.equals("")) {
 
 					for (ArticleVendu articleVendu : listeArticles) {
 						if (articleVendu.getCategorie() == 4) {
@@ -118,9 +124,9 @@ public class AfficherArticlesServlet extends HttpServlet {
 						}
 					}
 				} else {
-					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+					for (ArticleVendu articleVendu : listeArticles) {
 
-						if (articleVendu.getNomArticle().contains(recherche) == true
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
 								&& (articleVendu.getCategorie() == 4)) {
 							listeArticlesFiltre.add(articleVendu);
 						}
@@ -129,16 +135,17 @@ public class AfficherArticlesServlet extends HttpServlet {
 				}
 				;
 				break;
-			default: for (ArticleVendu articleVendu : listeArticlesFiltre) {
-
-				if (articleVendu.getNomArticle().contains(recherche) == true) {
-					listeArticlesFiltre.add(articleVendu);
+			default:
+				System.out.println(recherche);
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true) {
+						listeArticlesFiltre.add(articleVendu);
+					}
 				}
-			}
 				break;
 			}
 		}
-		
+
 		if (recherche == null && cars == null) {
 			try {
 				listeArticlesFiltre = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
@@ -147,7 +154,7 @@ public class AfficherArticlesServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+
 		request.setAttribute("listeArticles", listeArticlesFiltre);
 		HttpSession session = request.getSession();
 		session.invalidate();
