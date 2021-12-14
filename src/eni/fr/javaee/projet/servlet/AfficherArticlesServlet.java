@@ -42,11 +42,11 @@ public class AfficherArticlesServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		String recherche = request.getParameter("rechercher");
-
+		String cars = request.getParameter("cars");
 		List<ArticleVendu> listeArticlesFiltre = new ArrayList<ArticleVendu>();
-		if ((request.getParameter("cars") != null)) {
+		if (cars != null) {
 
-			switch (request.getParameter("cars")) {
+			switch (cars) {
 
 			case "Informatique":
 				if (recherche == null) {
@@ -69,51 +69,86 @@ public class AfficherArticlesServlet extends HttpServlet {
 				;
 				break;
 			case "Ameublement":
-				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() == 2) {
-						listeArticlesFiltre.add(articleVendu);
+				if (recherche == null) {
+					
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 2) {
+							listeArticlesFiltre.add(articleVendu);
+							System.out.println("stp");
+						}
 					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+
+						if (articleVendu.getNomArticle().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 2)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
 				}
 				;
 				break;
 			case "Vetements":
-				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() == 3) {
-						listeArticlesFiltre.add(articleVendu);
+				if (recherche == null) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 3) {
+							listeArticlesFiltre.add(articleVendu);
+						}
 					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+
+						if (articleVendu.getNomArticle().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 3)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
 				}
 				;
 				break;
 			case "Sport&Loisirs":
-				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() == 3) {
-						listeArticlesFiltre.add(articleVendu);
+				if (recherche == null) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 4) {
+							listeArticlesFiltre.add(articleVendu);
+						}
 					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+
+						if (articleVendu.getNomArticle().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 4)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
 				}
 				;
 				break;
-			default:
+			default: for (ArticleVendu articleVendu : listeArticlesFiltre) {
+
+				if (articleVendu.getNomArticle().contains(recherche) == true) {
+					listeArticlesFiltre.add(articleVendu);
+				}
+			}
 				break;
 			}
-
-			if (recherche != null) {
-				for (ArticleVendu articleVendu : listeArticlesFiltre) {
-					if (articleVendu.getNomArticle().contains(recherche) == true) {
-						listeArticlesFiltre.add(articleVendu);
-					}
-				}
-			}
-
 		}
-
-		if (recherche != null) {
-			for (ArticleVendu articleVendu : listeArticles) {
-				if (articleVendu.getNomArticle().contains(recherche) == true) {
-					listeArticles.add(articleVendu);
-				}
+		
+		if (recherche == null && cars == null) {
+			try {
+				listeArticlesFiltre = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		request.setAttribute("listeArticles", listeArticles);
+		
+		request.setAttribute("listeArticles", listeArticlesFiltre);
 		HttpSession session = request.getSession();
 		session.invalidate();
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/pageAccueil");
