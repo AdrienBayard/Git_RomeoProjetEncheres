@@ -48,7 +48,10 @@ ul.list-spaces li{ margin-bottom:10px; }
 .top-space { margin-top: 60px; }
 .top-margin { margin-top:20px; }
 
-img { max-width:100%; }
+
+
+.logoRomeo{height: 85px; width: auto;}
+img { max-height:100%; width: auto; }
 img.pull-right { margin-left: 10px; }
 img.pull-left { margin-right: 10px; }
 #map { width:100%; height:280px; }

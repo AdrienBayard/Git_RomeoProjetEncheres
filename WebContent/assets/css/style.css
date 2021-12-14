@@ -14,7 +14,6 @@
     width: 400px;
     height: 70px;
     background : #FFF;
-    <!-- #2E8B57 -->
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +53,7 @@
     font-size: 1.5em;
     text-align: center;
     transition: 0.5s;
-    color: var(--clr);
+    color: #000000;
     
 }
 .navigation ul li.active a .icon
@@ -64,7 +63,7 @@
 .navigation ul li a .text
 {
     position: absolute;
-    color: var(--clr);
+    color: #000000;
     font-weight: 400;
     font-size: 0.75em;
     letter-spacing: 0.05em;
@@ -82,7 +81,7 @@
     top: -50%;
     width: 70px;
     height: 70px;
-    background: #ff00ff;
+    background: #00ff80;
     border-radius: 50%;
     border: 6px solid var(--clr);
     transition: 0.5s;
@@ -127,6 +126,11 @@ box-shadow: -1px -10px 0 0 var(--clr);
 .navigation ul li:nth-child(4).active ~ .indicator
 {
     transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator
+{
+    transform: translateX(calc(70px * 4));
 }
 
 
