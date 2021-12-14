@@ -145,7 +145,7 @@
 					
 					
 					
-					<form class="rechercher" action="/RomeoProjetEncheres/afficherconnected" method="post">
+					<form class="rechercher" action="/RomeoProjetEncheres/afficherConnected" method="post">
 						<div class="row">
 							<div class="col-md-3 col-sm-6 highlight">
 								<select name="cars" id="cars" class="form-control">
