@@ -56,9 +56,15 @@ public class AfficherArticlesServlet extends HttpServlet {
 							listeArticlesFiltre.add(articleVendu);
 						}
 					}
-				}
-				else (articleVendu.getNomArticle().contains(recherche) == true){
-					
+				} else {
+					for (ArticleVendu articleVendu : listeArticlesFiltre) {
+
+						if (articleVendu.getNomArticle().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 1)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
 				}
 				;
 				break;
