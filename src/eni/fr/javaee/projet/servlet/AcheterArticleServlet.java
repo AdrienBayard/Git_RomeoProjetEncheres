@@ -34,7 +34,6 @@ public class AcheterArticleServlet extends HttpServlet {
 		try {
 			 article = ArticleManager.getInstance().selectArticleById(noArticle);
 			 int noUtilisateur = ArticleManager.getInstance().trouverMeilleurEncherisseur(noArticle);
-			 System.out.println("test no : " + noUtilisateur);
 			 pseudoDuMeilleurEncherisseur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateur).getPseudo();
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
@@ -47,7 +46,6 @@ public class AcheterArticleServlet extends HttpServlet {
 		LocalDateTime finEnchere = article.getDateFinEncheres();
 		//TODO : récupérer le point de retrait
 		String vendeur = article.getPseudo();
-		System.out.println(pseudoDuMeilleurEncherisseur);
 		
 		switch (article.getCategorie()) {
 		case 1:
@@ -66,6 +64,14 @@ public class AcheterArticleServlet extends HttpServlet {
 		default:
 			break;
 		}
+		
+		request.setAttribute("nomArticle", nomArticle);
+		request.setAttribute("description", description);
+		request.setAttribute("categorie", categorie);
+		request.setAttribute("miseAPrix", miseAPrix);
+		request.setAttribute("finEnchere", finEnchere);
+		request.setAttribute("vendeur", vendeur);
+		request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
 		
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/detailvente");
 		aiguilleur.forward(request, response);
