@@ -69,22 +69,10 @@ public class ArticleManager {
 		return listeArticles;
 	}
 	
-	public Enchere trouverMeilleurEncherisseur(int noArticle) throws BLLException {
-		Enchere nouvelleEnchere = null;
-		
-		try {
-			nouvelleEnchere = dao.trouverMeilleurEncherisseur(noArticle);
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return nouvelleEnchere;
-	}
+	
 
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws BLLException {
-		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
-		
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>() ; 
 		try {  
 			listeArticles = dao.afficherMesEncheres(pseudo);
 		} catch (DALException e) {

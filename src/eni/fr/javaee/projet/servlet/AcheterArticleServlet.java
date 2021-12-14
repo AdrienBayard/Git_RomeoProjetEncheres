@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
+import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
@@ -42,7 +43,7 @@ public class AcheterArticleServlet extends HttpServlet {
 			ville = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getVille();
 			codePostal = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getCodePostal();
 			rue = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getRue();
-			Enchere meilleurEnchere = ArticleManager.getInstance().trouverMeilleurEncherisseur(noArticle);
+			Enchere meilleurEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
 			if (meilleurEnchere != null) {
 				
 				int noUtilisateur = meilleurEnchere.getNoUtilisateur();

@@ -3,7 +3,9 @@ package eni.fr.javaee.projet.bo;
 import java.time.LocalDate;
 
 public class Enchere {
-
+	
+	private int numEnchere; 
+	private int numArticle; 
 	private LocalDate dateEnchere;
 	private int montant_enchere;
 	private int noUtilisateur;
@@ -18,6 +20,32 @@ public class Enchere {
 		this.montant_enchere = montant_enchere;
 		this.noUtilisateur = noUtilisateur;
 
+	}
+
+	
+	public Enchere(int numEnchere, int numArticle, LocalDate dateEnchere, int montant_enchere, int noUtilisateur) {
+		this.numEnchere = numEnchere;
+		this.numArticle = numArticle;
+		this.dateEnchere = dateEnchere;
+		this.montant_enchere = montant_enchere;
+		this.noUtilisateur = noUtilisateur;
+	}
+	
+
+	public int getNumEnchere() {
+		return numEnchere;
+	}
+
+	public void setNumEnchere(int numEnchere) {
+		this.numEnchere = numEnchere;
+	}
+
+	public int getNumArticle() {
+		return numArticle;
+	}
+
+	public void setNumArticle(int numArticle) {
+		this.numArticle = numArticle;
 	}
 
 	public int getNoUtilisateur() {

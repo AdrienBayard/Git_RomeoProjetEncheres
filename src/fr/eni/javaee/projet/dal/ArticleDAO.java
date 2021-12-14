@@ -11,8 +11,7 @@ public interface ArticleDAO {
 	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException;
 	public List<ArticleVendu> afficherVentesTerminees() throws DALException;
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException;
-	
-	public Enchere trouverMeilleurEncherisseur(int noArticle)throws DALException;
+
 	
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException;	
 	public List<ArticleVendu>afficherEncheresRemportees(String pseudo) throws DALException;

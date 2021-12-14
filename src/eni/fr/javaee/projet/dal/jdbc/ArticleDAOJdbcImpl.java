@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
+import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
@@ -47,9 +48,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String AFFICHER_ENCHERES_REMPORTEES = "SELECT * from ARTICLES_VENDUS where date_fin_encheres <= CURRENT_TIMESTAMP";
 
-	private static final String TROUVER_MEILLEUR_ENCHERISSEUR = "SELECT TOP 1 e.no_utilisateur, e.montant_enchere \r\n "
-			+ " FROM ENCHERES e inner join ARTICLES_VENDUS a on a.no_article = e.no_article \r\n " + " WHERE a.no_article = ? \r\n "
-			+ " ORDER BY e.montant_enchere DESC ";
+	
 
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
@@ -251,8 +250,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
-				nouvelleEnchere = trouverMeilleurEncherisseur(noArticle);
+				try {
+					nouvelleEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
+				} catch (BLLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				noAcheteur = nouvelleEnchere.getNoUtilisateur();
+				System.out.println(pseudo);
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
 						listeAchatsAAfficher.add(article);
@@ -293,7 +298,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		try {
 			Statement pStmt = cnx.createStatement();
 
-			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS);
+			rs = pStmt.executeQuery(AFFICHER_ACHATS_EN_COURS); 
 
 			while (rs.next()) {
 
@@ -328,44 +333,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		return listeAchatsAAfficher;
 	}
 
-	public Enchere trouverMeilleurEncherisseur(int noArticle) {
-		Enchere nouvelleEnchere = null;
-
-		Connection cnx = ConnectionProvider.getConnection();
-
-// Obtient une objet de commande (Statement) = ordre SQL
-		ResultSet rs = null;
-		try {
-
-// Paramétrer l'objet de commande
-			PreparedStatement pStmt = cnx.prepareStatement(TROUVER_MEILLEUR_ENCHERISSEUR);
-			pStmt.setInt(1, noArticle);
-
-// Execute l'ordre SQL
-			rs = pStmt.executeQuery();
-
-// pStmt.executeUpdate();
-
-			if(rs.next()) {
-				int noAcheteur = rs.getInt(2);
-				int montantEnchere = rs.getInt(1);
-				nouvelleEnchere = new Enchere (noAcheteur, montantEnchere);
-			}
-
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		} finally {
-
-			try {
-				cnx.close();
-			} catch (SQLException e) {
-// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-		return nouvelleEnchere;
-	}
+	
+//	--------------------------------------------------------------
+	
+	
+	
+	
+//	----------------------------------------------------------------
+	
 
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
