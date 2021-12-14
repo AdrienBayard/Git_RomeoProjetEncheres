@@ -136,7 +136,6 @@ public class AfficherArticlesServlet extends HttpServlet {
 				;
 				break;
 			default:
-				System.out.println(recherche);
 				for (ArticleVendu articleVendu : listeArticles) {
 					if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true) {
 						listeArticlesFiltre.add(articleVendu);
