@@ -94,12 +94,12 @@
 		
 		<div class="col-md-6">
 		<br>
-		<label>Nom de l'article:   ${nomdelarticle.nomArticle}</label><br><br>
+		<label>Nom de l'article:   ${nomArticle}</label><br><br>
 		<label>Description: ${description}</label><br>
 		<label>Catégorie: ${categorie}</label><br><br>
-		<label>Meilleure offre: ${offre}<!-- TODO  ${requestScope.encherisseur}--></label><br>
+		<label>Meilleure offre: <!-- TODO  ${requestScope.encherisseur}--></label><br>
 		<label>Mise à prix: ${miseAPrix}</label><br>
-		<label>Fin de l'enchère: ${dateFinEncheres}</label><br><br>
+		<label>Fin de l'enchère: ${finEnchere}</label><br><br>
 		<label>Retrait: ${rue} </label><br>
 		<label> ${codePostal} <!-- TODO  ${utilisateur.ville}--></label><br><br>
 		<label>Vendeur: ${requestScope.vendeur}</label><br><br>
