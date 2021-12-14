@@ -17,7 +17,7 @@ import eni.fr.javaee.projet.bo.ArticleVendu;
 /**
  * Servlet implementation class AfficherConnectedArticleServlet
  */
-@WebServlet(name = "afficherconnected", urlPatterns = { "/afficherconnected" })
+@WebServlet(name = "afficherconnected", urlPatterns = { "/afficherConnected" })
 public class AfficherConnectedArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
