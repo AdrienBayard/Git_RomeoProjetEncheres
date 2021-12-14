@@ -75,6 +75,16 @@ public class AfficherArticlesServlet extends HttpServlet {
 			}
 
 		}
+		
+		String recherche = request.getParameter("rechercher");
+		
+		if (recherche !=null) {
+			for (ArticleVendu articleVendu : listeArticles) {
+				if (articleVendu.getNomArticle().contains(recherche) == false){
+					listeArticles.remove(articleVendu);
+				}
+			}
+		}
 
 		request.setAttribute("listeArticles", listeArticles);
 		HttpSession session = request.getSession();

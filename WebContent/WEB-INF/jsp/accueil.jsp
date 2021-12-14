@@ -99,7 +99,7 @@
 							</div>
 							<div class="col-md-6 col-sm-6 highlight">
 								<div class="h-body text-center">
-									<input class="form-control" type="search" id="rechercher"
+									<input class="-" type="search" id="rechercher"
 										name="rechercher" placeholder="Chercher par nom d'article"
 										aria-label="Rechercher dans le site">
 								</div>
@@ -135,7 +135,7 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">
-								<a href="" <c:out value="${article.nomArticle}" />></a>
+								<a href="/connexion" <c:out value="${article.nomArticle}" />></a>
 							</h5>
 							<p class="card-text">
 								<c:out value="${article.description}" />
