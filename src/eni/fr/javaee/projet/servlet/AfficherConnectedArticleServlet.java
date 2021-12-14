@@ -63,26 +63,142 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int noUtilisateur = 0; 
+		int noUtilisateur = 0;
 		// Génération d'une liste blanche
 		List<ArticleVendu> listeArticles = new ArrayList<>();
 
 		// Récupération du pseudo de session
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
-		
+
 		try {
 			noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
 		} catch (BLLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} 
-		
-		// Afficher les article avec un certain nom
-		String huhuh = request.getParameter("encheresOuvertes");
-		System.out.println("value enchère ouvertes : " + huhuh);
+		}
 
-		// Afficher les articles d'une certaine catégorie
+		try {
+			listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String recherche = request.getParameter("rechercher");
+
+		if (recherche != null) {
+			if (!recherche.equals("")) {
+				recherche = recherche.toUpperCase();
+			}
+		}
+
+		String cars = request.getParameter("cars");
+		List<ArticleVendu> listeArticlesFiltre = new ArrayList<ArticleVendu>();
+		if (cars != null) {
+
+			switch (cars) {
+
+			case "Informatique":
+				if (recherche.equals("")) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 1) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticles) {
+
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 1)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
+				}
+				;
+				break;
+			case "Ameublement":
+				if (recherche.equals("")) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 2) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+				} else {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 2)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
+				}
+				;
+				break;
+			case "Vetements":
+				if (recherche.equals("")) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 3) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticles) {
+
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 3)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
+				}
+				;
+				break;
+			case "Sport&Loisirs":
+				if (recherche.equals("")) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 4) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+				} else {
+					for (ArticleVendu articleVendu : listeArticles) {
+
+						if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true
+								&& (articleVendu.getCategorie() == 4)) {
+							listeArticlesFiltre.add(articleVendu);
+						}
+					}
+
+				}
+				;
+				break;
+			default:
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getNomArticle().toUpperCase().contains(recherche) == true) {
+						listeArticlesFiltre.add(articleVendu);
+					}
+				}
+				break;
+			}
+		}
+
+		if (recherche == null && cars == null) {
+			try {
+				listeArticlesFiltre = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		request.setAttribute("listeArticles", listeArticlesFiltre);
 
 		// Dans "mes achats"
 		if (request.getParameter("ventesAchats") != null) {
@@ -91,7 +207,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 			if (request.getParameter("encheresOuvertes") != null) {
 				try {
 					listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
-
 
 				} catch (BLLException e) {
 					e.printStackTrace();
@@ -149,7 +264,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 				System.out.println("youpi");
 			}
 		}
-
+		
 		request.setAttribute("listeArticles", listeArticles);
 
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
