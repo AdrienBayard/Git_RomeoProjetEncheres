@@ -182,7 +182,7 @@
 								<div class="col-md-2 col-sm-6"></div>
 								<div class="col-md-3 col-sm-6">
 
-									<input type="radio" id="achats" name="achatsOuVentes"
+									<input type="radio" id="achats" name="ventesAchats"
 										value="achats" /> <label for="achats"> Achats</label><br>
 									<!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
@@ -202,7 +202,7 @@
 								<div class="col-md-2 col-sm-6"></div>
 								<!-- CASES FILTRE MES VENTES -->
 								<div class="col-md-3 col-sm-6">
-									<input type="radio" id="ventes" name="achatsOuVentes"
+									<input type="radio" id="ventes" name="ventesAchats"
 										value="ventes" /> <label for="ventes">Mes ventes</label><br>
 									<!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
