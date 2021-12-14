@@ -50,7 +50,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/RomeoProjetEncheres/afficherConnected">
+				<a class="navbar-brand" href="/RomeoProjetEncheres/accueil">
 				<div class="logoRomeo">
 				<img src="assets/images/logo.png" >
 				</div>
@@ -62,7 +62,7 @@
     <div class="navigation">
         <ul>
             <li class="list active">
-                <a href="/RomeoProjetEncheres/afficherConnected">
+                <a href="/RomeoProjetEncheres/accueil">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -87,7 +87,7 @@
             </li>
 
             <li class="list">
-                <a href="/RomeoProjetEncheres/modifier">
+                <a href="/RomeoProjetEncheres/connexion">
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
@@ -95,11 +95,11 @@
                 </a>
             </li>
             <li class="list">
-                <a href="/RomeoProjetEncheres/accueil">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
+                <a href="/RomeoProjetEncheres/inscription">
+                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon>
                         
                     </span>
-                    <span class="text">Deconnexion</span>
+                    <span class="text">S'inscrire</span>
                 </a>
             </li>
             

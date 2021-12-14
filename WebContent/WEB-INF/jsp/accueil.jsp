@@ -76,7 +76,7 @@
                 </a>
             </li>
  			<li class="list">
-                <a href="/RomeoProjetEncheres/connexion">
+                <a href="/RomeoProjetEncheres/vendre">
                     <span class="icon">
                         <ion-icon name="add-circle-outline"></ion-icon>
                     </span>
@@ -84,7 +84,7 @@
                 </a>
             </li>
             <li class="list">
-                <a href="/RomeoProjetEncheres/connexion">
+                <a href="/RomeoProjetEncheres/favoris.jsp">
                     <span class="icon">
                         <ion-icon name="star-outline"></ion-icon>
                     </span>

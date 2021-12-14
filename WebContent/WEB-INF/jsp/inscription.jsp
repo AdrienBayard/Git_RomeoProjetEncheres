@@ -60,7 +60,7 @@
 				
     <div class="navigation">
         <ul>
-            <li class="list active">
+            <li class="list">
                 <a href="/RomeoProjetEncheres/accueil">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
@@ -93,12 +93,12 @@
                     <span class="text">Mon Profil</span>
                 </a>
             </li>
-            <li class="list">
-                <a href="/RomeoProjetEncheres/accueil">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
+			<li class="list active">
+                <a href="/RomeoProjetEncheres/inscription">
+                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon>
                         
                     </span>
-                    <span class="text">Deconnexion</span>
+                    <span class="text">S'inscrire</span>
                 </a>
             </li>
             
