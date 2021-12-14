@@ -41,51 +41,72 @@ public class AfficherArticlesServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String recherche = request.getParameter("rechercher");
 
+		List<ArticleVendu> listeArticlesFiltre = new ArrayList<ArticleVendu>();
 		if ((request.getParameter("cars") != null)) {
 
 			switch (request.getParameter("cars")) {
 
 			case "Informatique":
-				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() != 1) {
-						listeArticles.remove(articleVendu);
+				if (recherche == null) {
+
+					for (ArticleVendu articleVendu : listeArticles) {
+						if (articleVendu.getCategorie() == 1) {
+							listeArticlesFiltre.add(articleVendu);
+						}
 					}
-				};break;
+				}
+				else (articleVendu.getNomArticle().contains(recherche) == true){
+					
+				}
+				;
+				break;
 			case "Ameublement":
 				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() != 2) {
-						listeArticles.remove(articleVendu);
+					if (articleVendu.getCategorie() == 2) {
+						listeArticlesFiltre.add(articleVendu);
 					}
-				};break;
+				}
+				;
+				break;
 			case "Vetements":
 				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() != 3) {
-						listeArticles.remove(articleVendu);
+					if (articleVendu.getCategorie() == 3) {
+						listeArticlesFiltre.add(articleVendu);
 					}
-				};break;
+				}
+				;
+				break;
 			case "Sport&Loisirs":
 				for (ArticleVendu articleVendu : listeArticles) {
-					if (articleVendu.getCategorie() != 3) {
-						listeArticles.remove(articleVendu);
+					if (articleVendu.getCategorie() == 3) {
+						listeArticlesFiltre.add(articleVendu);
 					}
-				};break;
+				}
+				;
+				break;
 			default:
 				break;
 			}
 
+			if (recherche != null) {
+				for (ArticleVendu articleVendu : listeArticlesFiltre) {
+					if (articleVendu.getNomArticle().contains(recherche) == true) {
+						listeArticlesFiltre.add(articleVendu);
+					}
+				}
+			}
+
 		}
-		
-		String recherche = request.getParameter("rechercher");
-		
-		if (recherche !=null) {
+
+		if (recherche != null) {
 			for (ArticleVendu articleVendu : listeArticles) {
-				if (articleVendu.getNomArticle().contains(recherche) == false){
-					listeArticles.remove(articleVendu);
+				if (articleVendu.getNomArticle().contains(recherche) == true) {
+					listeArticles.add(articleVendu);
 				}
 			}
 		}
-
 		request.setAttribute("listeArticles", listeArticles);
 		HttpSession session = request.getSession();
 		session.invalidate();
