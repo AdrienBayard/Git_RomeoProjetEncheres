@@ -38,6 +38,10 @@ public class AcheterArticleServlet extends HttpServlet {
 		int noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
+			int noUtilisateurVendeur = article.getNo_utilisateur();
+			ville = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getVille();
+			codePostal = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getCodePostal();
+			rue = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getRue();
 			Enchere meilleurEnchere = ArticleManager.getInstance().trouverMeilleurEncherisseur(noArticle);
 			if (meilleurEnchere != null) {
 				
@@ -49,9 +53,6 @@ public class AcheterArticleServlet extends HttpServlet {
 				if (noUtilisateur != 0) {
 					pseudoDuMeilleurEncherisseur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateur)
 							.getPseudo();
-					ville = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getVille();
-					codePostal = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getCodePostal();
-					rue = UtilisateurManager.getInstance().afficherProfil(pseudoDuMeilleurEncherisseur).getRue();
 				}
 			}
 		} catch (BLLException e) {
