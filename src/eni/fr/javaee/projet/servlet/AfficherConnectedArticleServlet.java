@@ -17,7 +17,7 @@ import eni.fr.javaee.projet.bo.ArticleVendu;
 /**
  * Servlet implementation class AfficherConnectedArticleServlet
  */
-@WebServlet(name = "afficherconnected", urlPatterns = { "/afficherconnected" })
+@WebServlet(name = "afficherconnected", urlPatterns = { "/afficherConnected" })
 public class AfficherConnectedArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,8 +33,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		System.out.println("entrée do get");
 		
 		
@@ -48,6 +46,16 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		}
 
 		request.setAttribute("listeArticles", listeArticles);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		System.out.println("entrée do posrt");
+
 		
 		// Afficher les article avec un certain nom
 		String huhuh = request.getParameter("encheresOuvertes"); 
@@ -95,14 +103,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		}
 
 	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
