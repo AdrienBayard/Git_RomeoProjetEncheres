@@ -113,8 +113,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 			// Afficher uniquement mes enchères remportées (Uniquement les enchêres où
 			// l'utilisateur est le meilleur encherisseur et la date doit être fermée).
 
-			if ((request.getParameter("mesEncheresRemportees") != null)
-					&& (request.getParameter("mesEncheresRemportees").equals("ON"))) {
+			if (request.getParameter("mesEncheresRemportees") != null) {
 				try {
 					listeArticles = ArticleManager.getInstance().afficherEncheresRemportees(pseudo);
 				} catch (BLLException e) {
@@ -125,15 +124,19 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		}
 
 		// Dans "mes ventes"
-		if ((request.getParameter("ventesAchats") != null) && (request.getParameter("ventesAchats").equals("ventes"))) {
+		if (request.getParameter("ventesAchats") != null) {
 			System.out.println(" entrée dans vente ");
 
 			// Afficher uniquement mes ventes en cours (Uniquement si l'utilisateur est
 			// vendeur + la dateFinEnchere n'est pas arrivée à terme).
 
-			if ((request.getParameter("mesVentesEnCours") != null)
-					&& (request.getParameter("mesVentesEnCours").equals("ON"))) {
-
+			if (request.getParameter("mesVentesEnCours") != null) {
+				try {
+					listeArticles = ArticleManager.getInstance().afficherVentesEnCours();
+				} catch (BLLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 			if ((request.getParameter("ventesNonDebutees") != null)
