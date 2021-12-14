@@ -6,6 +6,16 @@
     <welcome-file>accueil</welcome-file>
   </welcome-file-list>
 
+	<error-page>
+	<error-code>500</error-code>
+	<location>/WEB-INF/jsp/error500.jsp</location>
+	</error-page>
+	
+	<error-page>
+	<error-code>400</error-code>
+	<location>/WEB-INF/jsp/error400.jsp</location>
+	</error-page>
+
   <servlet>
   	<servlet-name>pageAccueil</servlet-name>
   	<jsp-file>/WEB-INF/jsp/accueil.jsp</jsp-file>
