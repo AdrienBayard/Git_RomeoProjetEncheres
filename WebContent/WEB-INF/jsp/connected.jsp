@@ -187,7 +187,7 @@
 									<!--  ↑ si ce bouton est coché ↓ seront cochables grace au js -->
 
 									<input type="checkbox" id="encheresOuvertes"
-										name="encheresOuvertes" class=achats disabled
+										name="encheresOuvertes" class=achats disabled 
 										value="ON"> <label
 										for="encheresOuvertes"> Toutes les enchères ouvertes</label><br>
 									<input type="checkbox" id="mesEncheres" name="mesEncheres"
