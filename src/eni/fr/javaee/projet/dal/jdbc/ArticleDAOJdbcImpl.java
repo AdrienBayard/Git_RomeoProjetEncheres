@@ -180,7 +180,38 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
-		return null;
+		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
+
+		ResultSet rs = null;
+// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			rs = pStmt.executeQuery(AFFICHER_VENTES_EN_COURS);
+
+			while (rs.next()) {
+
+				ArticleVendu article = mapAfficherVente(rs);
+				listeAchatsAAfficher.add(article);
+			}
+
+		} catch (SQLException e) {
+// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return listeAchatsAAfficher;
 
 	}
 
@@ -191,8 +222,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
 		return null;
-
+		
 	}
+
+	
 
 	@Override
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException {
