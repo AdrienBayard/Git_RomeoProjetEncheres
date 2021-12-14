@@ -99,7 +99,7 @@
 							</div>
 							<div class="col-md-6 col-sm-6 highlight">
 								<div class="h-body text-center">
-									<input class="form_control" type="search" id="rechercher"
+									<input class="form-control" type="search" id="rechercher"
 										name="rechercher" placeholder="Chercher par nom d'article"
 										aria-label="Rechercher dans le site">
 								</div>
