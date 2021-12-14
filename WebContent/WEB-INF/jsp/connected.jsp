@@ -136,7 +136,16 @@
 						<h2>Liste des enchères</h2>
 					</div>
 
-					<form class="rechercher">
+
+
+
+
+					<!-- ---------------- DEBUT DU FOMULAIRE ------------- -->
+					
+					
+					
+					
+					<form class="rechercher" action="/RomeoProjetEncheres/afficherconnected">
 						<div class="row">
 							<div class="col-md-3 col-sm-6 highlight">
 								<select name="cars" id="cars" class="form-control">
@@ -179,14 +188,14 @@
 
 									<input type="checkbox" id="encheresOuvertes"
 										name="encheresOuvertes" class=achats disabled
-										value="encheresOuvertes"> <label
+										value="ON"> <label
 										for="encheresOuvertes"> Toutes les enchères ouvertes</label><br>
 									<input type="checkbox" id="mesEncheres" name="mesEncheres"
-										class=achats disabled value="mesEncheres"> <label
+										class=achats disabled value="ON"> <label
 										for="mesEncheres"> Mes enchères</label><br> <input
 										type="checkbox" id="mesEncheresRemportees"
 										name="mesEncheresRemportees" disabled class=achats
-										value="mesEncheresRemportees"> <label
+										value="ON"> <label
 										for="mesEncheresRemportees"> Mes enchères remportées</label><br>
 									<br>
 								</div>
@@ -199,15 +208,15 @@
 
 									<input type="checkbox" id="mesVentesEnCours"
 										name="mesVentesEnCours" class="ventes" disabled
-										value="mesVentesEnCours"> <label
+										value="ON"> <label
 										for="mesVentesEnCours"> Ventes en cours</label><br> <input
 										type="checkbox" id="ventesNonDebutees"
 										name="ventesNonDebutees" class="ventes" disabled
-										value="ventesNonDebutees"> <label
+										value="ON"> <label
 										for="ventesNonDebutees"> Ventes non débutées</label><br>
 									<input type="checkbox" id="ventesTerminees"
 										name="ventesTerminees" class="ventes" disabled
-										value="ventesTerminees"> <label for="ventesTerminees">
+										value="ON"> <label for="ventesTerminees">
 										Ventes terminées</label><br>
 									<br>
 

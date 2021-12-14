@@ -50,9 +50,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		request.setAttribute("listeArticles", listeArticles);
 		
 		// Afficher les article avec un certain nom
-		String achats = request.getParameter("achats"); 
-		System.out.println("radio button achats : " + achats);
-		
 		String huhuh = request.getParameter("encheresOuvertes"); 
 		System.out.println("value enchère ouvertes : " + huhuh); 
 		
