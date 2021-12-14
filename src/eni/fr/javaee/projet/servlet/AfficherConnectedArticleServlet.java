@@ -50,7 +50,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 		}
 
 		request.setAttribute("listeArticles", listeArticles);
-		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/pageAccueil");
+		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
 		aiguilleur.forward(request, response);
 
 	}
