@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
@@ -34,11 +36,44 @@ public class AfficherArticlesServlet extends HttpServlet {
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		try {
 			listeArticles = (List<ArticleVendu>) ArticleManager.getInstance().afficherAchatsEnCours();
-			 
-		
+
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		if ((request.getParameter("cars") != null)) {
+
+			switch (request.getParameter("cars")) {
+
+			case "Informatique":
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getCategorie() != 1) {
+						listeArticles.remove(articleVendu);
+					}
+				};break;
+			case "Ameublement":
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getCategorie() != 2) {
+						listeArticles.remove(articleVendu);
+					}
+				};break;
+			case "Vetements":
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getCategorie() != 3) {
+						listeArticles.remove(articleVendu);
+					}
+				};break;
+			case "Sport&Loisirs":
+				for (ArticleVendu articleVendu : listeArticles) {
+					if (articleVendu.getCategorie() != 3) {
+						listeArticles.remove(articleVendu);
+					}
+				};break;
+			default:
+				break;
+			}
+
 		}
 
 		request.setAttribute("listeArticles", listeArticles);

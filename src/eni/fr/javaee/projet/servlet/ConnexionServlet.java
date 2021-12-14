@@ -77,6 +77,7 @@ public class ConnexionServlet extends HttpServlet {
 			laJsp = "/WEB-INF/jsp/connexion.jsp";
 
 		}
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("pseudo", pseudo);
 		request.setAttribute("mdpValide", mdpValide);
