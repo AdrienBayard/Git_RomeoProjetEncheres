@@ -83,19 +83,9 @@ public class ConnexionServlet extends HttpServlet {
 		request.setAttribute("mdpValide", mdpValide);
 		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher(laJsp);
 		aiguilleur.forward(request, response);
-		try {
-			ArticleManager.getInstance().afficherMesEncheres(pseudo);
-		} catch (BLLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
-		try {
-			ArticleManager.getInstance().afficherEncheresRemportees(pseudo);
-		} catch (BLLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 	}
 
 	@Override
