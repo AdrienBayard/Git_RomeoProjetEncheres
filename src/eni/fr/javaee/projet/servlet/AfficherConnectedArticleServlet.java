@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
+import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 
@@ -62,13 +63,21 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		int noUtilisateur = 0; 
 		// Génération d'une liste blanche
 		List<ArticleVendu> listeArticles = new ArrayList<>();
 
 		// Récupération du pseudo de session
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
-
+		
+		try {
+			noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+		
 		// Afficher les article avec un certain nom
 		String huhuh = request.getParameter("encheresOuvertes");
 		System.out.println("value enchère ouvertes : " + huhuh);
@@ -94,15 +103,9 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 			// est intervenu + la date d'échéance doit être ouverte)
 			if (request.getParameter("mesEncheres") != null) {
 
-				try {
-					listeArticles = ArticleManager.getInstance().afficherMesEncheres(pseudo);
-					for (ArticleVendu articleVendu : listeArticles) {
-						System.out.println(articleVendu.toString());
-					}
-				
-				} catch (BLLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				listeArticles = EnchereManager.getInstance().trouverArticleEncherit(noUtilisateur);
+				for (ArticleVendu articleVendu : listeArticles) {
+					System.out.println(articleVendu.toString());
 				}
 
 			}

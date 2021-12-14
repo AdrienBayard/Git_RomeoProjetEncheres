@@ -1,5 +1,9 @@
 package eni.fr.javaee.projet.bll;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.EnchereDAO;
@@ -35,6 +39,18 @@ public class EnchereManager {
 		}
 		
 		return nouvelleEnchere;
+	}
+	
+	public List<ArticleVendu> trouverArticleEncherit(int noUtilisateur){
+		List<ArticleVendu> liste = new ArrayList<>(); 
+		
+		try {
+			liste = dao.trouverArticleEncherit(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return liste;
 	}
 	
 }
