@@ -164,7 +164,7 @@
 
 										<div class="col-sm-7">
 
-											<div class="card">
+											<div class="cards">
 												<div class="card-body">
 													<h2 class="card-title">
 														<a href="/connexion"
@@ -227,6 +227,7 @@
 										<c:out value="${article.dateFinEncheres}" />
 										<br>
 										<!-- dateFinEncheres-->
+										
 										<a
 											href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
 												value="${article.pseudo}" /></a>
