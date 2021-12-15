@@ -39,7 +39,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("entrée do get");
 
 		// Afficher tous les articles
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
@@ -211,7 +210,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 				} catch (BLLException e) {
 					e.printStackTrace();
 				}
-				System.out.println("achat/enchereouvertes");
 			}
 
 			// Afficher uniquement mes enchères (Uniquement les enchêres où l'utilisateur
@@ -220,7 +218,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 
 				listeArticles = EnchereManager.getInstance().trouverArticleEncherit(noUtilisateur);
 				for (ArticleVendu articleVendu : listeArticles) {
-					System.out.println(articleVendu.toString());
 				}
 
 			}
@@ -240,7 +237,6 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 
 		// Dans "mes ventes"
 		if (request.getParameter("ventesAchats") != null) {
-			System.out.println(" entrée dans vente ");
 
 			// Afficher uniquement mes ventes en cours (Uniquement si l'utilisateur est
 			// vendeur + la dateFinEnchere n'est pas arrivée à terme).
