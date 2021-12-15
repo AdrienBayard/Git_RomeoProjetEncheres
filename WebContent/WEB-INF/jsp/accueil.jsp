@@ -173,18 +173,20 @@
 													<p class="card-text">
 														<c:out value="${article.description}" />
 													</p>
+													<!-- prix -->)
 													<p class="card-text">
 														<c:out value="${article.prixVente}" />
 														<br>
-														<!-- prixVente -->
+														<!-- dateFinEncheres -->
 														<c:out value="${article.dateFinEncheres}" />
 														<br>
-														<!-- dateFinEncheres-->
-														<a
+														<!-- Utilisateur-->
+													</p>
+														
+														<a class="userLink"
 															href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
 																value="${article.pseudo}" /></a>
-														<!-- Utilisateur.pseudo-->
-													</p>
+														
 													<a href="#" class="btn btn-primary">Enchérir</a>
 												</div>
 											</div>
@@ -215,7 +217,7 @@
 									</div>
 									<div class="texte">
 									<h4>
-										<a href="/connexion"><c:out value="${article.nomArticle}"/></a>
+										<a href="/RomeoProjetEncheres/connexion"><c:out value="${article.nomArticle}"/></a>
 									</h4>
 									<p class="card-text">
 										<c:out value="${article.description}" />
@@ -228,12 +230,12 @@
 										<br>
 										<!-- dateFinEncheres-->
 										
-										<a
-											href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
+										<a style="text-decoration : none" class = "userLink"
+											href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/> </a> </c:url>"><c:out
 												value="${article.pseudo}" /></a>
 										<!-- Utilisateur.pseudo-->
 									</p>
-									<a href="#" class="btn btn-primary">Enchérir</a>
+									<a  href="#" class="btn btn-primary">Enchérir</a>
 									</div>
 								</div>
 						</c:forEach>

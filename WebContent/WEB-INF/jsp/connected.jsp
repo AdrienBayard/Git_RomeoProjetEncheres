@@ -319,7 +319,7 @@
 								</div>
 
 								<div class="col-sm-7">
-									<div class="card">
+									<div class="cards">
 										<div class="card-body">
 											<h5 class="card-title">
 												<a
