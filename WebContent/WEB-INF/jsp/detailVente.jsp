@@ -146,6 +146,7 @@
 		
 		<div class="col-md-6">
 		<br>
+		<p class = "mdpIncorrect"> ${message}</p><br>
 		<label>Nom de l'article:   ${nomArticle}</label><br><br>
 		<label>Description: ${description}</label><br>
 		<label>Catégorie: ${categorie}</label><br><br>
@@ -156,11 +157,13 @@
 		<label> ${rue}</label><br><br>
 		<label>Vendeur: ${vendeur}</label><br><br>
 		<label>Ma proposition:</label>
-		<input id="" type="number" pattern="^[0-9]{100}$" placeholder="${montantEnchere}" step="1" min="${montantEnchere}"><br><br> 
+		<form action="/RomeoProjetEncheres/achat" method="post">
+		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" placeholder="${montantEnchere}" step="1" min="${montantEnchere}"><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
 		<div class="button text-center">		
-				<a href="/RomeoProjetEncheres/connected"><button class="btn btn-action" form = "" name = "" value ="true">Enchérir</button></a>	
+				<button class="btn btn-action" type ="submit">Enchérir</button>
+				</form>
 				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 			</div>
 		</div>

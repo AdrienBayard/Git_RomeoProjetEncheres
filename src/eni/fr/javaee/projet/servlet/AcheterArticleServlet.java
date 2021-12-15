@@ -9,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import com.sun.research.ws.wadl.Request;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
@@ -22,6 +26,8 @@ import eni.fr.javaee.projet.bo.Enchere;
  */
 @WebServlet(name = "AcheterArticle", urlPatterns = { "/achat" })
 public class AcheterArticleServlet extends HttpServlet {
+	int noArticle = 0;
+	String message = "";
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -35,8 +41,14 @@ public class AcheterArticleServlet extends HttpServlet {
 		String ville = null;
 		String codePostal = null;
 		String rue = null;
-		int montantEnchere = 0;
-		int noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
+		int montantEnchere = 0;	
+			noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
+		if(!message.equals("")) {
+			request.setAttribute("message", message);
+		}
+		else {
+			message = "";
+		}
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
 			int noUtilisateurVendeur = article.getNo_utilisateur();
@@ -102,8 +114,60 @@ public class AcheterArticleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Nouvel enchere
-
+		message = "";
+		HttpSession session = request.getSession();
+		String pseudo = (String) session.getAttribute("pseudo");
+		int noUtilisateur;
+		
+		try {
+		//Ancien profil : 
+		int ancienNoUtilisateur = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getNoUtilisateur();
+		String ancienPseudo = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPseudo();
+		String ancienNom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getNom();
+		String ancienPrenom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPrenom();
+		String ancienEmail = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getEmail();
+		String ancienTelephone = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getTelephone();
+		String ancienRue = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getRue();
+		String ancienCodePostal = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCodePostal();
+		String ancienVille = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getVille();
+		String ancienMotDePasse = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getMotDePasse();
+		int ancienCredit = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCredit();
+		int ancienneMeilleureEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getMontant_enchere();
+		ancienCredit = ancienCredit + ancienneMeilleureEnchere;
+		
+		
+		//Nouveau profil
+		int nouveauNoUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+		String nouveauNom = UtilisateurManager.getInstance().afficherProfil(pseudo).getNom();
+		String nouveauPrenom = UtilisateurManager.getInstance().afficherProfil(pseudo).getPrenom();
+		String nouveauEmail = UtilisateurManager.getInstance().afficherProfil(pseudo).getEmail();
+		String nouveauTelephone = UtilisateurManager.getInstance().afficherProfil(pseudo).getTelephone();
+		String nouveauRue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
+		String nouveauCodePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
+		String nouveauVille = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
+		String nouveauMotDePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+		int nouveauCredit = UtilisateurManager.getInstance().afficherProfil(pseudo).getCredit();
+		int montantEnchere = Integer.parseInt(request.getParameter("montantEnchere"));
+		nouveauCredit = nouveauCredit - montantEnchere;
+		
+		
+		 noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+		 if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
+			 
+			 UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
+			 EnchereManager.getInstance().insertEnchere(montantEnchere, noArticle, noUtilisateur);
+			 UtilisateurManager.getInstance().updateUtilisateur(nouveauNoUtilisateur, pseudo, nouveauNom, nouveauPrenom, nouveauEmail, nouveauTelephone, nouveauRue, nouveauCodePostal, nouveauVille, nouveauMotDePasse, nouveauCredit);
+		 }
+		 else {
+			  message = "Une erreur dans la saisie d'enchere";
+			 doGet(request, response);
+		 }
+		 
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

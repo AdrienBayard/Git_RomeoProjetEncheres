@@ -23,7 +23,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String INSERT_NEW_UTILISATEUR = "INSERT INTO UTILISATEURS(pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe) VALUES(?,?,?,?,?,?,?,?,?)";
 
-	private static final String UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? where no_utilisateur =?";
+	private static final String UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ? where no_utilisateur =?";
 
 	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS Where no_utilisateur = ?";
 
@@ -177,7 +177,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			pStmt.setString(7, utilisateurModifie.getCodePostal());
 			pStmt.setString(8, utilisateurModifie.getVille());
 			pStmt.setString(9, utilisateurModifie.getMotDePasse());
-			pStmt.setInt(10, utilisateurModifie.getNoUtilisateur());
+			pStmt.setInt(10, utilisateurModifie.getCredit());
+			pStmt.setInt(11, utilisateurModifie.getNoUtilisateur());
 
 			// Execute l'ordre SQL
 			pStmt.executeUpdate();
