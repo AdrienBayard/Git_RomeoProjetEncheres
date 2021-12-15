@@ -255,6 +255,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 			}
 
 			if (request.getParameter("ventesNonDebutees") != null) {
+			
 					try {
 						listeArticles = ArticleManager.getInstance().afficherVentesNonDebutees(noUtilisateur);
 					} catch (BLLException e) {

@@ -10,37 +10,32 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
-import eni.fr.javaee.projet.bo.Utilisateur;
 import fr.eni.javaee.projet.dal.DALException;
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
-import fr.eni.javaee.projet.dal.ArticleDAO;
+
 
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 
-	private static final String AFFICHER_VENTES_EN_COURS = "SELECT a.nom_article, MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
-			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres>= CURRENT_TIMESTAMP and a.no_utilisateur = ? \r\n "
-			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
+	private static final String AFFICHER_VENTES_EN_COURS = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie\r\n " + 
+			" from ARTICLES_VENDUS a inner join UTILISATEURS u on a.no_utilisateur = u.no_utilisateur\r\n " + 
+			" WHERE a.date_debut_encheres <= CURRENT_TIMESTAMP and a.date_fin_encheres >= CURRENT_TIMESTAMP and a.no_utilisateur = ? \r\n " + 
+			" group by no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie ";
 
-	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT a.nom_article, MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
-			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a."
-			+ "date_debut_encheres>= CURRENT_TIMESTAMP \r\n" + "and a.no_utilisateur = ? \r\n "
-			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
+	private static final String AFFICHER_VENTES_NON_DEBUTEES = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie\r\n " + 
+			" from ARTICLES_VENDUS a inner join UTILISATEURS u on a.no_utilisateur = u.no_utilisateur\r\n " + 
+			" WHERE a.date_debut_encheres >= CURRENT_TIMESTAMP and a.no_utilisateur = ? \r\n " + 
+			" group by no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie ";
 
-	private static final String AFFICHER_VENTES_TERMINEES = "SELECT a.nom_article, MAX(e.montant_enchere), a.date_fin_encheres, a.no_utilisateur as vendeur\r\n "
-			+ " from ARTICLES_VENDUS a\r\n" + "inner join ENCHERES e on e.no_article=a.no_article\r\n "
-			+ " WHERE a.date_fin_encheres<= CURRENT_TIMESTAMP\r\n" + "and a.no_utilisateur = ? \r\n "
-			+ " group by a.nom_article, a.date_fin_encheres, a.no_utilisateur;\r\n " + "";
+	private static final String AFFICHER_VENTES_TERMINEES = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie\r\n " + 
+			" from ARTICLES_VENDUS a inner join UTILISATEURS u on a.no_utilisateur = u.no_utilisateur\r\n " + 
+			" WHERE a.date_fin_encheres <= CURRENT_TIMESTAMP and a.no_utilisateur = ? \r\n " + 
+			" group by no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, a.no_utilisateur, no_categorie\r\n " + 
+			"";
 
 	private static final String AFFICHER_ACHATS_EN_COURS = "SELECT * from ARTICLES_VENDUS where date_debut_encheres <= CURRENT_TIMESTAMP and date_fin_encheres >= CURRENT_TIMESTAMP";
 
@@ -351,27 +346,27 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 				ArticleVendu article = mapAfficherVente(rs);
 				noArticle = article.getNoArticle();
-				try {
-					nouvelleEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
-				} catch (BLLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				noAcheteur = nouvelleEnchere.getNoUtilisateur();
-				System.out.println(pseudo);
-				try {
-					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
-						listeAchatsAAfficher.add(article);
+				
+					if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
+						
+						nouvelleEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
+						
+						noAcheteur = nouvelleEnchere.getNoUtilisateur();
+						System.out.println(pseudo);
+						
+						if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
+							listeAchatsAAfficher.add(article);
+						}
 					}
-				} catch (BLLException e) {
-// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 			}
 
 		} catch (SQLException e) {
 // TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		} finally {
 			if (rs != null) {
 
