@@ -330,10 +330,12 @@
 												<c:out value="${article.description}" />
 											</p>
 											<p class="card-text">
-												<c:out value="${article.prixVente}" />
+												<c:out value="Mise à prix : ${article.miseAPrix} crédits"/> 
+												<br>
+												<c:out value="Prix actuel : ${enchere.meilleureenchre} crédits "/> 
 												<br>
 												<!-- prixVente -->
-												<c:out value="${article.dateFinEncheres}" />
+												<c:out value="Fin : ${article.dateFinEncheres}" />
 												<br>
 												<!-- dateFinEncheres-->
 												<a
