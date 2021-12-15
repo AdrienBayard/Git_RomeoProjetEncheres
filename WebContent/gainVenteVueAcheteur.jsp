@@ -137,45 +137,75 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				Gain de la vente
-				<br>---Page dans WebContent à déplacer dans jsp ensuite---
+				Vous avez remporté la vente!				
+				<br><br>
 			</h3>
 			
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<img alt="" src="" />
 		</div>
 		
-		
 		<div class="col-md-6">
-		<br>
-		<label>Vous avez remporté la vente</label><br><br>
+			<table>
+			<tr>
+			<td><label>Nom de l'article:&nbsp;&nbsp;&nbsp;&nbsp;  </label></td><td><label> ${nomArticle}</label></td>
+			</tr>
+			<tr><td><br></td></tr>
+			<tr>
+			<td><label>Description:  </label></td><td><label> ${description}</label></td>
+			</tr>
+			<tr>
+			<td><label>Catégorie:  </label></td><td><label>  ${categorie}</label></td>
+			</tr>
+			<tr>
+			<td><label>Meilleure offre: </label></td><td><label> ${montantEnchere} crédits  </label></td>
+			</tr>
+			<tr>
+			<td><label>Mise à prix:  </label></td><td><label> ${miseAPrix}  </label></td>
+			</tr>
+			<tr>
+			<td><label>Fin de l'enchère:    </label></td><td><label> ${finEnchere}  </label></td>
+			</tr>
+			<tr>
+			<td><label>Retrait:   </label></td><td><label> ${rue}</label></td>
+			</tr>
+			<tr>
+			<td><label>Code postal:  </label></td><td><label> ${codePostal}</label></td>
+			</tr>
+			<tr>
+			<td><label>Ville:  </label></td><td><label> ${ville}   </label></td>
+			</tr>
+			<tr>
+			<td><label>Vendeur:   </label></td><td><label> ${vendeur}  </label></td>
+			</tr>	
+			<tr>
+			<td><label>Téléphone:   </label></td><td><label> ${telephone}  </label></td> 
+			</tr>
+			<tr><td><br></td></tr>
+				
+			</table>
 		
-		<label>Nom de l'article:  <!-- TODO  ${requestScope.article}--></label><br><br>
-		<label>Description: <!-- TODO  ${requestScope.descriptionArticle}--></label><br>
-		<label>Catégorie:  <!-- TODO  ${requestScope.categorie}--></label><br><br>
-		<label>Meilleure offre:  <!-- TODO  ${requestScope.offre}--></label><br>
-		<label>Mise à prix:  <!-- TODO  ${requestScope.prixInitial}--></label><br>
-		<label>Fin de l'enchère:  <!-- TODO  ${requestScope.dateFinEnchere}--></label><br><br>
-		<label>Retrait:  <!-- TODO${requestScope.rue}--> </label><br>
-		<label><!-- TODO  ${requestScope.codePostal}--> <!-- TODO  ${requestScope.ville}--></label><br><br>
-		<label>Vendeur:  <!-- TODO  ${requestScope.vendeur}--></label><br><br>
-		<label>Téléphone:  <!-- TODO  ${requestScope.telephone}--></label><br><br> 
 
 		
-		<div class="button text-center">		
-				<a href="/RomeoProjetEncheres/connected"><button class="btn btn-action" form = "" name = "" value ="true">Back</button></a>	
-				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
-			</div>
-		</div>
-		<div class="col-md-3">
+		
+	</div>
+		<div class="col-md-2">
 			<img alt="" src="" />
 		</div>
 			
-	</div>
+			</div>
+		
+		<div class="row button text-center">		
+				<a href="/RomeoProjetEncheres/connected"><button class="btn btn-action" form = "" name = "" value ="true">Back</button></a>	
+				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
+			</div>
+		
+			
+
 	<br><br><br>
 </div>
 </div>
