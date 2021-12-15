@@ -58,14 +58,17 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 		} catch (SQLException e) {
 				e.printStackTrace();
 		} finally {
-
-			try {
-				cnx.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
+			if(rs != null) {
+				
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+				}
 			}
+
 		}	
 		
 	}

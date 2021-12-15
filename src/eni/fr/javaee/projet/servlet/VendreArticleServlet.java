@@ -86,6 +86,8 @@ public class VendreArticleServlet extends HttpServlet {
 		}
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
+		String truc = request.getParameter("trackingArticle");
+		System.out.println("truc : " + truc);
 		try {
 			no_utilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
 		} catch (BLLException e1) {
@@ -100,6 +102,8 @@ public class VendreArticleServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
+			aiguileur.forward(request, response);
 		
 	}
 
