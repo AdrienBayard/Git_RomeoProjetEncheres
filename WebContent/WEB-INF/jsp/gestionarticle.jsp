@@ -129,7 +129,7 @@
 
 		<br><ol class="breadcrumb">
 			<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-			<li class="active">Accès utilisateur</li>
+			<li class="active">Donnez une seconde vie à vos objets</li>
 		</ol><br>
 		
 		
