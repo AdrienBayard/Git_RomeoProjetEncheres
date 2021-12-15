@@ -33,101 +33,83 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
-	
-		<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
-	
+
+<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+
 <style>
 </style>
 </head>
 
 <body>
-			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
 
-<div class="container-back">
-	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/RomeoProjetEncheres/accueil">
-				<div class="logoRomeo">
-				<img src="assets/images/logo.png" >
+	<div class="container-back">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/RomeoProjetEncheres/accueil">
+						<div class="logoRomeo">
+							<img src="assets/images/logo.png">
+						</div>
+					</a>
 				</div>
-				</a>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav ">
+						<!-- pull-right -->
+
+						<div class="navigation">
+							<ul>
+								<li class="list"><a href="/RomeoProjetEncheres/accueil">
+										<span class="icon"> <ion-icon name="home-outline"></ion-icon>
+									</span> <span class="text">Enchères</span>
+								</a></li>
+								<li class="list"><a href="/RomeoProjetEncheres/vendre">
+										<span class="icon"> <ion-icon name="add-circle-outline"></ion-icon>
+									</span> <span class="text">Ventes</span>
+								</a></li>
+								<li class="list"><a href="/RomeoProjetEncheres/favoris.jsp">
+										<span class="icon"> <ion-icon name="star-outline"></ion-icon>
+									</span> <span class="text">Favoris</span>
+								</a></li>
+
+								<li class="list"><a href="/RomeoProjetEncheres/connexion">
+										<span class="icon"> <ion-icon name="person-outline"></ion-icon>
+									</span> <span class="text">Se connecter</span>
+								</a></li>
+								<li class="list active"><a
+									href="/RomeoProjetEncheres/inscription"> <span class="icon"><ion-icon
+												name="person-add-outline"></ion-icon> </span> <span class="text">S'inscrire</span>
+								</a></li>
+
+								<div class="indicator"></div>
+							</ul>
+						</div>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
 			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav "> <!-- pull-right -->
-				
-    <div class="navigation">
-        <ul>
-            <li class="list">
-                <a href="/RomeoProjetEncheres/accueil">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Enchères</span>
-                </a>
-            </li>
- 			<li class="list">
-                <a href="/RomeoProjetEncheres/vendre">
-                    <span class="icon">
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </span>
-                    <span class="text">Ventes</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="/RomeoProjetEncheres/favoris.jsp">
-                    <span class="icon">
-                        <ion-icon name="star-outline"></ion-icon>
-                    </span>
-                    <span class="text">Favoris</span>
-                </a>
-            </li>
-
-            <li class="list">
-                <a href="/RomeoProjetEncheres/connexion">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <span class="text">Se connecter</span>
-                </a>
-            </li>
-            <li class="list active">
-                <a href="/RomeoProjetEncheres/inscription">
-                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon>
-                        
-                    </span>
-                    <span class="text">S'inscrire</span>
-                </a>
-            </li>
-            
-            <div class="indicator"></div>
-        </ul>
-    </div>
-</ul>
-	</div>
-			<!--/.nav-collapse -->
 		</div>
-	</div>
-	<!-- /.navbar -->
-   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+		<!-- /.navbar -->
+		<!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
 
-	<header id="head" class="secondary"></header>
+		<header id="head" class="secondary"></header>
 
 
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="h-body text-center">
-						<br><h2>Liste des enchères</h2>
+						<br>
+						<h2>Liste des enchères</h2>
 					</div>
 
 					<form class="rechercher">
@@ -157,61 +139,104 @@
 						</div>
 
 					</form>
-
-
 					<br> <br> <br> <br>
+					<!-- CARTES -->
+					<!-- MOBILE -->
 
-					<div class="row">
+					<div class="mobile">
+						<div class="row">
 
-						<div class="col-sm-1"></div>
-						<div class="col-sm-10">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-10">
 
-		<c:forEach var="article" items="${requestScope.listeArticles}" begin="0">
-			
-			
-			<div class="cardperso col-sm-5 ">
-				
-				<div class="col-sm-5">
-					<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
-						title="">
-				</div>
-				
-				<div class="col-sm-7">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href="/connexion" <c:out value="${article.nomArticle}" />></a>
-							</h5>
-							<p class="card-text">
-								<c:out value="${article.description}" />
-							</p>
-							<p class="card-text">
-								<c:out value="${article.prixVente}" />
-								<br>
-								<!-- prixVente -->
-								<c:out value="${article.dateFinEncheres}" />
-								<br>
-								<!-- dateFinEncheres-->
-								<a href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out value="${article.pseudo}" /></a>
-								<!-- Utilisateur.pseudo-->
-							</p>
-							<a href="#" class="btn btn-primary">Enchérir</a>
+								<c:forEach var="article" items="${requestScope.listeArticles}"
+									begin="0">
+
+
+
+
+									<div class="cardperso col-sm-5 ">
+
+										<div class="col-sm-5">
+											<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+												title="">
+										</div>
+
+										<div class="col-sm-7">
+
+											<div class="card">
+												<div class="card-body">
+													<h2 class="card-title">
+														<a href="/connexion"
+															<c:out value="${article.nomArticle}" />></a>
+													</h2>
+													<p class="card-text">
+														<c:out value="${article.description}" />
+													</p>
+													<p class="card-text">
+														<c:out value="${article.prixVente}" />
+														<br>
+														<!-- prixVente -->
+														<c:out value="${article.dateFinEncheres}" />
+														<br>
+														<!-- dateFinEncheres-->
+														<a
+															href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
+																value="${article.pseudo}" /></a>
+														<!-- Utilisateur.pseudo-->
+													</p>
+													<a href="#" class="btn btn-primary">Enchérir</a>
+												</div>
+											</div>
+										</div>
+										<div class="w-100"></div>
+									</div>
+
+									<c:if test="${listeArticles.indexOf(article) % 2 == 0}">
+										<div class="col-sm-2"></div>
+									</c:if>
+								</c:forEach>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="w-100"></div>
-			</div>
-		
-
-			<c:if test="${listeArticles.indexOf(article) % 2 == 0}">
-				<div class="col-sm-2"></div>
-			</c:if>
-			
-			
-		</c:forEach>
-
-		</div>
 						<div class="col-sm-1"></div>
+					</div>
+
+					<!-- PC  -->
+					<div class="pc">
+
+							<div class="lescartes">
+						<c:forEach var="article" items="${requestScope.listeArticles}"
+							begin="0">
+
+								<div class="card">
+										<div class="miniature">
+										<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
+											title="">
+									</div>
+									<div class="texte">
+									<h4>
+										<a href="/connexion"><c:out value="${article.nomArticle}"/></a>
+									</h4>
+									<p class="card-text">
+										<c:out value="${article.description}" />
+									</p>
+									<p class="card-text">
+										<c:out value="${article.prixVente}" />
+										<br>
+										<!-- prixVente -->
+										<c:out value="${article.dateFinEncheres}" />
+										<br>
+										<!-- dateFinEncheres-->
+										<a
+											href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
+												value="${article.pseudo}" /></a>
+										<!-- Utilisateur.pseudo-->
+									</p>
+									<a href="#" class="btn btn-primary">Enchérir</a>
+									</div>
+								</div>
+						</c:forEach>
+							</div>
 					</div>
 					<br> <br> <br>
 				</div>
@@ -219,59 +244,65 @@
 		</div>
 
 
-	<footer id="footer" class="top-space">
+		<!-- ///////////////////////////////// -->
 
-		<div class="footer1">
-			<div class="container">
-				<div class="row">
+		<footer id="footer" class="top-space">
 
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Contact</h3>
-						<div class="widget-body">
-							<p>
-								02 00 00 00 00<br> <a href="mailto:#">losna@mail.com</a><br>
-								<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
-							</p>
+			<div class="footer1">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Contact</h3>
+							<div class="widget-body">
+								<p>
+									02 00 00 00 00<br> <a href="mailto:#">losna@mail.com</a><br>
+									<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
+								</p>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Suivez-nous</h3>
-						<div class="widget-body">
-							<p class="follow-me-icons clearfix">
-								<a href=""><i class="fa fa-twitter fa-2"></i></a> <a href=""><i
-									class="fa fa-dribbble fa-2"></i></a> <a href=""><i
-									class="fa fa-github fa-2"></i></a> <a href=""><i
-									class="fa fa-facebook fa-2"></i></a>
-							</p>
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Suivez-nous</h3>
+							<div class="widget-body">
+								<p class="follow-me-icons clearfix">
+									<a href=""><i class="fa fa-twitter fa-2"></i></a> <a href=""><i
+										class="fa fa-dribbble fa-2"></i></a> <a href=""><i
+										class="fa fa-github fa-2"></i></a> <a href=""><i
+										class="fa fa-facebook fa-2"></i></a>
+								</p>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-6 widget">
-						<h3 class="widget-title">Association: "Les objets sont nos amis"</h3>
-						<div class="widget-body">
-							<p>Utiliser notre site, c'est partager nos valeurs!</p>
-							<p>&nbsp;&nbsp;- Nos idées neuves</p>
-							<p>&nbsp;&nbsp;- Une appétence grandissante pour la réutilisation et le recyclage</p>
-							<p>&nbsp;&nbsp;- Encourager la réutilisation, donner une seconde vie aux objets en facilitant les échanges</p>
-							<p>&nbsp;&nbsp;- Permettre l'échange du plus grand nombre d'objets possible</p>
-							<br>
+						<div class="col-md-6 widget">
+							<h3 class="widget-title">Association: "Les objets sont nos
+								amis"</h3>
+							<div class="widget-body">
+								<p>Utiliser notre site, c'est partager nos valeurs!</p>
+								<p>&nbsp;&nbsp;- Nos idées neuves</p>
+								<p>&nbsp;&nbsp;- Une appétence grandissante pour la
+									réutilisation et le recyclage</p>
+								<p>&nbsp;&nbsp;- Encourager la réutilisation, donner une
+									seconde vie aux objets en facilitant les échanges</p>
+								<p>&nbsp;&nbsp;- Permettre l'échange du plus grand nombre
+									d'objets possible</p>
+								<br>
 
+							</div>
 						</div>
-					</div>
 
+					</div>
+					<!-- /row of widgets -->
 				</div>
-				<!-- /row of widgets -->
 			</div>
-		</div>
 
-	</footer>
+		</footer>
 
 	</div>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	
-	    <script>
+
+	<script>
         const list = document.querySelectorAll('.list');
         function activeLink() {
             list.forEach((item) => item.classList.remove('active'));
@@ -281,15 +312,18 @@
 
 
     </script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script
-			src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-		<script src="assets/js/headroom.min.js"></script>
-		<script src="assets/js/jQuery.headroom.min.js"></script>
-		<script src="assets/js/template.js"></script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
 
 </body>
 </html>
