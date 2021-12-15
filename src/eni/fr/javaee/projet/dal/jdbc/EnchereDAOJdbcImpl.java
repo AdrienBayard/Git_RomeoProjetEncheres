@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
+
 import fr.eni.javaee.projet.dal.DALException;
 import fr.eni.javaee.projet.dal.EnchereDAO;
 
@@ -25,9 +27,48 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	
 	private static final String TROUVER_ARTICLE_ENCHERIT = "select no_article from ENCHERES WHERE no_utilisateur = ? group by no_article"; 
 	
-	
+	private static final String INSERT_ENCHERE = "INSERT INTO ENCHERES(montant_enchere, no_article, no_utilisateur) values (?, ?, ?)"; 
 	// INSERT enchère ------------------------------------------------------------------------
+	public void insertEnchere(Enchere enchere) throws DALException {
+		
 
+		// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		
+		// Obtient une objet de commande (Statement) = ordre SQL
+		ResultSet rs = null;
+		
+
+		// Paramétrer l'objet de commande
+		try {
+				PreparedStatement pStmt = cnx.prepareStatement(INSERT_ENCHERE, Statement.RETURN_GENERATED_KEYS);
+				pStmt.setInt(1, enchere.getMontant_enchere()); 
+				pStmt.setInt(2, enchere.getNumArticle());
+				pStmt.setInt(3, enchere.getNoUtilisateur()); 
+				
+		// Execute l'ordre SQL
+		pStmt.executeUpdate();
+		rs = pStmt.getGeneratedKeys();		
+		
+		if (rs.next()) {
+			int idEnchereInseree = rs.getInt(1);
+			enchere.setNumEnchere(idEnchereInseree); 
+		}
+				
+		} catch (SQLException e) {
+				e.printStackTrace();
+		} finally {
+
+			try {
+				cnx.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+		}	
+		
+	}
 	
 	
 	

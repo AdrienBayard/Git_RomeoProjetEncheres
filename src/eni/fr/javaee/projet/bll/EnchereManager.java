@@ -53,4 +53,20 @@ public class EnchereManager {
 		return liste;
 	}
 	
+	public void insertEnchere(int montant_enchere, int numArticle, int noUtilisateur) throws BLLException {
+		Enchere nvlleEnchere = null; 
+		
+		nvlleEnchere = new Enchere(montant_enchere, numArticle, noUtilisateur); 
+		
+			try {
+				dao.insertEnchere(nvlleEnchere);
+			} catch (DALException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
 }
+
+
+

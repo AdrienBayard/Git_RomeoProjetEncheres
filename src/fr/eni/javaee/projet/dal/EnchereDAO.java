@@ -9,5 +9,5 @@ public interface EnchereDAO {
 	
 	public Enchere trouverMeilleurEncherisseur(int noArticle)throws DALException;
 	public List<ArticleVendu> trouverArticleEncherit(int noUtilisateur) throws DALException; 
-
+	public void insertEnchere(Enchere enchere) throws DALException; 
 }
