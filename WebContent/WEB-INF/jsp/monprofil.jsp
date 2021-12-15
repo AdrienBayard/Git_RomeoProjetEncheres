@@ -147,6 +147,7 @@
 			<label>Rue: </label><br>
 			<label>Code postal: </label><br>
 			<label>Ville: </label><br>
+			<label>Mes crédits:</label>
 			<br>
 	</div>
 		<div class="col-sm-2">	
@@ -158,6 +159,7 @@
 			<label>${requestScope.rue}</label><br>
 			<label>${requestScope.codePostal}</label><br>
 			<label>${requestScope.ville}</label><br>
+			<label>${requestScope.credit}</label><br>
 		<br>
 			
 	</div>
