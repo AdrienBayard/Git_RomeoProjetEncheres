@@ -27,6 +27,7 @@ import eni.fr.javaee.projet.bo.Enchere;
 @WebServlet(name = "AcheterArticle", urlPatterns = { "/achat" })
 public class AcheterArticleServlet extends HttpServlet {
 	int noArticle = 0;
+	Boolean modification = false;
 	String message = "";
 	private static final long serialVersionUID = 1L;
 
@@ -42,13 +43,18 @@ public class AcheterArticleServlet extends HttpServlet {
 		String codePostal = null;
 		String rue = null;
 		int montantEnchere = 0;	
-			noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
 		if(!message.equals("")) {
 			request.setAttribute("message", message);
+			message = "";
 		}
 		else {
 			message = "";
+			if (modification == false) {
+				
+				noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
+			}
 		}
+		System.out.println("noArticle :" + noArticle);
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
 			int noUtilisateurVendeur = article.getNo_utilisateur();
@@ -167,18 +173,25 @@ public class AcheterArticleServlet extends HttpServlet {
 		int montantEnchere = Integer.parseInt(request.getParameter("montantEnchere"));
 		nouveauCredit = nouveauCredit - montantEnchere;
 		
-		
 		 noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
+
 		 if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
 				if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
 					UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
 				}
-
+				
 			 EnchereManager.getInstance().insertEnchere(montantEnchere, noArticle, noUtilisateur);
 			 UtilisateurManager.getInstance().updateUtilisateur(nouveauNoUtilisateur, pseudo, nouveauNom, nouveauPrenom, nouveauEmail, nouveauTelephone, nouveauRue, nouveauCodePostal, nouveauVille, nouveauMotDePasse, nouveauCredit);
+			message = "";
+			modification = true;
+			 doGet(request, response);
+		 }
+		 else if (noUtilisateur == ancienNoUtilisateur){
+			  message = "Vous êtes déjà le meilleur enchérisseur";
+			 doGet(request, response);
 		 }
 		 else {
-			  message = "Une erreur dans la saisie d'enchere";
+			 message = "Une erreur s'est produite lors de l'insertion des crédits, veuillez vérifier vos crédits";
 			 doGet(request, response);
 		 }
 		 

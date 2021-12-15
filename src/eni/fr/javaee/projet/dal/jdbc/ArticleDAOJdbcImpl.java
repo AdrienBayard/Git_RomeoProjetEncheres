@@ -306,6 +306,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			while (rs.next()) {
 
 				ArticleVendu article = mapAfficherVente(rs);
+
 				listeAchatsAAfficher.add(article);
 			}
 
@@ -441,7 +442,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public ArticleVendu mapAfficherVente(ResultSet rs) throws SQLException {
 		ArticleVendu articleVendu = null;
 		String pseudo = null;
-
+		int meilleurEnchere = 0;
 		int no_Article = rs.getInt("no_article");
 		String nomArticle = rs.getString("nom_article");
 		String description = rs.getString("description");
@@ -451,6 +452,17 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		int prixVente = rs.getInt("prix_vente");
 		int categorie = rs.getInt("no_categorie");
 		int no_utilisateur = rs.getInt("no_utilisateur");
+		Enchere enchere = null;
+		try {
+			enchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(no_Article);
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if(enchere != null) {
+			
+			 meilleurEnchere = enchere.getMontant_enchere();
+		}
 		try {
 			pseudo = UtilisateurManager.getInstance().afficherProfilAvecId(no_utilisateur).getPseudo();
 		} catch (BLLException e) {
@@ -459,7 +471,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}
 
 		articleVendu = new ArticleVendu(no_Article, nomArticle, description, dateDebutEncheres, dateFinEncheres,
-				miseAPrix, prixVente, categorie, no_utilisateur, pseudo);
+				miseAPrix, prixVente, categorie, no_utilisateur, pseudo,meilleurEnchere);
 
 		return articleVendu;
 	}

@@ -156,9 +156,9 @@
 		<label>Retrait: ${codePostal} ${ville}  </label><br>
 		<label> ${rue}</label><br><br>
 		<label>Vendeur: ${vendeur}</label><br><br>
-		<label>Ma proposition:</label>
+		<label  >Ma proposition:</label>
 		<form action="/RomeoProjetEncheres/achat" method="post">
-		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" placeholder="${montantEnchere}" step="1" min="${montantEnchere}"><br><br> 
+		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" placeholder="${montantEnchere}" step="1" min="${montantEnchere}" required><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
 		<div class="button text-center">		

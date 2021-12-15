@@ -16,6 +16,7 @@ public class ArticleVendu {
 	private int categorie;
 	private int no_utilisateur;
 	private String pseudo;
+	private int meilleurEnchere;
 	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, String etatVente, int categorie) {
 		
@@ -30,10 +31,6 @@ public class ArticleVendu {
 		this.categorie = categorie;
 		
 	}
-
-	
-
-	
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int no_utilisateur, int categorie) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -46,8 +43,7 @@ public class ArticleVendu {
 		this.no_utilisateur = no_utilisateur;
 		
 	}
-
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, String pseudo) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, String pseudo, int meilleurEnchere) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -58,6 +54,7 @@ public class ArticleVendu {
 		this.categorie = categorie;
 		this.no_utilisateur = no_utilisateur;
 		this.pseudo = pseudo;
+		this.meilleurEnchere = meilleurEnchere;
 	}
 
 	
@@ -65,6 +62,12 @@ public class ArticleVendu {
 		return noArticle;
 	}
 
+	public int getMeilleurEnchere() {
+		return meilleurEnchere;
+	}
+	public void setMeilleurEnchere(int meilleurEnchere) {
+		this.meilleurEnchere = meilleurEnchere;
+	}
 	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
