@@ -7,9 +7,9 @@ import eni.fr.javaee.projet.bo.Enchere;
 
 public interface ArticleDAO {
 	
-	public List<ArticleVendu> afficherVentesEnCours() throws DALException;
-	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException;
-	public List<ArticleVendu> afficherVentesTerminees() throws DALException;
+	public List<ArticleVendu> afficherVentesEnCours(int noUtilisateur) throws DALException;
+	public List<ArticleVendu> afficherVentesNonDebutees(int noUtilisateur) throws DALException;
+	public List<ArticleVendu> afficherVentesTerminees(int noUtilisateur) throws DALException;
 	public List<ArticleVendu> afficherAchatsEnCours() throws DALException;
 
 	

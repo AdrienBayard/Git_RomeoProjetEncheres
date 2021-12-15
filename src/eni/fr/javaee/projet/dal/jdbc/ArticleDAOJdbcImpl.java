@@ -179,11 +179,13 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}
 	}
 
-	public List<ArticleVendu> afficherVentesEnCours() throws DALException {
-		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
+	public List<ArticleVendu> afficherVentesEnCours(int noUtilisateur) throws DALException {
+		
+		List<ArticleVendu> listeVenteAAfficher = new ArrayList<ArticleVendu>();
 
 		ResultSet rs = null;
-// Obtenir une connexion
+
+				// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
 			Statement pStmt = cnx.createStatement();
@@ -191,9 +193,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			rs = pStmt.executeQuery(AFFICHER_VENTES_EN_COURS);
 
 			while (rs.next()) {
-
 				ArticleVendu article = mapAfficherVente(rs);
-				listeAchatsAAfficher.add(article);
+				if(noUtilisateur == article.getNo_utilisateur()) {
+					listeVenteAAfficher.add(article);
+				}
 			}
 
 		} catch (SQLException e) {
@@ -211,19 +214,85 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			}
 		}
 
-		return listeAchatsAAfficher;
+		return listeVenteAAfficher;
 
 	}
 
-	public List<ArticleVendu> afficherVentesNonDebutees() throws DALException {
-		return null;
+	public List<ArticleVendu> afficherVentesNonDebutees(int noUtilisateur) throws DALException {
+		List<ArticleVendu> listeVenteAAfficher = new ArrayList<ArticleVendu>();
 
+		ResultSet rs = null;
+
+				// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			rs = pStmt.executeQuery(AFFICHER_VENTES_NON_DEBUTEES);
+
+			while (rs.next()) {
+				ArticleVendu article = mapAfficherVente(rs);
+				if(noUtilisateur == article.getNo_utilisateur()) {
+					listeVenteAAfficher.add(article);
+				}
+			}
+
+		} catch (SQLException e) {
+// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return listeVenteAAfficher;
 	}
 
-	public List<ArticleVendu> afficherVentesTerminees() throws DALException {
-		return null;
+	public List<ArticleVendu> afficherVentesTerminees(int noUtilisateur) throws DALException {
+		List<ArticleVendu> listeVenteAAfficher = new ArrayList<ArticleVendu>();
+
+		ResultSet rs = null;
+
+				// Obtenir une connexion
+		Connection cnx = ConnectionProvider.getConnection();
+		try {
+			Statement pStmt = cnx.createStatement();
+
+			rs = pStmt.executeQuery(AFFICHER_VENTES_TERMINEES);
+
+			while (rs.next()) {
+				ArticleVendu article = mapAfficherVente(rs);
+				if(noUtilisateur == article.getNo_utilisateur()) {
+					listeVenteAAfficher.add(article);
+				}
+			}
+
+		} catch (SQLException e) {
+// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+
+				try {
+					cnx.close();
+				} catch (SQLException e) {
+// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return listeVenteAAfficher;
+	}
 		
-	}
+	
 
 	
 

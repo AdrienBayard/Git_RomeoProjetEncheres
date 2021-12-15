@@ -247,7 +247,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 
 			if (request.getParameter("mesVentesEnCours") != null) {
 				try {
-					listeArticles = ArticleManager.getInstance().afficherVentesEnCours();
+					listeArticles = ArticleManager.getInstance().afficherVentesEnCours(noUtilisateur);
 				} catch (BLLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

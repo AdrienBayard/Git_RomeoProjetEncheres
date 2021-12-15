@@ -29,16 +29,46 @@ public class ArticleManager {
 		return instance;
 	}
 
-	public List<ArticleVendu> afficherVentesEnCours() throws BLLException {
-		return null;
+	public List<ArticleVendu> afficherVentesEnCours(int noUtilisateur) throws BLLException {
+	List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherVentesEnCours(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
 	}
+	
+	
 
-	public List<ArticleVendu> afficherVentesNonDebutees() throws BLLException   {
-		return null;
+	public List<ArticleVendu> afficherVentesNonDebutees(int noUtilisateur) throws BLLException   {
+List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherVentesNonDebutees(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
 	}
+	
 
-	public List<ArticleVendu> afficherVentesTerminees() throws BLLException {
-		return null;
+	public List<ArticleVendu> afficherVentesTerminees(int noUtilisateur) throws BLLException {
+List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>(); 
+		
+		try {  
+			listeArticles = dao.afficherVentesTerminees(noUtilisateur);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return listeArticles;
 	}
 
 	public List<ArticleVendu> afficherAchatsEnCours() throws BLLException {
