@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -157,8 +158,20 @@
 		<label> ${rue}</label><br><br>
 		<label>Vendeur: ${vendeur}</label><br><br>
 		<label  >Ma proposition:</label>
+		   <c:if test = "${miseAPrix >= montantEnchere}">
+		   <fmt:formatNumber type="number" 
+                  pattern="0" value="${miseAPrix}"
+                  var="minimumEnchere"/>
+		   
+      </c:if>
+      <c:if test = "${montantEnchere > miseAPrix }">
+      		  <fmt:formatNumber type="number" 
+                  pattern="0" value="${montantEnchere}"
+                  var="minimumEnchere"/>
+      </c:if>
+      
 		<form action="/RomeoProjetEncheres/achat" method="post">
-		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" placeholder="${montantEnchere}" step="1" min="${montantEnchere}" required><br><br> 
+		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" min="${minimumEnchere}" placeholder="${minimumEnchere}" step="1"  required><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
 		
 		<div class="button text-center">		

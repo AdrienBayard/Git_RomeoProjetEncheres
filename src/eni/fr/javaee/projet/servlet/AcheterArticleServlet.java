@@ -53,6 +53,9 @@ public class AcheterArticleServlet extends HttpServlet {
 				
 				noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
 			}
+			else {
+				modification = false;
+			}
 		}
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
@@ -119,6 +122,7 @@ public class AcheterArticleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		modification = false;
 		message = "";
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
