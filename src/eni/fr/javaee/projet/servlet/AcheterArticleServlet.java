@@ -152,10 +152,7 @@ public class AcheterArticleServlet extends HttpServlet {
 		
 		
 		 noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
-		 System.out.println("nouveauCredit :" + nouveauCredit);
-		 System.out.println("ancienCredit :  " + ancienCredit);
 		 if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
-			 System.out.println( "if");
 			 
 			 UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
 			 EnchereManager.getInstance().insertEnchere(montantEnchere, noArticle, noUtilisateur);
