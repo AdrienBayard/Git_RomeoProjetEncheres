@@ -54,7 +54,6 @@ public class AcheterArticleServlet extends HttpServlet {
 				noArticle = Integer.valueOf(request.getParameter("trackingArticle"));
 			}
 		}
-		System.out.println("noArticle :" + noArticle);
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
 			int noUtilisateurVendeur = article.getNo_utilisateur();
