@@ -48,8 +48,6 @@ public class AcheterArticleServlet extends HttpServlet {
 				
 				int noUtilisateur = meilleurEnchere.getNoUtilisateur();
 				montantEnchere = meilleurEnchere.getMontant_enchere();
-				System.out.println("noUtilisateur :" + noUtilisateur);
-				System.out.println("montantEnchere :" + montantEnchere);
 				
 				if (noUtilisateur != 0) {
 					pseudoDuMeilleurEncherisseur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateur)
