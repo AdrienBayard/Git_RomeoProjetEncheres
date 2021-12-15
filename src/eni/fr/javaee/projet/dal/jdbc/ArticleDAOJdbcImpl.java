@@ -188,15 +188,15 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
-			Statement pStmt = cnx.createStatement();
-
-			rs = pStmt.executeQuery(AFFICHER_VENTES_EN_COURS);
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_VENTES_EN_COURS);
+			pStmt.setInt(1, noUtilisateur);
+			
+			
+			rs = pStmt.executeQuery();
 
 			while (rs.next()) {
-				ArticleVendu article = mapAfficherVente(rs);
-				if(noUtilisateur == article.getNo_utilisateur()) {
+				ArticleVendu article = mapAfficherVente(rs);				
 					listeVenteAAfficher.add(article);
-				}
 			}
 
 		} catch (SQLException e) {
@@ -226,15 +226,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
-			Statement pStmt = cnx.createStatement();
-
-			rs = pStmt.executeQuery(AFFICHER_VENTES_NON_DEBUTEES);
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_VENTES_NON_DEBUTEES);
+			pStmt.setInt(1, noUtilisateur);
+			
+			rs = pStmt.executeQuery();
 
 			while (rs.next()) {
 				ArticleVendu article = mapAfficherVente(rs);
-				if(noUtilisateur == article.getNo_utilisateur()) {
 					listeVenteAAfficher.add(article);
-				}
 			}
 
 		} catch (SQLException e) {
@@ -256,6 +255,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	public List<ArticleVendu> afficherVentesTerminees(int noUtilisateur) throws DALException {
+		
 		List<ArticleVendu> listeVenteAAfficher = new ArrayList<ArticleVendu>();
 
 		ResultSet rs = null;
@@ -263,15 +263,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 				// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 		try {
-			Statement pStmt = cnx.createStatement();
+			PreparedStatement pStmt = cnx.prepareStatement(AFFICHER_VENTES_TERMINEES);
+			pStmt.setInt(1, noUtilisateur);
 
-			rs = pStmt.executeQuery(AFFICHER_VENTES_TERMINEES);
+			rs = pStmt.executeQuery();
 
 			while (rs.next()) {
 				ArticleVendu article = mapAfficherVente(rs);
-				if(noUtilisateur == article.getNo_utilisateur()) {
 					listeVenteAAfficher.add(article);
-				}
 			}
 
 		} catch (SQLException e) {
