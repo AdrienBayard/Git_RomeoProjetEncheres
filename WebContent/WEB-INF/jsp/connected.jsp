@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="eni.fr.javaee.projet.bll.EnchereManager" %>
+<%@ page import="eni.fr.javaee.projet.bo.ArticleVendu" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -332,6 +334,9 @@
 											<p class="card-text">
 												<c:out value="Mise à prix : ${article.miseAPrix} crédits"/> 
 												<br>
+												<%! int meilleurEnchere =0; %>
+<%-- 												<%=  meilleurEnchere = (Integer) EnchereManager.getInstance().trouverMeilleurEncherisseur(article.getNoArticle())%>
+ --%>												
 												<c:out value="Prix actuel : ${enchere.meilleureenchre} crédits "/> 
 												<br>
 												<!-- prixVente -->

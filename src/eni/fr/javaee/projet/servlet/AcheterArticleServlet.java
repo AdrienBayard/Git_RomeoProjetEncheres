@@ -117,23 +117,40 @@ public class AcheterArticleServlet extends HttpServlet {
 		message = "";
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
-		int noUtilisateur;
+		int ancienNoUtilisateur = 0 ;
+		String ancienPseudo = "" ;
+		String ancienNom = "";
+		String ancienPrenom= "";
+		String ancienEmail= "";
+		String ancienTelephone= "";
+		String ancienRue= "";
+		String ancienCodePostal= "";
+		String ancienVille= "";
+		String ancienMotDePasse= "";
+		int ancienCredit =0;
+		int ancienneMeilleureEnchere = 0;
+		int noUtilisateur=0;
 		
 		try {
 		//Ancien profil : 
-		int ancienNoUtilisateur = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getNoUtilisateur();
-		String ancienPseudo = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPseudo();
-		String ancienNom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getNom();
-		String ancienPrenom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPrenom();
-		String ancienEmail = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getEmail();
-		String ancienTelephone = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getTelephone();
-		String ancienRue = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getRue();
-		String ancienCodePostal = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCodePostal();
-		String ancienVille = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getVille();
-		String ancienMotDePasse = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getMotDePasse();
-		int ancienCredit = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCredit();
-		int ancienneMeilleureEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getMontant_enchere();
-		ancienCredit = ancienCredit + ancienneMeilleureEnchere;
+			if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
+				 ancienNoUtilisateur = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getNoUtilisateur();
+				 ancienPseudo = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPseudo();
+				 ancienNom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getNom();
+				 ancienPrenom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPrenom();
+				 ancienEmail = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getEmail();
+				 ancienTelephone = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getTelephone();
+				 ancienRue = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getRue();
+				 ancienCodePostal = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCodePostal();
+				 ancienVille = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getVille();
+				 ancienMotDePasse = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getMotDePasse();
+				 ancienCredit = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCredit();
+				 ancienneMeilleureEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getMontant_enchere();
+				if(ancienneMeilleureEnchere != 0) {
+					
+					ancienCredit = ancienCredit + ancienneMeilleureEnchere;
+				}
+			}
 		
 		
 		//Nouveau profil
@@ -153,8 +170,10 @@ public class AcheterArticleServlet extends HttpServlet {
 		
 		 noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
 		 if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
-			 
-			 UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
+				if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
+					UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
+				}
+
 			 EnchereManager.getInstance().insertEnchere(montantEnchere, noArticle, noUtilisateur);
 			 UtilisateurManager.getInstance().updateUtilisateur(nouveauNoUtilisateur, pseudo, nouveauNom, nouveauPrenom, nouveauEmail, nouveauTelephone, nouveauRue, nouveauCodePostal, nouveauVille, nouveauMotDePasse, nouveauCredit);
 		 }
