@@ -5,6 +5,8 @@
 <%@ page import="eni.fr.javaee.projet.bo.ArticleVendu"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -173,21 +175,28 @@
 													<p class="card-text">
 														<c:out value="${article.description}" />
 													</p>
-													<!-- prix -->)
+													<!-- prix -->
+													)
 													<p class="card-text">
 														<c:out value="${article.prixVente}" />
 														<br>
 														<!-- dateFinEncheres -->
-														<c:out value="${article.dateFinEncheres}" />
+														<fmt:parseDate value="${ article.dateFinEncheres }"
+															pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
+															type="both" />
+														<fmt:formatDate pattern="dd.MM.yyyy HH:mm"
+															value="${ parsedDateTime }" />
+
+														
+
 														<br>
 														<!-- Utilisateur-->
 													</p>
-														
-														<a class="userLink"
-															href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
-																value="${article.pseudo}" /></a>
-														
-													<a href="#" class="btn btn-primary">Enchérir</a>
+
+													<a class="userLink"
+														href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
+															value="${article.pseudo}" /></a> <a href="#"
+														class="btn btn-primary">Enchérir</a>
 												</div>
 											</div>
 										</div>
@@ -206,40 +215,49 @@
 					<!-- PC  -->
 					<div class="pc">
 
-							<div class="lescartes">
-						<c:forEach var="article" items="${requestScope.listeArticles}"
-							begin="0">
+						<div class="lescartes">
+							<c:forEach var="article" items="${requestScope.listeArticles}"
+								begin="0">
 
 								<div class="card">
-										<div class="miniature">
+									<div class="miniature">
 										<img class="card-img-bottom" src="IMG\miniature.jpg" alt=""
 											title="">
 									</div>
 									<div class="texte">
-									<h4>
-										<a href="/RomeoProjetEncheres/connexion"><c:out value="${article.nomArticle}"/></a>
-									</h4>
-									<p class="card-text">
-										<c:out value="${article.description}" />
-									</p>
-									<p class="card-text">
-										<c:out value="${article.prixVente}" />
+										<h4>
+											<a href="/RomeoProjetEncheres/connexion"><c:out
+													value="${article.nomArticle}" /></a>
+										</h4>
+										<p class="card-text">
+											<c:out value="${article.description}" />
+										</p>
+										<p class="card-text">
+											<c:out value="${article.prixVente}" />
+											<br>
+											<!-- prixVente -->
+
+
+											<fmt:parseDate value="${ article.dateFinEncheres }"
+												pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
+												type="both" />
+											<fmt:formatDate pattern="dd/MM/yyyy HH'h'mm"
+												value="${ parsedDateTime }" />
+
 										<br>
-										<!-- prixVente -->
-										<c:out value="${article.dateFinEncheres}" />
-										<br>
-										<!-- dateFinEncheres-->
-										
-										<a style="text-decoration : none" class = "userLink"
-											href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/> </a> </c:url>"><c:out
-												value="${article.pseudo}" /></a>
-										<!-- Utilisateur.pseudo-->
-									</p>
-									<a  href="#" class="btn btn-primary">Enchérir</a>
+
+											<!-- dateFinEncheres-->
+
+											<a style="text-decoration: none" class="userLink"
+												href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/> </a> </c:url>"><c:out
+													value="${article.pseudo}" /></a>
+											<!-- Utilisateur.pseudo-->
+										</p>
+										<a href="#" class="btn btn-primary">Enchérir</a>
 									</div>
 								</div>
-						</c:forEach>
-							</div>
+							</c:forEach>
+						</div>
 					</div>
 					<br> <br> <br>
 				</div>
