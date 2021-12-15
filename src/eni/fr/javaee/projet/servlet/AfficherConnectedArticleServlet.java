@@ -254,17 +254,23 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 				}
 			}
 
-			if ((request.getParameter("ventesNonDebutees") != null)
-					&& (request.getParameter("ventesNonDebutees").equals("ON"))) {
-				// Afficher uniquement mes ventes non débutées (Uniquement si l'utilisateur est
-				// vendeur + la dateDebutEnchere n'est pas arrivée)
-				System.out.println("youpi");
+			if (request.getParameter("ventesNonDebutees") != null) {
+			
+					try {
+						listeArticles = ArticleManager.getInstance().afficherVentesNonDebutees(noUtilisateur);
+					} catch (BLLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
-			if ((request.getParameter("ventesTerminees") != null)
-					&& (request.getParameter("ventesTerminees").equals("ON"))) {
-				// Afficher uniquement mes ventes non débutées (Uniquement si l'utilisateur est
-				// vendeur + la dateFinEnchere est dépassée)
-				System.out.println("youpi");
+				
+			if (request.getParameter("ventesTerminees") != null) {
+				try {
+					listeArticles = ArticleManager.getInstance().afficherVentesTerminees(noUtilisateur);
+				} catch (BLLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			request.setAttribute("listeArticles", listeArticles);
 		}

@@ -32,6 +32,13 @@ public class Enchere {
 	}
 	
 
+	public Enchere(int montant_enchere, int numArticle, int noUtilisateur) {
+		this.numArticle = numArticle;
+		this.montant_enchere = montant_enchere;
+		this.noUtilisateur = noUtilisateur;
+	}
+
+	
 	public int getNumEnchere() {
 		return numEnchere;
 	}
