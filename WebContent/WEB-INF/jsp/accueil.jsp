@@ -177,7 +177,7 @@
 														<c:out value="${article.description}" />
 													</p>
 													<!-- prix -->
-													)
+													
 													<p class="card-text">
 														<c:out value="Mise à prix : ${article.miseAPrix} crédits" />
 														<br>
