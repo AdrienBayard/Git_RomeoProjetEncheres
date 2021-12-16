@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
- <meta http-equiv="refresh" content="300;url=/RomeoProjetEncheres/accueil" />
+<meta http-equiv="refresh"
+	content="300;url=/RomeoProjetEncheres/accueil" />
 
 <title>Détail de la vente</title>
 
@@ -31,256 +32,264 @@
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
-	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
 
 </head>
 
 <body>
- 
-			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
 
-<div class="container-back">
-	<!-- Fixed navbar -->
-	<div class="navbar navbar-inverse navbar-fixed-top headroom">
-		<div class="container">
-			<div class="navbar-header">
-				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/RomeoProjetEncheres/afficherConnected">
-				<div class="logoRomeo">
-				<img src="assets/images/logo.png" >
+	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+
+	<div class="container-back">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand"
+						href="/RomeoProjetEncheres/afficherConnected">
+						<div class="logoRomeo">
+							<img src="assets/images/logo.png">
+						</div>
+					</a>
 				</div>
-				</a>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav ">
+						<!-- pull-right -->
+
+						<div class="navigation">
+							<ul>
+								<li class="list active"><a
+									href="/RomeoProjetEncheres/afficherConnected"> <span
+										class="icon"> <ion-icon name="home-outline"></ion-icon>
+									</span> <span class="text">Enchères</span>
+								</a></li>
+								<li class="list"><a href="/RomeoProjetEncheres/vendre">
+										<span class="icon"> <ion-icon name="add-circle-outline"></ion-icon>
+									</span> <span class="text">Ventes</span>
+								</a></li>
+								<li class="list"><a href="/RomeoProjetEncheres/favoris.jsp">
+										<span class="icon"> <ion-icon name="star-outline"></ion-icon>
+									</span> <span class="text">Favoris</span>
+								</a></li>
+
+								<li class="list"><a href="/RomeoProjetEncheres/modifier">
+										<span class="icon"> <ion-icon name="person-outline"></ion-icon>
+									</span> <span class="text">Mon Profil</span>
+								</a></li>
+								<li class="list"><a href="/RomeoProjetEncheres/accueil">
+										<span class="icon"><ion-icon name="log-out-outline"></ion-icon>
+
+									</span> <span class="text">Deconnexion</span>
+								</a></li>
+
+								<div class="indicator"></div>
+							</ul>
+						</div>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
 			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav "> <!-- pull-right -->
-				
-    <div class="navigation">
-        <ul>
-            <li class="list active">
-                <a href="/RomeoProjetEncheres/afficherConnected">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Enchères</span>
-                </a>
-            </li>
- 			<li class="list">
-                <a href="/RomeoProjetEncheres/vendre">
-                    <span class="icon">
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </span>
-                    <span class="text">Ventes</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="/RomeoProjetEncheres/favoris.jsp">
-                    <span class="icon">
-                        <ion-icon name="star-outline"></ion-icon>
-                    </span>
-                    <span class="text">Favoris</span>
-                </a>
-            </li>
-
-            <li class="list">
-                <a href="/RomeoProjetEncheres/modifier">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <span class="text">Mon Profil</span>
-                </a>
-            </li>
-            <li class="list">
-                <a href="/RomeoProjetEncheres/accueil">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
-                        
-                    </span>
-                    <span class="text">Deconnexion</span>
-                </a>
-            </li>
-            
-            <div class="indicator"></div>
-        </ul>
-    </div>
-</ul>
-	</div>
-			<!--/.nav-collapse -->
 		</div>
-	</div>
-	<!-- /.navbar -->
-   <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
+		<!-- /.navbar -->
+		<!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
 
-	<header id="head" class="secondary"></header>
+		<header id="head" class="secondary"></header>
 
-	<!-- container -->
-	<div class="container">
+		<!-- container -->
+		<div class="container">
 
-		<br><ol class="breadcrumb">
-			<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-			<li class="active">Enchère</li>
-		</ol><br>
-		
-		
+			<br>
+			<ol class="breadcrumb">
+				<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
+				<li class="active">Enchère</li>
+			</ol>
+			<br>
+
+
 		</div>
-	<!-- /container AVEC BREADCRUMB -->
-		
-	
-<div class="container">
+		<!-- /container AVEC BREADCRUMB -->
+
+
+		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-body">
-	<div class="row">
-		<div class="col-md-12">
-			<h3 class="text-center">
-				Détails de la vente
-			</h3>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-md-4">
-			<img alt="" src="" />
-		</div>
-		
-		
-		<div class="col-md-6">
-			<p class = "mdpIncorrect"> ${message}</p>
-			<table>
-			<tr>
-			<td><label>Nom de l'article:&nbsp;&nbsp;&nbsp;&nbsp;  </label></td><td><label> ${nomArticle}</label></td>
-			</tr>
-			<tr>
-			<td><label>Description:  </label></td><td><label> ${description}</label></td>
-			</tr>
-			<tr>
-			<td><label>Catégorie:  </label></td><td><label>  ${categorie}</label></td>
-			</tr>
-			<tr>
-			<td><label>Meilleure offre:</label></td><td><label><span style="color:#2E8B57">${pseudoDuMeilleurEncherisseur}</span> avec ${montantEnchere} crédits  </label></td>
-			</tr>
-			<tr>
-			<td><label>Mise à prix:  </label></td><td><label> ${miseAPrix}  </label></td>
-			</tr>
-			<tr>
-			<td><label>Fin de l'enchère:    </label></td><td><label> ${finEnchere}  </label></td>
-			</tr>
-			<tr>
-			<td><label>Retrait:   </label></td><td><label> ${rue}</label></td>
-			</tr>
-			<tr>
-			<td><label>Code postal:  </label></td><td><label> ${codePostal}</label></td>
-			</tr>
-			<tr>
-			<td><label>Ville:  </label></td><td><label> ${ville}   </label></td>
-			</tr>
-			<tr>
-			<td><label>Vendeur:   </label></td><td><label> ${vendeur}  </label></td>
-			</tr>	
-			<tr>
-			<td><label>Ma proposition:   </label></td><td></td>
-			</tr>	
-			</table>
-
-			</div>
-			
-			
-		<div class="col-md-2">
-			<img alt="" src="" />
-		</div>
-				
-							</div>
-							
-		<div class="row text-center">
-		<c:if test = "${miseAPrix >= montantEnchere}">
-		  		<fmt:formatNumber type="number" 
-                  pattern="0" value="${miseAPrix}"
-                  var="minimumEnchere"/>	   
-     	 </c:if>
-      	<c:if test = "${montantEnchere > miseAPrix }">
-      			<fmt:formatNumber type="number" 
-                  pattern="0" value="${montantEnchere}"
-                  var="minimumEnchere"/>
-     	</c:if>				
-		<form action="/RomeoProjetEncheres/achat" method="post">
-		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" min="${minimumEnchere}" placeholder="${minimumEnchere}" step="1"  required><br><br> 
-		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
-		<div class="button text-center">		
-				<button class="btn btn-action" type ="submit">Enchérir</button>
-				</div>
-				</form>  
-				</div>			
-							
-							
-							
+					<div class="row">
+						<div class="col-md-12">
+							<h3 class="text-center">Détails de la vente</h3>
+						</div>
 					</div>
 
+					<div class="row">
+						<div class="col-md-4">
+							<img alt="" src="" />
+						</div>
+
+
+						<div class="col-md-6">
+							<p class="mdpIncorrect">${message}</p>
+							<table>
+								<tr>
+									<td><label>Nom de
+											l'article:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+									<td><label> ${nomArticle}</label></td>
+								</tr>
+								<tr>
+									<td><label>Description: </label></td>
+									<td><label> ${description}</label></td>
+								</tr>
+								<tr>
+									<td><label>Catégorie: </label></td>
+									<td><label> ${categorie}</label></td>
+								</tr>
+								<tr>
+									<td><label>Meilleure offre:</label></td>
+									<td><label><span style="color: #2E8B57">${pseudoDuMeilleurEncherisseur}</span>
+											avec ${montantEnchere} crédits </label></td>
+								</tr>
+								<tr>
+									<td><label>Mise à prix: </label></td>
+									<td><label> ${miseAPrix} </label></td>
+								</tr>
+								<tr>
+									<td><label>Fin de l'enchère: </label></td>
+									<td><label> <fmt:parseDate value="${finEnchere }"
+												pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
+												type="both" /> <fmt:formatDate pattern="dd.MM.yyyy HH:mm"
+												value="${ parsedDateTime }" />
+									</label></td>
+
+								</tr>
+								<tr>
+									<td><label>Retrait: </label></td>
+									<td><label> ${rue}</label></td>
+								</tr>
+								<tr>
+									<td><label>Code postal: </label></td>
+									<td><label> ${codePostal}</label></td>
+								</tr>
+								<tr>
+									<td><label>Ville: </label></td>
+									<td><label> ${ville} </label></td>
+								</tr>
+								<tr>
+									<td><label>Vendeur: </label></td>
+									<td><label> ${vendeur} </label></td>
+								</tr>
+								<tr>
+									<td><label>Ma proposition: </label></td>
+									<td></td>
+								</tr>
+							</table>
+
+						</div>
+
+
+						<div class="col-md-2">
+							<img alt="" src="" />
+						</div>
+
+					</div>
+
+					<div class="row text-center">
+						<c:if test="${miseAPrix >= montantEnchere}">
+							<fmt:formatNumber type="number" pattern="0" value="${miseAPrix}"
+								var="minimumEnchere" />
+						</c:if>
+						<c:if test="${montantEnchere > miseAPrix }">
+							<fmt:formatNumber type="number" pattern="0"
+								value="${montantEnchere}" var="minimumEnchere" />
+						</c:if>
+						<form action="/RomeoProjetEncheres/achat" method="post">
+							<input type="number" name="montantEnchere" pattern="^[0-9]{100}$"
+								title="Vous devez renseigner un montant supérieur au prix"
+								min="${minimumEnchere}" placeholder="${minimumEnchere}" step="1"
+								required><br>
+							<br>
+							<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
+							<div class="button text-center">
+								<button class="btn btn-action" type="submit">Enchérir</button>
+							</div>
+						</form>
+					</div>
+
+
+
 				</div>
+
 			</div>
-		
-	
+		</div>
+
+
 		<!-- /container -->
 
 
-	<footer id="footer" class="top-space">
+		<footer id="footer" class="top-space">
 
-		<div class="footer1">
-			<div class="container">
-				<div class="row">
+			<div class="footer1">
+				<div class="container">
+					<div class="row">
 
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Contact</h3>
-						<div class="widget-body">
-							<p>
-								02 00 00 00 00<br> <a href="mailto:#">losna@mail.com</a><br>
-								<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
-							</p>
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Contact</h3>
+							<div class="widget-body">
+								<p>
+									02 00 00 00 00<br> <a href="mailto:#">losna@mail.com</a><br>
+									<br> 3 Rue Michael Faraday, Saint-Herblain, FRANCE
+								</p>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Suivez-nous</h3>
-						<div class="widget-body">
-							<p class="follow-me-icons clearfix">
-								<a href=""><i class="fa fa-twitter fa-2"></i></a> <a href=""><i
-									class="fa fa-dribbble fa-2"></i></a> <a href=""><i
-									class="fa fa-github fa-2"></i></a> <a href=""><i
-									class="fa fa-facebook fa-2"></i></a>
-							</p>
+						<div class="col-md-3 widget">
+							<h3 class="widget-title">Suivez-nous</h3>
+							<div class="widget-body">
+								<p class="follow-me-icons clearfix">
+									<a href=""><i class="fa fa-twitter fa-2"></i></a> <a href=""><i
+										class="fa fa-dribbble fa-2"></i></a> <a href=""><i
+										class="fa fa-github fa-2"></i></a> <a href=""><i
+										class="fa fa-facebook fa-2"></i></a>
+								</p>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-6 widget">
-						<h3 class="widget-title">Association: "Les objets sont nos amis"</h3>
-						<div class="widget-body">
-							<p>Utiliser notre site, c'est partager nos valeurs!</p>
-							<p>&nbsp;&nbsp;- Nos idées neuves</p>
-							<p>&nbsp;&nbsp;- Une appétence grandissante pour la réutilisation et le recyclage</p>
-							<p>&nbsp;&nbsp;- Encourager la réutilisation, donner une seconde vie aux objets en facilitant les échanges</p>
-							<p>&nbsp;&nbsp;- Permettre l'échange du plus grand nombre d'objets possible</p>
-							<br>
+						<div class="col-md-6 widget">
+							<h3 class="widget-title">Association: "Les objets sont nos
+								amis"</h3>
+							<div class="widget-body">
+								<p>Utiliser notre site, c'est partager nos valeurs!</p>
+								<p>&nbsp;&nbsp;- Nos idées neuves</p>
+								<p>&nbsp;&nbsp;- Une appétence grandissante pour la
+									réutilisation et le recyclage</p>
+								<p>&nbsp;&nbsp;- Encourager la réutilisation, donner une
+									seconde vie aux objets en facilitant les échanges</p>
+								<p>&nbsp;&nbsp;- Permettre l'échange du plus grand nombre
+									d'objets possible</p>
+								<br>
 
+							</div>
 						</div>
-					</div>
 
+					</div>
+					<!-- /row of widgets -->
 				</div>
-				<!-- /row of widgets -->
 			</div>
-		</div>
 
-	</footer>
-
+		</footer>
 
 
 
 
-	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	
-	    <script>
+
+		<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+		<script>
         const list = document.querySelectorAll('.list');
         function activeLink() {
             list.forEach((item) => item.classList.remove('active'));
@@ -290,8 +299,10 @@
 
 
     </script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		<script type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script
