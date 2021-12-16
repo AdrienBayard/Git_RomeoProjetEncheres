@@ -119,21 +119,20 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("rue", rue);
 		
 		if (finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur == null)){
-			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur is null");
 			pseudoDuMeilleurEncherisseur = "Personne n'a";
 			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
+			request.setAttribute("noArticle", noArticle);
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
 			aiguilleur.forward(request, response);
 		}
 		else if (finEnchere.isBefore(LocalDateTime.now()) && (!pseudoDuMeilleurEncherisseur.equals(pseudo))) {
-			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur not equals pseudo");
 			pseudoDuMeilleurEncherisseur = pseudoDuMeilleurEncherisseur + " a";
 			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
+			request.setAttribute("noArticle", noArticle);
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
 			aiguilleur.forward(request, response);
 		}
 		else if(finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur.equals(pseudo))) {
-			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur equals pseudo");
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/achatremporte");
 			aiguilleur.forward(request, response);
 		}

@@ -73,12 +73,17 @@ public class UtilisateurManager {
 		validationCodePostal(codePostal, ex);
 		validationVille(ville, ex);
 		validationMotDePasse(motDePasse, ex);
+		
+		if (ex.hasErreur()) {
+			throw ex;
+		}
 		utilisateur = new Utilisateur(0, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, 0);
 		try { 
 			dao.insertUtilisateur(utilisateur);
 		} catch (DALException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
 		}
 		return utilisateur;
 
