@@ -188,7 +188,7 @@
 														<fmt:parseDate value="${ article.dateFinEncheres }"
 															pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
 															type="both" />
-														<fmt:formatDate pattern="dd.MM.yyyy HH:mm"
+														<fmt:formatDate pattern="dd/MM/yyyy HH:mm"
 															value="${ parsedDateTime }" />
 
 
@@ -248,7 +248,7 @@
 											<fmt:parseDate value="${ article.dateFinEncheres }"
 												pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
 												type="both" />
-											<fmt:formatDate pattern="dd/MM/yyyy HH'h'mm"
+											<fmt:formatDate pattern="dd/MM/yyyy HH:mm"
 												value="${ parsedDateTime }" />
 
 											<br>
