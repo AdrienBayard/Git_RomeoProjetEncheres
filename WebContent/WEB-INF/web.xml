@@ -127,6 +127,16 @@
   	<servlet-name>venteterminee</servlet-name>
   	<url-pattern>/venteterminee</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>modifierarticle</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/modifierMonArticle.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>modifierarticle</servlet-name>
+  	<url-pattern>/modifierarticle</url-pattern>
+  </servlet-mapping>
 
 
   

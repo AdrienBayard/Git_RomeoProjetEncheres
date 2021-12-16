@@ -157,25 +157,23 @@
 		
 		
 		<div class="col-md-8">
-			<form name="mettrenvente" role="form" method="post">
-		
+			<form name="mettrenvente" id ="mettrenvente" action="/RomeoProjetEncheres/modifierArticle" method="post">
 	
-			
 				<div class="form-group">
 					<label for="article">Article</label> <input type="text"
-						class="form-control" id="article" name="article" placeholder="Article" required>
+						class="form-control" id="article" name="article" value ="${nomArticle }" required>
 				</div>
 
 				<div class="form-group">
 					<label for="">Description de l'article</label>
 					<textarea class="form-control" id="description" rows="3" name="description"
-						placeholder="Description" required></textarea>
+					required>${description }</textarea>
 				</div>
 
 				<div class="form-group">
 					<label for=""> Catégorie</label> <select class="form-control"
 						id="exampleFormControlSelect1" name="categorie" required>
-						<option></option>
+						 <option value="${categorie }" selected="selected" hidden="hidden">${categorie}</option>
 						<option>Informatique</option>
 						<option>Ameublement</option>
 						<option>Vetements</option>
@@ -189,36 +187,36 @@
 				</div>
 
 				<label>Début de l'enchère : </label> <input type="datetime-local"
-					 placeholder="" name="debutEnchere" required> 
+					 placeholder="" name="debutEnchere" value ="${debutEnchere }" required> 
 					<br>
 					<label>Fin
 					de l'enchère : </label> <input type="datetime-local" name="finEnchere"
-					placeholder="" required>
+					placeholder="" value ="${finEnchere }"required>
 					
 		<br>
 				<label> Mise à prix :  </label><input type="number" name="miseAPrix"
-					placeholder="" required>	
+					placeholder="" value ="${miseAPrix }"required>	
 					<br>
 					<br>
 					
-					
-			<div class="row">
-				<div class="button m-4">		
-				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" formmethod="post" name="" value="true">Enregistrer les modifications</button></a>	
-				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
-			</div>
-				<div class="button m-4">		
-				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" formmethod="post" name="" value="true">Annuler les modifications</button></a>	
-				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
-			</div>	
-				<div class="button m-4">		
-				<a href="/RomeoProjetEncheres/vendre"><button class="btn btn-action" formmethod="post" name="" value="true">Annuler la vente</button></a>	
-				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
-			</div>								
-			</div>
 				
 			
 			</form>
+			<div class="row">
+				<div class="button m-4">		
+				<a href="/RomeoProjetEncheres/modifierArticle"><button class="btn btn-action" form="mettrenvente" name="" value="true">Enregistrer les modifications</button></a>	
+				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
+			</div>
+				<div class="button m-4">		
+				<a href="/RomeoProjetEncheres/afficherConnected"><button class="btn btn-action" form="" name="" value="true">Annuler les modifications</button></a>
+<!-- 				<a href="/RomeoProjetEncheres/afficherConnected"><button class="btn btn-action" formtarget="mettrenvente" formmethod="get" name="" value="true">Annuler les modifications</button></a>	
+ -->				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
+			</div>	
+				<div class="button m-4">		
+				<a href="/RomeoProjetEncheres/modifierArticle"><button class="btn btn-action" form="mettrenvente" name="" value="true">Annuler la vente</button></a>	
+				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
+			</div>								
+			</div>
 			
 			<fieldset class="p-5">
 					<legend> Retrait </legend>
@@ -226,19 +224,19 @@
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Rue </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.rue}" readonly="readonly"></div>
+						class="form-control" id="article" value="${requestScope.rue}"></div>
 					</div> 
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Code Postal </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.codePostal}" readonly="readonly"></div>
+						class="form-control" id="article" value="${requestScope.codePostal}"></div>
 					</div>   
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Ville </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.ville}" readonly="readonly"></div>
+						class="form-control" id="article" value="${requestScope.ville}"></div>
 					</div>  
 				</fieldset>
 				

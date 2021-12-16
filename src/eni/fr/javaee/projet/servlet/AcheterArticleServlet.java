@@ -84,6 +84,7 @@ public class AcheterArticleServlet extends HttpServlet {
 		String description = article.getDescription();
 		String categorie = null;
 		int miseAPrix = article.getMiseAPrix();
+		LocalDateTime debutEnchere = article.getDateDebutEncheres();
 		LocalDateTime finEnchere = article.getDateFinEncheres();
 		// TODO : récupérer le point de retrait
 		String vendeur = article.getPseudo();
@@ -117,22 +118,29 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("ville", ville);
 		request.setAttribute("codePostal", codePostal);
 		request.setAttribute("rue", rue);
+		request.setAttribute("debutEnchere", debutEnchere);
 		
-		if (finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur == null)){
+
+		 if ((debutEnchere.isAfter(LocalDateTime.now())) && (pseudo.equals(vendeur))) {
+			request.setAttribute("noArticle", noArticle);
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierarticle");
+			aiguilleur.forward(request, response);
+		}
+		 else if ((finEnchere.isBefore(LocalDateTime.now())) && (pseudoDuMeilleurEncherisseur == null)){
 			pseudoDuMeilleurEncherisseur = "Personne n'a";
 			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
 			request.setAttribute("noArticle", noArticle);
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
 			aiguilleur.forward(request, response);
 		}
-		else if (finEnchere.isBefore(LocalDateTime.now()) && (!pseudoDuMeilleurEncherisseur.equals(pseudo))) {
+		else if ((finEnchere.isBefore(LocalDateTime.now())) && (!pseudoDuMeilleurEncherisseur.equals(pseudo))) {
 			pseudoDuMeilleurEncherisseur = pseudoDuMeilleurEncherisseur + " a";
 			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
 			request.setAttribute("noArticle", noArticle);
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
 			aiguilleur.forward(request, response);
 		}
-		else if(finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur.equals(pseudo))) {
+		else if((finEnchere.isBefore(LocalDateTime.now())) && (pseudoDuMeilleurEncherisseur.equals(pseudo))) {
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/achatremporte");
 			aiguilleur.forward(request, response);
 		}
@@ -201,7 +209,12 @@ public class AcheterArticleServlet extends HttpServlet {
 		
 		 noUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
 
-		 if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
+		 int noUtilisateurVendeur = ArticleManager.getInstance().selectArticleById(noArticle).getNo_utilisateur();
+		 if (noUtilisateur == noUtilisateurVendeur) {
+			 message = "Vous ne pouvez pas enchérir sur votre propre article";
+			 doGet(request, response);
+		 }
+		 else if ((montantEnchere > ancienneMeilleureEnchere )&& (noUtilisateur != ancienNoUtilisateur) && (nouveauCredit >= 0)) {
 				if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
 					UtilisateurManager.getInstance().updateUtilisateur(ancienNoUtilisateur, ancienPseudo, ancienNom, ancienPrenom, ancienEmail, ancienTelephone, ancienRue, ancienCodePostal, ancienVille, ancienMotDePasse, ancienCredit);
 				}

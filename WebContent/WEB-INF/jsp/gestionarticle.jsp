@@ -218,19 +218,19 @@
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Rue </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.rue}" readonly="readonly"></div>
+						class="form-control" id="article" value="${rue}" readonly="readonly"></div>
 					</div> 
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Code Postal </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.codePostal}" readonly="readonly"></div>
+						class="form-control" id="article" value="${codePostal}" readonly="readonly"></div>
 					</div>   
 					<br>
 					<div class="row">
   						<div class="col-md-2"><label for="article"> Ville </label></div>
   						<div class="col-md-4 col-md-offset-1"><input type="text"
-						class="form-control" id="article" value="${requestScope.ville}" readonly="readonly"></div>
+						class="form-control" id="article" value="${ville}" readonly="readonly"></div>
 					</div>  
 				</fieldset>
 				
