@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+<meta http-equiv="refresh" content="300;url=/RomeoProjetEncheres/accueil" />
 
 <title>Modifier son profil</title>
 
