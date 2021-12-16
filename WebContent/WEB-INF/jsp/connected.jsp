@@ -267,7 +267,7 @@
 												<a
 													href="<c:url value="/achat">  <c:param name= "trackingArticle" value = "${article.noArticle }" /> </c:url>"
 													class="
-                                                btnbtn-primary">Enchérir</a>
+                                                btn btn-primary">Enchérir</a>
 											</div>
 										</div>
 									</div>
