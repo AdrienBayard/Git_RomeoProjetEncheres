@@ -161,7 +161,7 @@
 			<td><label>Catégorie:  </label></td><td><label>  ${categorie}</label></td>
 			</tr>
 			<tr>
-			<td><label>Meilleure offre:  ${pseudoDuMeilleurEncherisseur}</label></td><td><label> avec ${montantEnchere} crédits  </label></td>
+			<td><label>Meilleure offre:</label></td><td><label><span style="color:#2E8B57">${pseudoDuMeilleurEncherisseur}</span> avec ${montantEnchere} crédits  </label></td>
 			</tr>
 			<tr>
 			<td><label>Mise à prix:  </label></td><td><label> ${miseAPrix}  </label></td>
