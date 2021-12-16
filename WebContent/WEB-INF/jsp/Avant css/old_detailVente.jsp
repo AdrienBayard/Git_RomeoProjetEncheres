@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
- <meta http-equiv="refresh" content="300;url=/RomeoProjetEncheres/accueil" />
 
 <title>Détail de la vente</title>
 
@@ -38,7 +36,7 @@
 </head>
 
 <body>
- 
+
 			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
 
 <div class="container-back">
@@ -129,16 +127,15 @@
 		
 		</div>
 	<!-- /container AVEC BREADCRUMB -->
-		
-	
 <div class="container">
 			<div class="panel panel-default">
 				<div class="panel-body">
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				Détails de la vente
+				Détail de la vente
 			</h3>
+			
 		</div>
 	</div>
 	
@@ -149,78 +146,49 @@
 		
 		
 		<div class="col-md-6">
-			<p class = "mdpIncorrect"> ${message}</p>
-			<table>
-			<tr>
-			<td><label>Nom de l'article:&nbsp;&nbsp;&nbsp;&nbsp;  </label></td><td><label> ${nomArticle}</label></td>
-			</tr>
-			<tr>
-			<td><label>Description:  </label></td><td><label> ${description}</label></td>
-			</tr>
-			<tr>
-			<td><label>Catégorie:  </label></td><td><label>  ${categorie}</label></td>
-			</tr>
-			<tr>
-			<td><label>Meilleure offre:</label></td><td><label><span style="color:#2E8B57">${pseudoDuMeilleurEncherisseur}</span> avec ${montantEnchere} crédits  </label></td>
-			</tr>
-			<tr>
-			<td><label>Mise à prix:  </label></td><td><label> ${miseAPrix}  </label></td>
-			</tr>
-			<tr>
-			<td><label>Fin de l'enchère:    </label></td><td><label> ${finEnchere}  </label></td>
-			</tr>
-			<tr>
-			<td><label>Retrait:   </label></td><td><label> ${rue}</label></td>
-			</tr>
-			<tr>
-			<td><label>Code postal:  </label></td><td><label> ${codePostal}</label></td>
-			</tr>
-			<tr>
-			<td><label>Ville:  </label></td><td><label> ${ville}   </label></td>
-			</tr>
-			<tr>
-			<td><label>Vendeur:   </label></td><td><label> ${vendeur}  </label></td>
-			</tr>	
-			<tr>
-			<td><label>Ma proposition:   </label></td><td></td>
-			</tr>	
-			</table>
-
-			</div>
-			
-			
-		<div class="col-md-2">
-			<img alt="" src="" />
-		</div>
-				
-							</div>
-							
-		<div class="row text-center">
-		<c:if test = "${miseAPrix >= montantEnchere}">
-		  		<fmt:formatNumber type="number" 
+		<br>
+		<p class = "mdpIncorrect"> ${message}</p><br>
+		<label>Nom de l'article:   ${nomArticle}</label><br><br>
+		<label>Description: ${description}</label><br>
+		<label>Catégorie: ${categorie}</label><br><br>
+		<label>Meilleure offre: ${pseudoDuMeilleurEncherisseur} ${montantEnchere} crédits</label><br>
+		<label>Mise à prix: ${miseAPrix}</label><br>
+		<label>Fin de l'enchère: ${finEnchere}</label><br><br>
+		<label>Retrait: ${codePostal} ${ville}  </label><br>
+		<label> ${rue}</label><br><br>
+		<label>Vendeur: ${vendeur}</label><br><br>
+		<label  >Ma proposition:</label>
+		   <c:if test = "${miseAPrix >= montantEnchere}">
+		   <fmt:formatNumber type="number" 
                   pattern="0" value="${miseAPrix}"
-                  var="minimumEnchere"/>	   
-     	 </c:if>
-      	<c:if test = "${montantEnchere > miseAPrix }">
-      			<fmt:formatNumber type="number" 
+                  var="minimumEnchere"/>
+		   
+      </c:if>
+      <c:if test = "${montantEnchere > miseAPrix }">
+      		  <fmt:formatNumber type="number" 
                   pattern="0" value="${montantEnchere}"
                   var="minimumEnchere"/>
-     	</c:if>				
+      </c:if>
+      
 		<form action="/RomeoProjetEncheres/achat" method="post">
 		<input type="number" name="montantEnchere" pattern="^[0-9]{100}$" title="Vous devez renseigner un montant supérieur au prix" min="${minimumEnchere}" placeholder="${minimumEnchere}" step="1"  required><br><br> 
 		<!-- TODO placeholder="${requestScope.derniereEnchere}"-->
+		
 		<div class="button text-center">		
 				<button class="btn btn-action" type ="submit">Enchérir</button>
-				</div>
-				</form>  
-				</div>			
-							
-							
-							
-					</div>
-
-				</div>
+				</form>
+				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 			</div>
+		</div>
+		<div class="col-md-3">
+			<img alt="" src="" />
+		</div>
+			
+	</div>
+	<br><br><br>
+</div>
+</div>
+	</div>	
 		
 	
 		<!-- /container -->
