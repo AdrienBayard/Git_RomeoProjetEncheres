@@ -137,6 +137,7 @@
 				
 				
 	<form id="monprofil" action=" " method="get">
+	<div class ="pc">
 	<div class="row">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-2">	
@@ -144,7 +145,7 @@
 			<label>Nom: </label><br>
 			<label>Prénom: </label><br>
 			<label>Email: </label><br>
-			<label>Teléphone: </label><br>
+			<label>Téléphone: </label><br>
 			<label>Rue: </label><br>
 			<label>Code postal: </label><br>
 			<label>Ville: </label><br>
@@ -166,6 +167,52 @@
 	</div>
 	<div class="col-sm-4"></div>	
 	</div>
+	</div>
+	<div class ="mobile">
+		<div class="row">
+		<div class="col-md-4">
+			<img alt="" src="" />
+		</div>
+
+		<div class="col-md-6">
+			<table>
+				<tr><td><label>Pseudonyme:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.pseudo}</label></td>
+				</tr>
+				<tr><td><label>Nom: </label></td>
+					<td><label> ${requestScope.nom}</label></td>
+				</tr>
+				<tr><td><label>Prénom:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.prenom}</label></td>
+				</tr>
+				<tr><td><label>Email:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.email}</label></td>
+				</tr>
+				<tr><td><label>Téléphone:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.telephone}</label></td>
+				</tr>
+				<tr><td><label>Rue:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.rue}</label></td>
+				</tr>
+				<tr><td><label>Code postal:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.codePostal}</label></td>
+				</tr>
+				<tr><td><label>Ville:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+					<td><label> ${requestScope.ville}</label></td>
+				</tr>
+				<tr><td><label>Mes crédits: </label></td>
+					<td><label> ${requestScope.credit}</label></td>
+				</tr>
+			</table>						
+			</div>
+			
+		<div class="col-md-2">
+			<img alt="" src="" />
+		</div>
+		</div>
+	
+	</div>
+	
 		</form>            		
 	
 	<div class="row">
