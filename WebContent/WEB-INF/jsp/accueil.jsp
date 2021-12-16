@@ -177,7 +177,7 @@
 														<c:out value="${article.description}" />
 													</p>
 													<!-- prix -->
-													)
+													
 													<p class="card-text">
 														<c:out value="Mise à prix : ${article.miseAPrix} crédits" />
 														<br>
@@ -199,7 +199,7 @@
 
 													<a class="userLink"
 														href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
-															value="${article.pseudo}" /></a> <a
+															value="${article.pseudo}" /></a> <br><br><a
 														href="/RomeoProjetEncheres/connexionServlet"
 														class="btn btn-primary">Enchérir</a>
 												</div>

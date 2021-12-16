@@ -143,7 +143,44 @@
 				<h3 class="thin text-center">Profil du vendeur</h3>
 					<form id="lienprofil" action=" " method="get">
 			<br>
-						<div class="row">
+			
+								<div class ="mobile">
+			
+								<div class="row">
+						<div class="col-md-4">
+							<img alt="" src="" />
+						</div>
+
+
+						<div class="col-md-6">
+							<table>
+								<tr>
+									<td><label>Pseudonyme:&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+									<td><label> ${requestScope.pseudo}</label></td>
+								</tr>
+								<tr>
+									<td><label>Code postal: </label></td>
+									<td><label> ${requestScope.codePostal}</label></td>
+								</tr>
+								<tr>
+									<td><label>Ville: </label></td>
+									<td><label> ${requestScope.ville}</label></td>
+								</tr>
+							
+								
+							</table>
+
+						</div>
+
+
+						<div class="col-md-2">
+							<img alt="" src="" />
+						</div>
+
+					</div>
+			</div>
+					<div class ="pc">
+ 						<div class="row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-3">
 								<label>Pseudonyme: </label><br>
@@ -154,19 +191,15 @@
 								<label id="pseudo">${requestScope.pseudo}</label><br>
 								<label id="pseudo">${requestScope.codePostal}</label><br>
 								<label id="pseudo">${requestScope.ville}</label><br>
-								<!--  
-								<input type="text" class="form-control" id="pseudo" value="${requestScope.codePostal}" readonly="readonly"><br>
-								<input type="text" class="form-control" id="pseudo" value="${requestScope.ville}" readonly="readonly"><br>
-								-->
+
 							</div>
 							<div class="col-sm-3"></div>
+						</div> 
 						</div>
-
 					</form>
 								<br>
 			<br>
-					<div>TODO : Les ventes en cours du vendeur (A faire une fois
-						que le modèle Bootstrap aura été importée).</div>
+			
 
 
 

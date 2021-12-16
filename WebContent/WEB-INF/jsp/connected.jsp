@@ -9,6 +9,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="refresh" content="300;url=/RomeoProjetEncheres/accueil" />
+
 <title>Accueil</title>
 <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 <link rel="stylesheet" media="screen"
@@ -267,7 +269,7 @@
 												<a
 													href="<c:url value="/achat">  <c:param name= "trackingArticle" value = "${article.noArticle }" /> </c:url>"
 													class="
-                                                btnbtn-primary">Enchérir</a>
+                                                btn btn-primary">Enchérir</a>
 											</div>
 										</div>
 									</div>
