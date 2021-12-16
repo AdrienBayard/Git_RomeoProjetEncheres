@@ -178,7 +178,7 @@
 						<option></option>
 						<option>Informatique</option>
 						<option>Ameublement</option>
-						<option>Vetements</option>
+						<option>Vetement</option>
 						<option>Sport et Loisirs</option>
 					</select>
 				</div>

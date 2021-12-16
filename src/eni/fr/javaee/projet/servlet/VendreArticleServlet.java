@@ -74,7 +74,7 @@ public class VendreArticleServlet extends HttpServlet {
 		case "Ameublement":
 			categorie = 2;
 			break;
-		case "Vetements":
+		case "Vetement":
 			categorie = 3;
 			break;
 		case "Sport et Loisirs":
@@ -102,7 +102,7 @@ public class VendreArticleServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
+			RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
 			aiguileur.forward(request, response);
 		
 	}
