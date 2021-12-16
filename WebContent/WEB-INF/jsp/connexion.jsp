@@ -92,7 +92,7 @@
                     <span class="icon">
                         <ion-icon name="person-outline"></ion-icon>
                     </span>
-                    <span class="text">Mon Profil</span>
+                    <span class="text">Se connecter</span>
                 </a>
             </li>
             <li class="list">
