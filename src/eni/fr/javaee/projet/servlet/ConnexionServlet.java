@@ -111,7 +111,32 @@ public class ConnexionServlet extends HttpServlet {
 		try {
 			listUtilExistants = UtilisateurManager.getInstance().getListeUtilisateurs();
 			for (Utilisateur user : listUtilExistants) {
-				if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email))
+				
+				if(pseudo == null || pseudo.isEmpty() || pseudo.length() > 30 ){
+					request.setAttribute("messageErreur", 5); // Msg : Le pseudo doit avoir maximum 30 caractères
+					inscription = false;
+				} else if (nom == null || nom.isEmpty() || nom.length() > 30) {
+					request.setAttribute("messageErreur", 6);  // Msg : Le nom doit avoir maximum 30 caractères
+					inscription = false;
+				} else if (prenom == null || prenom.isEmpty() || prenom.length() > 30) {
+					request.setAttribute("messageErreur", 7);  // Msg : Le prénom doit avoir maximum 30 caractères
+					inscription = false;
+				} else if (email == null || email.isEmpty() || email.length() > 30) {
+					request.setAttribute("messageErreur", 8);  // Msg : Le mail doit avoir maximum 30 caractères
+					inscription = false;
+				} else if (telephone == null || telephone.isEmpty() || telephone.length() > 10) {
+					request.setAttribute("messageErreur", 9); // Msg : Merci de fournir un format valide pour le téléphone 
+					inscription = false;
+				} else if (rue == null || rue.isEmpty() || rue.length() > 30) {
+					request.setAttribute("messageErreur", 10);  //  Msg : La rue doit avoir maximum 30 caractères
+					inscription = false;
+				} else if (codePostal == null || codePostal.isEmpty() || codePostal.length() > 5) {
+					request.setAttribute("messageErreur", 11);  // Msg : Merci de fournir un format valide pour le code Postal
+					inscription = false;
+				} else if (motDePasse == null || motDePasse.isEmpty() || motDePasse.length() > 30) {
+					request.setAttribute("messageErreur", 12);  // Msg : Le mot de passe doit avoir maximum 30 caractères
+					inscription = false;
+				} else if ((!user.getPseudo().equals(pseudo)) && (!user.getEmail().equals(email))
 						&& (motDePasse.equals(confirmation))) {
 					inscription = true;
 				} else if ((user.getPseudo().equals(pseudo)) || (user.getEmail().equals(email))
