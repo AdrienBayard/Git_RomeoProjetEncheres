@@ -78,8 +78,9 @@
 										<span class="icon"> <ion-icon name="add-circle-outline"></ion-icon>
 									</span> <span class="text">Ventes</span>
 								</a></li>
-								<li class="list"><a href="/RomeoProjetEncheres/connexionServlet">
-										<span class="icon"> <ion-icon name="star-outline"></ion-icon>
+								<li class="list"><a
+									href="/RomeoProjetEncheres/connexionServlet"> <span
+										class="icon"> <ion-icon name="star-outline"></ion-icon>
 									</span> <span class="text">Favoris</span>
 								</a></li>
 
@@ -178,8 +179,11 @@
 													<!-- prix -->
 													)
 													<p class="card-text">
-														<c:out value="${article.prixVente}" />
+														<c:out value="Mise à prix : ${article.miseAPrix} crédits" />
 														<br>
+														<c:out
+															value="Enchère : ${article.meilleurEnchere} crédits " />
+														<br> <br>
 														<!-- dateFinEncheres -->
 														<fmt:parseDate value="${ article.dateFinEncheres }"
 															pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
@@ -187,7 +191,7 @@
 														<fmt:formatDate pattern="dd.MM.yyyy HH:mm"
 															value="${ parsedDateTime }" />
 
-														
+
 
 														<br>
 														<!-- Utilisateur-->
@@ -195,7 +199,8 @@
 
 													<a class="userLink"
 														href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
-															value="${article.pseudo}" /></a> <a href="/RomeoProjetEncheres/connexionServlet"
+															value="${article.pseudo}" /></a> <a
+														href="/RomeoProjetEncheres/connexionServlet"
 														class="btn btn-primary">Enchérir</a>
 												</div>
 											</div>
@@ -233,8 +238,10 @@
 											<c:out value="${article.description}" />
 										</p>
 										<p class="card-text">
-											<c:out value="${article.prixVente}" />
+											<c:out value="Mise à prix : ${article.miseAPrix} crédits" />
 											<br>
+											<c:out value="Enchère : ${article.meilleurEnchere} crédits " />
+											<br> <br>
 											<!-- prixVente -->
 
 
@@ -244,7 +251,7 @@
 											<fmt:formatDate pattern="dd/MM/yyyy HH'h'mm"
 												value="${ parsedDateTime }" />
 
-										<br>
+											<br>
 
 											<!-- dateFinEncheres-->
 
@@ -253,7 +260,8 @@
 													value="${article.pseudo}" /></a>
 											<!-- Utilisateur.pseudo-->
 										</p>
-										<a href="/RomeoProjetEncheres/connexionServlet" class="btn btn-primary">Enchérir</a>
+										<a href="/RomeoProjetEncheres/connexionServlet"
+											class="btn btn-primary">Enchérir</a>
 									</div>
 								</div>
 							</c:forEach>

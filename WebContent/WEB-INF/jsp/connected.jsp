@@ -295,7 +295,8 @@
 								</div>
 								<div class="texte">
 									<h4>
-										<a href="/RomeoProjetEncheres/connexion"><c:out
+										<a
+											href="<c:url value="/achat"> <c:param name="trackingArticle" value="${article.noArticle}"/></a> </c:url>"><c:out
 												value="${article.nomArticle}" /></a>
 									</h4>
 									<p class="card-text">
@@ -323,7 +324,10 @@
 												value="${article.pseudo}" /></a>
 										<!-- Utilisateur.pseudo-->
 									</p>
-									<a href="#" class="btn btn-primary">Enchérir</a>
+									<a
+										href="<c:url value="/achat">  <c:param name= "trackingArticle" value = "${article.noArticle }" /> </c:url>"
+										class="btn btn-primary">Enchérir</a>
+                                               
 								</div>
 							</div>
 						</c:forEach>
