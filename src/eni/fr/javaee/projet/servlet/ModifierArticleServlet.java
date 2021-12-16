@@ -50,7 +50,6 @@ public class ModifierArticleServlet extends HttpServlet {
 		int no_utilisateur = 0;
 		int noArticle = Integer.parseInt(request.getParameter("trackingNoArticle"));
 		try {
-			System.out.println("noArticle :" + noArticle);
 			ArticleVendu article = ArticleManager.getInstance().selectArticleById(noArticle);
 			no_utilisateur = article.getNo_utilisateur();
 
@@ -86,13 +85,14 @@ public class ModifierArticleServlet extends HttpServlet {
 				break;
 			}
 			try {
-				System.out.println(no_utilisateur);
 				ArticleManager.getInstance().updateVente(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix,
 						0, no_utilisateur, categorie);
 			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/afficherConnected");
+			aiguilleur.forward(request, response);
 
 		}
 
