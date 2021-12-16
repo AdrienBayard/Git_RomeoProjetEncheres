@@ -164,6 +164,30 @@
 								<c:if test="${messageErreur != null && messageErreur == 4}">
 									<p>Le Pseudo et le mail sont déjà utilisés</p>
 								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 5}">
+									<p>Le pseudo doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 6}">
+									<p>Le nom doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 7}">
+									<p>Le prénom doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 8}">
+									<p>Le mail doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 9}">
+									<p>Merci de fournir un format valide pour le téléphone</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 10}">
+									<p>La rue doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 11}">
+									<p>Merci de fournir un format valide pour le code Postal</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 12}">
+									<p>Le mot de passe doit avoir maximum 30 caractères</p>
+								</c:if>
 							</div>
 							<form id="inscription"
 								action="/RomeoProjetEncheres/connexionServlet" method="post">
