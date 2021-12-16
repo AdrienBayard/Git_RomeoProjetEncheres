@@ -219,36 +219,47 @@
 										</div>
 									</div>
 								</fieldset>
-								<div class="button m-4">
+								</form>
+							</div>	
+						
+						<div class="col-md-2">
+							<img alt="" src="" />
+						</div>
+							</div>	
+							<br>
+								<div class="row">
+					<div class="button col-md-1"></div>
+								<div class="button col-md-3">
 
-									<button type="submit" class="btn btn-action"
+									<button form="mettrenvente" type="submit" class="btn btn-action"
 										form="mettrenvente" name="" value="true">Enregistrer</button>
 								</div>
-							</form>
-							<div class="row">
+					<div class="button col-md-1"></div>
+							
 								<form method="post"
 									action="<c:url value="/modifierArticle"> <c:param name="trackingNoArticle" value="${noArticle}"/> <c:param name="bouttonModifier" value="supprimer"/></a> </c:url>">
 
-									<div class="button m-4">
+									<div class="button col-md-3">
 
 										<button class="btn btn-action" name="" value="true">Annuler la vente</button>
 									</div>
-
-									<div class="button m-4">
+					<div class="button col-md-1"></div>
+									<div class="button col-md-3">
 										<a href="/RomeoProjetEncheres/afficherConnected"><button
 												class="btn btn-action" form="" name="" value="true">Annuler
 												les modifications</button></a>
 
 										<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 									</div>
+					<div class="button col-md-1"></div>
 								</form>
 
 							</div>
-						</div>
+					
 
-					</div>
+					
 					<br> <br> <br>
-				</div>
+			
 			</div>
 		</div>
 
