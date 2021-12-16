@@ -78,7 +78,7 @@
 										<span class="icon"> <ion-icon name="add-circle-outline"></ion-icon>
 									</span> <span class="text">Ventes</span>
 								</a></li>
-								<li class="list"><a href="/RomeoProjetEncheres/favoris.jsp">
+								<li class="list"><a href="/RomeoProjetEncheres/connexionServlet">
 										<span class="icon"> <ion-icon name="star-outline"></ion-icon>
 									</span> <span class="text">Favoris</span>
 								</a></li>
@@ -195,7 +195,7 @@
 
 													<a class="userLink"
 														href="<c:url value="/InfoVendeurServlet"> <c:param name="trackingVendeur" value="${article.pseudo}"/></a> </c:url>"><c:out
-															value="${article.pseudo}" /></a> <a href="#"
+															value="${article.pseudo}" /></a> <a href="/RomeoProjetEncheres/connexionServlet"
 														class="btn btn-primary">Enchérir</a>
 												</div>
 											</div>
@@ -253,7 +253,7 @@
 													value="${article.pseudo}" /></a>
 											<!-- Utilisateur.pseudo-->
 										</p>
-										<a href="#" class="btn btn-primary">Enchérir</a>
+										<a href="/RomeoProjetEncheres/connexionServlet" class="btn btn-primary">Enchérir</a>
 									</div>
 								</div>
 							</c:forEach>
