@@ -124,9 +124,8 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("rue", rue);
 		request.setAttribute("telephone", telephone);
 		request.setAttribute("debutEnchere", debutEnchere);
-		
 
-		 if ((debutEnchere.isAfter(LocalDateTime.now())) && (pseudo.equals(vendeur))) {
+		 if ((debutEnchere.isAfter(LocalDateTime.now())) && (pseudo.toLowerCase().equals(vendeur.toLowerCase()))) {
 			request.setAttribute("noArticle", noArticle);
 			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/modifierarticle");
 			aiguilleur.forward(request, response);

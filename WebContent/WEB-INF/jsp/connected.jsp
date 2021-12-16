@@ -157,7 +157,7 @@
 									<option value="Toutes">Toutes catégories</option>
 									<option value="Informatique">Informatique</option>
 									<option value="Ameublement">Ameublement</option>
-									<option value="Vetements">Vetements</option>
+									<option value="Vetement">Vetement</option>
 									<option value="Sport&Loisirs">Sport et loisirs</option>
 								</select>
 							</div>
