@@ -217,8 +217,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 			if (request.getParameter("mesEncheres") != null) {
 
 				listeArticles = EnchereManager.getInstance().trouverArticleEncherit(noUtilisateur);
-				for (ArticleVendu articleVendu : listeArticles) {
-				}
+			
 
 			}
 

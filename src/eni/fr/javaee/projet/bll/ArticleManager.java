@@ -2,11 +2,11 @@ package eni.fr.javaee.projet.bll;
 
 import fr.eni.javaee.projet.dal.ProjetDAOFactory;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import eni.fr.javaee.projet.bo.ArticleVendu;
-import eni.fr.javaee.projet.bo.Enchere;
 import fr.eni.javaee.projet.dal.ArticleDAO;
 import fr.eni.javaee.projet.dal.DALException;
 

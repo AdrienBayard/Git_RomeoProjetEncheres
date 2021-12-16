@@ -2,8 +2,8 @@ package fr.eni.javaee.projet.dal;
 
 import java.util.List;
 
+
 import eni.fr.javaee.projet.bo.ArticleVendu;
-import eni.fr.javaee.projet.bo.Enchere;
 
 public interface ArticleDAO {
 	

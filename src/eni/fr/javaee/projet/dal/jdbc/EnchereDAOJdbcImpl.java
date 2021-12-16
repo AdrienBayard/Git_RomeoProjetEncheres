@@ -1,17 +1,16 @@
 package eni.fr.javaee.projet.dal.jdbc;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
-import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
 
@@ -80,7 +79,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	// Trouver Article encherit ------------------------------------------------------------------
 	public List<ArticleVendu> trouverArticleEncherit(int noUtilisateur) throws DALException {
 		
-		int acheteur = 0;
 		List<ArticleVendu> listeArticleEncherit = new ArrayList<>();
 		Connection cnx = ConnectionProvider.getConnection();
 

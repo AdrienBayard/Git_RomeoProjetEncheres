@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,6 @@ import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Utilisateur;
-import fr.eni.javaee.projet.dal.DALException;
 
 /**
  * Servlet implementation class ui

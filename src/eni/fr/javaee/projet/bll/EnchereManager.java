@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.bll;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import eni.fr.javaee.projet.bo.ArticleVendu;

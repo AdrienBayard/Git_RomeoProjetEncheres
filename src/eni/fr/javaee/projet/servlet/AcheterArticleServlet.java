@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+
 import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import com.sun.research.ws.wadl.Request;
 
 import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
@@ -20,6 +19,7 @@ import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
 import eni.fr.javaee.projet.bo.Enchere;
+import eni.fr.javaee.projet.bo.Utilisateur;
 
 /**
  * Servlet implementation class acheterArticleServlet
@@ -63,10 +63,11 @@ public class AcheterArticleServlet extends HttpServlet {
 		try {
 			article = ArticleManager.getInstance().selectArticleById(noArticle);
 			int noUtilisateurVendeur = article.getNo_utilisateur();
-			ville = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getVille();
-			codePostal = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getCodePostal();
-			rue = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getRue();
-			telephone = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getTelephone();
+			Utilisateur utilisateur = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur);
+			ville = utilisateur.getVille();
+			codePostal = utilisateur.getCodePostal();
+			rue = utilisateur.getRue();
+			telephone = utilisateur.getTelephone();
 			
 			Enchere meilleurEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
 			if (meilleurEnchere != null) {
@@ -179,16 +180,17 @@ public class AcheterArticleServlet extends HttpServlet {
 		//Ancien profil : 
 			if (EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle) != null) {
 				 ancienNoUtilisateur = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getNoUtilisateur();
-				 ancienPseudo = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPseudo();
-				 ancienNom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getNom();
-				 ancienPrenom = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getPrenom();
-				 ancienEmail = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getEmail();
-				 ancienTelephone = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getTelephone();
-				 ancienRue = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getRue();
-				 ancienCodePostal = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCodePostal();
-				 ancienVille = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getVille();
-				 ancienMotDePasse = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getMotDePasse();
-				 ancienCredit = UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur).getCredit();
+				 Utilisateur ancienUtilisateur =UtilisateurManager.getInstance().afficherProfilAvecId(ancienNoUtilisateur);
+				 ancienPseudo = ancienUtilisateur.getPseudo();
+				 ancienNom = ancienUtilisateur.getNom();
+				 ancienPrenom = ancienUtilisateur.getPrenom();
+				 ancienEmail = ancienUtilisateur.getEmail();
+				 ancienTelephone = ancienUtilisateur.getTelephone();
+				 ancienRue = ancienUtilisateur.getRue();
+				 ancienCodePostal = ancienUtilisateur.getCodePostal();
+				 ancienVille = ancienUtilisateur.getVille();
+				 ancienMotDePasse = ancienUtilisateur.getMotDePasse();
+				 ancienCredit = ancienUtilisateur.getCredit();
 				 ancienneMeilleureEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle).getMontant_enchere();
 				if(ancienneMeilleureEnchere != 0) {
 					
@@ -198,16 +200,17 @@ public class AcheterArticleServlet extends HttpServlet {
 		
 		
 		//Nouveau profil
-		int nouveauNoUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
-		String nouveauNom = UtilisateurManager.getInstance().afficherProfil(pseudo).getNom();
-		String nouveauPrenom = UtilisateurManager.getInstance().afficherProfil(pseudo).getPrenom();
-		String nouveauEmail = UtilisateurManager.getInstance().afficherProfil(pseudo).getEmail();
-		String nouveauTelephone = UtilisateurManager.getInstance().afficherProfil(pseudo).getTelephone();
-		String nouveauRue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
-		String nouveauCodePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
-		String nouveauVille = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
-		String nouveauMotDePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
-		int nouveauCredit = UtilisateurManager.getInstance().afficherProfil(pseudo).getCredit();
+			Utilisateur nouvelUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo);
+		int nouveauNoUtilisateur = nouvelUtilisateur.getNoUtilisateur();
+		String nouveauNom = nouvelUtilisateur.getNom();
+		String nouveauPrenom = nouvelUtilisateur.getPrenom();
+		String nouveauEmail = nouvelUtilisateur.getEmail();
+		String nouveauTelephone = nouvelUtilisateur.getTelephone();
+		String nouveauRue = nouvelUtilisateur.getRue();
+		String nouveauCodePostal = nouvelUtilisateur.getCodePostal();
+		String nouveauVille = nouvelUtilisateur.getVille();
+		String nouveauMotDePasse = nouvelUtilisateur.getMotDePasse();
+		int nouveauCredit = nouvelUtilisateur.getCredit();
 		int montantEnchere = Integer.parseInt(request.getParameter("montantEnchere"));
 		nouveauCredit = nouveauCredit - montantEnchere;
 		

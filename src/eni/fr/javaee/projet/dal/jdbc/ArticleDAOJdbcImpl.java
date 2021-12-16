@@ -387,7 +387,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	public List<ArticleVendu> afficherMesEncheres(String pseudo) throws DALException {
 
 		List<ArticleVendu> listeAchatsAAfficher = new ArrayList<ArticleVendu>();
-		int noArticle = 0;
 		int noAcheteur = 0;
 		ResultSet rs = null;
 // Obtenir une connexion
@@ -400,7 +399,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			while (rs.next()) {
 
 				ArticleVendu article = mapAfficherVente(rs);
-				noArticle = article.getNoArticle();
 				
 				try {
 					if (noAcheteur == (UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur())) {
