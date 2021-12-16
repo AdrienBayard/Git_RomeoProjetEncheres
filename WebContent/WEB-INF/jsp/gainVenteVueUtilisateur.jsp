@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Vous avez remporté la vente!</title>
+<title>Vous avez vendu votre objet!</title>
 
 <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 
@@ -23,21 +24,19 @@
 	media="screen">
 <link rel="stylesheet" href="assets/css/main.css">
 
-
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
-	
-	<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
+<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
    <!-- ----------------------AJOUT NEW SUPER NAVBAR BOT------------------------- -->
-
 
 </head>
 
 <body>
+
 
 			<!-- ----------------------AJOUT NEW SUPER NAVBAR TOP------------------------- -->
 
@@ -123,12 +122,13 @@
 
 		<br><ol class="breadcrumb">
 			<li><a href="/RomeoProjetEncheres/accueil">Accueil</a></li>
-			<li class="active">Gain de la vente</li>
+			<li class="active">Vous avez vendu votre objet</li>
 		</ol><br>
 		
 		
 		</div>
 	<!-- /container AVEC BREADCRUMB -->
+
 
 		<!-- container -->
 <div class="container">
@@ -137,7 +137,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				Vous avez remporté la vente!				
+					Enchère terminée!
 				<br><br>
 			</h3>
 			
@@ -151,6 +151,10 @@
 		
 		<div class="col-md-6">
 			<table>
+			<tr>
+			<td><label>${pseudoDuMeilleurEncherisseur} </label>&nbsp;<label> remporté la vente.</label></td>
+			</tr>
+			<tr><td><br></td></tr>
 			<tr>
 			<td><label>Nom de l'article:&nbsp;&nbsp;&nbsp;&nbsp;  </label></td><td><label> ${nomArticle}</label></td>
 			</tr>
@@ -168,7 +172,11 @@
 			<td><label>Mise à prix:  </label></td><td><label> ${miseAPrix}  </label></td>
 			</tr>
 			<tr>
-			<td><label>Fin de l'enchère:    </label></td><td><label> ${finEnchere}  </label></td>
+			<td><label>Fin de l'enchère:    </label></td><td><label> <fmt:parseDate value="${ finEnchere }"
+												pattern="yyyy-MM-dd'T'HH:mm" var="finEnchereFormated"
+												type="both" /> <fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+												value="${ finEnchereFormated }" />
+									</label></td>
 			</tr>
 			<tr>
 			<td><label>Retrait:   </label></td><td><label> ${rue}</label></td>
@@ -180,32 +188,23 @@
 			<td><label>Ville:  </label></td><td><label> ${ville}   </label></td>
 			</tr>
 			<tr>
-			<td><label>Vendeur:   </label></td><td><label> ${vendeur}  </label></td>
-			</tr>	
-			<tr>
 			<td><label>Téléphone:   </label></td><td><label> ${telephone}  </label></td> 
 			</tr>
 			<tr><td><br></td></tr>
 				
-			</table>
-		
+			</table>		
+	</div>		
 
 		
-		
-	</div>
 		<div class="col-md-2">
 			<img alt="" src="" />
 		</div>
 			
-			</div>
-		
-		<div class="row button text-center">		
-				<a href="/RomeoProjetEncheres/connected"><button class="btn btn-action" form = "" name = "" value ="true">Back</button></a>	
+	</div>
+			<div class="row button text-center">		
+				<a href="/RomeoProjetEncheres/afficherConnected"><button class="btn btn-action" form = "" name = "" value ="true">Retrait effectué</button></a>	
 				<!-- TODO  REMPLIR FORM ET NAME avec? Adrien -->
 			</div>
-		
-			
-
 	<br><br><br>
 </div>
 </div>
@@ -213,6 +212,7 @@
 		
 	
 		<!-- /container -->
+
 
 
 	<footer id="footer" class="top-space">
@@ -267,8 +267,8 @@
 
 
 
-		<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	
 	    <script>
         const list = document.querySelectorAll('.list');
         function activeLink() {
@@ -281,8 +281,7 @@
     </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  
-
+    
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script

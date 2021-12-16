@@ -37,6 +37,8 @@ public class AcheterArticleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String pseudo = (String) session.getAttribute("pseudo");
 		ArticleVendu article = null;
 		String pseudoDuMeilleurEncherisseur = null;
 		String ville = null;
@@ -115,9 +117,31 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("ville", ville);
 		request.setAttribute("codePostal", codePostal);
 		request.setAttribute("rue", rue);
+		
+		if (finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur == null)){
+			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur is null");
+			pseudoDuMeilleurEncherisseur = "Personne n'a";
+			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
+			aiguilleur.forward(request, response);
+		}
+		else if (finEnchere.isBefore(LocalDateTime.now()) && (!pseudoDuMeilleurEncherisseur.equals(pseudo))) {
+			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur not equals pseudo");
+			pseudoDuMeilleurEncherisseur = pseudoDuMeilleurEncherisseur + " a";
+			request.setAttribute("pseudoDuMeilleurEncherisseur", pseudoDuMeilleurEncherisseur);
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/venteterminee");
+			aiguilleur.forward(request, response);
+		}
+		else if(finEnchere.isBefore(LocalDateTime.now()) && (pseudoDuMeilleurEncherisseur.equals(pseudo))) {
+			System.out.println("finEnchere isBefore LocalDateTime && pseudoDuMeilleurEncherisseur equals pseudo");
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/achatremporte");
+			aiguilleur.forward(request, response);
+		}
+		else {
+			RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/detailvente");
+			aiguilleur.forward(request, response);
+		}
 
-		RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/detailvente");
-		aiguilleur.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

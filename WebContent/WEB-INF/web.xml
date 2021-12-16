@@ -107,6 +107,26 @@
   	<servlet-name>detailvente</servlet-name>
   	<url-pattern>/detailvente</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>achatremporte</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/gainVenteVueAcheteur.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>achatremporte</servlet-name>
+  	<url-pattern>/achatremporte</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>venteterminee</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/gainVenteVueUtilisateur.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>venteterminee</servlet-name>
+  	<url-pattern>/venteterminee</url-pattern>
+  </servlet-mapping>
 
 
   
