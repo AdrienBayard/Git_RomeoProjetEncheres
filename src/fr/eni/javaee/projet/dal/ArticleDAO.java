@@ -17,7 +17,7 @@ public interface ArticleDAO {
 	public List<ArticleVendu>afficherEncheresRemportees(String pseudo) throws DALException;
 	
 	public ArticleVendu insertVente(ArticleVendu nouvelArticleVendu) throws DALException;
-	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException;
+	public void updateVente(ArticleVendu nouvelArticleVendu) throws DALException;
 	public ArticleVendu selectArticleById(int noArticle) throws DALException;
 	public void deleteVente(int idArticle) throws DALException;
 

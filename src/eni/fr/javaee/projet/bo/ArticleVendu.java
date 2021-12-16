@@ -39,11 +39,11 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
-		this.categorie = categorie;
 		this.no_utilisateur = no_utilisateur;
+		this.categorie = categorie;
 		
 	}
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int categorie,  int no_utilisateur, String pseudo, int meilleurEnchere) {
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres, int miseAPrix,int prixVente, int no_utilisateur, int categorie , String pseudo, int meilleurEnchere) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;

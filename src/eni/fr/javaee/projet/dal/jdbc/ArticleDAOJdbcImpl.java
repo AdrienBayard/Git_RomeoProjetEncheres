@@ -47,7 +47,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 
 	private static final String INSERT_VENTE = "INSERT INTO ARTICLES_VENDUS (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, no_utilisateur, no_categorie) VALUES (?,?,?,?,?,?,?);";
 
-	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_categorie=? where no_article =?;";
+	private static final String UPDATE_VENTE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description=?, date_debut_encheres= ?, date_fin_encheres = ?, prix_initial=?, no_utilisateur =?, no_categorie=? where no_article =?;";
 
 	private static final String DELETE_VENTE = "DELETE from ARTICLES_VENDUS where no_article = ?";
 
@@ -104,7 +104,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	}
 
 	@Override
-	public ArticleVendu updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
+	public void updateVente(ArticleVendu nouvelArticleVendu) throws DALException {
 // Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 
@@ -122,8 +122,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			pStmt.setTimestamp(3, dateDebutTS);
 			pStmt.setTimestamp(4, dateFinTS);
 			pStmt.setInt(5, nouvelArticleVendu.getMiseAPrix());
-			pStmt.setInt(6, nouvelArticleVendu.getCategorie());
-			pStmt.setInt(7, nouvelArticleVendu.getNoArticle());
+			pStmt.setInt(6, nouvelArticleVendu.getNo_utilisateur());
+			pStmt.setInt(7, nouvelArticleVendu.getCategorie());
+			pStmt.setInt(8, nouvelArticleVendu.getNoArticle());
 
 			pStmt.executeUpdate();
 
@@ -141,7 +142,6 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			}
 
 		}
-		return nouvelArticleVendu;
 	}
 
 	@Override
@@ -471,7 +471,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}
 
 		articleVendu = new ArticleVendu(no_Article, nomArticle, description, dateDebutEncheres, dateFinEncheres,
-				miseAPrix, prixVente, categorie, no_utilisateur, pseudo,meilleurEnchere);
+				miseAPrix, prixVente, no_utilisateur, categorie,  pseudo,meilleurEnchere);
 
 		return articleVendu;
 	}

@@ -44,6 +44,7 @@ public class AcheterArticleServlet extends HttpServlet {
 		String ville = null;
 		String codePostal = null;
 		String rue = null;
+		String telephone = null;
 		int montantEnchere = 0;	
 		if(!message.equals("")) {
 			request.setAttribute("message", message);
@@ -65,6 +66,8 @@ public class AcheterArticleServlet extends HttpServlet {
 			ville = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getVille();
 			codePostal = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getCodePostal();
 			rue = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getRue();
+			telephone = UtilisateurManager.getInstance().afficherProfilAvecId(noUtilisateurVendeur).getTelephone();
+			
 			Enchere meilleurEnchere = EnchereManager.getInstance().trouverMeilleurEncherisseur(noArticle);
 			if (meilleurEnchere != null) {
 				
@@ -118,6 +121,7 @@ public class AcheterArticleServlet extends HttpServlet {
 		request.setAttribute("ville", ville);
 		request.setAttribute("codePostal", codePostal);
 		request.setAttribute("rue", rue);
+		request.setAttribute("telephone", telephone);
 		request.setAttribute("debutEnchere", debutEnchere);
 		
 

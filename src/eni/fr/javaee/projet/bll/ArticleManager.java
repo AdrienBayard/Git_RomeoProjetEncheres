@@ -179,7 +179,7 @@ List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 	}
 
 	private void validationDebutEncheres(LocalDateTime dateDebutEncheres, BLLException ex) throws BLLException {
-		if (LocalDateTime.now().isBefore(dateDebutEncheres)) {
+		if (LocalDateTime.now().isAfter(dateDebutEncheres)) {
 			ex.ajouterErreur(new ParameterException(
 					"Vous devez indiquer une date de début d'enchère posterieure à la date du jour"));
 		}
@@ -204,8 +204,8 @@ List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 	
 //	 -------------------------------------------------------
 
-	public ArticleVendu updateVente(String nomArticle, String description, LocalDateTime dateDebutEncheres,
-			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int categorie, int no_utilisateur)
+	public void updateVente(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres,
+			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int no_utilisateur, int categorie)
 			throws BLLException {
 
 		ArticleVendu article = null;
@@ -218,21 +218,20 @@ List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		validationMiseAPrix(miseAPrix, ex);
 //		validationPrixVente(prixVente, ex);
 
-		article = new ArticleVendu(0, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
-				categorie, 0);
+		article = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente,
+				no_utilisateur, categorie );
 
 		if (ex.hasErreur()) {
 			throw ex;
 		}
 
 		try {
-			dao.insertVente(article);
+			dao.updateVente(article);
 		} catch (DALException e) {
 			e.printStackTrace();
 			ex.ajouterErreur(e);
 		}
 
-		return article;
 	}
 
 	public void deleteVente(int idArticle) throws BLLException {
