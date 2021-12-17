@@ -98,18 +98,18 @@ public class VendreArticleServlet extends HttpServlet {
 		
 
 			try {
-				if(miseAPrix == 0) {
+				if(miseAPrix == 0 || miseAPrix >= 2147483646) {
 					autorisationInsert = false;
-					request.setAttribute("messageErreur", 1); // La mise à prix doit être supérieure à 0. 
+					request.setAttribute("messageErreur", 1); // La mise à prix doit être supérieure à 0 et inférieure à beaucoup plus que ton compte banque sauf si t'es Jeff Bezos. 
 				} else if(LocalDateTime.now().isAfter(dateFinEnchere)) {
 					autorisationInsert = false; 
-					request.setAttribute("messageErreur", 2); // Vous ne pouvoir prévoir une date de fin d'enchère déjà passée. 
+					request.setAttribute("messageErreur", 2); // Vous ne pouvez prévoir une date de fin d'enchère déjà passée. 
 				} else if(LocalDateTime.now().isAfter(dateDebutEnchere)) {
 					autorisationInsert = false; 
-					request.setAttribute("messageErreur", 3); // Vous ne pouvoir prévoir une date de début d'enchère déjà passée. 
+					request.setAttribute("messageErreur", 3); // Vous ne pouvez prévoir une date de début d'enchère déjà passée. 
 				} else if(description.isEmpty() || description.length() > 300) {
 					autorisationInsert = false; 
-					request.setAttribute("messageErreur", 4); // Vous devez prévoir une description (inf. à 300 caractères). 
+					request.setAttribute("messageErreur", 4); // Vous devez prévez une description (inf. à 300 caractères). 
 				} else if(article.isEmpty() || article.length() > 30) {
 					autorisationInsert = false; 
 					request.setAttribute("messageErreur", 5); // Vous devez prévoir un nom d'article (inf. à 30 caractères). 

@@ -148,13 +148,13 @@
 				Nouvelle Vente
 			</h3>
 		<c:if test="${messageErreur != null && messageErreur == 1}">
-			<p class="text-center mdpIncorrect"> La mise à prix doit être supérieure à 0.</p>
+			<p class="text-center mdpIncorrect"> La mise à prix doit être supérieure à 0 et inférieure à beaucoup plus que ton compte en banque sauf si t'es Jeff Bezos.</p>
 		</c:if>
 		<c:if test="${messageErreur != null && messageErreur == 2}">
-			<p class="text-center mdpIncorrect"> Vous ne pouvoir prévoir une date de fin d'enchère déjà passée. </p>
+			<p class="text-center mdpIncorrect"> Vous ne pouvez prévoir une date de fin d'enchère déjà passée. </p>
 		</c:if>
 		<c:if test="${messageErreur != null && messageErreur == 3}">
-			<p class="text-center mdpIncorrect"> Vous ne pouvoir prévoir une date de début d'enchère déjà passée. </p>
+			<p class="text-center mdpIncorrect"> Vous ne pouvez prévoir une date de début d'enchère déjà passée. </p>
 		</c:if>
 		<c:if test="${messageErreur != null && messageErreur == 4}">
 			<p class="text-center mdpIncorrect"> Vous devez prévoir une description (inf. à 300 caractères). </p>
