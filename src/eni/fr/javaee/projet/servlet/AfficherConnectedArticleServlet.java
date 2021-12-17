@@ -138,7 +138,7 @@ public class AfficherConnectedArticleServlet extends HttpServlet {
 				}
 				;
 				break;
-			case "Vetements":
+			case "Vetement":
 				if (recherche.equals("")) {
 
 					for (ArticleVendu articleVendu : listeArticles) {
