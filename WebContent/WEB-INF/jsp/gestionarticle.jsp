@@ -148,7 +148,7 @@
 				Nouvelle Vente
 			</h3>
 		<c:if test="${messageErreur != null && messageErreur == 1}">
-			<p class="text-center mdpIncorrect">La date de  fin des enchères doit être postérieure à la date de début des enchères</p>
+			<p class="text-center mdpIncorrect"> Merci de prévoir une date d'enchère cohérente</p>
 		</c:if>
 		</div>
 	</div>
