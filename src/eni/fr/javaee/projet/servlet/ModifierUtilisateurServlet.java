@@ -146,6 +146,31 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 					}
 				}
 			}
+			if(nouveauPseudo == null || nouveauPseudo.isEmpty() || nouveauPseudo.length() > 30 ){
+				request.setAttribute("messageErreur", 8); // Msg : Le pseudo doit avoir maximum 30 caractères
+				modification = false;
+			} else if (nom == null || nom.isEmpty() || nom.length() > 30) {
+				request.setAttribute("messageErreur", 9);  // Msg : Le nom doit avoir maximum 30 caractères
+				modification = false;
+			} else if (prenom == null || prenom.isEmpty() || prenom.length() > 30) {
+				request.setAttribute("messageErreur", 10);  // Msg : Le prénom doit avoir maximum 30 caractères
+				modification = false;
+			} else if (email == null || email.isEmpty() || email.length() > 30) {
+				request.setAttribute("messageErreur", 11);  // Msg : Le mail doit avoir maximum 30 caractères
+				modification = false;
+			} else if (telephone == null || telephone.isEmpty() || telephone.length() > 10) {
+				request.setAttribute("messageErreur", 12); // Msg : Merci de fournir un format valide pour le téléphone 
+				modification = false;
+			} else if (rue == null || rue.isEmpty() || rue.length() > 30) {
+				request.setAttribute("messageErreur", 13);  //  Msg : La rue doit avoir maximum 30 caractères
+				modification = false;
+			} else if (codePostal == null || codePostal.isEmpty() || codePostal.length() > 5) {
+				request.setAttribute("messageErreur", 14);  // Msg : Merci de fournir un format valide pour le code Postal
+				modification = false;
+			} else if (nouveauMotDePasse == null || nouveauMotDePasse.isEmpty() || nouveauMotDePasse.length() > 30) {
+				request.setAttribute("messageErreur", 15);  // Msg : Le mot de passe doit avoir maximum 30 caractères
+				modification = false;
+			} 
 
 			if (modification == true) {
 				String ancienPseudo = (String) session.getAttribute("pseudo");
@@ -193,31 +218,34 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 					checkMotDePasseActuel = true;
 					doGet(request, response);
 				}
-				for (ArticleVendu articleVendu : articles) {
-					if (articleVendu.getNo_utilisateur() == idUtilisateur) {
-						modification = false;
-						request.setAttribute("messageErreur", 6); // Msg : Vous ne pouvez pas supprimer votre compte vous avez un article en vente
-						doGet(request, response);	
-						
-					}
-				}
-				 if(encheres != null && modification == true) {
-					modification = false;
-					request.setAttribute("messageErreur", 7); // Msg : Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours
-					doGet(request, response);
-				}
-			
-				
-				else if (modification == true){
+				else {
 					
-					try {
-						UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
-					} catch (BLLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					for (ArticleVendu articleVendu : articles) {
+						if (articleVendu.getNo_utilisateur() == idUtilisateur) {
+							modification = false;
+							request.setAttribute("messageErreur", 6); // Msg : Vous ne pouvez pas supprimer votre compte vous avez un article en vente
+							doGet(request, response);	
+							
+						}
 					}
-					RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/accueil");
-					aiguilleur.forward(request, response);
+					if(encheres != null && modification == true) {
+						modification = false;
+						request.setAttribute("messageErreur", 7); // Msg : Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours
+						doGet(request, response);
+					}
+					
+					
+					else if (modification == true){
+						
+						try {
+							UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
+						} catch (BLLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/accueil");
+						aiguilleur.forward(request, response);
+					}
 				}
 				
 		}

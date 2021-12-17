@@ -166,6 +166,30 @@
 								<c:if test="${messageErreur != null && messageErreur == 7}">
 									<p class="text-center mdpIncorrect">Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours</p>
 								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 8}">
+									<p class="text-center mdpIncorrect">Le pseudo doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 9}">
+									<p class="text-center mdpIncorrect">Le nom doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 10}">
+									<p class="text-center mdpIncorrect">Le prénom doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 11}">
+									<p class="text-center mdpIncorrect">Le pseudo doit Le mail doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 12}">
+									<p class="text-center mdpIncorrect">Merci de fournir un format valide pour le téléphone </p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 13}">
+									<p class="text-center mdpIncorrect">La rue doit avoir maximum 30 caractères</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 14}">
+									<p class="text-center mdpIncorrect">Merci de fournir un format valide pour le code Postal</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 15}">
+									<p class="text-center mdpIncorrect">Le mot de passe doit avoir maximum 30 caractères</p>
+								</c:if>
 							</div>
 							
 							
