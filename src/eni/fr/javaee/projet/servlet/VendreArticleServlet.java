@@ -24,6 +24,7 @@ import eni.fr.javaee.projet.bll.UtilisateurManager;
 @WebServlet(name = "VendreArticle", urlPatterns = { "/vendre" })
 public class VendreArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String messageErreur; 
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -67,6 +68,7 @@ public class VendreArticleServlet extends HttpServlet {
 		LocalDateTime dateDebutEnchere = LocalDateTime.parse(request.getParameter("debutEnchere"));
 		LocalDateTime dateFinEnchere = LocalDateTime.parse(request.getParameter("finEnchere"));
 		int miseAPrix = Integer.valueOf(request.getParameter("miseAPrix"));
+		
 		switch (categorieString) {
 		case "Informatique":
 			categorie = 1;
@@ -95,13 +97,25 @@ public class VendreArticleServlet extends HttpServlet {
 		
 
 			try {
+				
+			if (dateDebutEnchere.isBefore(dateFinEnchere)) {
 				ArticleManager.getInstance().insertVente(article, description, dateDebutEnchere, dateFinEnchere, miseAPrix, 0, no_utilisateur ,categorie);
+				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
+				aiguileur.forward(request, response);
+			} else { 
+								
+				request.setAttribute("messageErreur",1); 
+				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
+				aiguileur.forward(request, response);
+			}
+			
+				
+				
 			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
-			aiguileur.forward(request, response);
+			
 		
 	}
 

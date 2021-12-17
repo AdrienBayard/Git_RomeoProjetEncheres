@@ -147,13 +147,19 @@
 			<h3 class="text-center">
 				Nouvelle Vente
 			</h3>
+		<c:if test="${messageErreur != null && messageErreur == 1}">
+			<p class="text-center mdpIncorrect">La date de  fin des enchères doit être postérieure à la date de début des enchères</p>
+		</c:if>
 		</div>
 	</div>
 	
+	
+		
 	<div class="row">
 		<div class="col-md-2">
 			<img alt="" src="" />
 		</div>
+		
 		
 		
 		<div class="col-md-8">

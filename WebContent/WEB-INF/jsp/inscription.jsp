@@ -205,7 +205,7 @@
 								</div>
 								<div class="top-margin">
 									<label>Email</label>
-									<input type="text" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ajoutez une adresse mail valide" required>
+									<input type="text" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ajoutez une adresse mail valide avec des minuscules uniquement" required>
 								</div>
 								<div class="top-margin">
 									<label>Numéro de téléphone</label>
@@ -340,8 +340,8 @@
 	    <script>
         const list = document.querySelectorAll('.list');
         function activeLink() {
-            list.forEach((item) => item.classList.remove('active'));
-            this.classList.add('active');
+        list.forEach((item) => item.classList.remove('active'));
+        this.classList.add('active');
         }
         list.forEach((item) => item.addEventListener('mouseover', activeLink));
 
