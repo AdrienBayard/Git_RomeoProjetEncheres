@@ -98,7 +98,7 @@ public class VendreArticleServlet extends HttpServlet {
 
 			try {
 				
-			if (dateDebutEnchere.isBefore(dateFinEnchere)) {
+			if (dateDebutEnchere.isBefore(dateFinEnchere) && dateDebutEnchere.isAfter(LocalDateTime.now())) {
 				ArticleManager.getInstance().insertVente(article, description, dateDebutEnchere, dateFinEnchere, miseAPrix, 0, no_utilisateur ,categorie);
 				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
 				aiguileur.forward(request, response);
