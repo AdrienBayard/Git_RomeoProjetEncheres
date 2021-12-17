@@ -143,7 +143,7 @@
 			</h3>
 
 			<p class="text-center">
-			<br><br>---Page dans WebContent à déplacer dans jsp ensuite---
+			<br><br><!-- Page dans WebContent à déplacer dans jsp ensuite -->
 			<br><br>Vos achats mis de coté apparaitront bientôt ci-dessous.</p>
 		</div>
 	</div>
