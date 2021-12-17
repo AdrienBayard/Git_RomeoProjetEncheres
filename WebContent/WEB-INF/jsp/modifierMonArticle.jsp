@@ -195,7 +195,7 @@
 										</div>
 										<div class="col-md-4 col-md-offset-1">
 											<input type="text" class="form-control" id="article"
-												value="${requestScope.rue}">
+												value="${requestScope.rue}" readonly>
 										</div>
 									</div>
 									<br>
@@ -205,7 +205,7 @@
 										</div>
 										<div class="col-md-4 col-md-offset-1">
 											<input type="text" class="form-control" id="article"
-												value="${requestScope.codePostal}">
+												value="${requestScope.codePostal}" readonly>
 										</div>
 									</div>
 									<br>
@@ -215,7 +215,7 @@
 										</div>
 										<div class="col-md-4 col-md-offset-1">
 											<input type="text" class="form-control" id="article"
-												value="${requestScope.ville}">
+												value="${requestScope.ville}" readonly>
 										</div>
 									</div>
 								</fieldset>
