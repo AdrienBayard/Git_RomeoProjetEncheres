@@ -144,21 +144,27 @@
 							<hr>
 							<div style="text-align: center;">
 								<c:if test="${messageErreur != null && messageErreur == 1}">
-									<p>le mot de passe et la confirmation doivent être identiques</p>
+									<p class="text-center mdpIncorrect">le mot de passe et la confirmation doivent être identiques</p>
 								</c:if>
 						
 								<c:if test="${messageErreur != null && messageErreur == 2}">
-									<p>Pseudo déjà utilisé</p>
+									<p class="text-center mdpIncorrect">Pseudo déjà utilisé</p>
 								</c:if>
 						
 								<c:if test="${messageErreur != null && messageErreur == 3}">
-									<p>Mail déjà utilisé</p>
+									<p class="text-center mdpIncorrect">Mail déjà utilisé</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 4}">
-									<p>Le Pseudo et le mail sont déjà utilisés</p>
+									<p class="text-center mdpIncorrect">Le Pseudo et le mail sont déjà utilisés</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 5}">
-									<p>Le mot de passe actuel n'est pas le bon</p>
+									<p class="text-center mdpIncorrect">Le mot de passe actuel n'est pas le bon</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 6}">
+									<p class="text-center mdpIncorrect">Vous ne pouvez pas supprimer votre compte vous avez un article en vente</p>
+								</c:if>
+								<c:if test="${messageErreur != null && messageErreur == 7}">
+									<p class="text-center mdpIncorrect">Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours</p>
 								</c:if>
 							</div>
 							

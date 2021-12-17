@@ -1,6 +1,7 @@
 package eni.fr.javaee.projet.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eni.fr.javaee.projet.bll.ArticleManager;
 import eni.fr.javaee.projet.bll.BLLException;
+import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
+import eni.fr.javaee.projet.bo.ArticleVendu;
+import eni.fr.javaee.projet.bo.Enchere;
 import eni.fr.javaee.projet.bo.Utilisateur;
+import javassist.expr.NewArray;
 
 /**
  * Servlet implementation class ModifierUtilisateurServlet
@@ -84,8 +90,8 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		String quelBouton = request.getParameter("buttonModifierProfil");
 		HttpSession session = request.getSession();
 		String motDePasseActuel = request.getParameter("motDePasseActuel");
-		if (quelBouton.equals("modifier")) {
 		Boolean modification = true;
+		if (quelBouton.equals("modifier")) {
 		Boolean motDePasseErrone = false;
 		Boolean pseudoErrone = false;
 		Boolean emailErrone = false;
@@ -152,7 +158,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 				int credit = UtilisateurManager.getInstance().afficherProfil(ancienPseudo).getCredit();
 				UtilisateurManager.getInstance().updateUtilisateur(noUtilisateur, nouveauPseudo, nom, prenom, email,
 						telephone, rue, codePostal, ville, nouveauMotDePasse, credit);
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/afficherConnected");
 				aiguilleur.forward(request, response);
 
 			} else if (modification == false && motDePasseErrone == true) {
@@ -168,21 +174,52 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 		}
 	}
 		else if (quelBouton.equals("supprimer")) {
-			
+			List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
+			List<ArticleVendu> encheres = new ArrayList<ArticleVendu>();
+			modification = true;
 			String pseudo = (String) session.getAttribute("pseudo");
-			int idUtilisateur;
+			int idUtilisateur = 0;
+			String ancienMotdePasse = null;
 			try {
 				idUtilisateur = UtilisateurManager.getInstance().afficherProfil(pseudo).getNoUtilisateur();
-				String ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
-				if (!motDePasseActuel.equals(ancienMotdePasse)) {
-					checkMotDePasseActuel = true;
-					doGet(request, response);
-				}
-				UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
+				 ancienMotdePasse = UtilisateurManager.getInstance().afficherProfil(pseudo).getMotDePasse();
+				articles = ArticleManager.getInstance().afficherAchatsEnCours();
+				encheres = EnchereManager.getInstance().trouverArticleEncherit(idUtilisateur);
 			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+				if (!motDePasseActuel.equals(ancienMotdePasse)) {
+					checkMotDePasseActuel = true;
+					doGet(request, response);
+				}
+				for (ArticleVendu articleVendu : articles) {
+					if (articleVendu.getNo_utilisateur() == idUtilisateur) {
+						modification = false;
+						request.setAttribute("messageErreur", 6); // Msg : Vous ne pouvez pas supprimer votre compte vous avez un article en vente
+						doGet(request, response);	
+						
+					}
+				}
+				 if(encheres != null && modification == true) {
+					modification = false;
+					request.setAttribute("messageErreur", 7); // Msg : Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours
+					doGet(request, response);
+				}
+			
+				
+				else if (modification == true){
+					
+					try {
+						UtilisateurManager.getInstance().deleteUtilisateur(idUtilisateur);
+					} catch (BLLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/accueil");
+					aiguilleur.forward(request, response);
+				}
+				
 		}
 	}
 

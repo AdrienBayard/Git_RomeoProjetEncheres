@@ -164,7 +164,7 @@ public class ConnexionServlet extends HttpServlet {
 						codePostal, ville, motDePasse);
 				HttpSession session = request.getSession();
 				session.setAttribute("pseudo", pseudo);
-				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/connected");
+				RequestDispatcher aiguilleur = getServletContext().getRequestDispatcher("/afficherConnected");
 				aiguilleur.forward(request, response);
 
 			} else if (inscription == false) {
