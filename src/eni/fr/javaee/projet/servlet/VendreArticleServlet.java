@@ -98,7 +98,7 @@ public class VendreArticleServlet extends HttpServlet {
 		
 
 			try {
-				if(miseAPrix == 0 || miseAPrix >= 2147483646) {
+				if(miseAPrix == 0 || miseAPrix >= 1000000) {
 					autorisationInsert = false;
 					request.setAttribute("messageErreur", 1); // La mise à prix doit être supérieure à 0 et inférieure à beaucoup plus que ton compte banque sauf si t'es Jeff Bezos. 
 				} else if(LocalDateTime.now().isAfter(dateFinEnchere)) {
