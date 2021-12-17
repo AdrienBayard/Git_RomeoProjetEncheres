@@ -230,7 +230,7 @@
 								<div class="row top-margin">
 									<div class="col-sm-6">
 										<label>Mot de passe</label> 
-										<input class="form-control" type="password" name="motDePasse" required>
+										<input class="form-control" type="password" pattern="^[A-Za-z0-9]*$" name="motDePasse" title="Pas de caractères spéciaux pour le mdp parce qu'on a pas le temps de le gérer. Merci" required>
 									</div>
 									<div class="col-sm-6">
 										<label>Confirmation</label>
