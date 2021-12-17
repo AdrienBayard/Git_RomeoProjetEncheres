@@ -48,7 +48,6 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			String codePostal = utilisateur.getCodePostal();
 			String ville = utilisateur.getVille();
 			int credit = utilisateur.getCredit();
-			
 
 			request.setAttribute("pseudo", pseudo);
 			request.setAttribute("nom", nom);
@@ -226,7 +225,8 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 							
 						}
 					}
-					if(encheres != null && modification == true) {
+					if(encheres.size() != 0 && modification == true) {
+						System.out.println(encheres);
 						modification = false;
 						request.setAttribute("messageErreur", 7); // Msg : Vous ne pouvez pas supprimer votre compte vous avez une enchere en cours
 						doGet(request, response);
