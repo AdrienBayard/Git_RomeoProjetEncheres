@@ -24,6 +24,9 @@ import eni.fr.javaee.projet.bll.UtilisateurManager;
 @WebServlet(name = "VendreArticle", urlPatterns = { "/vendre" })
 public class VendreArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	String rue;
+	String codePostal;
+	String ville;
 	String messageErreur; 
 
 	/**
@@ -38,9 +41,9 @@ public class VendreArticleServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String pseudo = (String) session.getAttribute("pseudo");
 		try {
-			String rue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
-			String codePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
-			String ville = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
+			 rue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
+			 codePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
+			 ville = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
 			request.setAttribute("rue", rue);
 			request.setAttribute("codePostal", codePostal);
 			request.setAttribute("ville", ville);
@@ -126,6 +129,12 @@ public class VendreArticleServlet extends HttpServlet {
 				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
 				aiguileur.forward(request, response);
 			} else {  
+				 rue = UtilisateurManager.getInstance().afficherProfil(pseudo).getRue();
+				 codePostal = UtilisateurManager.getInstance().afficherProfil(pseudo).getCodePostal();
+				 ville = UtilisateurManager.getInstance().afficherProfil(pseudo).getVille();
+				 request.setAttribute("rue", rue);
+					request.setAttribute("codePostal", codePostal);
+					request.setAttribute("ville", ville);
 				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
 				aiguileur.forward(request, response);
 			}
