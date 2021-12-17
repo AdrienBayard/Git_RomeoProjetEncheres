@@ -1,5 +1,6 @@
 package fr.eni.javaee.projet.dal;
 
+@SuppressWarnings("serial")
 public class DALException extends Exception {
 
 	public DALException() {

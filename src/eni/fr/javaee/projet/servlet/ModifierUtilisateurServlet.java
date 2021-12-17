@@ -17,9 +17,7 @@ import eni.fr.javaee.projet.bll.BLLException;
 import eni.fr.javaee.projet.bll.EnchereManager;
 import eni.fr.javaee.projet.bll.UtilisateurManager;
 import eni.fr.javaee.projet.bo.ArticleVendu;
-import eni.fr.javaee.projet.bo.Enchere;
 import eni.fr.javaee.projet.bo.Utilisateur;
-import javassist.expr.NewArray;
 
 /**
  * Servlet implementation class ModifierUtilisateurServlet

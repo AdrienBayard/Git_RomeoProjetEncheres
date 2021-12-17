@@ -49,6 +49,7 @@ public class ConnectionProvider {
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	public static Connection getConnection() {
 		
 		// Obtenir une connexion du pool
