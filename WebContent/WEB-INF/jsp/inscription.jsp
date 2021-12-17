@@ -219,7 +219,7 @@
 								<div class="row top-margin">
 									<div class="col-sm-6">
 										<label>Ville</label> 
-										<input type="text" class="form-control" name="ville" required>
+										<input type="text" class="form-control" pattern="^[A-Za-z]*$" name="ville" required>
 									</div>
 									<div class="col-sm-6">
 										<label>Code Postal</label>
