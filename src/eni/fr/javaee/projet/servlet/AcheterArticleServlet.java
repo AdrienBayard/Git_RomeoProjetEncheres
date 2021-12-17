@@ -104,7 +104,7 @@ public class AcheterArticleServlet extends HttpServlet {
 			categorie = "Vetement";
 			break;
 		case 4:
-			categorie = "Sport & Loisirs";
+			categorie = "Sport et Loisirs";
 			break;
 
 		default:
