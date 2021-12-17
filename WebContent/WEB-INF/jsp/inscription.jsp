@@ -150,43 +150,43 @@
 							<div style="text-align: center;">
 
 								<c:if test="${messageErreur != null && messageErreur == 1}">
-									<p>le mot de passe et la confirmation doivent être
+									<p class="text-center mdpIncorrect">le mot de passe et la confirmation doivent être
 										identiques</p>
 								</c:if>
 
 								<c:if test="${messageErreur != null && messageErreur == 2}">
-									<p>Pseudo déjà utilisé</p>
+									<p class="text-center mdpIncorrect">Pseudo déjà utilisé</p>
 								</c:if>
 
 								<c:if test="${messageErreur != null && messageErreur == 3}">
-									<p>Mail déjà utilisé</p>
+									<p class="text-center mdpIncorrect">Mail déjà utilisé</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 4}">
-									<p>Le Pseudo et le mail sont déjà utilisés</p>
+									<p class="text-center mdpIncorrect">Le Pseudo et le mail sont déjà utilisés</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 5}">
-									<p>Le pseudo doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">Le pseudo doit avoir maximum 30 caractères</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 6}">
-									<p>Le nom doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">Le nom doit avoir maximum 30 caractères</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 7}">
-									<p>Le prénom doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">Le prénom doit avoir maximum 30 caractères</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 8}">
-									<p>Le mail doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">Le mail doit avoir maximum 30 caractères</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 9}">
-									<p>Merci de fournir un format valide pour le téléphone</p>
+									<p class="text-center mdpIncorrect">Merci de fournir un format valide pour le téléphone</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 10}">
-									<p>La rue doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">La rue doit avoir maximum 30 caractères</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 11}">
-									<p>Merci de fournir un format valide pour le code Postal</p>
+									<p class="text-center mdpIncorrect">Merci de fournir un format valide pour le code Postal</p>
 								</c:if>
 								<c:if test="${messageErreur != null && messageErreur == 12}">
-									<p>Le mot de passe doit avoir maximum 30 caractères</p>
+									<p class="text-center mdpIncorrect">Le mot de passe doit avoir maximum 30 caractères</p>
 								</c:if>
 							</div>
 							<form id="inscription"
