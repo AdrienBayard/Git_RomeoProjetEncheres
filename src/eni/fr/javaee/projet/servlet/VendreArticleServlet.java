@@ -68,6 +68,7 @@ public class VendreArticleServlet extends HttpServlet {
 		LocalDateTime dateDebutEnchere = LocalDateTime.parse(request.getParameter("debutEnchere"));
 		LocalDateTime dateFinEnchere = LocalDateTime.parse(request.getParameter("finEnchere"));
 		int miseAPrix = Integer.valueOf(request.getParameter("miseAPrix"));
+		boolean autorisationInsert = false; 
 		
 		switch (categorieString) {
 		case "Informatique":
@@ -97,14 +98,34 @@ public class VendreArticleServlet extends HttpServlet {
 		
 
 			try {
+				if(miseAPrix == 0) {
+					autorisationInsert = false;
+					request.setAttribute("messageErreur", 1); // La mise à prix doit être supérieure à 0. 
+				} else if(LocalDateTime.now().isAfter(dateFinEnchere)) {
+					autorisationInsert = false; 
+					request.setAttribute("messageErreur", 2); // Vous ne pouvoir prévoir une date de fin d'enchère déjà passée. 
+				} else if(LocalDateTime.now().isAfter(dateDebutEnchere)) {
+					autorisationInsert = false; 
+					request.setAttribute("messageErreur", 3); // Vous ne pouvoir prévoir une date de début d'enchère déjà passée. 
+				} else if(description.isEmpty() || description.length() > 300) {
+					autorisationInsert = false; 
+					request.setAttribute("messageErreur", 4); // Vous devez prévoir une description (inf. à 300 caractères). 
+				} else if(article.isEmpty() || article.length() > 30) {
+					autorisationInsert = false; 
+					request.setAttribute("messageErreur", 5); // Vous devez prévoir un nom d'article (inf. à 30 caractères). 
+				} else if(dateDebutEnchere.isAfter(dateFinEnchere)) {
+					autorisationInsert = false; 
+					request.setAttribute("messageErreur", 6); // La date de fin d'enchère doit être postérieure à son début. 
+				} else {
+					autorisationInsert = true; 
+				}
+	
 				
-			if (dateDebutEnchere.isBefore(dateFinEnchere) && dateDebutEnchere.isAfter(LocalDateTime.now())) {
+			if (autorisationInsert == true) {
 				ArticleManager.getInstance().insertVente(article, description, dateDebutEnchere, dateFinEnchere, miseAPrix, 0, no_utilisateur ,categorie);
 				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/afficherConnected");
 				aiguileur.forward(request, response);
-			} else { 
-								
-				request.setAttribute("messageErreur",1); 
+			} else {  
 				RequestDispatcher aiguileur = getServletContext().getRequestDispatcher("/gestionarticle");
 				aiguileur.forward(request, response);
 			}

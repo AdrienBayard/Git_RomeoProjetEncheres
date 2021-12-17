@@ -148,7 +148,22 @@
 				Nouvelle Vente
 			</h3>
 		<c:if test="${messageErreur != null && messageErreur == 1}">
-			<p class="text-center mdpIncorrect"> Merci de prévoir une date d'enchère cohérente</p>
+			<p class="text-center mdpIncorrect"> La mise à prix doit être supérieure à 0.</p>
+		</c:if>
+		<c:if test="${messageErreur != null && messageErreur == 2}">
+			<p class="text-center mdpIncorrect"> Vous ne pouvoir prévoir une date de fin d'enchère déjà passée. </p>
+		</c:if>
+		<c:if test="${messageErreur != null && messageErreur == 3}">
+			<p class="text-center mdpIncorrect"> Vous ne pouvoir prévoir une date de début d'enchère déjà passée. </p>
+		</c:if>
+		<c:if test="${messageErreur != null && messageErreur == 4}">
+			<p class="text-center mdpIncorrect"> Vous devez prévoir une description (inf. à 300 caractères). </p>
+		</c:if>
+		<c:if test="${messageErreur != null && messageErreur == 5}">
+			<p class="text-center mdpIncorrect"> Vous devez prévoir un nom d'article (inf. à 30 caractères). </p>
+		</c:if>
+		<c:if test="${messageErreur != null && messageErreur == 6}">
+			<p class="text-center mdpIncorrect"> La date de fin d'enchère doit être postérieure à son début. </p>
 		</c:if>
 		</div>
 	</div>
