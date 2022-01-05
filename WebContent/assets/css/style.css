@@ -189,9 +189,11 @@ transform: translateX(calc(70px * 4));
 }
 
 .texte {
-	margin: 35px 0 0 180px;
+	margin: 0 0 30px 180px;
 	max-width: 250px;
 	position: absolute;
+	padding-bottom:20px
+
 }
 
 h4:hover {

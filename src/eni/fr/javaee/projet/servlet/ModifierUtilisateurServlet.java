@@ -164,7 +164,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 			} else if (codePostal == null || codePostal.isEmpty() || codePostal.length() > 5) {
 				request.setAttribute("messageErreur", 14);  // Msg : Merci de fournir un format valide pour le code Postal
 				modification = false;
-			} else if (nouveauMotDePasse == null || nouveauMotDePasse.isEmpty() || nouveauMotDePasse.length() > 30) {
+			} else if (nouveauMotDePasse.length() > 30) {
 				request.setAttribute("messageErreur", 15);  // Msg : Le mot de passe doit avoir maximum 30 caractères
 				modification = false;
 			} 
